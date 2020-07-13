@@ -138,17 +138,17 @@ console.log(출력내용);
 
   5. 논리
 
-     여러개의 관계연산자를 묶을때
+   여러개의 관계연산자를 묶을때
 
-     - 일반 논리
+   - 일반 논리
 
-       && : 모두 참일 때 참
+     && : 모두 참일 때 참
 
-       ||: 모두 거짓일 때 거짓
+     ||: 모두 거짓일 때 거짓
 
-     - 비트 논리
+   - 비트 논리
 
-       & | ^ 
+     & | ^ 
 
   6. 삼항
 
@@ -187,9 +187,9 @@ console.log(출력내용);
 
   - while문: 시작과 끝을 모를 때
 
-    - do ~ while문:
-    - break;
-    - continue;
+  - do ~ while문:
+  - break;
+  - continue;
 
 #### javascript의 proposal 기능사용하기 위한 plugin: Tern
 
@@ -371,38 +371,38 @@ HTML Form Control: 사용자가 입력한 값을 받기위한 HTML
 
   3. javascript에서 값을 얻는다.
 
-     3-1. form태그를 name 속성을 사용하여 얻는다.
+   3-1. form태그를 name 속성을 사용하여 얻는다.
 
-     ```javascript
-     var obj = window.document.form이름;
-     ```
+   ```javascript
+   var obj = window.document.form이름;
+   ```
 
-     3-2. 얻어진 form객체를 사용하여 Control에 접근
+   3-2. 얻어진 form객체를 사용하여 Control에 접근
 
-     ```javascript
-     obj.접근할 control명;
-     obj.name;
-     obj.id;
-     ```
+   ```javascript
+   obj.접근할 control명;
+   obj.name;
+   obj.id;
+   ```
 
-     3-3. 값얻기
+   3-3. 값얻기
 
-     - 이름 속성이 유일할 때 ```폼 이름.control이름.value;```
+   - 이름 속성이 유일할 때 ```폼 이름.control이름.value;```
 
-     - 이름 속성이 중복될 때 ( 배열 ) ```폼이름.control이름[인덱스].value;```
+   - 이름 속성이 중복될 때 ( 배열 ) ```폼이름.control이름[인덱스].value;```
 
-       - 인덱스는 control이 정의된 순서
+   - 인덱스는 control이 정의된 순서
 
        
 
 
-  - radio, checkbox 는 사용자가 확인한 값만 얻는다.
-    - 폼이름.control명[인덱스].checked -> true/false
-  - select는 사용자가 선택한 값만 얻는다.
-    - 선택한 옵션의 인덱스 얻기
-      - 폼이름.control명.selectedIndex
-    - 옵션이 선택된 상태인지?
-      - 폼이름.control명[인덱스].selected
+- radio, checkbox 는 사용자가 확인한 값만 얻는다.
+  - 폼이름.control명[인덱스].checked -> true/false
+- select는 사용자가 선택한 값만 얻는다.
+  - 선택한 옵션의 인덱스 얻기
+  - 폼이름.control명.selectedIndex
+  - 옵션이 선택된 상태인지?
+  - 폼이름.control명[인덱스].selected
 
 
 
@@ -506,9 +506,9 @@ HTML Form Control: 사용자가 입력한 값을 받기위한 HTML
 
       ```.addEventListener("이벤트종류","처리할 함수명");```
 
-      - 함수는 이벤트가 발생하명 자동호출됨으로 ()를 쓰면 안된다.
+    - 함수는 이벤트가 발생하명 자동호출됨으로 ()를 쓰면 안된다.
 
-      - 이벤트 종류는 on을 제외하고 작성 ex) onclick이면 click으로
+    - 이벤트 종류는 on을 제외하고 작성 ex) onclick이면 click으로
 
    ```javascript
    document.getElementById("a").addEventListener("click",test)
@@ -527,18 +527,18 @@ HTML Form Control: 사용자가 입력한 값을 받기위한 HTML
   window.open("팝업창에 넣을 HTML","창id","width:넓이,height:높이,top=x좌표,left=y좌표");
   ```
 
-  #### window
+#### window
 
-  - javascript객체의 최상위 객체
-  - document
-    - HTML문서에 접근
-  - event
-    - event 발생(키코드값)
-  - location
-    - 페이지 이동
-    - browser 가 제공하는 Storage를 사용( HTML5 )
-  - history
-    - 브라우저에 로딩되었던 페이지들로 이동
+- javascript객체의 최상위 객체
+- document
+  - HTML문서에 접근
+- event
+  - event 발생(키코드값)
+- location
+  - 페이지 이동
+  - browser 가 제공하는 Storage를 사용( HTML5 )
+- history
+  - 브라우저에 로딩되었던 페이지들로 이동
 
 ## 값전달
 
@@ -680,11 +680,11 @@ history.go(이동할 단계)//1,2,3, -1 (back과 같음)
 
 - localStorage, sesssionStorage 두가지 제공
 
-  - localStorage
-    - 웹서버와 접속이 끊어져도 정보를 사용할 수 있는 storage
-  - sessionStorage
-    - 웹 서버에 연결되어있을 때에만 정보를 저장하고 사용할 수 있는 Storage
-    - session: 컴퓨터끼리의 연결
+- localStorage
+  - 웹서버와 접속이 끊어져도 정보를 사용할 수 있는 storage
+- sessionStorage
+  - 웹 서버에 연결되어있을 때에만 정보를 저장하고 사용할 수 있는 Storage
+  - session: 컴퓨터끼리의 연결
 
 - window에서 제공
 
@@ -696,10 +696,10 @@ history.go(이동할 단계)//1,2,3, -1 (back과 같음)
 
 - 웹 비연결성(웹서버는 접속자에게 정보를 제공항 후 연결을 끊는다)
 
-  1. 서버의 자원소모가 적다(H/W가 고사양X)
+1. 서버의 자원소모가 적다(H/W가 고사양X)
 
-     - 서버는 접속자의 상태를 알 수 없다.(연결유지 기술: session, cookie)
-     - 실시간으로 변경된 정보를 모든 접속자에게 반영할 수 없다.( client pull로 해결 )-> 실시간 정보반영이 어렵다
+   - 서버는 접속자의 상태를 알 수 없다.(연결유지 기술: session, cookie)
+   - 실시간으로 변경된 정보를 모든 접속자에게 반영할 수 없다.( client pull로 해결 )-> 실시간 정보반영이 어렵다
 
      #### session
 
@@ -711,41 +711,41 @@ history.go(이동할 단계)//1,2,3, -1 (back과 같음)
 
 - 사용법)
 
-  1. 값 설정
+1. 값 설정
 
-     - 서버에 연결되어 있을 때에만 사용
+   - 서버에 연결되어 있을 때에만 사용
 
-       window.sessionStorage
+     window.sessionStorage
 
-     - 서버와 연결을 끊었을 떄에도 유지
+   - 서버와 연결을 끊었을 떄에도 유지
 
-       window.localStorage
+     window.localStorage
 
-     ```javascript
-     var ss=window.sessionStorage
-     var ls=window.localStorage
-     
-     ls.setItem("키",값);
-     ss.setItem("키",값);
-     ```
+   ```javascript
+   var ss=window.sessionStorage
+   var ls=window.localStorage
 
-  2. 값 얻기
+   ls.setItem("키",값);
+   ss.setItem("키",값);
+   ```
 
-     ```javascript
-     ls.getItem("키");
-     ```
+2. 값 얻기
 
-  3. 값 삭제
+   ```javascript
+   ls.getItem("키");
+   ```
 
-     ```javascript
-     ls.removeItem("키");
-     ```
+3. 값 삭제
 
-  4. 모든 Stotage
+   ```javascript
+   ls.removeItem("키");
+   ```
 
-     ```javascript
-     ls.clear();
-     ```
+4. 모든 Stotage
+
+   ```javascript
+   ls.clear();
+   ```
 
      
 
