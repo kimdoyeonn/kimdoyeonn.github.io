@@ -1,5 +1,5 @@
 ---  
-title: "자연수 뒤집어 배열로 만들기"  
+title: "[algorithm]level1 자연수 뒤집어 배열로 만들기"  
 excerpt: ""  
 
 categories:  
