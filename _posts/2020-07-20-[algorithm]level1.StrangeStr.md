@@ -1,5 +1,6 @@
 ---  
 title: "[algorithm]이상한 문자 만들기"
+excerpt: ""  
 category:  
   - algorithm  
 tags: [algorithm, programmers]
