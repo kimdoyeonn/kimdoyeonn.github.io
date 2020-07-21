@@ -1,13 +1,11 @@
 ---  
-title: "[ algorithm ]문자열 내림차순으로 배치하기"  
-excerpt: ""  
+title: "[algorithm]level1.문자열 내림차순으로 배치하기"  
 
 categories:  
   - algorithm  
 tags:  
   - algorithm
   - programmers
-last_modified_at: 2020-07-13T08:06:00-05:00  
 ---   
 ### 문자열 내림차순으로 배치하기
 
