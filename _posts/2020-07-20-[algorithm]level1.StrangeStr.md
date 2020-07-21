@@ -1,3 +1,14 @@
+---  
+title: "[ algorithm ]이상한 문자 만들기"  
+excerpt: ""  
+
+categories:  
+  - algorithm  
+tags:  
+  - algorithm
+  - programmers
+last_modified_at: 2020-07-20T08:06:00-05:00  
+---   
 ## 이상한 문자 만들기
 
 ###### 문제 설명
