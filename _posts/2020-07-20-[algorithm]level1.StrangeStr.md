@@ -1,13 +1,8 @@
 ---  
-title: "[algorithm]이상한 문자 만들기"  
-excerpt: ""  
-
-categories:  
+title: "[algorithm]이상한 문자 만들기"
+category:  
   - algorithm  
-tags:  
-  - algorithm
-  - programmers
-last_modified_at: 2020-07-20T08:06:00-05:00  
+tags: [algorithm, programmers]
 ---   
 ## 이상한 문자 만들기
 
