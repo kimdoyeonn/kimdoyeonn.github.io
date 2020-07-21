@@ -1,5 +1,5 @@
 ---  
-title: "[ algorithm ]이상한 문자 만들기"  
+title: "[algorithm]이상한 문자 만들기"  
 excerpt: ""  
 
 categories:  
