@@ -1,4 +1,15 @@
-# 문바열 내림차순으로 배치하기
+---  
+title: "[ algorithm ]문자열 내림차순으로 배치하기"  
+excerpt: ""  
+
+categories:  
+  - algorithm  
+tags:  
+  - algorithm
+  - programmers
+last_modified_at: 2020-07-13T08:06:00-05:00  
+---   
+### 문자열 내림차순으로 배치하기
 
 - 문제설명
   - 매개변수로 주어진 문자열을 내림차순으로 정렬하여 새로운 문자열을 리턴하는 함수 작성
