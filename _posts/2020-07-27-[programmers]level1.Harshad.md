@@ -4,7 +4,7 @@ excerpt: ""
 category:  
 
   - algorithm  
-    tags: [algorithm, programmers]
+tags: [algorithm, programmers]
 ---  
 
 ## 하샤드 수
