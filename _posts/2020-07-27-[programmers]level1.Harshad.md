@@ -1,11 +1,11 @@
----
+---  
 title: "[algorithm]하샤드수"
 excerpt: ""  
 category:  
 
   - algorithm  
     tags: [algorithm, programmers]
----
+---  
 
 ## 하샤드 수
 
