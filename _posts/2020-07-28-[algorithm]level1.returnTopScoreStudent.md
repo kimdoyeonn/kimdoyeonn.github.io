@@ -1,12 +1,10 @@
 ---  
-
 title: "[algorithm] level1 모의고사"
 excerpt: ""  
 category:  
 
   - algorithm  
     tags: [algorithm, programmers]
-
 ---  
 
 ## 모의고사
