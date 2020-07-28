@@ -1,5 +1,5 @@
 ---  
-title: "[algorithm] level1 "
+title: "[algorithm] level1 모의고사"
 excerpt: ""  
 category:  
 
