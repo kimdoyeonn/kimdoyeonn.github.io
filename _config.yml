@@ -95,7 +95,7 @@ analytics:
 author:
   name             : "Yeon"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Fake it till you make it."
+  bio              : ""
   location         : "Somewhere"
   email            :
   links:
