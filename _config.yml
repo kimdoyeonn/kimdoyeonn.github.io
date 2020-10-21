@@ -21,11 +21,11 @@ title_separator: "-"
 subtitle: # site tagline that appears below site title in masthead
 name: "Doyeon"
 description: "개발 공부하는 블로그"
-url: "http://doyeon311.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl: "" # the subpath of your site, e.g. "/blog"
+url: "http://doyeon311.github.io" # 여기서 기재된 url은 markdown 본문에서 블로그 사이트 주소를 지정하는 변수로 사용된다.the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl: "" # 서브 경로가 있는 경우 기재 the subpath of your site, e.g. "/blog"
 repository: "doyeon311/doyeon311.github.com" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser: # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo: # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+logo: # 최상단 메뉴바에 사이트 로고 넣기path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title: "초보 코딩 블로그" # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs: true # true, false (default)
 words_per_minute: 200
@@ -201,7 +201,7 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
+paginate: 5 # amount of posts to show 첫 페이지에 보여줄 최근 게시물 수를 지정
 paginate_path: /page:num/
 timezone: Asia/Seoul # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
@@ -270,10 +270,14 @@ defaults:
       share: true
       related: true
 
-    # _pages
+    # _pages 날짜와 상관없는 글들
   - scope:
-      path: "_pages"
+      path: ""
       type: pages
     values:
       layout: single
       author_profile: true
+      read_time: false
+      comments: false
+      share: true
+      related: false
