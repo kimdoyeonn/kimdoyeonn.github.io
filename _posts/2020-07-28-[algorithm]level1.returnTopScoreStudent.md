@@ -1,11 +1,11 @@
----  
+---
 title: "[algorithm] level1 모의고사"
-excerpt: ""  
-category:  
-
-  - algorithm  
+excerpt: ""
+category:
+  - algorithm
 tags: [algorithm, programmers]
----  
+---
+
 ## 모의고사
 
 ###### 문제 설명
@@ -50,7 +50,7 @@ tags: [algorithm, programmers]
 ```java
 public int[] solution(int[] answers) {
     int[] answer = {};
-	
+
     //세명의 점수를 담을 배열과 최고점을 담을 변수 선언
     int[] score={0,0,0};
     int topScore=0;
@@ -58,7 +58,7 @@ public int[] solution(int[] answers) {
     int[] pattern1 = {1,2,3,4,5};
     int[] pattern2 = {2,1,2,3,2,4,2,5};
     int[] pattern3 = {3,3,1,1,2,2,4,4,5,5};
-	
+
     //정답 배열에 반복문사용하여 정답패턴과 비교해 학생의 점수를 매김
     for(int i=0;i<answers.length;i++){
         score[0] = pattern1[i%pattern1.length] == answers[i]?score[0]+1:score[0];
@@ -84,7 +84,7 @@ public int[] solution(int[] answers) {
             topStu+=(i+1);
         }
     }
-    
+
     //최고점 학생을 결과 배열에 넣어줌
     answer = new int[cnt];
     student = topStu.split("");

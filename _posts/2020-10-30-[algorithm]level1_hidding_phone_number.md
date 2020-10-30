@@ -1,10 +1,9 @@
+---
 title: "[algorithm] level1 핸드폰 번호 가리기"
-excerpt: ""  
-category:  
-
+excerpt: ""
+category:
   - algorithm
-    tags: [python, algorithm]
-
+tags: [python, algorithm]
 ---
 
 ## 핸드폰 번호 가리기
@@ -20,12 +19,10 @@ category:
 
 ##### 입출력 예
 
-| phone_number | return      |
-| ------------ | ----------- |
-| 01033334444  | *******4444 |
-| 027778888    | *****8888   |
-
-  
+| phone_number | return         |
+| ------------ | -------------- |
+| 01033334444  | **\*\*\***4444 |
+| 027778888    | **\***8888     |
 
 ### 내가 푼 풀이
 
@@ -34,11 +31,9 @@ def solution(phone_number):
     answer = ''
     length = len(phone_number)
     answer = '*' * (length-4) + phone_number[-4:]
-        
+
     return answer
 ```
-
-  
 
 ### 다른 사람이 푼 풀이
 

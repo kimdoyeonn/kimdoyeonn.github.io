@@ -1,11 +1,10 @@
----  
+---
 title: "[algorithm]하샤드수"
-excerpt: ""  
-category:  
-
-  - algorithm  
+excerpt: ""
+category:
+  - algorithm
 tags: [algorithm, programmers]
----  
+---
 
 ## 하샤드 수
 
@@ -19,12 +18,12 @@ tags: [algorithm, programmers]
 
 ##### 입출력 예
 
-| arr  | return |
-| ---- | :----: |
-| 10   |  true  |
-| 12   |  true  |
-| 11   | false  |
-| 13   | false  |
+| arr | return |
+| --- | :----: |
+| 10  |  true  |
+| 12  |  true  |
+| 11  | false  |
+| 13  | false  |
 
 ##### 입출력 예 설명
 
@@ -45,22 +44,21 @@ tags: [algorithm, programmers]
 ```java
 public boolean solution(int x) {
         boolean answer = false;
-        
+
         int input = x;
         int sum = 0;
-    
+
         while(input > 0){
             //10을 계속 나눠주면서 그 나머지를 더하면 모든 자리의 합이 구해진다.
         	sum += input % 10;
             input = input/10;
         }
-		
+
     	//입력값이 sum으로 나누어떨어지면 하샤드수
         if( x % sum == 0){
             answer = true;
         }
-        
+
         return answer;
     }
 ```
-

@@ -1,11 +1,10 @@
 ---
-​---  
 title: "[algorithm]최대공약수와 최소공배수"
-excerpt: ""  
-category:  
+excerpt: ""
+category:
 
-  - algorithm  
-tags: [algorithm, programmers]
+- algorithm
+  tags: [algorithm, programmers]
 
 ---
 
@@ -21,10 +20,10 @@ tags: [algorithm, programmers]
 
 ##### 입출력 예
 
-| n    | m    | return  |
-| ---- | ---- | ------- |
-| 3    | 12   | [3, 12] |
-| 2    | 5    | [1, 10] |
+| n   | m   | return  |
+| --- | --- | ------- |
+| 3   | 12  | [3, 12] |
+| 2   | 5   | [1, 10] |
 
 ##### 입출력 예 설명
 
@@ -48,7 +47,7 @@ public int[] solution(int n, int m) {
         n = m;
         m = temp;
     }
-    
+
     // 최대공약수
     // i가 작은 수 n 부터 1까지 1씩 감소하는 반복문을 돌려주고
     for(int i=n; i > 0;i--){
@@ -57,7 +56,7 @@ public int[] solution(int n, int m) {
         if(n % i != 0){
             continue;
         }
-        
+
         //n이 나누어 떨어지고 m도 나누어 떨어지는 수 중에 제일 큰 수가 최대 공약수
         // 조건에 맞다면 break
         if(m % i == 0) {
@@ -65,7 +64,7 @@ public int[] solution(int n, int m) {
             break;
         }
     }//end for
-    
+
     //최소공배수
     //m 부터 m*n까지 m씩 증가하는 반복문을 돌려줌
     for(int j=m;j<m*n+1;j+=m){
@@ -75,7 +74,7 @@ public int[] solution(int n, int m) {
             break;
         }
     }
-    
+
     return answer;
 }
 ```

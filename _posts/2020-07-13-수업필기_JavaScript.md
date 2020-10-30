@@ -1,13 +1,14 @@
----  
-title: "20200713_JavaScript"  
-excerpt: ""  
+---
+title: "20200713_JavaScript"
+excerpt: ""
 
-categories:  
-  - JavaScript  
-tags:  
-  - JavaScript  
-last_modified_at: 2020-07-13T08:06:00-05:00  
----  
+categories:
+  - JavaScript
+tags:
+  - JavaScript
+last_modified_at: 2020-07-13T08:06:00-05:00
+---
+
 멱등성: 모든 접속자에게 동일하게 서비스됨
 
 # JavaScript
@@ -17,7 +18,7 @@ last_modified_at: 2020-07-13T08:06:00-05:00
 - Web browser에서 JavaScript Engine을 사용하여 실행되는 언어
 - inline, embed, external file 방식 3가지로 사용
 - 동적 데이터형/동적할당 ( 값이 할당될 때 변수의 데이터형이 설정되는 것 )
-- JavaScript를 기반으로한 다양한 library들이 제공 ( JQuery Angular.js, Node.js, View.js, React 등 ) 
+- JavaScript를 기반으로한 다양한 library들이 제공 ( JQuery Angular.js, Node.js, View.js, React 등 )
 
 - inline: 태그에 직접 정의하여 사용하는 방식
 
@@ -25,13 +26,13 @@ last_modified_at: 2020-07-13T08:06:00-05:00
   <태그명 onXXX="javascript코드">
   ```
 
-- embed: HTML ```<head>```태그의 자식태그로 등록
+- embed: HTML `<head>`태그의 자식태그로 등록
 
   ```html
   <head>
-      <script type="text/javascript">
-      	javascript code
-      </script>    
+    <script type="text/javascript">
+      javascript code
+    </script>
   </head>
   ```
 
@@ -39,7 +40,7 @@ last_modified_at: 2020-07-13T08:06:00-05:00
 
   확장자는 .js
 
-  필요한 HTML에서 ```<script src="xxx.js" type="text/javascript"></script>```
+  필요한 HTML에서 `<script src="xxx.js" type="text/javascript"></script>`
 
 - 작성방법, 변수, 연산자, 제어문, function, JavaScript 객체들, HTML, Form Control 처리, closure, prototype
 
@@ -81,18 +82,16 @@ console.log(출력내용);
   	변수명 = 값;
   3. 값 사용
   	출력, 연산, 재할당
-	
+
   ```
-  
+
   ```javascript
   전역변수
   1. 선언): var를 사용하지 않고 변수를 선언하면서 값 할당
   	변수명 = 값;
   위치에 따라서 var를 붙여서 선언해도 전역변수로 사용할 수 있다.
-	
+
   ```
-  
-  
 
 ### 변수에 할당할 수 있는 값의 종류
 
@@ -100,19 +99,17 @@ console.log(출력내용);
 
   ```javascript
   //String
-  var a="문자열...";
-  var a='문자열...';
+  var a = "문자열...";
+  var a = "문자열...";
   ```
 
 - 숫자는 정수, 실수를 모두 포함한다
 
   ```javascript
   //Number
-  a=6;
-  a=6.4;
+  a = 6;
+  a = 6.4;
   ```
-
-  
 
 ### 연산자
 
@@ -120,41 +117,39 @@ console.log(출력내용);
 
   1. 단항
 
-     ~ ! + - *
+     ~ ! + - \*
 
      ~ : 1의 보수연산
 
-     ! : not 
+     ! : not
 
   2. 산술
 
-  3. 쉬프트 ```<<``` ``` >>``` ```>>>```
+  3. 쉬프트 `<<` ` >>` `>>>`
 
-  4. 관계  ```<``` ```>``` ```<=``` ```>=``` ```==``` ```===``` ```!=``` ```!==```
+  4. 관계 `<` `>` `<=` `>=` `==` `===` `!=` `!==`
 
-     ```==```: 값이 같은지 비교
+     `==`: 값이 같은지 비교
 
-     ```===```: 값과 데이터형이 모두 같은지 비교
+     `===`: 값과 데이터형이 모두 같은지 비교
 
   5. 논리
 
-   여러개의 관계연산자를 묶을때
+  여러개의 관계연산자를 묶을때
 
-   - 일반 논리
+  - 일반 논리
 
-     && : 모두 참일 때 참
+    && : 모두 참일 때 참
 
-     ||: 모두 거짓일 때 거짓
+    ||: 모두 거짓일 때 거짓
 
-   - 비트 논리
+  - 비트 논리
 
-     & | ^ 
+    & | ^
 
   6. 삼항
 
   7. 대입
-
-
 
 ### 제어문
 
@@ -182,8 +177,6 @@ console.log(출력내용);
     for(var i=0;~~){
     }
     ```
-
-    
 
   - while문: 시작과 끝을 모를 때
 
@@ -218,8 +211,6 @@ console.log(출력내용);
   let 배열명=[값,,,];
   ```
 
-  
-
 ### 함수 ( function )
 
 - 일을 구분하여 만들 때
@@ -231,27 +222,25 @@ console.log(출력내용);
   ```javascript
   function 함수명(매개변수,,,){
       코드작성
-      
+
       return 값;
   }
   ```
 
-- 호출 다른함수 호출: ```함수명(값,,,);```
+- 호출 다른함수 호출: `함수명(값,,,);`
 
-  
-
-| 동작                                        | 속성                         | 주적용태그                                                   | 사용예                                                       |
-| ------------------------------------------- | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 클릭                                        | onclick                      | ```<input type="button">``` <br/>```<img>``` <br/>```<td>``` | ```<input type="button"onclick="함수명(값,,,)">```           |
-| body 로딩                                   | onload                       | ```<body>```                                                 | ```<body onload="함수명(값,,,)">```                          |
-| 마우스포인터가 <br/>특정위치에 들어갔을 때  | onmouseover<br/>onmouseenter | 모든 태그                                                    | ```<img onmouseover="함수명(값,,,)">```                      |
-| 마우스포인터가 <br/>특정 위치에서 나갔을 때 | onmouseout                   | 모든 태그                                                    | ```<img onmouseout="함수명(값,,,)">```                       |
-| 포인터가 <br/>움직였을 때                   | onmousemove                  | 모든 태그                                                    | ```<img onmousemove="함수명(값,,,)">```                      |
-| 키가 눌릴 때                                | onkeydown                    | ```<input type="text, password">``` <br/>```<textarea>```    | ```<input type="text" onkeydown="함수명(값,,,)">```          |
-| 키가 올라올 때                              | onkeyup                      | ```<input type="text, password">```<br/> ```<textarea>```    | ```<input type="text" onkeyup="함수명(값,,,)">```            |
-| 값이 변경될 때                              | onchange                     | ```<select>```<br/> ```<input type="text, password">```      | ```<select onchange="함수명(값,,,)">```: 다른 옵션이 선택되었을 때 함수가 호출<br> ```<input type="text" onchange="함수명(값,,,)">```: 커서가 들어갔을 때의 값과 커서가 나갔을 때의 값이 다르다면 호출 |
-| 커서가 <br/>빠져나갔을 때                   | onblur                       | 커서를 가지는 모든 태그                                      | ```<input type="text" onblur="함수명(값,,,)">```             |
-| 더블클릭                                    | ondblclick                   | 모든 클릭                                                    | ```<input type="button" ondblclick="함수명(값,,,)">```       |
+| 동작                                        | 속성                         | 주적용태그                                        | 사용예                                                                                                                                                                                         |
+| ------------------------------------------- | ---------------------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 클릭                                        | onclick                      | `<input type="button">` <br/>`<img>` <br/>`<td>`  | `<input type="button"onclick="함수명(값,,,)">`                                                                                                                                                 |
+| body 로딩                                   | onload                       | `<body>`                                          | `<body onload="함수명(값,,,)">`                                                                                                                                                                |
+| 마우스포인터가 <br/>특정위치에 들어갔을 때  | onmouseover<br/>onmouseenter | 모든 태그                                         | `<img onmouseover="함수명(값,,,)">`                                                                                                                                                            |
+| 마우스포인터가 <br/>특정 위치에서 나갔을 때 | onmouseout                   | 모든 태그                                         | `<img onmouseout="함수명(값,,,)">`                                                                                                                                                             |
+| 포인터가 <br/>움직였을 때                   | onmousemove                  | 모든 태그                                         | `<img onmousemove="함수명(값,,,)">`                                                                                                                                                            |
+| 키가 눌릴 때                                | onkeydown                    | `<input type="text, password">` <br/>`<textarea>` | `<input type="text" onkeydown="함수명(값,,,)">`                                                                                                                                                |
+| 키가 올라올 때                              | onkeyup                      | `<input type="text, password">`<br/> `<textarea>` | `<input type="text" onkeyup="함수명(값,,,)">`                                                                                                                                                  |
+| 값이 변경될 때                              | onchange                     | `<select>`<br/> `<input type="text, password">`   | `<select onchange="함수명(값,,,)">`: 다른 옵션이 선택되었을 때 함수가 호출<br> `<input type="text" onchange="함수명(값,,,)">`: 커서가 들어갔을 때의 값과 커서가 나갔을 때의 값이 다르다면 호출 |
+| 커서가 <br/>빠져나갔을 때                   | onblur                       | 커서를 가지는 모든 태그                           | `<input type="text" onblur="함수명(값,,,)">`                                                                                                                                                   |
+| 더블클릭                                    | ondblclick                   | 모든 클릭                                         | `<input type="button" ondblclick="함수명(값,,,)">`                                                                                                                                             |
 
 ### 이차원 배열
 
@@ -272,19 +261,17 @@ console.log(출력내용);
   	arr[0][1]=20;
   	arr[0][2]=30;
   	arr[0][3]=40;
-  
-  
+
+
   ```
-
-
 
 ### 내장함수
 
 ```javascript
 //수학함수
 Math.round(실수); //반올림
-Math.ceil(실수) //올림
-Math.floor(실수) //내림
+Math.ceil(실수); //올림
+Math.floor(실수); //내림
 parseInt(값); //문자열,실수 -> 정수
 Math.random(); //난수 0.000000...1~ 0.999999999 중 하나
 Math.abs(); //절댓값 음수 -> 양수
@@ -304,8 +291,6 @@ Math.abs(); //절댓값 음수 -> 양수
 자를문자열.split('기준');//문자열 잘라서 배열에 넣기
 ```
 
-
-
 ### 날짜정보얻기
 
 - 객체를 생성 ( Date )
@@ -315,11 +300,11 @@ Math.abs(); //절댓값 음수 -> 양수
 //1. 생성
 var date = new Date();
 //2. 함수 호출
-//년: 
-date.getFullYear()
-date.getYear()+1900
-//월: 
-date.getMonth()+1 //0월부터 나옴으로 +1을 해주어야한다.
+//년:
+date.getFullYear();
+date.getYear() + 1900;
+//월:
+date.getMonth() + 1; //0월부터 나옴으로 +1을 해주어야한다.
 //일
 date.getDate();
 //시
@@ -327,8 +312,6 @@ date.getHour();
 //분
 date.getMinute();
 ```
-
-
 
 ## HTML Form Control의 값 받기
 
@@ -340,19 +323,19 @@ HTML Form Control: 사용자가 입력한 값을 받기위한 HTML
 
   ```html
   //1. Form Control에 id를 부여
-  	<input type="text" id="name"/>
+  <input type="text" id="name" />
   //2. script에서 id에 해당하는 control얻기
-      <script type="text/javascript">
-          function test(){
-              //2-1. id에 해당하는 Control얻기
-              var input = document.getElementById("id명");
-              //2-2. 얻어낸 HTML Form Control에서 값 얻기(value속성 사용)
-              var val = 변수명.value();//사용자가 입력한 값
-          }
-  	</script>
+  <script type="text/javascript">
+    function test() {
+      //2-1. id에 해당하는 Control얻기
+      var input = document.getElementById("id명");
+      //2-2. 얻어낸 HTML Form Control에서 값 얻기(value속성 사용)
+      var val = 변수명.value(); //사용자가 입력한 값
+    }
+  </script>
   ```
 
-- ```<form>```태그 사용
+- `<form>`태그 사용
 
   1. form 태그에 name 설정
 
@@ -371,30 +354,27 @@ HTML Form Control: 사용자가 입력한 값을 받기위한 HTML
 
   3. javascript에서 값을 얻는다.
 
-   3-1. form태그를 name 속성을 사용하여 얻는다.
+  3-1. form태그를 name 속성을 사용하여 얻는다.
 
-   ```javascript
-   var obj = window.document.form이름;
-   ```
+  ```javascript
+  var obj = window.document.form이름;
+  ```
 
-   3-2. 얻어진 form객체를 사용하여 Control에 접근
+  3-2. 얻어진 form객체를 사용하여 Control에 접근
 
-   ```javascript
-   obj.접근할 control명;
-   obj.name;
-   obj.id;
-   ```
+  ```javascript
+  obj.접근할 control명;
+  obj.name;
+  obj.id;
+  ```
 
-   3-3. 값얻기
+  3-3. 값얻기
 
-   - 이름 속성이 유일할 때 ```폼 이름.control이름.value;```
+  - 이름 속성이 유일할 때 `폼 이름.control이름.value;`
 
-   - 이름 속성이 중복될 때 ( 배열 ) ```폼이름.control이름[인덱스].value;```
+  - 이름 속성이 중복될 때 ( 배열 ) `폼이름.control이름[인덱스].value;`
 
-   - 인덱스는 control이 정의된 순서
-
-       
-
+  - 인덱스는 control이 정의된 순서
 
 - radio, checkbox 는 사용자가 확인한 값만 얻는다.
   - 폼이름.control명[인덱스].checked -> true/false
@@ -403,8 +383,6 @@ HTML Form Control: 사용자가 입력한 값을 받기위한 HTML
   - 폼이름.control명.selectedIndex
   - 옵션이 선택된 상태인지?
   - 폼이름.control명[인덱스].selected
-
-
 
 #### div에 HTML을 설정
 
@@ -420,44 +398,38 @@ HTML Form Control: 사용자가 입력한 값을 받기위한 HTML
                   //HTML을 생성하며 설정
   ```
 
-  
-
 #### HTML Form Control에 값 설정
 
 - 이름 유일
 
   ```javascript
-  document.폼이름.control이름.value=값;
+  document.폼이름.control이름.value = 값;
   ```
 
 - 이름 중복( 배열 )
 
   ```javascript
-  document.폼이름.control이름[인덱스].value=값;
+  document.폼이름.control이름[인덱스].value = 값;
   ```
 
 - check 상태변경 ( radio, checkbox )
 
   ```javascript
-  document.폼이름.control이름[인덱스].checked = true/false;
+  document.폼이름.control이름[인덱스].checked = true / false;
   ```
 
 - selected 상태변경(select)
 
   ```javascript
-  document.폼이름.control이름[인덱스].selected=true/false;
+  document.폼이름.control이름[인덱스].selected = true / false;
   ```
-
-  
 
 ## 함수
 
 - 기명함수
 
   ```javascript
-  function 함수명(){
-      
-  }
+  function 함수명() {}
   ```
 
 - 무기명함수: 자동호출(이벤트 처리)
@@ -467,54 +439,50 @@ HTML Form Control: 사용자가 입력한 값을 받기위한 HTML
   var 변수명=function(매개변수){
       코딩,,,
   }
-  
+
   //호출
   변수명(값,,,);
   ```
-
-  
 
 #### 이벤트 처리
 
 1. HTML Tag에 속성으로 처리
 
-   - ```<태그명 onXXX="이벤트처리할함수명(...)">```
+   - `<태그명 onXXX="이벤트처리할함수명(...)">`
 
 2. 무기명 함수를 이용하여 처리 ( 자동호출 )
 
    - 코드의 재사용성이 매우 떨어진다.
 
-   1. 이벤트를 발생시킬 tag를 찾아 
+   1. 이벤트를 발생시킬 tag를 찾아
 
-      ```document.getElementById("id명")```
+      `document.getElementById("id명")`
 
    2. 이벤트 속성에
 
-      ```.onxxx```
+      `.onxxx`
 
    3. 무기명 함수로 처리
 
-      ```= function(){ 이벤트가 발생했을 때 처리할 코드 }```
+      `= function(){ 이벤트가 발생했을 때 처리할 코드 }`
 
-3. 이벤트에 등록하여 처리 
+3. 이벤트에 등록하여 처리
 
    1. 이벤트를 발생시킬 tag를 찾아
 
-      ```document.getElementById("id명")```
+      `document.getElementById("id명")`
 
    2. 이벤트에 등록시킬 이벤트 종류와 처리함수를 등록시켜 처리
 
-      ```.addEventListener("이벤트종류","처리할 함수명");```
+      `.addEventListener("이벤트종류","처리할 함수명");`
 
-    - 함수는 이벤트가 발생하명 자동호출됨으로 ()를 쓰면 안된다.
+   - 함수는 이벤트가 발생하명 자동호출됨으로 ()를 쓰면 안된다.
 
-    - 이벤트 종류는 on을 제외하고 작성 ex) onclick이면 click으로
+   - 이벤트 종류는 on을 제외하고 작성 ex) onclick이면 click으로
 
    ```javascript
-   document.getElementById("a").addEventListener("click",test)
+   document.getElementById("a").addEventListener("click", test);
    ```
-
-   
 
 ## 팝업창
 
@@ -524,7 +492,11 @@ HTML Form Control: 사용자가 입력한 값을 받기위한 HTML
 
   ```javascript
   //window는 javascript 객체의 최상위 객체
-  window.open("팝업창에 넣을 HTML","창id","width:넓이,height:높이,top=x좌표,left=y좌표");
+  window.open(
+    "팝업창에 넣을 HTML",
+    "창id",
+    "width:넓이,height:높이,top=x좌표,left=y좌표"
+  );
   ```
 
 #### window
@@ -551,8 +523,8 @@ opner.window.document.폼이름.control이름.value=부모창으로 전달할 �
 - 키코드 얻기
 
   ```javascript
-  window.event.keyCode
-  window.event.which
+  window.event.keyCode;
+  window.event.which;
   ```
 
 ## 페이지 이동(javascript)
@@ -560,7 +532,7 @@ opner.window.document.폼이름.control이름.value=부모창으로 전달할 �
 - 단순 페이지 이동
 
   ```javascript
-  window.location.href="이동페이지url";//HTML  jsp
+  window.location.href = "이동페이지url"; //HTML  jsp
   ```
 
 - URL 치환(뒤로가기가 X)
@@ -569,42 +541,41 @@ opner.window.document.폼이름.control이름.value=부모창으로 전달할 �
   window.location.replace("이동한페이지url");
   ```
 
-- ```<form>```태그의 전송 (submit()함수 사용)
+- `<form>`태그의 전송 (submit()함수 사용)
 
   ```javascript
   document.폼이름.submit();
   ```
 
-  - ```<meta>```: HTML의 정보설정하는 일
+  - `<meta>`: HTML의 정보설정하는 일
 
-    ```<meta charset="UTF-8">``` -> HTML page의 charset 설정
+    `<meta charset="UTF-8">` -> HTML page의 charset 설정
 
-    ```<meta name="description" content="페이지설명"/>```
+    `<meta name="description" content="페이지설명"/>`
 
-    ```<meta http-equiv="refresh" content="대기할초;이동할url">```
+    `<meta http-equiv="refresh" content="대기할초;이동할url">`
 
 - confirm Dialog
 
   - 사용자의 의향을 물어볼 때 사용
 
-    ```confirm("메세지")```
+    `confirm("메세지")`
 
 - HTML
 
   ```html
   <a href="URL"></a>//다른 JSP, HTML 페이지와 연결
   <form action="JSPURL">
-    <input type="submit"value=""/>//<form>태그안에 HTML Form Control에 입력된 값들이 JSP로 전달
+    <input type="submit" value="" />//
+    <form>태그안에 HTML Form Control에 입력된 값들이 JSP로 전달</form>
   </form>
   ```
-
-  
 
 1. java.sql 패키지에서 디비연동하고 인터페이스 : 4.class
 
 2. 로딩된 드라이버 Connection : 2
 
-3.  쿼리문 생성하고 실행하는 : 3. createstatement
+3. 쿼리문 생성하고 실행하는 : 3. createstatement
 
 4. 객체는 쿼리문을 알수 없으면 쿼리문을 실행하는 단계 : statement sql
 
@@ -622,19 +593,19 @@ opner.window.document.폼이름.control이름.value=부모창으로 전달할 �
 
 11. 이해관계자들에게 서비스 품질에 대한 정보를 제공하기 위한 : 소프트웨어 테스트
 
-12.  테스팅 개념으로 올바른것  : 1 - 일반적으로 작업이 끝난 후 처음에 요구된것과 현재 상태의 차이 
+12. 테스팅 개념으로 올바른것 : 1 - 일반적으로 작업이 끝난 후 처음에 요구된것과 현재 상태의 차이
 
-13. 자바에서 가장 많이 사용하는 : 4. JUnit 
+13. 자바에서 가장 많이 사용하는 : 4. JUnit
 
 14. 단위 테스트의 단위 : method
 
-15. equal  : 예상값과 실제값이 같은 
+15. equal : 예상값과 실제값이 같은
 
-16.  2 : Test
+16. 2 : Test
 
 17. Junit에서 제공하는 ~ : 4번.
 
-18. 제이유닛에서 제공하는 테으스 메소드로 ㅂ로 수 없는것 : 1. 5번 반복하여 테스트 진행 
+18. 제이유닛에서 제공하는 테으스 메소드로 ㅂ로 수 없는것 : 1. 5번 반복하여 테스트 진행
 
 19. 제이유닛에서 지원하는 테스트메소드로 볼수 없는것 : 4. assertInnull
 
@@ -644,7 +615,7 @@ opner.window.document.폼이름.control이름.value=부모창으로 전달할 �
 
 - web browser가 가동된 후 방문했던 site의 기록을 사용하는 객체
 
-- 서버에서 변경된 내용을 확인할 수 없다. 
+- 서버에서 변경된 내용을 확인할 수 없다.
 
 - 웹 브라우저가 종료되면 history는 사라진다.
 
@@ -662,8 +633,6 @@ history.back()
 history.go(이동할 단계)//1,2,3, -1 (back과 같음)
 
 ```
-
-
 
 ## Storage
 
@@ -683,6 +652,7 @@ history.go(이동할 단계)//1,2,3, -1 (back과 같음)
 - localStorage
   - 웹서버와 접속이 끊어져도 정보를 사용할 수 있는 storage
 - sessionStorage
+
   - 웹 서버에 연결되어있을 때에만 정보를 저장하고 사용할 수 있는 Storage
   - session: 컴퓨터끼리의 연결
 
@@ -707,7 +677,7 @@ history.go(이동할 단계)//1,2,3, -1 (back과 같음)
 
      #### cookie
 
-     접속자의 정보를 접속자의 HDD에 저장 ( 해킹위험 ) 
+     접속자의 정보를 접속자의 HDD에 저장 ( 해킹위험 )
 
 - 사용법)
 
@@ -722,11 +692,11 @@ history.go(이동할 단계)//1,2,3, -1 (back과 같음)
      window.localStorage
 
    ```javascript
-   var ss=window.sessionStorage
-   var ls=window.localStorage
+   var ss = window.sessionStorage;
+   var ls = window.localStorage;
 
-   ls.setItem("키",값);
-   ss.setItem("키",값);
+   ls.setItem("키", 값);
+   ss.setItem("키", 값);
    ```
 
 2. 값 얻기
@@ -747,8 +717,6 @@ history.go(이동할 단계)//1,2,3, -1 (back과 같음)
    ls.clear();
    ```
 
-     
-
 # JSON
 
 javascript object notation
@@ -761,7 +729,7 @@ javascript object notation
 { 이름: 값,이름: 값 }//값: 문자열 숫자 boolean function
 
 //사용법
-//1. 값을 가진 JSON을 변수에 담는다 
+//1. 값을 가진 JSON을 변수에 담는다
 //문자열
 var data="{이름:값,이름 값,,,}"
 //2. JSON Object으로 생성
@@ -772,8 +740,6 @@ json객체명.이름
 delete json객체명.이름;
 ```
 
-
-
 ## JSON Array
 
 - JSON으로 배열을 만드는 것
@@ -781,53 +747,50 @@ delete json객체명.이름;
   1. JSON Object을 배열에 넣는다.
 
      ```javascript
-     var d="[{이름: 값,,,},{이름: 값,,,},,]"
+     var d = "[{이름: 값,,,},{이름: 값,,,},,]";
      ```
 
   2. JSON Array 객체를 만든다.
 
      ```javascript
-     var jsonArr=eval("("+d+")");
+     var jsonArr = eval("(" + d + ")");
      ```
 
   3. 반복
 
      ```javascript
-     for(var i=0;i<jsonArr.length;i++){
-         jsonArr[i].이름;
+     for (var i = 0; i < jsonArr.length; i++) {
+       jsonArr[i].이름;
      }
      ```
-
-     
 
 ## 복합JSON
 
 - JSON Object 안에 JSON Array를 가진 경우
 
   "{이름:값,이름:[{이름:값,,,},{이름:값,,,},,,,],,,,,}"
-     정보---           데이터-----------------------------
+  정보--- 데이터-----------------------------
 
   ```javascript
-  var data="{writer:'송유빈',pubData:'2020-07-06',data:[{img:'daram.jpg',desc:'설명'},,,]}";
-  var JSONObj=eval("("+data+")");
-  
-  var jsonArr=jsonObj.data;
-  jsonArr.writer = '송유빈'
-  jsonArr.pubData = '2020-07-06'
-  for(var i=0;i<jsonArr.length;i++){
-      jsonArr[i].img
-      jsonArr[i].desc
+  var data =
+    "{writer:'송유빈',pubData:'2020-07-06',data:[{img:'daram.jpg',desc:'설명'},,,]}";
+  var JSONObj = eval("(" + data + ")");
+
+  var jsonArr = jsonObj.data;
+  jsonArr.writer = "송유빈";
+  jsonArr.pubData = "2020-07-06";
+  for (var i = 0; i < jsonArr.length; i++) {
+    jsonArr[i].img;
+    jsonArr[i].desc;
   }
   ```
-
-  
 
 ### 재귀호출함수
 
 - 일정시간마다 함수를 호출하는 함수
 
   ```javascript
-  setTimeout(호출할함수명,ms)
+  setTimeout(호출할함수명, ms);
   ```
 
 ### Closure
@@ -842,17 +805,12 @@ delete json객체명.이름;
   //형식)
   //무기명함수형식: 처리해야할 일이 많은 경우
   //() 형식: 처리해야할 일이 적은 경우
-  
-  var 변수명=function(){
-      var 변수명;
-      function 함수명(){
-          
-      }//업무를 위한 세부업무
-  }();//하나의 업무
-  
-  ```
 
-  
+  var 변수명 = (function () {
+    var 변수명;
+    function 함수명() {} //업무를 위한 세부업무
+  })(); //하나의 업무
+  ```
 
 - 객체생성없이 사용할 수 있다. new없이 직접호출이 가능하다
 
@@ -862,22 +820,20 @@ delete json객체명.이름;
 
     ```javascript
     //작성법
-    
+
     //무기명함수형식: 처리해야할 일이 많은 경우
     return {외부에서 호출할 이름: 내부함수, 외부호출이름: 내부함수,,,}
     //호출
     변수명.이름;
     변수명.이름();
-    
-    
+
+
     //() 형식: 처리해야할 일이 적은 경우
     var 변수명=({이름:값,이름:fucntion(){...}...});
-    //호출 
+    //호출
     변수명.이름;
     변수명.이름();
     ```
-
-    
 
 ## Class 작성
 
@@ -892,7 +848,7 @@ function 생성자(매개변수,,,){
     .
     .
     function 함수명(매개변수,,){
-        
+
     }//closure가 필요
 
     this.변수명;
@@ -926,16 +882,14 @@ function 자식(){
 - 상속의 문법
 
   ```javascript
-  자식.prototype=new 부모();
+  자식.prototype = new 부모();
   ```
 
 - 자식클래스 생성
 
   ```javascript
-  var 변수명=new 자식();
+  var 변수명 = new 자식();
   ```
-
-
 
 ## 정규식
 
@@ -944,8 +898,8 @@ function 자식(){
 
 ```javascript
 //순환 /[  범위  ]/g
-var test="AbaZt10~가나하Te!";
-alert(test.replace(/[a-zA-Z0-9]/g,""));
+var test = "AbaZt10~가나하Te!";
+alert(test.replace(/[a-zA-Z0-9]/g, ""));
 ```
 
 - 범위(시작-끝)
