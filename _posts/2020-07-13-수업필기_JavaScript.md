@@ -1,13 +1,15 @@
 ---
-title: "20200713_JavaScript"
+title: "JavaScript"
 excerpt: ""
 
 categories:
   - JavaScript
 tags:
-  - JavaScript
+  - JavaScript, .필기
 last_modified_at: 2020-07-13T08:06:00-05:00
 ---
+
+- 정리되어 있지 않음
 
 멱등성: 모든 접속자에게 동일하게 서비스됨
 
@@ -261,13 +263,14 @@ console.log(출력내용);
   	arr[0][1]=20;
   	arr[0][2]=30;
   	arr[0][3]=40;
+  ```
 
 
   ```
 
 ### 내장함수
 
-```javascript
+​```javascript
 //수학함수
 Math.round(실수); //반올림
 Math.ceil(실수); //올림
@@ -275,7 +278,7 @@ Math.floor(실수); //내림
 parseInt(값); //문자열,실수 -> 정수
 Math.random(); //난수 0.000000...1~ 0.999999999 중 하나
 Math.abs(); //절댓값 음수 -> 양수
-```
+  ```
 
 ```javascript
 //문자열 함수
@@ -377,6 +380,7 @@ HTML Form Control: 사용자가 입력한 값을 받기위한 HTML
   - 인덱스는 control이 정의된 순서
 
 - radio, checkbox 는 사용자가 확인한 값만 얻는다.
+  
   - 폼이름.control명[인덱스].checked -> true/false
 - select는 사용자가 선택한 값만 얻는다.
   - 선택한 옵션의 인덱스 얻기
@@ -826,6 +830,7 @@ delete json객체명.이름;
     //호출
     변수명.이름;
     변수명.이름();
+    ```
 
 
     //() 형식: 처리해야할 일이 적은 경우

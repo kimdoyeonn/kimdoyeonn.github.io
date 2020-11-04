@@ -1,5 +1,5 @@
 ---
-title: "[algorithm] level1 행렬의 덧셈"
+title: "[algorithm]level1 행렬의 덧셈"
 excerpt: ""
 category:
   - algorithm

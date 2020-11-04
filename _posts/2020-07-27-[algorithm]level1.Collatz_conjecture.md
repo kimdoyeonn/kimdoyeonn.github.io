@@ -1,9 +1,9 @@
 ---
-title: "[algorithm]콜라츠 추측"
+title: "[algorithm]level1 콜라츠 추측"
 excerpt: ""
 category:
   - algorithm
-tags: [algorithm, programmers]
+tags: [algorithm, programmers, java]
 ---
 
 ## 콜라츠 추측

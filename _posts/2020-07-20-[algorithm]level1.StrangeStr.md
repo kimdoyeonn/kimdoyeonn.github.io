@@ -1,10 +1,10 @@
----  
-title: "[algorithm]이상한 문자 만들기"
+title: "[algorithm]level1 이상한 문자 만들기"
 excerpt: ""  
 category:  
+
   - algorithm  
-tags: [algorithm, programmers]
----   
+tags: [algorithm, programmers, java]
+---
 ## 이상한 문자 만들기
 
 ###### 문제 설명

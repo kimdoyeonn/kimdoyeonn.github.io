@@ -1,5 +1,5 @@
 ---
-title: "[algorithm] level1 핸드폰 번호 가리기"
+title: "[algorithm]level1 핸드폰 번호 가리기"
 excerpt: ""
 category:
   - algorithm
