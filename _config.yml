@@ -101,7 +101,7 @@ author:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       # url: "mailto:doyeon311@email.com"
-    - label: "Website"
+    - label: "Tistory"
       icon: "fas fa-fw fa-link"
       url: "https://doyeonu.tistory.com/"
     - label: "Twitter"
