@@ -1,10 +1,11 @@
+---
 title: "[algorithm]level1 이상한 문자 만들기"
-excerpt: ""  
-category:  
+excerpt: ""
+category:  algorithm 
 
-  - algorithm  
 tags: [algorithm, programmers, java]
 ---
+
 ## 이상한 문자 만들기
 
 ###### 문제 설명

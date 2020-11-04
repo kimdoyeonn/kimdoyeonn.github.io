@@ -3,7 +3,7 @@ title: "[algorithm]level1 행렬의 덧셈"
 excerpt: ""
 category:
   - algorithm
-tags: [python, algorithm]
+tags: [python, programmers, algorithm]
 ---
 
 ## 행렬의 덧셈

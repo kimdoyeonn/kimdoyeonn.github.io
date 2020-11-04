@@ -3,7 +3,7 @@ title: "[algorithm]level1 핸드폰 번호 가리기"
 excerpt: ""
 category:
   - algorithm
-tags: [python, algorithm]
+tags: [python, programmers, algorithm]
 ---
 
 ## 핸드폰 번호 가리기
