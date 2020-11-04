@@ -1,13 +1,9 @@
 ---
 title: "[algorithm]level1 자연수 뒤집어 배열로 만들기"
 excerpt: ""
-
-categories:
+category:
   - algorithm
-tags:
-  - algorithm
-  - programmers
-  - java
+tags: [algorithm, programmers, java]
 last_modified_at: 2020-07-13T08:06:00-05:00
 ---
 

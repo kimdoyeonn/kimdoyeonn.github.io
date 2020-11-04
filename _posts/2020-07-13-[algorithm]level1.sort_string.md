@@ -1,12 +1,9 @@
 ---
-title: "[algorithm]level1.문자열 내림차순으로 배치하기"
+title: "[algorithm]level1. 문자열 내림차순으로 배치하기"
 excerpt: ""
-categories:
+category:
   - algorithm
-tags:
-  - algorithm
-  - programmers
-  - java
+tags: [algorithm, programmers, java]
 ---
 
 ### 문자열 내림차순으로 배치하기

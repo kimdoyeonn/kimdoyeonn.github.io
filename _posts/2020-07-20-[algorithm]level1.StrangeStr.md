@@ -1,8 +1,8 @@
 ---
 title: "[algorithm]level1 이상한 문자 만들기"
 excerpt: ""
-category:  algorithm 
-
+category:
+  - algorithm 
 tags: [algorithm, programmers, java]
 ---
 
