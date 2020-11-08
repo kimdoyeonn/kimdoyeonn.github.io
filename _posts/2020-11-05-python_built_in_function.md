@@ -13,4 +13,7 @@ tags: [python, function]
 - `isnumeric()`, `isdigit()`, `isdecimal()` 의 차이
 - `find()`, `index()` 의 차이
 
-- `sum`
+- `sum(x)`
+
+
+

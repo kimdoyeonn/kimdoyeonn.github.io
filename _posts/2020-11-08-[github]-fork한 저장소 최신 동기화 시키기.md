@@ -3,7 +3,7 @@ title: "[github] fork한 저장소 동기회시키기"
 excerpt: ""
 category:
   - github
-tags: [github, remote, fetch]
+tags: [github, remote, fetch, merge, checkout]
 ---
 
 원본 repository의 변경사항을 fork한 repository에 적용할 때 사용했다.
