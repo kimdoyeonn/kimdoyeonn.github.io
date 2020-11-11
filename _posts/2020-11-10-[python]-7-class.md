@@ -1,10 +1,10 @@
+---
 title: "[python]7. 클래스"
 excerpt: ""
 category:
 
   - python
-tags: [python, jump-to-python, class]
-
+    tags: [python, jump-to-python, class]
 ---
 
 ### 클래스
