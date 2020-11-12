@@ -6,8 +6,6 @@ category:
 tags: [review, servlet, post]
 ---
 
-## Post로 값 넘기기
-
 #### post를 사용하여 HTML에서 Servlet으로 값 넘기기
 
 ```html
