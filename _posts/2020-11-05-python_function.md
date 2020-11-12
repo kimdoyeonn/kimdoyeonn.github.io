@@ -43,6 +43,9 @@ tags: [python, function]
 
   - 문자열 내장 함수
   - 모든 old를 new로 치환한 값을 반환합니다.
+- `count`인수가 주어졌다면 `count`만큼의 값만 치환됩니다.
+- `zip(*iterables)`
 
-  - `count`인수가 주어졌다면 `count`만큼의 값만 치환됩니다.
+  - 내장함수
+  - `iterable`들의 요소들을 모아 `interator`로 만든다.(?) -> 더 알아봐야겠다.
 
