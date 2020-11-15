@@ -47,3 +47,30 @@ tags: [python, function]
   - 내장함수
   - `iterable`들의 요소들을 모아 `interator`로 만든다.(?) -> 더 알아봐야겠다.
 
+#### `enumerate`
+
+- 반복문 사용 시 몇 번째 반복문인지 확인이 필요할 때 사용합니다.
+- 인덱스 번호와 컬렉션의 원소를 tuple 형태로 반환합니다.
+
+```python
+t = [1,5,3,6,2]
+for p in enumerate(t):
+    print(p)
+    
+(0, 1)
+(1, 5)
+(2, 3)
+(3, 6)
+(4, 2)
+
+# tuple 형태 반환을 이용하여 아래처럼 활용할 수 있습니다.
+for i, p in enumerate(t):
+    print("index: {}, value: {}".format(i,p))
+
+index: 0, value: 1
+index: 1, value: 5
+index: 2, value: 3
+index: 3, value: 6
+index: 4, value: 2
+```
+
