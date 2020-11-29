@@ -71,7 +71,7 @@ tags: [python, programmers, algorithm]
 def solution(N, stages): # N: 스테이지의 개수, stages: 스테이지의 번호가 담긴 배열
     answer = []
     
-    passed_cnt = len(stages) # 통과한 사용자의 수 초기값 = stages의 길이
+    passed_cnt = len(stages) # 초기값: 통과한 사용자+현재 머무는 사용자 = stages의 길이
     stage_dict = {}
     
     for i in range(1,N+1):
