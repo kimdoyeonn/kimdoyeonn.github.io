@@ -8,7 +8,7 @@ tags: [python, django]
 
 - 참고: [장고걸스](https://tutorial.djangogirls.org/ko/django_forms/)
 
-
+{% raw %}
 
 - 관리자 기능을 거치지 않고 바로 글을 추가하거나 수정하는 기능 추가 (`form`)
 
@@ -189,3 +189,4 @@ from django.shortcuts import redirect
 
 
 
+{% endraw %}
