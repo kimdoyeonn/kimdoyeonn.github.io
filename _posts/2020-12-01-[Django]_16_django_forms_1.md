@@ -1,5 +1,5 @@
 ---
-title: "[django]16. 장고 폼"
+title: "[django]16. 장고 폼-1"
 excerpt: ""
 category:
   - django
