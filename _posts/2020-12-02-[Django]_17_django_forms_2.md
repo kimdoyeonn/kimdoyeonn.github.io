@@ -8,7 +8,7 @@ tags: [python, django]
 
 - 참고: [장고걸스](https://tutorial.djangogirls.org/ko/django_forms/)
 
-
+{% raw %}
 
 ### 폼 검증하기
 
@@ -106,5 +106,5 @@ path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
 
 
 
-
+{% endraw %}
 

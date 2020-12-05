@@ -8,7 +8,7 @@ tags: [python, django]
 
 - 참고: [장고걸스](https://tutorial-extensions.djangogirls.org/ko/homework)
 
-
+{% raw %}
 
 ### 미리보기로 블로그 글 저장하기
 
@@ -147,3 +147,5 @@ def post_remove(request, pk):
 이제 블로그 게시글을 지울 수 있다. 모든 장고 모델은 `.delete()`를 사용하면 지울 수 있다!
 
 `redirect`를 사용하여 게시글이 삭제된 후에 `post_list`페이지로 이동하게 만들었다.
+
+{% endraw %}
