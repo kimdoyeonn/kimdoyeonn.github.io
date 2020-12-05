@@ -1,5 +1,5 @@
 ---
-title: "[django]20. 미리보기로 블로그 글 저장하기"
+title: "[django]18. 미리보기로 블로그 글 저장하기"
 excerpt: ""
 category:
   - django
