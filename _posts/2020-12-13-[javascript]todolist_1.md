@@ -55,7 +55,30 @@ function addEvent(){
 
 - 이벤트등록은 페이지가 로딩될 때도 실행되어야 하므로 함수로 작성하였다.
 
+```javascript
+document.querySelector("#inputToDo").addEventListener('keypress', function(e){
+    let todo = document.querySelector("#inputToDo").value;
+    if (todo.trim() == ""){
+        return
+    }
 
+    // "Enter"가 눌릴 경우 리스트에 값을 추가
+    if (e.key == 'Enter'){
+        
+        // 2020-12-14 template를 사용해서 리스트 추가
+        let template = document.querySelector("#template-list-item").innerHTML
+        result_template = template.replace("{content}", todo)
+
+        ul.innerHTML += result_template
+        // 리스트에 등록되었으므로 input을 비워줌
+        inputToDo.value = "";
+
+        addEvent();  // 이벤트 등록
+    }
+})
+```
+
+- 템플릿 처음 써봤다! 있으면 좋겠다고 생각한 적은 있었는데 되는지는 몰랐었는데 되다니... 좀더 공부해봐야겠다
 
 #### 리스트 삭제
 
