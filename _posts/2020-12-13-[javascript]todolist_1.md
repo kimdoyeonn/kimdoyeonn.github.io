@@ -2,8 +2,8 @@
 title: "[javascript]리스트에서 항목 삭제, 추가"
 excerpt: ""
 category:
-  - doit_algorithm
-tags: [python, doit_algorithm]
+  - javascript
+tags: [javascript, todolist]
 ---
 
 이벤트 리스너 때문에 좀 한참 삽질을 했지만 결국 해결을 했다!

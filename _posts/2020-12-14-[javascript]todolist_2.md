@@ -1,9 +1,9 @@
 ---
-title: "[javascript]투두리스트 완료 체크 시 취소선"
+title: "[javascript]class 추가, 삭제, 등록"
 excerpt: ""
 category:
-  - doit_algorithm
-tags: [python, doit_algorithm]
+  - javascript
+tags: [javascript, todolist]
 ---
 
 클래스를 추가하는 방법으로 취소선을 그어주려고 했다. 완료된 항목에 스타일을 적용하는 것까지는  쉽게 구현하였는데, 체크박스의 상태를 유지시켜줄 요소가 없어서인지 새로운 항목을 추가하면 체크박스가 체크되지 않은 상태로 돌아가버렸다. 그걸 해결하는데 좀 머리가 아팠다... 
