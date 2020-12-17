@@ -1,5 +1,5 @@
 ---
-title: "[doit_algorithm] 07-2 보이어 무어 법"
+title: "[doit_algorithm] 07-3 보이어 무어 법"
 excerpt: ""
 category:
   - doit_algorithm
