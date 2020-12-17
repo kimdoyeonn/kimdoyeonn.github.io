@@ -1,5 +1,5 @@
 ---
-title: "[doit_algorithm] 07-1 브루트 포스법"
+title: "[doit_algorithm] 07-2 KMP법"
 excerpt: ""
 category:
   - doit_algorithm
