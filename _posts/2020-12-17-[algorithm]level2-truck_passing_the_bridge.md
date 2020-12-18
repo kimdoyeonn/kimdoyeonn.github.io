@@ -6,7 +6,7 @@ category:
 tags: [python, programmers, algorithm]
 ---
 
-참고: [프로그래머스]https://programmers.co.kr/learn/courses/30/lessons/42583)
+참고: [프로그래머스](https://programmers.co.kr/learn/courses/30/lessons/42583)
 
 ###### 문제 설명
 
