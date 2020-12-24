@@ -40,3 +40,58 @@ tags: [python, programmers, algorithm]
 - 11과 011은 같은 숫자로 취급합니다.
 
 [출처](http://2009.nwerc.eu/results/nwerc09.pdf)
+
+
+
+### 내 풀이
+
+```python
+def solution(numbers):
+    answer = 0
+
+    # 주어진 문자열로 얻을 수 있는 모든 조합을 
+    # 인덱스로 seqs에 저장
+    seqs = []
+    temp = []
+    n = [str(i) for i in range(len(numbers))]
+    seqs += n
+    temp += n
+    while 1:
+        nums = []
+        for i in temp:
+            for j in n:
+                if j not in i:
+                    nums.append(i+j)
+        temp = nums
+        seqs += nums
+        if len(n) == len(nums[-1]):
+            break
+	# ---------------------------------
+    
+    # 앞에서 얻은 조합으로 숫자를 조합해서 temp에 저장
+    temp = []
+    for seq in seqs:
+        num = ""
+        for ind in seq:
+            num += numbers[int(ind)]
+        temp.append(num)
+    # ----------------------------
+    
+	# 만들어진 숫자들의 중복 제거
+    temp = list(set(list(map(int, temp))))
+    # ----------------------
+    
+    # 나올 수 있는 모든 수가 담긴 temp에서 소수를 확인
+    for t in temp:
+        if t == 0 or t == 1:
+            continue
+        for i in range(2, t//2+1):
+            if t % i == 0:
+                break
+        else:
+            answer += 1
+    # -----------------------------------------
+
+    return answer
+```
+
