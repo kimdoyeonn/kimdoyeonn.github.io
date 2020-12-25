@@ -1,5 +1,5 @@
 ---
-title: "[doit_algorithm] 08-4 원형 이중 연결 리스트"
+title: "[doit_algorithm] 08-4 원형 이중 연결 리스트-1"
 excerpt: ""
 category:
   - doit_algorithm
