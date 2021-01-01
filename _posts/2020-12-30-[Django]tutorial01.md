@@ -1,5 +1,5 @@
 ---
-title:"[Django]장고튜토리얼-장고앱작성하기, part1"
+title: "[Django]장고튜토리얼-장고앱작성하기 part1"
 excerpt: ""
 category:
   - django
