@@ -32,7 +32,8 @@ words_per_minute: 200
 comments:
   provider: "disqus" # 블로그 댓글 기능 false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
   disqus:
-    shortname: "kimdoyeonn-github-io" # 블로그 댓글 기능 https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    # 2021-02-10 블로그 url을 변경해도 disqus에 등록된 shortname은 바뀌지 않으므로 변경하면 shortname은 변경하면 안됨
+    shortname: "doyeon311-github-io" # 블로그 댓글 기능 https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
     server: # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
