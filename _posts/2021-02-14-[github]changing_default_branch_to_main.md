@@ -16,7 +16,7 @@ tags: [github, branch]
 
 
 
-### 로컬 저장소 default branch 변경하기
+## 로컬 저장소 default branch 변경하기
 
 git config에서 default branch를 main으로 변경하는 명령어를 날려야한다.
 
@@ -28,7 +28,7 @@ git config --global init.defaultBranch main
 
 
 
-### 기존 branch 명 변경하기
+## 기존 branch 명 변경하기
 
 이 블로그 repo도 예전에 생성되었기 때문에 기본 branch가 master로 설정되어있었다. 일단 이 이름부터 바꿔주었다. 
 
@@ -36,7 +36,7 @@ repo로 들어가서 `setting` -> `Branches` -> `Default branch`에서 branch이
 
 
 
-### 이미 생성된 프로젝트의 default branch 변경하기
+## 이미 생성된 프로젝트의 default branch 변경하기
 
 기존에 default branch로 master를 쓰고 있는 프로젝트도 main으로 변경했다.
 
@@ -55,13 +55,13 @@ git branch -u origin/main main
 
 첫번째 방법으로 하기는 했는데 둘 중 아무거나로 해도 상관없을 것 같다.
 
-- 확인하기
+### 확인하기
 
-  변경을 완료한 후에 다음 명령어를 입력해보면 branch가 잘 바뀌었는지 확인할 수 있다.
+변경을 완료한 후에 다음 명령어를 입력해보면 branch가 잘 바뀌었는지 확인할 수 있다.
 
-  ```
-  git branch -a
-  ```
+```
+git branch -a
+```
 
 ![default_branch_master_to_main](https://user-images.githubusercontent.com/53068706/107882623-c7ba0300-6f2d-11eb-82f1-2f663e2c12f5.png)
 
