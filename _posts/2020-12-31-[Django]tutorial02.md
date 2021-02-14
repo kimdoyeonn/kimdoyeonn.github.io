@@ -217,7 +217,7 @@ from .models import Question
 admin.site.register(Question)
 ```
 
-![](images\django_poll_app_등록.PNG)
+![django_poll_app_등록](https://user-images.githubusercontent.com/53068706/107882535-3cd90880-6f2d-11eb-8f0a-73c5f9ba8541.PNG)
 
 
 
@@ -229,7 +229,7 @@ Question에 들어가면 이전에 등록한 질문 리스트를 볼 수 있고,
 
 - 이 서식은 Question 모델에서 자동을 생성되었습니다.
 
-- 모델의 각 필드 유형들은 (`DateTimeField`, `CharField`) 적절한 HTML 입력 위젯으로 표현됩니다. Django 관리사이트는 각각의 필드가 어떻게 표현되어야할지 알고 있습니다.![django_필드에_맞는_HTML_표현](images\django_필드에_맞는_HTML_표현.PNG)
+- 모델의 각 필드 유형들은 (`DateTimeField`, `CharField`) 적절한 HTML 입력 위젯으로 표현됩니다. Django 관리사이트는 각각의 필드가 어떻게 표현되어야할지 알고 있습니다.![django_필드에_맞는_HTML_표현](https://user-images.githubusercontent.com/53068706/107882547-49f5f780-6f2d-11eb-9c7e-6ef6f0f1b98d.PNG)
 
 - 각각 `DateTimeField`는 JavaScript로 작성된 단축 기능과 연결됩니다. 날짜는 '오늘' 버튼과 달력 팝업에서 입력할 수 있으며, 시간은 '지금' 버튼과 일반적으로 입력하는 시간들을 제공하는 팝업을 통해서 입력할 수 있습니다.
 

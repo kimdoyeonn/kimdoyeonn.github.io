@@ -71,6 +71,6 @@ python manage.py migrate
 
 브라우저에 `http://127.0.0.1:8000/`로 이동하여 잘 실행됐는지 확인
 
-![된다!](images\django_runserver.png)
+![django_runserver](https://user-images.githubusercontent.com/53068706/107882446-bae8df80-6f2c-11eb-896d-1bb9e2bd4034.png)
 
 잘된다! 신기해!

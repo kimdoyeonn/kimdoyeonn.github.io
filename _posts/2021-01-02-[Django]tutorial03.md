@@ -141,7 +141,7 @@ def index(request):
 </html>
 ```
 
-![](images\django_poll_question_list.PNG)
+![django_poll_question_list](https://user-images.githubusercontent.com/53068706/107882568-67c35c80-6f2d-11eb-942d-1cc51f32c8f2.PNG)
 
 #### **render()**
 
