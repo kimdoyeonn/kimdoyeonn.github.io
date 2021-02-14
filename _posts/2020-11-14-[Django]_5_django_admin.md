@@ -33,7 +33,7 @@ admin.site.register(Post)
 - 관리자 페이지에서 만든 모델을 보려면 `admin.site.register(Post)`로 모델 등록
 - 관리자 페이지는 `python manage.py runserver`를 실행후 브라우저에서 http://127.0.0.1:8000/admin/로 이동하여 확인
 
-![된다!](C:\dev\doyeon311.github.io\_posts\images\django_runserver_admin.png)
+![된다!](images\django_runserver_admin.png)
 
 ( 된다! 신기해! )
 

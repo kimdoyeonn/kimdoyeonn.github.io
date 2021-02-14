@@ -6,7 +6,7 @@ category:
 tags: [github, branch]
 ---
 
-![File:Octicons-logo-github](C:\dev\doyeon311.github.io\_posts\images\github.png)
+![File:Octicons-logo-github](images\github.png)
 
 작년 추석 연휴쯤 Github Repo의 기본 branch 이름이 master에서 main으로 변경되었다. 이는 IT업계에서 이전부터 논란이 됐던 master/slave, blacklist/whitelist와 같은 인종차별적 언어 문제를 개선하려는 움직임의 일환이었던 것으로 보인다. 조금씩 사회가 살기 좋은 곳으로 변화하는 것은 분명 좋은 일이다. 하지만 그와는 별개로 나는 기존의 설정을 바꾸기 위해 구글링을 좀 해야했다
 
@@ -63,6 +63,6 @@ git branch -u origin/main main
   git branch -a
   ```
 
-![image-20210215003545390](C:\dev\doyeon311.github.io\_posts\images\default_branch_master_to_main.png)
+![image-20210215003545390](images\default_branch_master_to_main.png)
 
 참고: https://youngjinmo.github.io/2020/10/github-branch-to-main/

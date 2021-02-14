@@ -71,7 +71,7 @@ def solution(n):
     return answer
 ```
 
-<img src="C:\dev\doyeon311.github.io\_posts\images\snail_1.jpg" style="zoom: 33%;" />
+<img src="images\snail_1.jpg" style="zoom: 33%;" />
 
 회전하는 인덱스의 패턴을 알아내어 삼각형을 달팽이 형태로 돌 수 있게 만들었다. 회전하는 형태로 만들어주기 위해 어떤 방향으로 움직일지, 그 방향을 어떻게, 언제 바꿔줄지를 생각해야했다.
 
