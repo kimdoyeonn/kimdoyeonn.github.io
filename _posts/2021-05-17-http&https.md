@@ -92,8 +92,7 @@ HTTP 프로토콜을 사용하면 공격자가 패킷을 가로챌 경우, 평�
 
 
 
+출처
 
-
-출처 : [HTTP와 HTTPS](https://mangkyu.tistory.com/98)
-
+[HTTP와 HTTPS](https://mangkyu.tistory.com/98)
 [HTTP와 HTTPS의 차이점](https://jins-dev.tistory.com/entry/HTTP-vs-HTTPS-%EC%B0%A8%EC%9D%B4%EC%A0%90-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0)
