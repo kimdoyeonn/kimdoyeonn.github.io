@@ -20,7 +20,7 @@ MVC패턴은 구조를 크게 Model, View, Controller로 나뉘는데, 간단히
 - View는 텍스트, 체크박스 등과 같은 사용자 인터페이스 요소 부분이고,
 - Controller는 데이터와 비지니스 로직 사이의 상호작용을 관리하는 부분을 말한다.
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4501c303-d417-4e55-9bd1-6a231dbbfeb1/Untitled.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210528%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210528T132105Z&X-Amz-Expires=86400&X-Amz-Signature=6783793c3678de9d0cebcbd7f4b46157458cc7c5c7d593e1953345242b5fdebd&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.jpeg%22)
+![image](https://user-images.githubusercontent.com/53068706/120201975-ff408700-c260-11eb-8e57-ff50452b6a41.png)
 
 - 파란선은 직접적인 관계, 빨간선은 간접적인 관계를 말한다.
 
