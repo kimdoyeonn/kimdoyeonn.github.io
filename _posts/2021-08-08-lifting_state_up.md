@@ -174,3 +174,116 @@ React에서 state를 공유하는 일은 그 값을 필요로하는 컴포넌트
 ```
 
 props는 읽기전용입니다. temperature가 local state였을 때는 그 값을 변경하기 위해 setState를 호출하면 충분했지만 이제 temperature가 부모로부터 prop로 전달되기 때문에 TemperatureInput은 그 값을 제어할 능력이 없습니다.
+
+React에선 보통 이 문제를 컴포넌트를 제어가능하게 만드는 방식으로 해결합니다. DOM `<input>`이 `value`와 `onChange` prop를 건네받는 것과 비슷한 방식으로 사용자 정의된 `TemperatureInput` 역시 `temperature`과 `onTemperatureChange` props를 자신의 부모인 `Calculator`로부터 건네받을 수 있습니다.
+
+이제 `TemperatureInput`에서 온도를 갱신하고 싶으면 `this.props.onTemperatureChange`를 호출하면 됩니다.
+
+```js
+ handleChange(e) {
+    // Before: this.setState({temperature: e.target.value});
+    this.props.onTemperatureChange(e.target.value);
+    // ...
+```
+
+최종 `TemperatureInput`
+
+```js
+class TemperatureInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.props.onTemperatureChange(e.target.value);
+  }
+
+  render() {
+    const temperature = this.props.temperature;
+    const scale = this.props.scale;
+    return (
+      <fieldset>
+        <legend>Enter temperature in {scaleNames[scale]}:</legend>
+        <input value={temperature} onChange={this.handleChange} />
+      </fieldset>
+    );
+  }
+}
+```
+
+`Calculator`컴포넌트를 살펴보자면, `temperature`와 `scale`의 현재 값을 local state에 저장합니다. 이것들은 입력 필드로부터 끌어올린 state이며 그들의 진리의 원천(source of truth)으로 작용합니다. 또, 두 입력 필드를 렌더링하기 위해 알아야 하는 모든 데이터를 최소한으로 표현한 것이기도 합니다.
+
+우리가 이전에 먼저 한 작업은 각각의 입력 필드에 값을 모두 저장하는 것이었지만, 가장 최근에 변경된 입력값과 단위를 저장하는 것만으로도 충분합니다. 나머지의 값은 현재의 `temperature`와 `scale`에 기반해 다른 필드의 값을 게산할 수 있기 때문입니다.
+
+두 입력 필드의 값이 동일한 state로부터 계산되기 때문에 이 둘은 항상 동기화된 상태를 유지하게 됩니다.
+
+```js
+class Calculator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
+    this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
+    this.state = { temperature: "", scale: "c" };
+  }
+
+  handleCelsiusChange(temperature) {
+    this.setState({ scale: "c", temperature });
+  }
+
+  handleFahrenheitChange(temperature) {
+    this.setState({ scale: "f", temperature });
+  }
+
+  render() {
+    const scale = this.state.scale;
+    const temperature = this.state.temperature;
+    const celsius =
+      scale === "f" ? tryConvert(temperature, toCelsius) : temperature;
+    const fahrenheit =
+      scale === "c" ? tryConvert(temperature, toFahrenheit) : temperature;
+
+    return (
+      <div>
+        <TemperatureInput
+          scale="c"
+          temperature={celsius}
+          onTemperatureChange={this.handleCelsiusChange}
+        />
+        <TemperatureInput
+          scale="f"
+          temperature={fahrenheit}
+          onTemperatureChange={this.handleFahrenheitChange}
+        />
+        <BoilingVerdict celsius={parseFloat(celsius)} />
+      </div>
+    );
+  }
+}
+```
+
+이제 어떤 입력 필드를 수정하든 간에 `Calculator`의 `this.state.temperature`와 `this.state.scale`이 갱신됩니다. 입력 필드 중 하나는 있는 그대로의 값을 받으므로 사용자가 입력한 값이 보존되고, 다른 입력 필드의 값은 항상 다른 하나에 기반해 계산됩니다.
+
+입력값을 변경할 때 일어나는 일들
+
+1. React는 DOM`<input>`의 `onChange`에 지정된 함수를 호출 (위 예시에서는 `TemperatureInput`의 `handleChange`)
+2. `TemperatureInput` 컴포넌트의 `handleChange` 메서드는 새로 입력된 값과 함께 `this.props.onTemperatureChange()`를 호출 (`onTemperatureChange`를 포함 이 컴포넌트의 props는 부모 컴포넌트인 `Calculator`에서 옴)
+3. 이전 렌더링 단계에서 `Calculator`는 섭씨 `TemperatureInput`의 `onTemperatureChange`를 `Calculator`의 `handleCelsiusChange`로, 화씨 `TemperatureInput`의 `onTemperatureChange`를 `Calculator`의 `handleFahrenheitChange` 메서드로 지정해놓음, 따라서 우리가 둘 중 어느 입력 필드를 수정하느냐에 따라 `Calculator`의 두 메서드 중 하나가 호출
+4. 이들 메서드는 내부적으로 `Calculator` 컴포넌트가 새 입력값, 수정한 입력 필드의 입력 단위와 함께 `this.setState()`를 호출함으로써 React에게 자신을 다시 렌더링하도록 요청함
+5. React는 UI가 어떻게 보여아하즌지 알아내기 위해 `Calculator` 컴포넌트의 `render` 메서드를 호출하고, 두 입력 필드의 값은 현재 온도와 활성화된 단위를 기반으로 계산됨(온도 변환)
+6. React는 `Calculator`가 전달한 새 props와 함께 각 `TemperatureInput` 컴포넌트의 `render`를 호출하고, UI가 어떻게 보여질지 파악합니다.
+7. React는 `BoilingVerdict` 컴포넌트에게 섭씨온도를 props로 건네면서 그 컴포넌트의 `render` 메서드를 호출
+8. React DOM은 물의 끓는 여부와 올바른 입력값을 일치시키는 작업과 함께 DOM을 갱신, 값을 변경한 입력 필드는 현재 입력값을 그대로 받고, 다른 입력 필드는 변환된 온도 값으로 갱신
+
+### 결론
+
+- React 애플리케이션 안에서 변경이 일어나는 데이터에 대해서는 "진리의 원천(source of truth)"를 하나만 두어야 합니다.
+  보통의 경우 state는 렌더링에 그 값을 필요로 하는 컴포넌트에 먼저 추가됩니다. 그러고 나서 다른 컴포넌트도 역시 그 값이 필요하게 되면 그 값을 그들의 가장 가까운 공통 조상으로 끌어올리면 됩니다. 다른 컴포넌트 간에 존재하는 state를 동기화시키려고 노력하는 대신 하향식 데이터흐름에 기대는 것을 추천합니다.
+
+  state 끌어올리기 작업은 양방향 바인딩 접근 방식보다 더 많은 보일러 플레이트 코드를 유발하지만 버그를 찾고 격리하기 더 쉽게 만든다는 장점이 있습니다. 어떤 state 든 간에 특정 컴포넌트 안에서 존재하기 마련이고 그 컴포넌트가 자신의 state를 스스로 변경할 수 있으므로 버그가 존재할 수 있는 범위가 크게 줄어듭니다. 또한 사용자의 입력을 거부하거나 변현하는 자체 로직을 구현할 수도 있습니다.
+
+- 어떤 값이 props 또는 state로부터 계산될 수 있다면, state에 둬서는 안됩니다.
+
+  예를 들어 `celsiusValue`와 `fahrenheitValue`를 둘 다 저장하는 대신, 최근에 변경된 `temperature`와 `scale`만 저장합니다. 다른 입력 필드의 값은 항상 그 값들에 기반해서 `render()` 메서드 안에서 계산될 수 있습니다. 이를 통해 사용자 입력값의 정밀도를 유지한 채 다른 필드의 입력값에 반올림을 지우거나 적용할 수 있습니다.
+
+- UI에서 무언가 잘못된 부분이 있을 경우, React Developer Tools를 이용하여 props를 검사하고 state를 갱신할 책임이 있는 컴포넌트를 찾을 때까지 트리를 따라 탐색해보세요. 이렇게 함으로써 소스 코드의 버그를 추적할 수 있습니다.
