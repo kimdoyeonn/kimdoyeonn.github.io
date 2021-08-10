@@ -35,3 +35,5 @@ function Example() {
   - React에서 Class 사용을 위해서는 JavaScript의 this 키워드를 알아야하는데 다른 언어들의 this와 다르게 동작하므로 사용자에게 혼란 → 코드의 재사용성과 구성을 어렵게 만듦
   - class의 사용을 위해서 이벤트 핸들러가 등록되는 방법을 정확히 파악해야 함 → 코드를 장황하게 만듦
   - Hook은 class없이 React 기능들을 사용하는 방법을 제시
+
+출처 : [Hook의 소개](https://ko.reactjs.org/docs/hooks-intro.html)
