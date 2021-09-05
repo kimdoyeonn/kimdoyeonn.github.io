@@ -2,14 +2,16 @@
 main:
   - title: "About"
     url: /about/
-  - title: "Categories"
-    url: /categories/
-  - title: "Tags"
-    url: /tags/
   - title: "Posts"
     url: /posts/
-  - title: "Programmers"
-    url: "/tags/programmers/"
+  - title: "TIL"
+    url: /TIL/
+  # - title: "Categories"
+  #   url: /categories/
+  # - title: "Tags"
+  #   url: /tags/
+  # - title: "Programmers"
+  #   url: "/tags/programmers/"
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"
