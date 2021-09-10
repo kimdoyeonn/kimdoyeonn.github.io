@@ -19,8 +19,6 @@ tags: [python, algorithm, coding_test]
 - math: 필수적인 수학적 기능을 제공합니다.
   - 팩토리얼, 제곱근, 최대공약수(GCD), 삼각함수 관련 함수부터 파이(pi)와 같은 상수를 포함합니다.
 
-
-
 `sum()` 리스트의 합
 
 `min()`, `max()` 최숫값 최솟값
@@ -29,9 +27,7 @@ tags: [python, algorithm, coding_test]
 
 `sorted()` 반복가능한 객체를 정렬
 
-​	key 속성으로 정렬 기준을 정의해줄 수 있음
-
-
+​ key 속성으로 정렬 기준을 정의해줄 수 있음
 
 #### 순열과 조합
 
@@ -50,8 +46,6 @@ result3 = list(product(data, repeat=2)) # 2개를 뽑는 모든 순열 구하기
 result4 = list(combinations_with_replacement(data, 2)) # 2개를 뽑는 모든 조합 구하기(중복조합)
 ```
 
- 
-
 #### Counter
 
 - 파이썬 collections 라이브러리의 **Counter**는 등장 횟수를 세는 기능을 제공합니다.
@@ -66,8 +60,6 @@ print(counter['blue']) # 'blue'가 등장한 횟수 출력
 print(counter['green']) # 'green'이 등장한 횟수 출력
 print(dict(counter))	# 사전 자료형으로 반환
 ```
-
-
 
 #### 최대 공약수와 최소 공배수
 

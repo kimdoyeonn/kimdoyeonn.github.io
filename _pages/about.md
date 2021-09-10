@@ -4,6 +4,4 @@ permalink: /about/
 layout: single
 ---
 
-## devlog
-
 개발 공부를 하면서 공부한 것들을 정리하는 블로그입니다.

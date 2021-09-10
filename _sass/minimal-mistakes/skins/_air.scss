@@ -3,13 +3,24 @@
    ========================================================================== */
 
 /* Colors */
-$background-color: #eeeeee !default;
-$text-color: #222831 !default;
-$muted-text-color: #393e46 !default;
-$primary-color: #0092ca !default;
-$border-color: mix(#fff, #393e46, 75%) !default;
+// $background-color: #eeeeee !default;
+// $text-color: #222831 !default;
+// $muted-text-color: #393e46 !default;
+// $primary-color: #0092ca !default;
+// $border-color: mix(#fff, #393e46, 75%) !default;
+// $footer-background-color: $primary-color !default;
+// $link-color: #393e46 !default;
+// $masthead-link-color: $text-color !default;
+// $masthead-link-color-hover: $text-color !default;
+// $navicon-link-color-hover: mix(#fff, $text-color, 80%) !default;
+
+$background-color: #EADFCD !default;
+$text-color: #00062D !default;
+$muted-text-color: #00062D !default;
+$primary-color: #006564 !default;
+$border-color: mix(#fff, #393e46, 45%) !default;
 $footer-background-color: $primary-color !default;
-$link-color: #393e46 !default;
+$link-color: #00062D !default;
 $masthead-link-color: $text-color !default;
 $masthead-link-color-hover: $text-color !default;
 $navicon-link-color-hover: mix(#fff, $text-color, 80%) !default;

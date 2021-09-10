@@ -53,7 +53,7 @@
   display: flex;
   -ms-flex-item-align: center;
   align-self: center;
-  font-weight: bold;
+  font-weight: 900;
   // z-index: 20;
 }
 
@@ -89,9 +89,14 @@
   display: block;
   list-style-type: none;
   white-space: nowrap;
+  font-weight: 700;
 
   &--lg {
     padding-right: 2em;
     font-weight: 700;
   }
+}
+
+.masthead__menu-item:last-child {
+  margin-right: 1rem;
 }
