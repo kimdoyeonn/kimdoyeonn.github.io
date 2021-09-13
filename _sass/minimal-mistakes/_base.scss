@@ -31,7 +31,6 @@ h6 {
   line-height: 1.2;
   font-family: $header-font-family;
   font-weight: bold;
-  
 }
 
 h3:not(.archive__item-title, .author__name, .archive__subtitle) {
@@ -177,7 +176,7 @@ td > code {
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
   // font-size: 0.8em;
-  font-size: 1rem;
+  font-size: 0.8rem;
   background: $code-background-color;
   border-radius: $border-radius;
 

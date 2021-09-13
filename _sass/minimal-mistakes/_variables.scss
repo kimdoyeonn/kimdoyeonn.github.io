@@ -13,11 +13,10 @@ $paragraph-indent: false !default; // true, false (default)
 // $indent-var: 1.3em !default;
 $indent-var: 0.5em !default;
 
-
 /* system typefaces */
-$serif: 'Montserrat', Georgia, Times, serif !default;
-$sans-serif: 'Montserrat', -apple-system, BlinkMacSystemFont, "Nanum Gothic", "Roboto",
-  "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
+$serif: "Montserrat", Georgia, Times, serif !default;
+$sans-serif: "Montserrat", -apple-system, BlinkMacSystemFont, "Nanum Gothic",
+  "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
 $monospace: Monaco, Consolas, "Lucida Console", monospace !default;
 
 /* sans serif typefaces */
@@ -63,10 +62,10 @@ $darker-gray: mix(#000, $gray, 60%) !default;
 $light-gray: mix(#fff, $gray, 50%) !default;
 $lighter-gray: mix(#fff, $gray, 90%) !default;
 
-$background-color: #EADFCD !default;
-$code-background-color: #EADFCD !default;
+$background-color: #eadfcd !default;
+$code-background-color: #eadfcd !default;
 $code-background-color-dark: $light-gray !default;
-$text-color: #00062D !default;
+$text-color: #00062d !default;
 $muted-text-color: mix(#fff, $text-color, 20%) !default;
 $border-color: $lighter-gray !default;
 $form-background-color: $lighter-gray !default;

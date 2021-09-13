@@ -17,13 +17,13 @@
         <img src="{{ teaser | relative_url }}" alt="">
       </div>
     {% endif %}
-    <h2 class="archive__item-title" itemprop="headline">
+    <h4 class="archive__item-title" itemprop="headline">
       {% if post.link %}
         <a href="{{ post.link }}">{{ title }}</a> <a href="{{ post.url | relative_url }}" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
       {% else %}
         <a href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
       {% endif %}
-    </h2>
+    </h4>
     <!-- 
       doyeon311 : 
       - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
