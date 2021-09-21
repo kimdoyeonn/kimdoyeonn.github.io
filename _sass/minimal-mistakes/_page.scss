@@ -71,9 +71,9 @@ body {
 .page__title {
   margin-top: 0;
   line-height: 1;
-  background-color: #006564;
-  color: #d5e7f5;
-  padding: 2.3rem 1.3rem;
+  // background-color: #006564;
+  color: $text-color;
+  padding: 0.3rem 0rem;
   font-weight: 600;
 
   & + .page__meta {
@@ -117,7 +117,7 @@ body {
   p,
   li,
   dl {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   /* paragraph indents */
