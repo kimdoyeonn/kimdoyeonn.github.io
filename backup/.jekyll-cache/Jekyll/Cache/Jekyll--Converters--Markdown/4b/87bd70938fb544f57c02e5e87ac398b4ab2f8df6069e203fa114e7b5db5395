@@ -1,0 +1,137 @@
+I"9<p>DOM 엘리먼트에서 이벤트를 처리하는 방식과 매우 유사하고, 문법에 몇 가지 차이가 있습니다.</p>
+
+<ul>
+  <li>React의 이벤트는 소문자 대신 camelCase를 사용합니다.</li>
+  <li>JSX를 사용하여 문자열이 아닌 함수로 이벤트 핸들러를 전달합니다.</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">activateLasers</span><span class="si">}</span><span class="p">&gt;</span>Activate Lasers<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>React에서는 <code class="language-plaintext highlighter-rouge">false</code>를 반환해도 기본 동작을 방지할 수 없습니다. 반드시 <code class="language-plaintext highlighter-rouge">preventDefault</code>를 명시적으로 호출해야 합니다.</p>
+
+    <p>에를 들어 일반 HTML에서 폼을 제출할 때 가지고 있는 기본 동작을 방지하기 위해 다음과 같은 코드를 작성할 수 있습니다.</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">onsubmit=</span><span class="s">"console.log('You clicked submit.'); return false"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div>    </div>
+
+    <p>하지만 React에서는 다음과 같이 작성할 수 있습니다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Form</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">handleSubmit</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">You clicked submit.</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">onSubmit</span><span class="p">=</span><span class="si">{</span><span class="nx">handleSubmit</span><span class="si">}</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="p">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Submit<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>여기서 <code class="language-plaintext highlighter-rouge">e</code>는 합성 이벤트입니다. React는 W3C 명세에 따라 합성 이벤트를 정의하기 때문에 브라우저 호환성을 고려하지 않아도 됩니다. <a href="https://ko.reactjs.org/docs/events.html">React 이벤트는 브라우저 고유 이벤트와 정확히 동일하게 작동하지는 않습니다.</a></p>
+
+    <p>React에서는 DOM 앨리먼트가 생성된 후 리스너를 추가하기 위해 <code class="language-plaintext highlighter-rouge">addEventListener</code>를 호출하는 대신 엘리먼트가 처음 렌더링 될 때 리스너를 제공합니다.</p>
+
+    <p>ES6 클래스를 사용하여 컴포넌트를 정의할 때, 일반적으로 이벤트 핸들러를 클래스의 메서드로 만듭니다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Toggle</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">isToggleOn</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+    <span class="c1">// callback에서 this가 작동하도록 하려면 다음과 같이 바인딩해줘야함</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleClick</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">((</span><span class="nx">prevState</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
+      <span class="na">isToggleOn</span><span class="p">:</span> <span class="o">!</span><span class="nx">prevState</span><span class="p">.</span><span class="nx">isToggleOn</span><span class="p">,</span>
+    <span class="p">}));</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="si">}</span><span class="p">&gt;</span>
+        <span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isToggleOn</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">ON</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">OFF</span><span class="dl">"</span><span class="si">}</span>
+      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(&lt;</span><span class="nc">Toggle</span> <span class="p">/&gt;,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">root</span><span class="dl">"</span><span class="p">));</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li>
+        <p>JSX 콜백 안에서 <code class="language-plaintext highlighter-rouge">this</code>의 의미에 대해 주의해야함! JS에서 클래스 메서드는 기본적으로 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">바인딩</a> 되어 있지 않다. <code class="language-plaintext highlighter-rouge">this.handelClick</code>을 바인딩하지 않고 onClick에 전달하였다면, 함수가 실제 호출될 때 this는 undefined가 됨</p>
+
+        <p>JavaScript에서 함수가 작동하는 방식의 일부임. 일반적으로 <code class="language-plaintext highlighter-rouge">onClick={this.handleClick}</code>과 같이 뒤에 <code class="language-plaintext highlighter-rouge">()</code>을 사용하지 않고 메서드를 참조할 경우, 해당 메서드를 바인딩 해야 함</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">bind</code>를 호출하는 것이 불편하다면, 해결할 수 있는 두 가지 방법이 있음</p>
+
+        <ol>
+          <li>
+            <p>퍼블릭 클래스 필드 문법에서 클래스 필드를 사용하여 콜백을 올바르게 바인딩 하는 방법</p>
+
+            <p>이 방법은 <code class="language-plaintext highlighter-rouge">Create React App</code>에 기본적으로 설정되어 있음</p>
+
+            <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">LoggingButton</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="c1">// 이 문법은 `this`가 handleClick 내에서 바인딩되도록 합니다.</span>
+  <span class="c1">// 주의: 이 문법은 *실험적인* 문법입니다.</span>
+  <span class="nx">handleClick</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">this is:</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+  <span class="p">};</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="si">}</span><span class="p">&gt;</span>Click me<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p>클래스 필드 문법을 사용하고 있지 않다면, 콜백에 화살표 함수를 사용하는 방법</p>
+
+            <p>문제점: class가 렌더링될 때마다 다른 콜백이 생성된다는 것, 대부분의 경우에는 문제가 되지 않지만, 콜백이 하위 컴포넌트에 props로서 전달된다면 그 컴포넌트들은 추가로 다시 렌더링을 수행할 수도 있다. → 성능 문제 발생</p>
+
+            <p>이러한 문제를 피하고자, 생성자 안에서 바인딩하거나 클래스 필드 문법을 사용하는 것을 권장</p>
+
+            <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">LoggingButton</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">handleClick</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">this is:</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 이 문법은 `this`가 handleClick 내에서 바인딩되도록 합니다.</span>
+    <span class="k">return</span> <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="p">()</span><span class="si">}</span><span class="p">&gt;</span>Click me<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>            </div>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="이벤트-핸들러에-인자-전달하기">이벤트 핸들러에 인자 전달하기</h3>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">deleteRow</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span><span class="si">}</span><span class="p">&gt;</span>Delete Row<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">deleteRow</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span><span class="si">}</span><span class="p">&gt;</span>Delete Row<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">화살표함수</code>를 사용하는 방법, <code class="language-plaintext highlighter-rouge">Funtions.prototype.bind</code>를 사용하는 방법이 있는데, 두 경우의 결과는 동일하다.</p>
+
+<p>두 경우 모두 React 이벤트를 나타내는 인자 <code class="language-plaintext highlighter-rouge">e</code> 가 id 뒤에 두번째 인자로 전달된다.</p>
+
+<p>차이점이 있다면, 화살표 함수를 사용하면 명시적으로 인자를 전달해야 하지만 bind를 사용할 경우 명시하지 않아도 자동으로 전달한다는 것이다.</p>
+
+<p>출처: <a href="https://ko.reactjs.org/docs/handling-events.html">이벤트 처리하기</a></p>
+:ET

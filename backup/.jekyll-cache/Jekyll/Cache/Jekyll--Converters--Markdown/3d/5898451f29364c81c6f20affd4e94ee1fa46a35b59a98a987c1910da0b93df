@@ -1,0 +1,127 @@
+I"�<ul>
+  <li>참고: <a href="https://www.acmicpc.net/step/10">백준</a></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">시간 제한</th>
+      <th style="text-align: left">메모리 제한</th>
+      <th style="text-align: left">제출</th>
+      <th style="text-align: left">정답</th>
+      <th style="text-align: left">맞은 사람</th>
+      <th style="text-align: left">정답 비율</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">1 초</td>
+      <td style="text-align: left">128 MB</td>
+      <td style="text-align: left">39565</td>
+      <td style="text-align: left">15254</td>
+      <td style="text-align: left">13346</td>
+      <td style="text-align: left">39.123%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="문제">문제</h2>
+
+<p>자연수 M과 N이 주어질 때 M이상 N이하의 자연수 중 소수인 것을 모두 골라 이들 소수의 합과 최솟값을 찾는 프로그램을 작성하시오.</p>
+
+<p>예를 들어 M=60, N=100인 경우 60이상 100이하의 자연수 중 소수는 61, 67, 71, 73, 79, 83, 89, 97 총 8개가 있으므로, 이들 소수의 합은 620이고, 최솟값은 61이 된다.</p>
+
+<h2 id="입력">입력</h2>
+
+<p>입력의 첫째 줄에 M이, 둘째 줄에 N이 주어진다.</p>
+
+<p>M과 N은 10,000이하의 자연수이며, M은 N보다 작거나 같다.</p>
+
+<h2 id="출력">출력</h2>
+
+<p>M이상 N이하의 자연수 중 소수인 것을 모두 찾아 첫째 줄에 그 합을, 둘째 줄에 그 중 최솟값을 출력한다.</p>
+
+<p>단, M이상 N이하의 자연수 중 소수가 없을 경우는 첫째 줄에 -1을 출력한다.</p>
+
+<h2 id="예제-입력-1-복사">예제 입력 1 복사</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>60
+100
+</code></pre></div></div>
+
+<h2 id="예제-출력-1-복사">예제 출력 1 복사</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>620
+61
+</code></pre></div></div>
+
+<h2 id="예제-입력-2-복사">예제 입력 2 복사</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64
+65
+</code></pre></div></div>
+
+<h2 id="예제-출력-2-복사">예제 출력 2 복사</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1
+</code></pre></div></div>
+
+<h2 id="출처">출처</h2>
+
+<p><a href="https://www.acmicpc.net/category/2">Olympiad </a>&gt; <a href="https://www.acmicpc.net/category/55">한국정보올림피아드 </a>&gt; <a href="https://www.acmicpc.net/category/57">한국정보올림피아드시․도지역본선 </a>&gt; <a href="https://www.acmicpc.net/category/70">지역본선 2006 </a>&gt; <a href="https://www.acmicpc.net/category/detail/368">중등부</a> 1번</p>
+
+<ul>
+  <li>데이터를 추가한 사람: <a href="https://www.acmicpc.net/user/hchanhong">hchanhong</a> <a href="https://www.acmicpc.net/user/kyaryunha">kyaryunha</a></li>
+  <li>문제의 오타를 찾은 사람: <a href="https://www.acmicpc.net/user/jh05013">jh05013</a> <a href="https://www.acmicpc.net/user/sky1357">sky1357</a></li>
+  <li>잘못된 데이터를 찾은 사람: <a href="https://www.acmicpc.net/user/myungwoo">myungwoo</a></li>
+</ul>
+
+<h2 id="알고리즘-분류">알고리즘 분류</h2>
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/tag/124">수학</a></li>
+  <li><a href="https://www.acmicpc.net/problem/tag/95">정수론</a></li>
+  <li><a href="https://www.acmicpc.net/problem/tag/9">소수 판정</a></li>
+</ul>
+
+<h3 id="내-풀이">내 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">prime</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">if</span> <span class="n">m</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+    <span class="n">prime</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># 2를 제외한 짝수는 소수가 될 수 없으므로 고려하지 않음
+</span><span class="k">if</span> <span class="n">m</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">m</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">num</span><span class="o">//</span><span class="mi">3</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">prime</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">prime</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">prime</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">prime</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>2를 제외한 짝수는 소수의 조건에 맞지 않으므로 홀수 중에서 판단할 수 있게 반복문을 만들었고, 범위 안에 2가 포함될 때는 리스트에 미리 2를 넣어주는 것으로 해결했다.</li>
+  <li>소수인지 판단하기 위해 반복문을 사용해 나누어 떨어지는지 확인했는데 그 반복문의 범위는 <code class="language-plaintext highlighter-rouge">3부터 소수인지 판단할 수 // 3 + 1 </code>로 하였다.
+    <ul>
+      <li>짝수는 미리 제거하였으므로 <code class="language-plaintext highlighter-rouge">num / i</code>의 결과가 3이 나오게 하는 수가 나누어 떨어지는 수 중에서 최댓값이 되고, 그 이상의 수는 <code class="language-plaintext highlighter-rouge">num</code>을 나누어 떨어지게 만들 수 없다.</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>근데 이렇게 짝수를 먼제 제외하고 한다고 속도가 빨라지거나 하지는 않는 것 같다. 오히려 짝수를 포함해서 제출해본 결과가 속도는 더 빨랐음…</p>
+</blockquote>
+:ET

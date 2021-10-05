@@ -1,0 +1,525 @@
+I"AW<ul>
+  <li>정리되어 있지 않음</li>
+</ul>
+
+<h1 id="html">HTML</h1>
+
+<ul>
+  <li>영역나누기
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">&lt;div&gt;</code>: 브라우저의 전체를 나눈다. 자동 줄변경, 페이지의 전체 디자인을 만들 때 사용한다</li>
+      <li><code class="language-plaintext highlighter-rouge">&lt;span&gt;</code>: 데이터가 존재하는 영역만 나눈다. 자동줄변경X , 페이지의 부분 디자인을 만들 때 사용한다
+```html</li>
+    </ul>
+    <div id="wrap">
+<div id="header">
+<!--header에서 제공할 내용-->
+</div>
+<div id="container">
+<!--사용자에게 제공할 내용-->
+</div>
+<div id="footer">
+<!--footer에서 제공할 내용-->
+</div>
+</div>
+    <p>```</p>
+  </li>
+  <li>
+    <p>ML의 특수문자 ( escape character )</p>
+
+    <p>기능을 가진 문자열</p>
+
+    <ul>
+      <li>
+        <p>문법 <code class="language-plaintext highlighter-rouge">&amp;..;</code></p>
+      </li>
+      <li>공백한칸 <code class="language-plaintext highlighter-rouge">&amp;nbsp;</code></li>
+      <li>&lt; <code class="language-plaintext highlighter-rouge">&amp;lt;</code></li>
+      <li>&gt; <code class="language-plaintext highlighter-rouge">&amp;gt;</code></li>
+      <li>&amp; <code class="language-plaintext highlighter-rouge">&amp;amp; </code></li>
+      <li>" <code class="language-plaintext highlighter-rouge">&amp;quot;</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>media 재생</p>
+  </li>
+  <li>
+    <p>HTML5 이전</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">&lt;embed&gt;</code> - 동영상, mp3 등 재생</li>
+      <li><code class="language-plaintext highlighter-rouge">html&lt;embed src="미디어 경로" controls="controls" autoplay="true"&gt;</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>HTML5 이후</p>
+
+    <ul>
+      <li>
+        <p>동영상 <code class="language-plaintext highlighter-rouge">&lt;video&gt;</code>로 음악은 <code class="language-plaintext highlighter-rouge">&lt;audio&gt;</code>로 구분하여 재생한다.</p>
+
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;audio</span> <span class="na">controls=</span><span class="s">"controls"</span> <span class="na">src=</span><span class="s">"음악경로"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;video</span> <span class="na">controls=</span><span class="s">"controls"</span> <span class="na">src=</span><span class="s">"경로"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!--브라우저마다 지원하는 코덱이 다른다--&gt;</span>
+<span class="nt">&lt;/video&gt;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="html-form-control">HTML Form Control</h3>
+
+<ul>
+  <li>사용자가 입력하는 값을 받기 위한 HTML의 Object들</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> <code class="language-plaintext highlighter-rouge">&lt;select&gt;</code> <code class="language-plaintext highlighter-rouge">&lt;textarea&gt;</code> 3가지 제공</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;form&gt;</code>태그 안에 존재해야 서버로 값 전달 할 수 있다.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;input&gt;</code></p>
+
+<ul>
+  <li>
+    <p>한줄로 입력가능한 칸</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">size=</span><span class="s">"보여줄 글자수"</span> <span class="na">maxlength=</span><span class="s">"최대 입력 가능한 글자 수"</span>
+<span class="na">name=</span><span class="s">"이름(유일)"</span> <span class="err">//</span><span class="na">javascript나</span> <span class="na">backend로</span> <span class="na">전송할</span> <span class="na">때</span> <span class="na">사용</span> <span class="na">id=</span><span class="s">"아이디(유일)"</span>
+<span class="err">//</span><span class="na">CSS에서</span> <span class="na">사용</span> <span class="na">javascript</span> <span class="na">value=</span><span class="s">"보여줄 글자(클릭해도 글자가 사라지지 않음)"</span>
+<span class="na">readonly=</span><span class="s">"readonly"</span> <span class="na">placeholder=</span><span class="s">"보여줄글자(클릭하면 글자가 사라짐 - HTML5에서
+지원속성)"</span> <span class="nt">&gt;</span> <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="err">//</span><span class="na">비밀번호</span> <span class="na">입력</span><span class="err">(</span><span class="na">****로</span> <span class="na">나옴</span><span class="err">)</span> <span class="nt">&gt;</span>
+<span class="c">&lt;!-- 라디오 버튼 --&gt;</span>
+<span class="nt">&lt;input</span>
+  <span class="na">type=</span><span class="s">"radio"</span>
+  <span class="na">name=</span><span class="s">"이름(그룹이름)"</span>
+  <span class="na">value=</span><span class="s">"서버로 전송할 값"</span>
+  <span class="na">checked=</span><span class="s">"checked"</span>
+<span class="nt">/&gt;</span>사용자에게 보여줄 값
+<span class="c">&lt;!-- check box --&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="nt">/&gt;</span>
+<span class="c">&lt;!-- hidden: 사용자에게 값을 노출시키지 않고 서버로 값을 전달한다. --&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"이름"</span> <span class="na">value=</span><span class="s">"서버로 전송할 값"</span> <span class="nt">/&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>버튼</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 버튼 모양 --&gt;</span>
+<span class="nt">&lt;input</span>
+  <span class="na">type=</span><span class="s">"button"</span>
+  <span class="na">value=</span><span class="s">"버튼에 들어갈 label"</span>
+<span class="nt">/&gt;</span><span class="c">&lt;!-- Javascript와 같이 사용 --&gt;</span>
+<span class="c">&lt;!-- 전송버튼 --&gt;</span>
+<span class="nt">&lt;input</span>
+  <span class="na">type=</span><span class="s">"submit"</span>
+<span class="nt">/&gt;</span><span class="c">&lt;!--&lt;form&gt;태그에 설정된 페이지로 HTML Form Control에 있는 값을 전송한다. --&gt;</span>
+<span class="c">&lt;!-- 취소버튼 --&gt;</span>
+<span class="nt">&lt;input</span>
+  <span class="na">type=</span><span class="s">"reset"</span>
+<span class="nt">/&gt;</span><span class="c">&lt;!--&lt;form&gt; 태그안에 HTML Form Control의 값들을 초기화한다. --&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;select&gt;</code></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- combobox --&gt;</span>
+<span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"이름"</span> <span class="na">size=</span><span class="s">"보여줄 옵션의 개수"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"서버로 전송할 값"</span> <span class="na">selected=</span><span class="s">"selected"</span><span class="nt">&gt;</span>
+    사용자에게 보여줄 값
+  <span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;textarea&gt;</code> : 메모장처럼 생김</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;textarea</span> <span class="na">name=</span><span class="s">"이름"</span> <span class="na">cols=</span><span class="s">"한줄에 쓸 글자수"</span> <span class="na">rows=</span><span class="s">"보여 줄 줄 수"</span><span class="nt">&gt;</span>
+초기값<span class="nt">&lt;/textarea</span>
+<span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<h4 id="form">Form</h4>
+
+<ul>
+  <li>
+    <p>서버로 값을 전달할 때 사용하는 tag</p>
+  </li>
+  <li>
+    <p>HTML Form Control들을 자식태그로 가지고 있어야한다.</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- form안에 form이 있으면 안된다 --&gt;</span>
+<span class="nt">&lt;form</span>
+  <span class="na">action=</span><span class="s">"Form Coltrol의 값을 받을 Back-End page ex)a.jsp, 서블릿 path, a.asp, a.php"</span>
+  <span class="na">method=</span><span class="s">"전송방식 get / post"</span>
+  <span class="na">name=</span><span class="s">"form을 구분하기 위한 이름(javascript)"</span>
+<span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;select&gt;&lt;/select&gt;</span>
+  <span class="nt">&lt;textarea&gt;&lt;/textarea&gt;</span>
+  . .
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>전송은 <code class="language-plaintext highlighter-rouge">&lt;input type="submit"&gt;</code>을 사용했을 때 전송한다.</p>
+  </li>
+</ul>
+
+<h4 id="html5에서-추가된-form-control">HTML5에서 추가된 Form Control</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"tel/email/date/month/datetime-local/color/number/range"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>front-end
+    <ol>
+      <li>HTML: 페이지 구조</li>
+      <li>CSS: 디자인</li>
+      <li>Javascript: 연산</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="css">CSS</h2>
+
+<ul>
+  <li>
+    <p>Cascading Hakon Wium Lie 제안 (하콤 비움 리)</p>
+  </li>
+  <li>
+    <p>웹디자이너가 주로 사용하는 언어</p>
+  </li>
+  <li>
+    <p>웹페이지의 통일성 있는 디자인을 제공</p>
+  </li>
+  <li>
+    <p>HTML5에서는 CSS의 기능이 제외되서 CSS의 필요성이 높아졌다</p>
+  </li>
+  <li>
+    <p>css 문법: <code class="language-plaintext highlighter-rouge">속성:값;속성:값;</code></p>
+  </li>
+  <li>
+    <p>작성법</p>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <p>inline 방식</p>
+
+    <ul>
+      <li>
+        <p>HTML Tag에 직접 정의하는 방식</p>
+      </li>
+      <li>
+        <p>적용 우선 순위가 가장 높다</p>
+      </li>
+      <li>
+        <p>동일 디자인의 재활용성이 매우 낮다</p>
+      </li>
+      <li>
+        <p>구조와 디자인의 결합도가 높아진다.</p>
+
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;태그명</span> <span class="na">style=</span><span class="s">"속성명:값;속성명:값;,,,"</span><span class="nt">&gt;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>embed 방식</p>
+
+    <ul>
+      <li>
+        <p>HTML의 head 태그에 넣어 정의하는 방식</p>
+      </li>
+      <li>
+        <p>inline 방식보다 재사용성이 좋다</p>
+
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nf">#id</span> <span class="p">{</span>
+      <span class="py">속성</span><span class="p">:</span> <span class="n">값</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.class명</span> <span class="p">{</span>
+      <span class="py">속성</span><span class="p">:</span> <span class="n">값</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nt">태그명</span> <span class="p">{</span>
+      <span class="py">속성</span><span class="p">:</span> <span class="n">값</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>external file 방식</p>
+
+    <ul>
+      <li>
+        <p>확장자가 css인 파일을 만들고 디자인 코드를 정의하는 방식</p>
+      </li>
+      <li>
+        <p>디자인 코드에 대한 재사용성이 가장 높다</p>
+      </li>
+      <li>
+        <p>파일관리가 어렵다</p>
+      </li>
+      <li>
+        <p>디자인 코드가 필요한 파일에서</p>
+
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"css파일url"</span> <span class="nt">/&gt;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<ul>
+  <li>기본문법</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selector { 속성:값;속성:값; }
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>selector: 정의한 Design 속성을 적용 받는 대상</p>
+
+    <ul>
+      <li>
+        <p>id selector : 디자인을 적용받는 태그가 HTML 내에서 유일할 때</p>
+
+        <pre><code class="language-php+HTML">#id명,,, { 속성:값;속성:값; }
+&lt;!-- 태그에서 적용 --&gt;
+&lt;태그명 id="id명",,,&gt; &lt;!-- #제외하고 입력, 유일하게 하나의 태그에만 적용 --&gt;
+</code></pre>
+      </li>
+      <li>
+        <p>class selector: 디자인을 적용받을 태그가 HTML 내에서 여러 개 일 때</p>
+
+        <pre><code class="language-php+HTML">.class명,,, { 속성:값;속성:값; }
+&lt;!--태그에 적용--&gt;
+&lt;태그명 class="class명",,,&gt; &lt;!-- .제외하고 입력, 클래스명은 여러번 사용될 수 있다 --&gt;
+</code></pre>
+      </li>
+      <li>
+        <p>tag seletor: HTML 내에서 모든 태그가 디자인을 적용받아야 할 때</p>
+
+        <pre><code class="language-php+HTML">태그명,,, { 속성:값;속성:값; }
+&lt;!-- HTML 내의 모든 태그가 적용받는다 --&gt;
+&lt;태그명&gt;
+</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>subselector</p>
+
+    <ul>
+      <li>
+        <p>특정 태그의 자식 태그만 디자인 적용</p>
+
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>태그명&gt;자식태그명 { 속성:값;속성:값 } div&gt;p {,,,}
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>글 흘러가게 만들 때</p>
+
+    <p><code class="language-plaintext highlighter-rouge">&lt;&gt;</code></p>
+  </li>
+</ul>
+
+<h2 id="font">font</h2>
+
+<p>글자관련 속성</p>
+
+<ul>
+  <li>글꼴: <code class="language-plaintext highlighter-rouge">{ font-family: 글꼴, 다른 글꼴,,,}</code></li>
+  <li>진하게: 일반글자 <code class="language-plaintext highlighter-rouge">{ font-weight: bold/nomal }</code></li>
+  <li>이텔릭 <code class="language-plaintext highlighter-rouge">{ font-style: italic/nomal }</code></li>
+  <li>글자크기 <code class="language-plaintext highlighter-rouge">{ font-size: 숫자px }</code></li>
+  <li>글자 색 <code class="language-plaintext highlighter-rouge">{ color: red/#rgb }</code></li>
+  <li>줄긋기 <code class="language-plaintext highlighter-rouge">{ text-decoration: none/underline/overline/line-through}</code></li>
+</ul>
+
+<h2 id="border">border</h2>
+
+<ul>
+  <li>table, td, img, div…</li>
+  <li><code class="language-plaintext highlighter-rouge">border: 테두리선두께 선종류 선색;</code>
+    <ul>
+      <li>모든 테두리에 적용된다.</li>
+      <li>선종류: solid, dotted, dashed, double(테두리선의 두께가 3px이상일 때부터 적용)</li>
+    </ul>
+  </li>
+  <li>특정위치만
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">{ border-left: 두께 선종류 선색; border-right: border-left: border-top: border-bottom: }</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="design">Design</h2>
+
+<h3 id="색">색</h3>
+
+<ul>
+  <li>바닥색: <code class="language-plaintext highlighter-rouge">{ background-color: RGB }</code></li>
+  <li>전경색: <code class="language-plaintext highlighter-rouge">{ color: RGB }</code></li>
+</ul>
+
+<h3 id="이미지">이미지</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">{ background: 바닥색 url("이미지경로") 이미지설정 }</code></li>
+  <li>이미지 설정
+    <ul>
+      <li>default: 바둑판</li>
+      <li>repeat-x: x좌표로 반복</li>
+      <li>repeat-y: y좌표로 반복</li>
+      <li>no-repeat: 이미지 반복x</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="정렬">정렬</h3>
+
+<ul>
+  <li>
+    <p>글자정렬: text-align: left/right/center</p>
+  </li>
+  <li>
+    <p>여백</p>
+
+    <ul>
+      <li>
+        <p>margin: 기준선 바깥쪽 여백</p>
+
+        <p><code class="language-plaintext highlighter-rouge">{ margin: 여백픽셀; }</code> 모든 방향의 여백</p>
+
+        <p><code class="language-plaintext highlighter-rouge">{ margin-left: 여백픽셀; }</code></p>
+
+        <p><code class="language-plaintext highlighter-rouge">{ margin-right: 여백픽셀; }</code></p>
+      </li>
+      <li>
+        <p>padding: 기준선 안쪽 여백</p>
+
+        <p><code class="language-plaintext highlighter-rouge">{ padding: 여백필셀; }</code> 모든 방향의 여백 -&gt; 자체 크기가 변경된다</p>
+
+        <p><code class="language-plaintext highlighter-rouge">{ padding-left: 여백필셀; }</code></p>
+
+        <p><code class="language-plaintext highlighter-rouge">{ padding-right: 여백필셀; }</code></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>float : text-align으로 정렬되지 않는 객체를 정렬할 때</p>
+    <ul>
+      <li>float left right</li>
+      <li>float을 설정하면 하위의 객체들이 정렬을 적용받는 버그가 존재</li>
+      <li>이전 정렬을 초기화 할 때에는 <code class="language-plaintext highlighter-rouge">clear: both</code> 속성을 사용</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="사용자의-동작이-있을-때-css적용하기">사용자의 동작이 있을 때 CSS적용하기</h3>
+
+<ul>
+  <li>
+    <p>behavior selector</p>
+
+    <p><code class="language-plaintext highlighter-rouge">태그명: hover{속성: 값;,,,}</code></p>
+  </li>
+</ul>
+
+<h4 id="div에-스크롤바-생성">div에 스크롤바 생성</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">overflow: auto</code></li>
+  <li>설정한 크기보다 데이터가 많다면 스코롤바를 생성하여 데이터를 정해진 크기 내에서 보여준다</li>
+</ul>
+
+<h2 id="디자인">디자인</h2>
+
+<ul>
+  <li>
+    <p>div와 CSS를 복합적으로 사용</p>
+  </li>
+  <li>
+    <p>div : 사용자에 제공할 내용 정의</p>
+  </li>
+  <li>
+    <p>CSS: div를 배치하기 위한 크기, 위치 설정</p>
+  </li>
+  <li>
+    <p>크기설정: <code class="language-plaintext highlighter-rouge">width:너비px</code> <code class="language-plaintext highlighter-rouge">height:높이px</code></p>
+  </li>
+  <li>
+    <p>위치설정: <code class="language-plaintext highlighter-rouge">position: absolute(절대좌표),relative(상대좌표),fixed(고정좌표)</code></p>
+
+    <ul>
+      <li>절대 좌표: 스크롤바가 움직여도 좌표가 변하지 않는 좌표(스크롤바가 움직이면 위치가 이동)</li>
+      <li>상대좌표: 시작점 위치를 변경할 때</li>
+      <li>고정좌표: 스크롤바가 움직이면 좌표가 수정됨 (스크롤바가 움직여도 항상 설정한 자리에 위치)</li>
+      <li>좌표: <code class="language-plaintext highlighter-rouge">top:y좌표,left:x좌표</code></li>
+    </ul>
+
+    <pre><code class="language-php+HTML">&lt;style type="text/css"&gt;
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;div id="a"&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+  </li>
+</ul>
+
+<h3 id="영역태그">영역태그</h3>
+
+<p>사용자에게 보여지지 않고, 영역의 의미로 사용되는 태그</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;header&gt;</code> 웹페이지에서 header부분 의미</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;footer&gt;</code> 웹페이지에서 footer부분 의미</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;navi&gt;</code> navigator bar를 묶을 때 사용</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;section&gt;</code> 서비스 제공하기위한 하나의 영역</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;article&gt;</code> 게시물의 리스트, 뉴스의 리스트</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;aside&gt;</code> 부가적인 서비스를 나타내는 영역 (Side Bar)</p>
+
+<h3 id="css3-속성">CSS3 속성</h3>
+
+<ul>
+  <li>테두리 선을 곡선</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">border-radius:px;</code> 4개의 모서리 모두 동일한 호를 적용</p>
+
+<pre><code class="language-php+HTML">border-radius:10px
+
+border-radius: LI RI RB LB;
+</code></pre>
+
+<ul>
+  <li>
+    <p>shadow</p>
+
+    <ul>
+      <li>글자그림자 설정 : <code class="language-plaintext highlighter-rouge">text-shadow: x좌표 y좌표 번짐 그림자색</code></li>
+      <li>box그림자 설정: <code class="language-plaintext highlighter-rouge">box-shadow: x좌표 y좌표 번짐 그림자색</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>마우스 포인터 변경</p>
+
+    <pre><code class="language-HTML">cursor: default,pointer,crosshair, loading;
+</code></pre>
+  </li>
+</ul>
+:ET

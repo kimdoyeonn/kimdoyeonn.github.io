@@ -1,0 +1,42 @@
+I"�<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">dp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+<span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1"># 각 몇배수 했는지 저장할 변수
+</span><span class="n">i2</span> <span class="o">=</span> <span class="n">i3</span> <span class="o">=</span> <span class="n">i5</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># 배수 한 결과가 얼마인지 저장할 변수
+</span><span class="n">next2</span><span class="p">,</span> <span class="n">next3</span><span class="p">,</span> <span class="n">next5</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">next2</span><span class="p">,</span> <span class="n">next3</span><span class="p">,</span> <span class="n">next5</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">next2</span><span class="p">:</span>
+        <span class="n">i2</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">next2</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+
+    <span class="k">if</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">next3</span><span class="p">:</span>
+        <span class="n">i3</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">next3</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i3</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span>
+
+    <span class="k">if</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">next5</span><span class="p">:</span>
+        <span class="n">i5</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">next5</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i5</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div></div>
+
+<ul>
+  <li>2, 3, 5의 배수 변수와 각각 몇 번 곱해졌는지(i2, i3, i5)를 나타낼 인덱스 변수를 만듦</li>
+  <li>배수 변수들 중 제일 작은 수를 골라 그 수와 지금까지의 배수가 같다면 dp[im]애 (2.3.5) 중 해당하는 수를 곱해주면서 못생긴 수를 찾아서 ~dp[n]까지 넣어줌</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                      2 3 5
+          dp[0] = 1 / 0 0 0
+2 3 5  -&gt; dp[1] = 2 / 1 0 0
+4 3 5  -&gt; dp[2] = 3 / 1 1 0
+4 6 5  -&gt; dp[3] = 4 / 2 1 0
+6 6 5  -&gt; dp[4] = 5 / 2 1 1
+6 6 10 -&gt; dp[5] = 6 / 3 2 1
+8 9 10 -&gt; dp[6] = 8 / 4 2 1
+</code></pre></div></div>
+
+:ET

@@ -1,0 +1,76 @@
+I"<h6 id="문제-설명">문제 설명</h6>
+
+<p>양의 정수 x가 하샤드 수이려면 x의 자릿수의 합으로 x가 나누어져야 합니다. 예를 들어 18의 자릿수 합은 1+8=9이고, 18은 9로 나누어 떨어지므로 18은 하샤드 수입니다. 자연수 x를 입력받아 x가 하샤드 수인지 아닌지 검사하는 함수, solution을 완성해주세요.</p>
+
+<h5 id="제한-조건">제한 조건</h5>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">x</code>는 1 이상, 10000 이하인 정수입니다.</li>
+</ul>
+
+<h5 id="입출력-예">입출력 예</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>arr</th>
+      <th style="text-align: center">return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10</td>
+      <td style="text-align: center">true</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td style="text-align: center">true</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td style="text-align: center">false</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td style="text-align: center">false</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="입출력-예-설명">입출력 예 설명</h5>
+
+<p><strong>입출력 예 #1</strong>
+10의 모든 자릿수의 합은 1입니다. 10은 1로 나누어 떨어지므로 10은 하샤드 수입니다.</p>
+
+<p><strong>입출력 예 #2</strong>
+12의 모든 자릿수의 합은 3입니다. 12는 3으로 나누어 떨어지므로 12는 하샤드 수입니다.</p>
+
+<p><strong>입출력 예 #3</strong>
+11의 모든 자릿수의 합은 2입니다. 11은 2로 나누어 떨어지지 않으므로 11는 하샤드 수가 아닙니다.</p>
+
+<p><strong>입출력 예 #4</strong>
+13의 모든 자릿수의 합은 4입니다. 13은 4로 나누어 떨어지지 않으므로 13은 하샤드 수가 아닙니다.</p>
+
+<h3 id="내-풀이">내 풀이</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">boolean</span> <span class="n">answer</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+
+        <span class="kt">int</span> <span class="n">input</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">while</span><span class="o">(</span><span class="n">input</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">){</span>
+            <span class="c1">//10을 계속 나눠주면서 그 나머지를 더하면 모든 자리의 합이 구해진다.</span>
+        	<span class="n">sum</span> <span class="o">+=</span> <span class="n">input</span> <span class="o">%</span> <span class="mi">10</span><span class="o">;</span>
+            <span class="n">input</span> <span class="o">=</span> <span class="n">input</span><span class="o">/</span><span class="mi">10</span><span class="o">;</span>
+        <span class="o">}</span>
+
+    	<span class="c1">//입력값이 sum으로 나누어떨어지면 하샤드수</span>
+        <span class="k">if</span><span class="o">(</span> <span class="n">x</span> <span class="o">%</span> <span class="n">sum</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+            <span class="n">answer</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+:ET

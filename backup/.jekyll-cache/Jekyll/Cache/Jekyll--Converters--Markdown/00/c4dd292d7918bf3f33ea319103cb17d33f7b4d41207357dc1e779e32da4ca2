@@ -1,0 +1,226 @@
+I"�(<ul>
+  <li>정리되어 있지 않음</li>
+</ul>
+
+<p>Java SE: Desktop에서 동작하는 program제작 (Application 제작) -&gt; JDBC(Java DB연동)</p>
+
+<p>Oracle DBMS: 정보를 저장, 사용</p>
+
+<p>–<strong>접속자의 Computer에 Download되어 실행 (접속자 cpu, memory 사용: Front-end)</strong>–</p>
+
+<p>HTML: Web page의 구조설정(모든 접속자에게 동일하게 보여준다: 멱등성)-&gt; 개인화 안됨 -&gt; Servlet, java EE로 해결</p>
+
+<p>JavaScript: Webpage의 간단한 계산, 동적으로 화면 변경</p>
+
+<p>CSS: 통일성있는 디자인</p>
+
+<p>jQuery, Bootstrap: CSS를 간편하게 사용 -&gt; javascript library: javascript를 간편하게 사용</p>
+
+<p>Java EE: 동적으로 HTML, 파일 생성 ( 개인화가 가능 )</p>
+
+<h1 id="java-ee-enterprise-edition">Java EE (Enterprise Edition)</h1>
+
+<ul>
+  <li>
+    <p>기업용 Application을 개발하기 위한 Java의 개발버전</p>
+
+    <p>(현업) =&gt; 일 =&gt; 구현</p>
+
+    <ul>
+      <li>
+        <p>EJB(Enterprise Java Beans)</p>
+
+        <ul>
+          <li>
+            <p>업무를 모듈로 구분 ( 약결합 - 업무에 필요한 모듈을 조립 사용)</p>
+          </li>
+          <li>
+            <p>EJB를 실행하기 위한 별도의 Server가 필요하다</p>
+          </li>
+          <li>
+            <p>안정적 -&gt; 느리다.</p>
+          </li>
+          <li>
+            <p>배포 x.ear</p>
+          </li>
+          <li>
+            <p><strong>Entity Bean</strong>(DB연동하는 업무), <strong>Session Bean</strong>(DB를 연동하지 않는 업무), <strong>MessageDrivenBean</strong>(메세지를 전달하여 메세지에 일치하는 업무를 수행)</p>
+
+            <p>-&gt; 모두 Spring framework로 대체</p>
+          </li>
+          <li>동적인 HTML을 생성하기 위한 Servlet/JSP 제공</li>
+          <li>Java EE의 모든 spec을 서비스 할 수 있는 program(WAS: Web Application Server)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="servlet">Servlet</h2>
+
+<ul>
+  <li>
+    <p>java EE에서 동적으로 HTML을 생성할 수 있는 Library</p>
+  </li>
+  <li>
+    <p>CGI의 일종 ( Common Gateway Interface)</p>
+
+    <ul>
+      <li>
+        <p>일반언어로 웹서비스를 하기 위해 정해놓은 공통규약</p>
+
+        <p>C언어: C - CGI( 속도가 느리다. Thread 처리X. 생산성 좋지 않음)</p>
+
+        <p>Java: Servlet( Fast CGI )( 속도가 느리다. 생산성 좋지 않음. Thread 처리O )</p>
+
+        <ul>
+          <li>javax.servlet.<em>, javas.servlet.http.</em> 에서 관련클래스와 interface를 제공 =&gt; servlet-api.jar -&gt; builde path(eclipse) class path(dos)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>java EE로 Webservice하기위한 folder 구성</strong></p>
+
+    <ul>
+      <li>
+        <p>web_root\folder\HTML, CSS, Javascript,JSP</p>
+      </li>
+      <li>
+        <p>web_root\WEB-INF\classes\package\.class</p>
+
+        <p>과 \lib\사용할 외부 library</p>
+
+        <p>\web.xml: DD(Deployment Descriptor)</p>
+      </li>
+      <li>
+        <p>web container에 folder를 설정 -&gt; server.xml(Container 설정, web service 하기 위한 folder 설정)</p>
+
+        <ul>
+          <li>web container: web browser에서 servlet/JSP를 요청하면 servlet/JSP를 HTML로 변환하여 응답하는 program</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>노트필기</strong></p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="servlet-작성법">Servlet 작성법</h3>
+
+<ol>
+  <li>
+    <p>class가 web의 업무를 처리하기 위해 HttpServlet 클래스를 상속받는다.</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span><span class="o">{</span><span class="c1">//추상메소드가 없는 추상 클래스</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>요청방식을 처리할 수 있는 method의 Override</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//get 방식
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;&lt;/a&gt;</span>
+<span class="nt">&lt;meta</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"get"</span><span class="nt">&gt;&lt;/form&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">;</span>
+  <span class="nx">location</span><span class="p">.</span><span class="nx">replace</span><span class="p">;</span>
+<span class="nt">&lt;/script&gt;</span>
+
+//post방식 전용
+<span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="nt">/&gt;&lt;/form&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">form이름</span><span class="p">.</span><span class="nx">submit</span><span class="p">();</span> <span class="c1">//post방식 전용</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li>
+        <p>get 방식</p>
+
+        <ul>
+          <li>서버로 보내는 데이터가 web browser의 주소창( 외부로 노출된다 )을 타고 전달된다.</li>
+          <li>서버로 보내는 데이터가 문자열만 가능</li>
+          <li>보안이 필요없는 256자 이하의 소용량 데이터를 전송할 때 주로 사용</li>
+          <li>query string 존재</li>
+        </ul>
+      </li>
+      <li>
+        <p>post 방식</p>
+
+        <ul>
+          <li>서버로 보내는 데이터가 Http Header( 외부로 노출되지 않는다 )를 타고 전달된다</li>
+          <li>서버로 보내는 데이터가 다양하다. 파일도 가능</li>
+          <li>보안이 필요한 256자 이상의 대용량 데이터를 전달할 때 사용한다.</li>
+          <li>query string이 존재하지 않는다.</li>
+        </ul>
+      </li>
+      <li>
+        <p>get 방식 요청처리( doGet )</p>
+
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">responce</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span><span class="o">,</span> <span class="nc">ServletException</span><span class="o">{}</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>post 방식 요청처리 ( doPost )</p>
+
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">responce</span><span class="o">)</span>  <span class="kd">throws</span> <span class="nc">IOException</span><span class="o">,</span> <span class="nc">ServletException</span><span class="o">{}</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>요청방식에 상관없이 처리 ( service )</p>
+
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">service</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">responce</span><span class="o">)</span>  <span class="kd">throws</span> <span class="nc">IOException</span><span class="o">,</span> <span class="nc">ServletException</span><span class="o">{}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>응답 방식 설정( 접속자에게 보내줄 형태 설정 )</p>
+
+    <ul>
+      <li>
+        <p>MIME Type 설정 =&gt; web.xml</p>
+
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html"</span><span class="o">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>접속자에게 응답할 수 있는 출력 스트림 얻기</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">PrintWriter</span> <span class="n">out</span><span class="o">=</span><span class="n">responce</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>출력 내용을 Stream 작성</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"&lt;html&gt;"</span><span class="o">);</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li>
+        <p>작성된 Servlet을 Web browser에서 호출하기 위해 DD에 설정( Deployment Descriptor: web.xml( WEB-INF ) )</p>
+
+        <pre><code class="language-HTML">&lt;servlet&gt;
+	&lt;servlet-name&gt;객체명&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;패키지명.class명&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+	&lt;servlet-name&gt;객체명&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/웹브라우저에서 호출할 이름&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+</code></pre>
+
+        <p>web browser 열고 URL 입력하여 Servlet을 요청한다.</p>
+
+        <p>http://localhost:80/servlet_path/url-pattern</p>
+
+        <p>context_root servlet_name</p>
+      </li>
+    </ul>
+  </li>
+</ol>
+:ET

@@ -1,0 +1,757 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[DB]DBMS와 RDBMS - 개발일기</title>
+<meta name="description" content="개발일기">
+
+
+  <meta name="author" content="Doyeon">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="개발일기">
+<meta property="og:title" content="[DB]DBMS와 RDBMS">
+<meta property="og:url" content="http://localhost:4000/db/DB-_DBMS_RDBMS/">
+
+
+  <meta property="og:description" content="개발일기">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-01-21T00:00:00+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/db/DB-_DBMS_RDBMS/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Doyeon",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="개발일기 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발일기
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/TIL/">TIL</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#db" itemprop="item"><span itemprop="name">Db</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">[DB]DBMS와 RDBMS</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Doyeon</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://doyeonu.tistory.com/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Tistory</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/kimdoyeonn" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:doyeonkim.dyk@gmail.com">
+            <meta itemprop="email" content="doyeonkim.dyk@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[DB]DBMS와 RDBMS">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2021-01-21T00:00:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[DB]DBMS와 RDBMS
+</h1>
+          <!--
+            doyeon311 :
+              싱글페이지 (post) 에 제목 밑에 Updated 시간 표시
+              기존에는 read_time이 표기. read_time -> date 변경 
+            
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+          
+         -->
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>출처: <a href="https://namu.wiki/w/DBMS">위키백과</a></p>
+
+<ul>
+  <li>데이터베이스 관리 시스템(Database Management System)</li>
+  <li>다수의 사용자들이 데이터베이스 내의 데이터를 접근할 수 있도록 해주는 소프트웨어 도구의 집합</li>
+  <li>사용자 또는 다른 프로그램의 요구를 처리하고 적절히 응답하여 데이터를 사용할 수 있도록 해준다.</li>
+</ul>
+
+<h3 id="기능">기능</h3>
+
+<ul>
+  <li>중복 제어: 동일한 데이터가 여러 위치에 중복 저장되는 현상을 방지한다. 데이터가 중복되면, 저장 공간이 낭비되고 데이터의 일관성이 깨질 수 있다.</li>
+  <li>접근 통제: DBMS는 사용자마다 다양한 권한을 부여할 수 있으며, 권한에 따라 데이터에 대한 접근을 제어할 수 있다.</li>
+  <li>인터페이스 제공: DBMS는 사용자에게 SQL 및 CLI, GUI 등 다양한 인터페이스를 제공한다.</li>
+  <li>관계 표현: 서로 다른 데이터간의 다양한 관계를 표현할 수 있는 기능을 제공한다.
+    <ul>
+      <li>샤딩/파티셔딩: 구조 취적화를 위해 작은 단위로 쪼개는 기능을 제공한다.</li>
+    </ul>
+  </li>
+  <li>무결성 제약 조건: 무결성에 관한 제약 조건을 정의/검사하는 기능을 제공한다. 데이터베이스는 반드시 무결정 제약조건을 통과한 데이터만을 저장하고 있어야 한다.</li>
+  <li>백업</li>
+</ul>
+
+<h3 id="한계">한계</h3>
+
+<ul>
+  <li>DBMS는 모든 종류의 데이터를 관리하는 최선의 방법이 아니다.</li>
+  <li>복잡한 DBMS일수록 트랜잭션, ACID(Atomicity, Consistency, Isolation, Durability) 등의 많은 컨셉을 지원하기 위한 오버헤드가 발생한다. 때문에 휴대폰 등의 임베디드 기기 같은 단순한 데이터베이스(예를 들어 전화번호부 등)의 경우는 다중 사용자나 회복 기능 등을 뺀 가벼운 DBMS를 만들어 사용하기도 한다.</li>
+  <li>대다수의 DBMS는 비교적 크기가 작은 레코드를 수백만개씩 저장하는 것에 특화되어있다. 반대로 하나의 레코드가 몇십MB에서 GB급인 경우 데이터를 DB에 저장하면 쿼리 시 오버헤드가 클 수 있다. 이 경우 원래 파일은 파일 시스템에 직접 저장하거나 파일 시스템 스타일의 클라우드를 사용하고 그 경로만 DB에 저장하는게 바람직하다</li>
+  <li>실시간 데이터 처리가 필요한 경우(예를 들어 군용, 항공우주용 등)에도 일반적으로 복잡한 기능을 제공하는 DBMS가 적합하지 않다. 다만 통신망, 금융권 등에서의 실시간 데이터 처리 개념에서는 오라클의 타임스텐이나 알티베이스의 ALTIBASE HDB와 같은 인 메모리 데이터베이스를 실시간 데이터 처리가 요구되는 구간에 사용하고, 이력 데이터와 같은 안정성이 중요시되는 데이터는 back-end 구간에 전통적인 디스크 기반 DBMS를 사용하는 방식으로 시스템을 구성하기도 한다.</li>
+  <li>검색 엔진 등 극단적으로 데이터가 크며, READ/WRITE 간의 격차가 큰 경우에도 일반적인 DBMS를 사용하지 않는다. 이러한 경우 MM DBMS와 NoSQL 기술을 혼용하여 서비스를 구축한다. NoSQL 기술이 응용된 사례가 페이스북의 쪽지 기능이다.</li>
+</ul>
+
+<p><del>뭐지…무슨 뜻인지 모르겠네</del></p>
+
+<blockquote>
+  <p><strong>오버헤드</strong> - overhead, 어떤 처리를 하기 위해 들어가는 간접적인 처리 시간, 메모리 등을 말한다. 예를 들어 A라는 처리를 단순하게 실행한다면 10초 걸리는데, 안정성을 고려하고 부가적인 B라는 처리를 추가한 결과 처리시간이 15초 걸렸다면, 오버헤드는 5초가 된다. 또한, 이 처리 B를 개선해 B’라는 처리를 한 결과, 처리시간이 12초가 되었다면, 이 경우 오버헤드가 3초 단축되었다고 말한다.</p>
+
+  <p><strong>트랜잭션</strong> - transcation, 데이터베이스의 상태를 변환시키는 하나의 논리적 기능을 수행하기 위한 작업의 단위 또는 한꺼번에 모두 수행되어야 할 일련의 연산들을 의미한다.</p>
+</blockquote>
+
+<h3 id="rdbms">RDBMS</h3>
+
+<ul>
+  <li>
+    <p>관계형 데이터베이스 관리 시스템(relationship database management system)</p>
+  </li>
+  <li>
+    <p>DBMS의 한 종류로, 관계형 데이터 베이스를 생성, 수정, 관리할 수 있는 소프트웨어이다.</p>
+
+    <ul>
+      <li><strong>관계형 데이터베이스(RDB)</strong> - Relationship Database, 관계형 데이터 모델에 기초를 둔 데이터베이스이다.
+        <ul>
+          <li>관계형 데이터 모델이란 데이터를 구성하는데 필요한 방법 중 하나로, 모든 데이터를 2차원 데이블 형태로 표현한다.</li>
+          <li>데이터의 독립성이 높고, 고수준의 데이터 조작언어(DML-Data Manipulation Language)을 사용하여 결합, 제약, 투영 등의 관계 조작에 의해 비약적으로 표현능력을 높일 수 있다. 또한 이들의 관계 조작에 의해 자유롭게 구조를 변경할 수 있다는 것이 특징이다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>RDBMS의 테이블은 서로 연관되어 있어 일반 DBMS보다 효율적으로 데이터를 저장, 구성 및 관리할 수 있다</p>
+  </li>
+  <li>
+    <p>정규화를 통해 데이터의 중복성을 최소화하며 트랜잭션을 수행하는 것이 더 쉽다</p>
+  </li>
+  <li>
+    <p>데이터의 원자성, 일관성, 격리 및 내구성을 유지하며 데이터 무결성을 높인다.</p>
+  </li>
+  <li>
+    <p>MSSQL, MySQL, Oracle 등이 있다</p>
+  </li>
+  <li>
+    <p>ER모델에 따라, 데이터베이스가 만들어지며, 데이터베이스는 하나 이상의 테이블로 구성된다.</p>
+
+    <ul>
+      <li><strong>ER모델</strong> - Entity Relationship Model
+        <ul>
+          <li>요구사항으로부터 얻어낸 정보들을 개체(Entity), 속성(Attribute), 관계성(Relation)으로 기술하는 데이터 모델을 말한다.</li>
+          <li>개체란 단독으로 존재하는 개체를 의미하며, 동일한 개체는 존재하지 않는다.</li>
+          <li>속성이란, 개체가 갖는 속성을 의미한다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#dbms" class="page__taxonomy-item" rel="tag">DBMS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#db" class="page__taxonomy-item" rel="tag">DB</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#db" class="page__taxonomy-item" rel="tag">DB</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-01-21T00:00:00+00:00">January 21, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDB%5DDBMS%EC%99%80+RDBMS%20http%3A%2F%2Flocalhost%3A4000%2Fdb%2FDB-_DBMS_RDBMS%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdb%2FDB-_DBMS_RDBMS%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdb%2FDB-_DBMS_RDBMS%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/algorithm-level2_snail/" class="pagination--pager" title="[algorithm]level2 소수 찾기
+">Previous</a>
+    
+    
+      <a href="/db/DB-DB_design/" class="pagination--pager" title="[DB]데이터베이스 설계
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/pseudo-selector-css-variable/" rel="permalink">[TIL] <code class="language-plaintext highlighter-rouge">:root</code> 가상 선택자와 CSS 변수
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 20 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day18/" rel="permalink">[TIL] <code class="language-plaintext highlighter-rouge">withRouter</code> 정리
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 16 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day17-1/" rel="permalink">[TIL] React의 특징
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 15 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day16/" rel="permalink">[TIL] 고차함수
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 14 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="http://github.com/kimdoyeonn" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Doyeon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/db/DB-_DBMS_RDBMS/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/db/[DB]_DBMS_RDBMS"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://doyeon311-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

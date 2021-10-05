@@ -1,0 +1,97 @@
+I"D<ul>
+  <li>컴퓨터 구성요소의 기능 및 이해
+    <ul>
+      <li>중앙처리장치(Central Processiong Unit)
+        <ul>
+          <li>CPU/MPU</li>
+          <li>사물 인터넷 디바이스 H/W 플랫폼 종류</li>
+        </ul>
+      </li>
+      <li>주변장치(Peripheral Device)
+        <ul>
+          <li>기억장치(Memoriy unit)</li>
+          <li>보조기억장치(Auxiliary memory device)</li>
+          <li>입출력장치(Input/Output device)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="중앙처리장치">중앙처리장치</h3>
+
+<h4 id="cpu">CPU</h4>
+
+<blockquote>
+  <p>마더보드(mother board): 데이터의 전달 통로가 디자인 되어있는 메인 보드</p>
+</blockquote>
+
+<p>실행 프로그램의 명령 해석, 실행, 장치 제어, ALU, CU 각종 레지스터로 구성</p>
+
+<p><img src="https://media.vlpt.us/images/underlier12/post/927e43cd-15ce-44cd-bc95-151458db7f76/image.png" alt="img" /></p>
+
+<h4 id="mpu">MPU</h4>
+
+<p>Micro Processor Unit</p>
+
+<ul>
+  <li>CPU를 LSI(고밀도 집적회로)화 한 일종의 통합장치</li>
+  <li>CISC(Complex Instruction Set Computer) : 소프트웨어를 처리해주는 동작 중 반복적인 동작들을 일일이 소프트웨어처리하지 않고 하드웨어처리한 컨셉</li>
+  <li>RISC(Reduced Instruction Set Computer) : 위의 개념과 반대</li>
+  <li>Bit Slice MPU 등이 존재: 위의 두 종류의 MPU를 사용자가 원하는 형태로 조합해서 합친 MPU</li>
+</ul>
+
+<h4 id="사물인터넷-디바이스-hw-플랫폼-종류">사물인터넷 디바이스 H/W 플랫폼 종류</h4>
+
+<ul>
+  <li>아두이노
+    <ul>
+      <li>대표적인 오픈소스 H/W 플랫폼</li>
+    </ul>
+  </li>
+  <li>Raspberry Pi: 어떻게 보면 아두이노보다 컴퓨터에 가까운 형태</li>
+  <li>Galileo</li>
+  <li>Edison</li>
+</ul>
+
+<h3 id="주변장치">주변장치</h3>
+
+<h4 id="기억장치">기억장치</h4>
+
+<ul>
+  <li>RAM(Random Access Memory) : 효율을 위해 칠판같은 형태로 구성함, 끄면 날아감
+    <ul>
+      <li>DRAM(Dynamic RAM)</li>
+      <li>SRAM(Static RAM)</li>
+    </ul>
+  </li>
+  <li>ROM(Read Only Memory) : 부팅될 때 운영체제를 불러옴, 프로그램을 불러올 때 작동하는 기억장치</li>
+</ul>
+
+<h4 id="입출력장치">입출력장치</h4>
+
+<ul>
+  <li>키보드, 마우스, 스캐너, 터치스크린, 조이스틱, 광학마스크 판독기(OMR), 바코드 판독기</li>
+</ul>
+
+<h3 id="보조기억장치">보조기억장치</h3>
+
+<p><img src="https://media.vlpt.us/images/underlier12/post/0c386c38-7bb0-4677-b7af-2977d6b540c1/image.png" alt="img" /></p>
+
+<ul>
+  <li>부피와 속도는 반비례, 속도가 느리면 가격이 저렴하고, 많은 데이터를 저장할 수 있음</li>
+</ul>
+
+<p><img src="https://media.vlpt.us/images/underlier12/post/8bdf668b-ced7-4635-901f-2eb4972a6199/image.png" alt="img" /></p>
+
+<ul>
+  <li>종류
+    <ul>
+      <li>플래시기억장치 - EEPROM(RAM과 ROM의 중간), CF메모리, SSD</li>
+      <li>USB</li>
+      <li>SD card(Secure Digital Card)</li>
+      <li>메모리 스틱</li>
+    </ul>
+  </li>
+</ul>
+:ET

@@ -1,0 +1,108 @@
+I"�"<p>참고: doit 자료구조와 함께 배우는 알고리즘 입문</p>
+
+<h4 id="문자열-검색이란">문자열 검색이란?</h4>
+
+<p>문자열 검색(string search)은 어떤 문자열 안에 따른 문자열이 포함되어 있는지 검사하고, 만약 포함되어 있다면 어디에 위치하는지 찾아내는 것을 말함</p>
+
+<ul>
+  <li>검색되는 문자열을 text, 찾아내는 문자열을 pattern이라고 한다.</li>
+</ul>
+
+<h4 id="브루트-포스법-알아보기">브루트 포스법 알아보기</h4>
+
+<ul>
+  <li>선형 검색을 단순하게 확장한 알고리즘이라서 __단순법__이라고 합니다.</li>
+  <li>이미 검사한 위치를 기억하지 못하므로 브루트 포스법은 효율이 좋지 않다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">bf_match</span><span class="p">(</span><span class="n">txt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pat</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="s">"""브루트 포스법으로 문자열 검색"""</span>
+
+    <span class="n">pt</span> <span class="o">=</span> <span class="mi">0</span>              <span class="c1"># txt를 따라가는 커서
+</span>    <span class="n">pp</span> <span class="o">=</span> <span class="mi">0</span>              <span class="c1"># pat을 따라가는 커서
+</span>
+    <span class="k">while</span> <span class="n">pt</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span> <span class="ow">and</span> <span class="n">pp</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pat</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">txt</span><span class="p">[</span><span class="n">pt</span><span class="p">]</span> <span class="o">==</span> <span class="n">pat</span><span class="p">[</span><span class="n">pp</span><span class="p">]:</span>
+            <span class="n">pt</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">pp</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pt</span> <span class="o">=</span> <span class="n">pt</span> <span class="o">-</span> <span class="n">pp</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">pp</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">pt</span> <span class="o">-</span> <span class="n">pp</span> <span class="k">if</span> <span class="n">pp</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">pat</span><span class="p">)</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+</code></pre></div></div>
+
+<h4 id="멤버십-연산자와-표준-라이브러리를-사용한-문자열-검색">멤버십 연산자와 표준 라이브러리를 사용한 문자열 검색</h4>
+
+<p><strong>멤버십 연산자로 구현하기</strong></p>
+
+<p>membership operator인 in과 not in을 사용하면 어떤 문자열이 다른 문자열 안에 포함되어 있는지 검색할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ptn</span> <span class="ow">in</span> <span class="n">txt</span>
+<span class="n">ptn</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">txt</span>
+</code></pre></div></div>
+
+<p>이 방법은 어떤 문자열이 다른 문자열 안에 포함되어 있는지 판단할 수는 있지만 그 위치는 알지 못합니다.</p>
+
+<p><strong>find, index 계열 함수로 구현하기</strong></p>
+
+<p>str 클래스형에 소속된 find(), rfind(), index(), rindex() 함수는 문자열을 검색하여 검색한 문자열의 위치를 반환합니다.</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">find()</code></p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">sub</span><span class="p">[,</span> <span class="n">start</span><span class="p">[,</span> <span class="n">end</span><span class="p">]])</span>
+</code></pre></div>    </div>
+
+    <p>문자열 str의 [start:end]에 sub가 포함되면 그 가운데 가장 작은 인덱스를 반환하고, 그렇지 않으면 -1을 반환합니다.</p>
+
+    <p>sub, start, end 중에서 end만 생략하거나 start와 end 둘 다 생략 할 수 있습니다. sub는 생략할 수 없습니다.(생략할 수 있는 인수 start와 end는 슬라이스 표기에 따라 지정합니다.초기값은 0과 슬라이스되는 시퀀스의 길이)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">rfind()</code></p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span><span class="p">.</span><span class="n">rfind</span><span class="p">(</span><span class="n">sub</span><span class="p">[,</span> <span class="n">start</span><span class="p">[,</span> <span class="n">end</span><span class="p">]])</span>
+</code></pre></div>    </div>
+
+    <p>[start:end]에 sub가 포함되면 그 가운데 가장 큰 인덱스를 반환하고, 그렇지 않으면 -1을 반환합니다.(생략할 수 있는 인수 start와 end는 슬라이스 표기에 따라 지정합니다.초기값은 0과 슬라이스되는 시퀀스의 길이)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">index()</code></p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">sub</span><span class="p">[,</span> <span class="n">start</span><span class="p">[,</span> <span class="n">end</span><span class="p">]])</span>
+</code></pre></div>    </div>
+
+    <p>find() 함수와 같은 기능을 수행합니다. 다만 sub가 발견되지 않으면 예외 처리로 ValueError를 내보냅니다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">rindex()</code></p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">sub</span><span class="p">[,</span> <span class="n">start</span><span class="p">[,</span> <span class="n">end</span><span class="p">]])</span>
+</code></pre></div>    </div>
+
+    <p>rfind() 함수와 같은 기능을 수행합니다. 다만 sub가 발견되지 않으면 예외 처리로 ValueError를 내보냅니다.</p>
+  </li>
+</ul>
+
+<p><strong>with()계열 함수로 구현하기</strong></p>
+
+<p>어떤 문자열이 다른 문자열의 시작이나 끝에 포함되어 있는지를 판단합니다.</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">startswith()</code></p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">[,</span> <span class="n">start</span><span class="p">[,</span> <span class="n">end</span><span class="p">]])</span>
+</code></pre></div>    </div>
+
+    <p>문자열이 prefix로 시작하면 True, 아니면 False를 반환합니다. start가 지정되어 있으면 그 위치에서 판단을 시작하고, end가 지정되어 있으면 그 위치에서 비교를 중단합니다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">endswith()</code></p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span><span class="p">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">suffix</span><span class="p">[,</span> <span class="n">start</span><span class="p">[,</span> <span class="n">end</span><span class="p">]])</span>
+</code></pre></div>    </div>
+    <p>문자열이 suffix로 끝나면 True, 아니면 False를 반환힙니다. start가 지정되어 있으면 그 위치에서 판단을 시작하고, end가 지정되어 있으면 그 위치에서 비교를 중단합니다.</p>
+  </li>
+</ul>
+:ET

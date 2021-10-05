@@ -1,0 +1,819 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[컴퓨터구조]12_마이크로 명령어 집합과 구성 - 개발일기</title>
+<meta name="description" content="개발일기">
+
+
+  <meta name="author" content="Doyeon">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="개발일기">
+<meta property="og:title" content="[컴퓨터구조]12_마이크로 명령어 집합과 구성">
+<meta property="og:url" content="http://localhost:4000/%EC%BB%B4%ED%93%A8%ED%84%B0%20%EA%B3%B5%ED%95%99/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0_12/">
+
+
+  <meta property="og:description" content="개발일기">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-05-11T00:00:00+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/%EC%BB%B4%ED%93%A8%ED%84%B0%20%EA%B3%B5%ED%95%99/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0_12/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Doyeon",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="개발일기 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발일기
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/TIL/">TIL</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#%EC%BB%B4%ED%93%A8%ED%84%B0-%EA%B3%B5%ED%95%99" itemprop="item"><span itemprop="name">%ec%bb%b4%ed%93%a8%ed%84%b0 %ea%b3%b5%ed%95%99</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">[컴퓨터구조]12_마이크로 명령어 집합과 구성</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Doyeon</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://doyeonu.tistory.com/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Tistory</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/kimdoyeonn" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:doyeonkim.dyk@gmail.com">
+            <meta itemprop="email" content="doyeonkim.dyk@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[컴퓨터구조]12_마이크로 명령어 집합과 구성">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2021-05-11T00:00:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[컴퓨터구조]12_마이크로 명령어 집합과 구성
+</h1>
+          <!--
+            doyeon311 :
+              싱글페이지 (post) 에 제목 밑에 Updated 시간 표시
+              기존에는 read_time이 표기. read_time -> date 변경 
+            
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+          
+         -->
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <ul>
+  <li>마이크로 명령어 집합과 구성
+    <ul>
+      <li>명령어(instruction) 집합</li>
+      <li>주소 지정 모드(addressing mode)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="명령어-집합">명령어 집합</h3>
+
+<h4 id="실행-순서에-따른-명령어-분류">실행 순서에 따른 명령어 분류</h4>
+
+<ul>
+  <li>
+    <p>순차적 실행 명령어 - 전체 실행 명령어의 70~80% 차지 / 가장 익숙한 타입</p>
+  </li>
+  <li>
+    <p>분기 명령어</p>
+
+    <p>예) <code class="language-plaintext highlighter-rouge">P: R1 &lt;- R2</code> (<code class="language-plaintext highlighter-rouge">if (P == 1) then R1 &lt;- R2</code>)</p>
+  </li>
+  <li>
+    <p>부 함수 호출 명령어</p>
+
+    <p>메인과 서브로 나누어져있고 메인이 실행되는 중간에 서브가 실행된 후 서브의 실행이 끝나면 메인으로 피드백된다</p>
+  </li>
+  <li>
+    <p>복귀 명령어</p>
+  </li>
+</ul>
+
+<p><img src="https://media.vlpt.us/images/underlier12/post/6162defa-8287-46f8-ba09-34def22c553c/image.png" alt="img" /></p>
+
+<h4 id="명령어-구문-형식">명령어 구문 형식</h4>
+
+<p><img src="https://media.vlpt.us/images/underlier12/post/ab393698-4e8c-4759-88ff-fac052438d4a/image.png" alt="img" style="zoom: 67%;" /></p>
+
+<blockquote>
+  <p>프로그램과 하드웨어 간의 독립성을 위해 direct mode에서 indirect mode로 변화하였다.</p>
+</blockquote>
+
+<ol>
+  <li>명령 코드 : CPU가 실행할 수 있도록 디자인 된 연산</li>
+  <li>오퍼랜드 : 연산에 사용되는 자료 값, 자료가 지정 된 주소에 관한 정보</li>
+  <li>주소 지정 모드(addressing mode) : 오퍼랜드가 저장된 위치를 인덱싱(지정)하는 방법</li>
+</ol>
+
+<h4 id="명령어-집합의-설계">명령어 집합의 설계</h4>
+
+<blockquote>
+  <p>마이크로 연산 등등</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>설계관점</th>
+      <th>자연어에 가까운 명령 코드</th>
+      <th>기계 중심의 명령 코드</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>프로그램의 관점(SW)</td>
+      <td>- 프로그램이 용이<br />- 전체 프로그램의 길이 감소<br />- 번역기의 설계 용이</td>
+      <td>- 프로그래밍규칙이 많아짐<br />- 프로그램의 길이가 증가<br />- 번역기의 설계가 복잡해짐</td>
+    </tr>
+    <tr>
+      <td>CPU 구조 설계 관점(HW)</td>
+      <td>- 사용 언어에 따른 구조적 차이로 인해 오동작 및 처리 어려움<br />- 명령어의 길이 증가<br />- 제어장치(ALU, Register 등)의 제어가 매우 복잡해짐</td>
+      <td>- 다양한 업체별 국가별 프로그래밍의 표준화가 가능<br />- 명령어의 종류 및 길이 등 간편화 될 수 있음<br />- 제어장치(ALU, Register 등)의 제어가 상대적으로 용이</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="현업에서-활용되는-명령어군의-활용-비율">현업에서 활용되는 명령어군의 활용 비율</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>명령 코드</th>
+      <th>실행 비율</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>load, store, move</td>
+      <td>38% ➡자료전송 명령어</td>
+    </tr>
+    <tr>
+      <td>compare, add, and, sub</td>
+      <td>35% ➡산술/논리 연산 명령어</td>
+    </tr>
+    <tr>
+      <td>condition, blench, call, return</td>
+      <td>22% ➡실행제어 명령어</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>위의 명령어가 전체 실행 명령어의 약 90% 이상임</p>
+
+  <p>위의 명령어들의 쓰임을 면밀이 연구를 해야 ALU, CPU의 개선을 담보할 수 있을 것임</p>
+</blockquote>
+
+<h3 id="주소-지정-모드addressing-mode">주소 지정 모드(addressing mode)</h3>
+
+<blockquote>
+  <p>찾아볼 것: <strong>명령어 구문 형식</strong></p>
+</blockquote>
+
+<p>명령어의 구조상 자료가 저장되어 있는 장소를 지정하는 방법이 필요하다. (하드웨어와 소프트웨어의 독립성을 최대한 유지하여 프로그램의 유연성(pointer, indexing 등)을 가능하게 하여 명령어의 수와 길이를 줄이기 위해 - 세계 표준화 기법임)</p>
+
+<h4 id="묵시적-모드operand가-명령어에-포함되어--있지-않은-특수-모드">묵시적 모드(operand가 명령어에 포함되어  있지 않은 특수 모드)</h4>
+
+<ul>
+  <li>NOP : NO operation, 오퍼랜드가 필요없는 명령어</li>
+  <li>INC : 묵시적 오퍼랜드인 누산기(AC)의 연산 명령어</li>
+  <li>ADD : 스택 구조의 명령어(스택에 오퍼랜드가 저장)</li>
+</ul>
+
+<h4 id="직접-값-모드operand-자체가-명령어에-포함되어-있는-모드">직접 값 모드(operand 자체가 명령어에 포함되어 있는 모드)</h4>
+
+<p>ex ) <code class="language-plaintext highlighter-rouge">MOV R1, #100;</code> 십진수 값 100이 두번째 오퍼랜드로 직접 명령문에 포함되어 있는 경우</p>
+
+<h4 id="레지스터-모드register-mode--오퍼랜드가-레지스터에-저장된-모드">레지스터 모드(Register mode : 오퍼랜드가 레지스터에 저장된 모드)</h4>
+
+<p>ex ) <code class="language-plaintext highlighter-rouge">ADD R1 R2;</code> 레지스터 R1과 R2에 보유하고 있는 값이 오퍼랜드임</p>
+
+<h4 id="메모리-직접-주소-모드direct-mode--오퍼랜드가-저장된-메모리-주소를-나타내는-모드">메모리 직접 주소 모드(Direct mode : 오퍼랜드가 저장된 메모리 주소를 나타내는 모드)</h4>
+
+<p>ex ) <code class="language-plaintext highlighter-rouge">MOV R1, 100;</code> R1에 100번지의 내용을 이동하라는 내용(기종에 따라 반대의 경우도 가능), 100번지의 내용이 두번째 오퍼랜드가 됨</p>
+
+<h4 id="메모리-간접-주소-모드memory-indirect-addressing-mode">메모리 간접 주소 모드(Memory indirect addressing mode)</h4>
+
+<p>메모리를 이용하여 간접적으로 주소를 지정하는 모드</p>
+
+<p>ex ) <code class="language-plaintext highlighter-rouge">MOV R1, @100;</code> <code class="language-plaintext highlighter-rouge">R1 ⬅ M[100] or M[100] ⬅ R1</code></p>
+
+<p><img src="https://media.vlpt.us/images/underlier12/post/af1bcbdf-1a72-4038-bb3d-8f103a8bc733/image.png" alt="img" style="zoom: 50%;" /></p>
+
+<h4 id="주소-지정-모드-예">주소 지정 모드 예</h4>
+
+<p>다음 마이크로 명령을 수행한 후, 어떤 변화가 생겼을까? (주어진 일부 메모리 내용을 참조할 것, R1 = 100, R2 = 200이라고 가정)</p>
+
+<p><img src="https://media.vlpt.us/images/underlier12/post/2475e784-41d0-4966-963b-9c14dbef64f7/image.png" alt="img" /></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#%EC%BB%B4%ED%93%A8%ED%84%B0-%EA%B3%B5%ED%95%99" class="page__taxonomy-item" rel="tag">컴퓨터 공학</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0" class="page__taxonomy-item" rel="tag">컴퓨터구조</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#%EC%BB%B4%ED%93%A8%ED%84%B0-%EA%B3%B5%ED%95%99" class="page__taxonomy-item" rel="tag">컴퓨터 공학</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-05-11T00:00:00+00:00">May 11, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5B%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0%5D12_%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C+%EB%AA%85%EB%A0%B9%EC%96%B4+%EC%A7%91%ED%95%A9%EA%B3%BC+%EA%B5%AC%EC%84%B1%20http%3A%2F%2Flocalhost%3A4000%2F%25EC%25BB%25B4%25ED%2593%25A8%25ED%2584%25B0%2520%25EA%25B3%25B5%25ED%2595%2599%2F%25EC%25BB%25B4%25ED%2593%25A8%25ED%2584%25B0%25EA%25B5%25AC%25EC%25A1%25B0_12%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F%25EC%25BB%25B4%25ED%2593%25A8%25ED%2584%25B0%2520%25EA%25B3%25B5%25ED%2595%2599%2F%25EC%25BB%25B4%25ED%2593%25A8%25ED%2584%25B0%25EA%25B5%25AC%25EC%25A1%25B0_12%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F%25EC%25BB%25B4%25ED%2593%25A8%25ED%2584%25B0%2520%25EA%25B3%25B5%25ED%2595%2599%2F%25EC%25BB%25B4%25ED%2593%25A8%25ED%2584%25B0%25EA%25B5%25AC%25EC%25A1%25B0_12%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/%EC%BB%B4%ED%93%A8%ED%84%B0%20%EA%B3%B5%ED%95%99/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0_11/" class="pagination--pager" title="[컴퓨터구조]11_마이크로 명령과 ALU
+">Previous</a>
+    
+    
+      <a href="/%EC%BB%B4%ED%93%A8%ED%84%B0%20%EA%B3%B5%ED%95%99/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0_13/" class="pagination--pager" title="[컴퓨터구조]13_마이크로 명령 - 입출력과 인터럽트
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/pseudo-selector-css-variable/" rel="permalink">[TIL] <code class="language-plaintext highlighter-rouge">:root</code> 가상 선택자와 CSS 변수
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 20 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day18/" rel="permalink">[TIL] <code class="language-plaintext highlighter-rouge">withRouter</code> 정리
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 16 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day17-1/" rel="permalink">[TIL] React의 특징
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 15 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day16/" rel="permalink">[TIL] 고차함수
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 14 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="http://github.com/kimdoyeonn" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Doyeon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/%EC%BB%B4%ED%93%A8%ED%84%B0%20%EA%B3%B5%ED%95%99/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0_12/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/%EC%BB%B4%ED%93%A8%ED%84%B0%20%EA%B3%B5%ED%95%99/컴퓨터구조_12"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://doyeon311-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

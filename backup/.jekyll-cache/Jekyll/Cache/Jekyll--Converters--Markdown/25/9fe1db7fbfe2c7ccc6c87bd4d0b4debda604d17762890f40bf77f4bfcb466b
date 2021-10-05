@@ -1,0 +1,159 @@
+I"�%<p>참고: 코드로 배우는 스프링 웹 프로젝트</p>
+
+<ul>
+  <li>
+    <p>기본 동작 방식</p>
+
+    <ul>
+      <li>서블릿의 여러 종류의 필터와 인터셉터를 이용해서 처리됩니다.</li>
+      <li>필터: 서블릿에서 말하는 단순한 필터</li>
+      <li>
+        <p>인터셉터(Interceptor): 스프링에서 필터와 유사한 역할</p>
+      </li>
+      <li>필터와 인터셉터는 특정한 서블릿이나 컨트롤 의 접근에 관여한다는 점에서는 유사하지만 결정적인 차이를 구분하자면 필터는 스프링과 무관하게 서블릿 자원이고, 인터셉터는 스프링의 빈으로 관리되면서 스프링의 컨텍스트 내에 속한다는 차이 입니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://t1.daumcdn.net/cfile/tistory/9983FB455BB4E5D30C" alt="img" /></p>
+
+<ul>
+  <li>인터셉터는 스프링의 내부에서 컨트롤러를 호출할 때 관여하기 때문에 스프링의 컨텍스트 내에 있는 모든 자원을 활용할 수 있습니다.</li>
+  <li>스프링 시큐리티를 이용하게 되면 인터셉터와 필터를 이용하면서 별도의 컨텍스트를 생성하여 처리됩니다.</li>
+  <li>스프링 시큐리티는 현재 동작하는 스프링 컨텍스트 내에서 동작하기 때문에 이미 컨텍스트에 포함된 여러 빈들을 같이 이용하여 다양한 방식의 인증 처리가 가능하도록 설계할 수 있습니다.</li>
+</ul>
+
+<h3 id="설정">설정</h3>
+
+<ul>
+  <li>pom.xml에 추가</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="c">&lt;!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core --&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework.security<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-security-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>5.0.8.RELEASE<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+
+		
+<span class="c">&lt;!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web --&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework.security<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-security-web<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>5.0.8.RELEASE<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+
+<span class="c">&lt;!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config --&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework.security<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-security-config<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>5.0.8.RELEASE<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>security-context.xml 생성</p>
+
+    <p>스프링 시큐리티는 단독으로 설정할 수 있기 때문에 기존의 root-context.xml이나 servlet-context.xml과는 별도로 security-context.xml을 따로 작성하는 것이 좋다.</p>
+
+    <ul>
+      <li>생성 후 네임스페이스에서 security 항목을 체크한다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>web.xml 설정</p>
+
+    <ul>
+      <li>스프링 시큐리티가 스프링 MVC에서 사용되기 위해서는 필터를 이용해서 스프링 동작에 관여하도록 설정합니다.</li>
+    </ul>
+
+    <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;web-app</span> <span class="na">version=</span><span class="s">"2.5"</span> <span class="na">xmlns=</span><span class="s">"http://java.sun.com/xml/ns/javaee"</span>
+	<span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+	<span class="na">xsi:schemaLocation=</span><span class="s">"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span><span class="nt">&gt;</span>
+  
+	<span class="c">&lt;!-- The definition of the Root Spring Container shared by all Servlets and Filters --&gt;</span>
+	<span class="nt">&lt;context-param&gt;</span>
+		<span class="nt">&lt;param-name&gt;</span>contextConfigLocation<span class="nt">&lt;/param-name&gt;</span>
+		<span class="nt">&lt;param-value&gt;</span>/WEB-INF/spring/root-context.xml<span class="nt">&lt;/param-value&gt;</span>
+	<span class="nt">&lt;/context-param&gt;</span>
+  	
+	<span class="c">&lt;!-- Creates the Spring Container shared by all Servlets and Filters --&gt;</span>
+	<span class="nt">&lt;listener&gt;</span>
+		<span class="nt">&lt;listener-class&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="nt">&lt;/listener-class&gt;</span>
+	<span class="nt">&lt;/listener&gt;</span>
+  
+	<span class="c">&lt;!-- Processes application requests --&gt;</span>
+	<span class="nt">&lt;servlet&gt;</span>
+		<span class="nt">&lt;servlet-name&gt;</span>appServlet<span class="nt">&lt;/servlet-name&gt;</span>
+		<span class="nt">&lt;servlet-class&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="nt">&lt;/servlet-class&gt;</span>
+		<span class="nt">&lt;init-param&gt;</span>
+			<span class="nt">&lt;param-name&gt;</span>contextConfigLocation<span class="nt">&lt;/param-name&gt;</span>
+			<span class="nt">&lt;param-value&gt;</span>
+				/WEB-INF/spring/appServlet/servlet-context.xml
+				/WEB-INF/spring/spring-security.xml
+			<span class="nt">&lt;/param-value&gt;</span>
+		<span class="nt">&lt;/init-param&gt;</span>
+		<span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
+	<span class="nt">&lt;/servlet&gt;</span>
+  		
+	<span class="nt">&lt;servlet-mapping&gt;</span>
+		<span class="nt">&lt;servlet-name&gt;</span>appServlet<span class="nt">&lt;/servlet-name&gt;</span>
+		<span class="nt">&lt;url-pattern&gt;</span>/<span class="nt">&lt;/url-pattern&gt;</span>
+	<span class="nt">&lt;/servlet-mapping&gt;</span>
+  
+	<span class="c">&lt;!-- 한글 인코딩 Start --&gt;</span>
+	<span class="nt">&lt;filter&gt;</span>
+		<span class="nt">&lt;filter-name&gt;</span>encodingFilter<span class="nt">&lt;/filter-name&gt;</span>
+		<span class="nt">&lt;filter-class&gt;</span>
+			org.springframework.web.filter.CharacterEncodingFilter
+		<span class="nt">&lt;/filter-class&gt;</span>
+		<span class="nt">&lt;init-param&gt;</span>
+			<span class="nt">&lt;param-name&gt;</span>encoding<span class="nt">&lt;/param-name&gt;</span>
+			<span class="nt">&lt;param-value&gt;</span>UTF-8<span class="nt">&lt;/param-value&gt;</span>
+		<span class="nt">&lt;/init-param&gt;</span>
+		<span class="nt">&lt;init-param&gt;</span>
+			<span class="nt">&lt;param-name&gt;</span>forceEncoding<span class="nt">&lt;/param-name&gt;</span>
+			<span class="nt">&lt;param-value&gt;</span>true<span class="nt">&lt;/param-value&gt;</span>
+		<span class="nt">&lt;/init-param&gt;</span>
+	<span class="nt">&lt;/filter&gt;</span>
+	<span class="nt">&lt;filter-mapping&gt;</span>
+		<span class="nt">&lt;filter-name&gt;</span>encodingFilter<span class="nt">&lt;/filter-name&gt;</span>
+		<span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+	<span class="nt">&lt;/filter-mapping&gt;</span>
+	<span class="c">&lt;!-- 한글 인코딩 End --&gt;</span>
+<span class="nt">&lt;/web-app&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><strong>인증(Authentication)</strong></p>
+
+<ul>
+  <li>쉽게 말해서 ‘자신을 증명하는 것’</li>
+  <li>자기 스스로가 무언가 자신을 증명할 만한 자료를 제시하는 것</li>
+</ul>
+
+<p><strong>권한(Authorization)</strong></p>
+
+<ul>
+  <li>남에 의해 자격이 부여된다</li>
+</ul>
+
+<h3 id="authenticationmanager인증-매니저">AuthenticationManager(인증 매니저)</h3>
+
+<ul>
+  <li>다양한 방식의 인증을 처리할 수 있는 구조로 되어 있음</li>
+  <li>AuthenticationManager &lt;- ProviderManager &lt;- DaoAuthenticationProvider,,,,</li>
+  <li>
+    <p>ProviderManager는 인증에 대한 처리를 AuthenticationProvider라는 타입의 객체를 이용해서 처리를 위임합니다.</p>
+  </li>
+  <li>
+    <p>AuthenticationProvider(인증 제공자)는 실제 인증 작업을 진행합니다. 이때 인증된 정보에 권한에 대한 정보를 같이 전달하게 되는데 이 처리는 UserDetailsService라는 존재와 관련 있습니다. UserDetailsService 인터페이스의 구현체는 실제로 사용자의 정보와 사용자가 가진 권한의 정보를 처리해서 반환하게 됩니다.</p>
+  </li>
+  <li>개발자가 스프링 시큐리티를 커스터마이징 하는 방식은 크게 AuthenticationProvider를 직접 구현하는 방식과 실제 처리를 담당하는  UserDetailsService를 구현하는 방식으로 나누어집니다.</li>
+  <li>대부분의 경우에는 UserDetailsService를 구현하는 형태를 사용하는 것만으로도 충분하지만, 새로운 프로토콜이나 인증 구현 방식을 직접 구현하는 경우에는 AuthenticationProvider 인터페이스를 직접 구현해서 사용합니다.</li>
+</ul>
+:ET

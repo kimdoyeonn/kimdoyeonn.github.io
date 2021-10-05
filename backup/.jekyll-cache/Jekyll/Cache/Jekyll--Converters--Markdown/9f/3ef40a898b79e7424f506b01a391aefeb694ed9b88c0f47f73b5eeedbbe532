@@ -1,0 +1,48 @@
+I"�<p>Closure는 두 개의 함수로 만들어진 환경으로 이루어진 특별한 객체의 한 종류이다. 여기서 환경이라 함은 클로저가 생성될 때 그 범위에 있던 여러 지역 변수들이 포함된 <code class="language-plaintext highlighter-rouge">context</code>를 말한다. 이 클로저를 통해서 자바스크립트에는 없는 비공개(private) 속성 메소드, 공개 속성/메소드를 구현할 수 있는 방안을 마련할 수 있다.</p>
+
+<h3 id="클로저-생성하기">클로저 생성하기</h3>
+
+<p>다음은 클로저가 생성되는 조건이다.</p>
+
+<ol>
+  <li>내부 함수가 익명 함수로 되어 외부 함수의 반환값으로 사용된다.</li>
+  <li>내부 함수는 외부 함수의 실행 횐경(execution enviroment)에서 실행된다.</li>
+  <li>내부 함수에서 사용되는 변수 x는 외부 함수의 변수 스코프에 있다.</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">outer</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">closure</span><span class="dl">'</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">inner</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">inner</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="nx">outer</span><span class="p">();</span>
+<span class="c1">// closure</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">outer</code> 함수를 실행시키는 <code class="language-plaintext highlighter-rouge">context</code>에는 <code class="language-plaintext highlighter-rouge">name</code>이라는 변수가 존재하지 않는다는 것을 확인할 수 있다. 비슷한 맥락에서 코드를 조금 변경해보면</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Warning</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">outer</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">closure</span><span class="dl">'</span><span class="p">;</span>
+    <span class="k">return</span> <span class="kd">function</span> <span class="nx">inner</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">inner</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">callFunc</span> <span class="o">=</span> <span class="nx">outer</span><span class="p">();</span>
+<span class="nx">callFunc</span><span class="p">();</span>
+<span class="c1">// closure</span>
+</code></pre></div></div>
+
+<p>위 코드에서 <code class="language-plaintext highlighter-rouge">callFunc</code>를 클로저라고 한다. <code class="language-plaintext highlighter-rouge">callFunc</code> 호출에 의해 <code class="language-plaintext highlighter-rouge">name</code>이라는 값이 console에 찍히는데, 찍히는 값은 <code class="language-plaintext highlighter-rouge">Warning</code>이 아니라 <code class="language-plaintext highlighter-rouge">closure</code>라는 값이다. 즉, <code class="language-plaintext highlighter-rouge">outer</code> 함수의 context에 속해 있는 변수를 참조하는 것이다. 여기서 <code class="language-plaintext highlighter-rouge">outer</code> 함수의 지역변수로 존재하는 <code class="language-plaintext highlighter-rouge">name</code> 변수를 <code class="language-plaintext highlighter-rouge">free variable(자유변수)</code>라고 한다.</p>
+
+<p>이처럼 외부 변수 호출이 종료되더라도 외부 함수의 지역 변수 및 변수 스코프 객체의 체인 관계를 유지할 수 있는 구조를 클로저라고 한다. 보다 정확히는 외부 함수에 의해 반환되는 내부 함수를 가리키는 말이다.</p>
+
+<hr />
+
+<p>출처</p>
+
+<p>https://github.com/JaeYeopHan/Interview_Question_for_Beginner/tree/master/JavaScript#closure</p>
+:ET

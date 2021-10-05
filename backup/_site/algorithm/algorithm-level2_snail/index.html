@@ -1,0 +1,763 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[algorithm]level2 소수 찾기 - 개발일기</title>
+<meta name="description" content="개발일기">
+
+
+  <meta name="author" content="Doyeon">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="개발일기">
+<meta property="og:title" content="[algorithm]level2 소수 찾기">
+<meta property="og:url" content="http://localhost:4000/algorithm/algorithm-level2_snail/">
+
+
+  <meta property="og:description" content="개발일기">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-01-10T00:00:00+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/algorithm/algorithm-level2_snail/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Doyeon",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="개발일기 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발일기
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/TIL/">TIL</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#algorithm" itemprop="item"><span itemprop="name">Algorithm</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">[algorithm]level2 소수 찾기</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Doyeon</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://doyeonu.tistory.com/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Tistory</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/kimdoyeonn" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:doyeonkim.dyk@gmail.com">
+            <meta itemprop="email" content="doyeonkim.dyk@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[algorithm]level2 소수 찾기">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2021-01-10T00:00:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[algorithm]level2 소수 찾기
+</h1>
+          <!--
+            doyeon311 :
+              싱글페이지 (post) 에 제목 밑에 Updated 시간 표시
+              기존에는 read_time이 표기. read_time -> date 변경 
+            
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+          
+         -->
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>참고: <a href="https://programmers.co.kr/learn/courses/30/lessons/68645">프로그래머스</a></p>
+
+<h6 id="문제-설명">문제 설명</h6>
+
+<p>정수 n이 매개변수로 주어집니다. 다음 그림과 같이 밑변의 길이와 높이가 n인 삼각형에서 맨 위 꼭짓점부터 반시계 방향으로 달팽이 채우기를 진행한 후, 첫 행부터 마지막 행까지 모두 순서대로 합친 새로운 배열을 return 하도록 solution 함수를 완성해주세요.</p>
+
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/e1e53b93-dcdf-446f-b47f-e8ec1292a5e0/examples.png" alt="examples.png" /></p>
+
+<hr />
+
+<h5 id="제한사항">제한사항</h5>
+
+<ul>
+  <li>n은 1 이상 1,000 이하입니다.</li>
+</ul>
+
+<hr />
+
+<h5 id="입출력-예">입출력 예</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>n</th>
+      <th>result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>4</td>
+      <td><code class="language-plaintext highlighter-rouge">[1,2,9,3,10,8,4,5,6,7]</code></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><code class="language-plaintext highlighter-rouge">[1,2,12,3,13,11,4,14,15,10,5,6,7,8,9]</code></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><code class="language-plaintext highlighter-rouge">[1,2,15,3,16,14,4,17,21,13,5,18,19,20,12,6,7,8,9,10,11]</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="내-풀이">내 풀이</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="p">[]</span>
+	
+    <span class="c1"># 삼각형 형태의 리스트 temp[0] = 1개, temp[1] = 2개, temp[2] = 3개...
+</span>    <span class="n">temp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">cnt</span> <span class="k">for</span> <span class="n">cnt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+	<span class="c1"># 방향이 바뀌는 패턴을 넣어준 리스트 n, n-1, n-2... 패턴으로 방향이 바뀌고, 3이 한바퀴
+</span>    <span class="n">count</span> <span class="o">=</span> <span class="p">[</span><span class="n">num</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    
+    <span class="c1"># 진행 방향에 따른 인덱스가 바뀌는 패턴을 dict형에 저장
+</span>    <span class="n">move</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">'down'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="s">'right'</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="s">'up'</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="p">}</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>	<span class="c1"># 삼각형 배열에서 패턴을 가지고 회전하면서 값을 넣어줄 인덱스
+</span>    <span class="n">number</span> <span class="o">=</span> <span class="mi">1</span>	<span class="c1"># 리스트에 들어갈 숫자
+</span>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cnt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cnt</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">dire</span> <span class="o">=</span> <span class="s">'down'</span>
+            <span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">dire</span> <span class="o">=</span> <span class="s">'right'</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dire</span> <span class="o">=</span> <span class="s">'up'</span>
+            <span class="n">x</span> <span class="o">+=</span> <span class="n">move</span><span class="p">[</span><span class="n">dire</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">y</span> <span class="o">+=</span> <span class="n">move</span><span class="p">[</span><span class="n">dire</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">temp</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">number</span>
+            <span class="n">number</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">temp</span><span class="p">:</span>
+        <span class="n">answer</span> <span class="o">+=</span> <span class="n">t</span>
+    <span class="k">return</span> <span class="n">answer</span>
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/53068706/107882599-8f1a2980-6f2d-11eb-9da6-8c5133224cf8.jpg" alt="snail_1" style="zoom:33%;" /></p>
+
+<p>회전하는 인덱스의 패턴을 알아내어 삼각형을 달팽이 형태로 돌 수 있게 만들었다. 회전하는 형태로 만들어주기 위해 어떤 방향으로 움직일지, 그 방향을 어떻게, 언제 바꿔줄지를 생각해야했다.</p>
+
+<p>어떤 방향으로 움직일지 찾아내는 것은 직선으로 움직이기 때문에 알아내기 어렵지 않았다. 이동은 크게 아래로 이동, 오른쪽으로 이동, 대각선 위로 이동 이렇게 세가지로 나뉜다. 어떻게 이동하는지 패턴을 살펴보면  [1, 0], [0, 1], [-1, -1]으로 움직인다는 것을 알 수 있다.(그림 참조) 그리고 방향을 바꿔주기 위해 딕셔너리에 이동방향의 키워드를 key로 가지는 리스트를 넣어주었다.</p>
+
+<p>방향을 바꿔주는 타이밍은 방향이 바뀌는 패턴이 n, n-1, n-2, n-3….1의 형태를 가진다는 것과 한바퀴가 3개의 패턴을 가지고 반복된다는 것을 이용하였다. 리스트의 인덱스에 나머지 연산을 사용하여 0일 때 n만큼 이동한 후, 1일 때 방향을 바뀌어 n-1만큼 이동하고, 2일 때 n-2를 이동, 다시 0일 때 n-3만큼 이동…. 을 반복했고  최종적으로 인덱스가 회전하는 형태를 구현할 수 있었다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#algorithm" class="page__taxonomy-item" rel="tag">algorithm</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#programmers" class="page__taxonomy-item" rel="tag">programmers</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">algorithm</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-01-10T00:00:00+00:00">January 10, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5Balgorithm%5Dlevel2+%EC%86%8C%EC%88%98+%EC%B0%BE%EA%B8%B0%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Falgorithm-level2_snail%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Falgorithm-level2_snail%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Falgorithm-level2_snail%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/algorithm-9465/" class="pagination--pager" title="[algorithm]9465 스티커
+">Previous</a>
+    
+    
+      <a href="/db/DB-_DBMS_RDBMS/" class="pagination--pager" title="[DB]DBMS와 RDBMS
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/pseudo-selector-css-variable/" rel="permalink">[TIL] <code class="language-plaintext highlighter-rouge">:root</code> 가상 선택자와 CSS 변수
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 20 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day18/" rel="permalink">[TIL] <code class="language-plaintext highlighter-rouge">withRouter</code> 정리
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 16 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day17-1/" rel="permalink">[TIL] React의 특징
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 15 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day16/" rel="permalink">[TIL] 고차함수
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 14 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="http://github.com/kimdoyeonn" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Doyeon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/algorithm/algorithm-level2_snail/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/algorithm/[algorithm]level2_snail"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://doyeon311-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,95 @@
+I"�<ul>
+  <li>참고: <a href="https://tutorial.djangogirls.org/ko/django_orm/">장고걸스</a></li>
+</ul>
+
+<h3 id="orm">ORM</h3>
+
+<ul>
+  <li>각 언어별로 있는 기능</li>
+  <li>원래 데이터베이스 서버의 어떤 데이터를 조회, 추가, 수정, 삭제 등을 할 때는 sql이라는 언어를 사용해야하는데 sql을 사용하지 않고 파이썬이라면 파이썬 코드로, 자바라면 자바 코드로, 각 언어 그대로를 활용해서 sql 코드를 만들어 내는 라이브러리가 있다. 그걸 ORM이라고 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Django Model</code>이 장고의 ORM이다.</li>
+</ul>
+
+<h3 id="쿼리셋">쿼리셋</h3>
+
+<ul>
+  <li>전달받은 모델의 객체 목록</li>
+  <li>쿼리셋은 데이터베이스로부터 데이터를 읽고, 필터를 걸거나 정렬한다.</li>
+</ul>
+
+<h3 id="장고-쉘">장고 쉘</h3>
+
+<p>로컬 콘솔에서</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>myvenv/Scripts/activate
+(myvenv) python manage.py shell
+.
+.
+.
+(InteractiveConsole)
+&gt;&gt;&gt;
+</code></pre></div></div>
+
+<p>위와 같은 문자열이 뜨면 장고 인터렉티브 콘솔(interactive console)로 들어온 것이다. 파이썬 프롬프트와 비슷하지만 장고만의 기능을 사용할 수 있는 곳이기도 하다. 파이썬의 모든 명령어도 사용할 수 있음</p>
+
+<h3 id="모든-객체-조회하기">모든 객체 조회하기</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">blog.models</span> <span class="kn">import</span> <span class="n">Post</span>
+<span class="n">Post</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">all</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="객체-생성하기">객체 생성하기</h3>
+
+<p>데이터베이스에 새 글 객체를 저장하는 방법</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="n">User</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">all</span><span class="p">()</span> <span class="c1"># &lt;QuerySet [&lt;User: doyeon&gt;, &lt;User: yeon&gt;]&gt;
+</span><span class="n">me</span> <span class="o">=</span> <span class="n">User</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s">'doyeon'</span><span class="p">)</span>
+<span class="n">Post</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">auther</span><span class="o">=</span><span class="n">me</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">'Sample title'</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'Text'</span><span class="p">)</span>
+<span class="n">Post</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">all</span><span class="p">()</span> <span class="c1"># 게시물이 만들어졌는지 확인
+</span></code></pre></div></div>
+
+<h3 id="필터링하기">필터링하기</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Post</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">auther</span><span class="o">=</span><span class="n">me</span><span class="p">)</span> <span class="c1"># 작성자가 me인 게시글
+</span><span class="n">Post</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">title__contains</span><span class="o">=</span><span class="s">'title'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>title과 contains 사이에는 언더바 2개가 들어간다.</p>
+
+  <p>장고 ORM은 필드 이름(‘title’)과 연산자와 필터(‘contains’)를 언더바 두개를 사용하여 구분한다.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>게시일(<code class="language-plaintext highlighter-rouge">published_date</code>)로 과거에 작성한 글을 필터링</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+  
+<span class="n">post</span> <span class="o">=</span> <span class="n">Post</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">'Sample title'</span><span class="p">)</span>
+<span class="n">post</span><span class="p">.</span><span class="n">publish</span><span class="p">()</span> <span class="c1"># 게시
+</span>  
+<span class="n">Post</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">published_date__lte</span><span class="o">=</span><span class="n">timezone</span><span class="p">.</span><span class="n">now</span><span class="p">())</span> <span class="c1"># 먼저 게시하려는 게시물의 인스턴스를 얻어야한다.
+# lte = less than equal 작거나 같다
+# published_date__lte = timezone.now() 발생된 시간이 현재 시간보다 작거나 같은 경우를 필터링해서 보여준다.
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="정렬하기">정렬하기</h3>
+
+<p><code class="language-plaintext highlighter-rouge">created_date</code>를 사용하여 필드를 정렬</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Post</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'created_date'</span><span class="p">)</span> <span class="c1"># 오름차순 정렬
+</span><span class="n">Post</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'-created_date'</span><span class="p">)</span> <span class="c1"># '-'를 붙여줄 경우 내림차순 정렬
+</span></code></pre></div></div>
+
+<h3 id="쿼리셋-연결하기">쿼리셋 연결하기</h3>
+
+<p>쿼리셋들을 함께 연결(chaining)하여 사용할 수 있다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Post</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">published_date__lte</span><span class="o">=</span><span class="n">timezone</span><span class="p">.</span><span class="n">now</span><span class="p">()).</span><span class="n">oreder_by</span><span class="p">(</span><span class="s">'published_date'</span><span class="p">)</span>
+</code></pre></div></div>
+
+:ET

@@ -1,0 +1,862 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[CSS]그리드(grid)란 - 개발일기</title>
+<meta name="description" content="개발일기">
+
+
+  <meta name="author" content="Doyeon">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="개발일기">
+<meta property="og:title" content="[CSS]그리드(grid)란">
+<meta property="og:url" content="http://localhost:4000/css/CSS-grid/">
+
+
+  <meta property="og:description" content="개발일기">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-02-14T00:00:00+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/css/CSS-grid/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Doyeon",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="개발일기 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발일기
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/TIL/">TIL</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#css" itemprop="item"><span itemprop="name">Css</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">[CSS]그리드(grid)란</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Doyeon</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://doyeonu.tistory.com/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Tistory</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/kimdoyeonn" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:doyeonkim.dyk@gmail.com">
+            <meta itemprop="email" content="doyeonkim.dyk@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[CSS]그리드(grid)란">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2021-02-14T00:00:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[CSS]그리드(grid)란
+</h1>
+          <!--
+            doyeon311 :
+              싱글페이지 (post) 에 제목 밑에 Updated 시간 표시
+              기존에는 read_time이 표기. read_time -> date 변경 
+            
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+          
+         -->
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>참고: <a href="https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Grid_Layout">MDN</a>, <a href="https://opentutorials.org/course/3086">생활코딩</a> https://heropy.blog/2019/08/17/css-grid/</p>
+
+<p>CSS Grid Layout은 페이지를 여러 주요 영역으로 나누거나, 크기와 위치 및 문서 계층 구조의 관점에서 HTML 기본 요소를 작성된 컨트롤 간의 관계를 정의하는 데 아주 탁월합니다.</p>
+
+<p>테이블과 마찬가지로 그리드 레이아웃은 세로 열(column)과 가로 행(row)을 기준으로 요소를 정렬할 수 있습니다. 하지만 태그들이 복잡하게 얽혀있는 테이블과 달리 그리드는 다양한 레이아웃을 훨씬 더 쉽게 구현할 수 있습니다. 예를 들어, 그리드 컨테이너 속 자식 요소를 마치 CSS로 일일이 위치를 지정해 준 것처럼 실제로 겹치게 층을 지면서 자리를 잡도록 각 요소의 위치를 지정해 줄 수도 있습니다.(!)</p>
+
+<blockquote>
+  <p>생활코딩에서 블럭속성태그를 열 별로 정리하는 간단한 실습만 해보고 신기해서 정리하는 중인데, MDN에 나와있는 예시가 너무 신기하다. 난 지금까지 원시인이었던 것임🙄</p>
+</blockquote>
+
+<p>CSS Grid는 CSS Flex와 같이 Container와 Item이라는 두 가지 개념으로 구분되어 있습니다. Container는 Item을 감싸는 부모 요소이며, 그 안에서 각 Item을 배치할 수 있습니다.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">#grid</span> <span class="p">{</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">5px</span> <span class="nb">solid</span> <span class="no">pink</span><span class="p">;</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="n">grid</span><span class="p">;</span>
+    <span class="py">grid-template-columns</span><span class="p">:</span> <span class="m">150px</span> <span class="m">1</span><span class="n">fr</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">div</span> <span class="p">{</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">5px</span> <span class="nb">solid</span> <span class="no">gray</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"grid"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;</span>NAVIDATION<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;</span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor optio itaque quasi maxime tempore molestiae expedita nemo cum suscipit, impedit ad distinctio illo voluptatibus alias a iusto deserunt totam beatae!<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/53068706/107882632-dbfe0000-6f2d-11eb-9d59-2c71e18e70c5.png" alt="grid_ex1" style="zoom:67%;" /></p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.wrapper</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="n">grid</span><span class="p">;</span>
+    <span class="py">grid-template-columns</span><span class="p">:</span> <span class="nb">repeat</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="n">fr</span><span class="p">);</span>
+    <span class="py">grid-gap</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="py">grid-auto-rows</span><span class="p">:</span> <span class="n">minmax</span><span class="p">(</span><span class="m">100px</span><span class="p">,</span> <span class="nb">auto</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nc">.one</span><span class="p">{</span>
+    <span class="nl">grid-column</span><span class="p">:</span> <span class="m">1</span><span class="p">/</span><span class="m">3</span><span class="p">;</span>
+    <span class="nl">grid-row</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.two</span><span class="p">{</span>
+    <span class="nl">grid-column</span><span class="p">:</span> <span class="m">2</span><span class="p">/</span><span class="m">4</span><span class="p">;</span>
+    <span class="nl">grid-row</span><span class="p">:</span><span class="m">1</span><span class="p">/</span><span class="m">3</span>
+<span class="p">}</span>
+<span class="nc">.three</span><span class="p">{</span>
+    <span class="nl">grid-column</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+    <span class="nl">grid-row</span><span class="p">:</span> <span class="m">2</span><span class="p">/</span><span class="m">5</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.four</span><span class="p">{</span>
+    <span class="nl">grid-column</span><span class="p">:</span> <span class="m">3</span><span class="p">;</span>
+    <span class="nl">grid-row</span><span class="p">:</span> <span class="m">3</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.five</span><span class="p">{</span>
+    <span class="nl">grid-column</span><span class="p">:</span> <span class="m">2</span><span class="p">;</span>
+    <span class="nl">grid-row</span><span class="p">:</span><span class="m">4</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.six</span><span class="p">{</span>
+    <span class="nl">grid-column</span><span class="p">:</span> <span class="m">3</span><span class="p">;</span>
+    <span class="nl">grid-row</span><span class="p">:</span> <span class="m">4</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.wrapper</span> <span class="nt">div</span><span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="no">orange</span><span class="p">;</span>
+    <span class="nl">opacity</span><span class="p">:</span> <span class="m">0.5</span><span class="p">;</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"wrapper"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"one"</span><span class="nt">&gt;</span>One<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"two"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"three"</span><span class="nt">&gt;</span>Three<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"four"</span><span class="nt">&gt;</span>Four<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"five"</span><span class="nt">&gt;</span>Five<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"six"</span><span class="nt">&gt;</span>Six<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/53068706/107882649-ecae7600-6f2d-11eb-8fa2-c037979d29bd.png" alt="grid_ex2" style="zoom:67%;" /></p>
+
+<h2 id="grid-container-속성">Grid Container 속성</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>속성</th>
+      <th>의미</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>display</td>
+      <td>그리드 컨테이너를 정의</td>
+    </tr>
+    <tr>
+      <td>grid-template-rows</td>
+      <td>명시적 행의 크기 정의</td>
+    </tr>
+    <tr>
+      <td>grid-template-columns</td>
+      <td>명시적 열의 크기를 정의</td>
+    </tr>
+    <tr>
+      <td>gap(grid-gap)</td>
+      <td><code class="language-plaintext highlighter-rouge">row-gap</code>, <code class="language-plaintext highlighter-rouge">column-gap</code>의 단축 속성<br />행과 행, 열과 열 사이의 간격을 정의</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="grid-item-속성">Grid Item 속성</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>속성</th>
+      <th>의미</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>grid-column</td>
+      <td><code class="language-plaintext highlighter-rouge">grid-column-start</code>, <code class="language-plaintext highlighter-rouge">grid-column-end</code>의 단축속성(<code class="language-plaintext highlighter-rouge">시작</code>이나 <code class="language-plaintext highlighter-rouge">시작/끝</code>으로 작성)</td>
+    </tr>
+    <tr>
+      <td>grid-row</td>
+      <td><code class="language-plaintext highlighter-rouge">grid-row-start</code>, <code class="language-plaintext highlighter-rouge">grid-row-end</code>의 단축속성(<code class="language-plaintext highlighter-rouge">시작</code>이나 <code class="language-plaintext highlighter-rouge">시작/끝</code>으로 작성)</td>
+    </tr>
+    <tr>
+      <td>grid-auto-columns</td>
+      <td>암시적 행의 크기를 정의합니다.<br />아이템이 <code class="language-plaintext highlighter-rouge">grid-template-rows</code>로 정의한 명시적 행 외부에 배치되는 경우<br /> 암시적 행의 크기가 적용됩니다.</td>
+    </tr>
+    <tr>
+      <td>grid-auto-rows</td>
+      <td>암시적 열의 크기를 정의합니다.<br />아이템이 <code class="language-plaintext highlighter-rouge">grid-template-columns</code>로 정의한 명시적 열 외부에 배치되는 경우<br />암시적 열의 크기가 적용됩니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="css-함수">CSS 함수</h2>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">repeat()</code></p>
+
+    <p>만약 <code class="language-plaintext highlighter-rouge">1200px</code> 너비의 12 컬럼 그리드 탬플릿을 정의하려고 하면 다음과 같이 작성할 수 있다.</p>
+
+    <p><code class="language-plaintext highlighter-rouge">grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px</code></p>
+
+    <p>하지만 <code class="language-plaintext highlighter-rouge">repeat()</code>을 사용하면 다음과 같이 간소화할 수 있다.</p>
+
+    <p><code class="language-plaintext highlighter-rouge">grid-template-columns: repeat(12, 100px)</code></p>
+
+    <p>컬럼의 크기는 <code class="language-plaintext highlighter-rouge">fr</code> 단위를 사용해 비율로 지정할 수도 있다. 각 컬럼은 비율에 맞게 출력되기 때문에 컨테이너의 너비가 가변해도 열 크기를 수정할 필요가 없다.</p>
+
+    <p><code class="language-plaintext highlighter-rouge">grid-template-columns: repeat(12, 1fr)</code></p>
+
+    <p><code class="language-plaintext highlighter-rouge">repeat()</code>함수는 두번째 인수를 반복하기 때문에 다음과 같이 활용할 수 있다.</p>
+
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">grid-template-columns</span><span class="o">:</span> <span class="nt">repeat</span><span class="o">(</span><span class="err">4</span><span class="o">,</span> <span class="err">100</span><span class="nt">px</span> <span class="err">200</span><span class="nt">px</span> <span class="err">50</span><span class="nt">px</span><span class="o">)</span>
+<span class="nt">grid-template-columns</span><span class="o">:</span> <span class="nt">repeat</span><span class="o">(</span><span class="err">4</span><span class="o">,</span> <span class="err">1</span><span class="nt">fr</span> <span class="err">2</span><span class="nt">fr</span> <span class="err">3</span><span class="nt">fr</span><span class="o">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">minmax()</code></p>
+
+    <p>행/열의 ‘‘최소/최대 크기’‘를 정의합니다.</p>
+
+    <p>첫번째 인수는 최솟값이고 두번째 인수는 최댓값이다.</p>
+
+    <p><code class="language-plaintext highlighter-rouge">grid-template-rows</code>, <code class="language-plaintext highlighter-rouge">grid-template-columns</code>, <code class="language-plaintext highlighter-rouge">grid-auto-rows</code>, <code class="language-plaintext highlighter-rouge">grid-auto-columns</code>에서 사용되며 일반 요소에 <code class="language-plaintext highlighter-rouge">min-width</code>와 <code class="language-plaintext highlighter-rouge">max-width</code> 속성을 동시 지정하는 것과 유사하다.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grid-template-columns: minmax(100px, 1fr) minmax(200px, 1fr)
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><img src="https://heropy.blog/images/screenshot/css-grid/minmax-1.jpg" alt="CSS Grid" style="zoom:67%;" /></p>
+
+<p>암시적 행/열 크기를 좀 더 유연하게 사용할 수도 있습니다.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">grid-auto-rows</span><span class="o">:</span> <span class="nt">minmax</span><span class="o">(</span><span class="err">200</span><span class="nt">px</span><span class="o">,</span> <span class="nt">auto</span><span class="o">);</span>
+<span class="nt">grid-auto-columns</span><span class="o">:</span> <span class="nt">minmax</span><span class="o">(</span><span class="err">300</span><span class="nt">px</span><span class="o">,</span> <span class="nt">auto</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>위의 예제는 행/열의 크기를 최소 200px/300px으로 지정하였고 <code class="language-plaintext highlighter-rouge">auto</code>를 통해 그리드 아이템의 크기에 따라 확장될 수 있습니다.</p>
+
+<p>자세한 속성과 기능은 <a href="https://heropy.blog/2019/08/17/css-grid/">여기서</a> 찾아보기</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#css" class="page__taxonomy-item" rel="tag">CSS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#grid" class="page__taxonomy-item" rel="tag">grid</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#html" class="page__taxonomy-item" rel="tag">html</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#css" class="page__taxonomy-item" rel="tag">CSS</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-02-14T00:00:00+00:00">February 14, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BCSS%5D%EA%B7%B8%EB%A6%AC%EB%93%9C%28grid%29%EB%9E%80%20http%3A%2F%2Flocalhost%3A4000%2Fcss%2FCSS-grid%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcss%2FCSS-grid%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcss%2FCSS-grid%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/algorithm-level3_pelindrom/" class="pagination--pager" title="[algorithm]level3 가장 긴 펠린드롬
+">Previous</a>
+    
+    
+      <a href="/github/github-changing_default_branch_to_main/" class="pagination--pager" title="[github]디폴트 브랜치 main으로 전환하기
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/pseudo-selector-css-variable/" rel="permalink">[TIL] <code class="language-plaintext highlighter-rouge">:root</code> 가상 선택자와 CSS 변수
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 20 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day18/" rel="permalink">[TIL] <code class="language-plaintext highlighter-rouge">withRouter</code> 정리
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 16 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day17-1/" rel="permalink">[TIL] React의 특징
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 15 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day16/" rel="permalink">[TIL] 고차함수
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 14 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="http://github.com/kimdoyeonn" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Doyeon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/css/CSS-grid/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/css/[CSS]-grid"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://doyeon311-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

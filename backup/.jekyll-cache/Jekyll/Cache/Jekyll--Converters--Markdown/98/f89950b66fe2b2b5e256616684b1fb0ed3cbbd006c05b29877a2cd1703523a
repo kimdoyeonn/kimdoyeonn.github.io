@@ -1,0 +1,85 @@
+I"�<p>참고: <a href="https://www.acmicpc.net/problem/1436">백준</a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">시간 제한</th>
+      <th style="text-align: left">메모리 제한</th>
+      <th style="text-align: left">제출</th>
+      <th style="text-align: left">정답</th>
+      <th style="text-align: left">맞은 사람</th>
+      <th style="text-align: left">정답 비율</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">2 초</td>
+      <td style="text-align: left">128 MB</td>
+      <td style="text-align: left">23142</td>
+      <td style="text-align: left">10047</td>
+      <td style="text-align: left">8333</td>
+      <td style="text-align: left">44.698%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="문제">문제</h2>
+
+<p>666은 종말을 나타내는 숫자라고 한다. 따라서, 많은 블록버스터 영화에서는 666이 들어간 제목을 많이 사용한다. 영화감독 숌은 세상의 종말 이라는 시리즈 영화의 감독이다. 조지 루카스는 스타워즈를 만들 때, 스타워즈 1, 스타워즈 2, 스타워즈 3, 스타워즈 4, 스타워즈 5, 스타워즈 6과 같이 이름을 지었고, 피터 잭슨은 반지의 제왕을 만들 때, 반지의 제왕 1, 반지의 제왕 2, 반지의 제왕 3과 같이 영화 제목을 지었다.</p>
+
+<p>하지만 숌은 자신이 조지 루카스와 피터 잭슨을 뛰어넘는다는 것을 보여주기 위해서 영화 제목을 좀 다르게 만들기로 했다.</p>
+
+<p>종말의 숫자란 어떤 수에 6이 적어도 3개이상 연속으로 들어가는 수를 말한다. 제일 작은 종말의 숫자는 666이고, 그 다음으로 큰 수는 1666, 2666, 3666, …. 과 같다.</p>
+
+<p>따라서, 숌은 첫 번째 영화의 제목은 세상의 종말 666, 두 번째 영화의 제목은 세상의 종말 1666 이렇게 이름을 지을 것이다. 일반화해서 생각하면, N번째 영화의 제목은 세상의 종말 (N번째로 작은 종말의 숫자) 와 같다.</p>
+
+<p>숌이 만든 N번째 영화의 제목에 들어간 숫자를 출력하는 프로그램을 작성하시오. 숌은 이 시리즈를 항상 차례대로 만들고, 다른 영화는 만들지 않는다.</p>
+
+<h2 id="입력">입력</h2>
+
+<p>첫째 줄에 숫자 N이 주어진다. N은 10,000보다 작거나 같은 자연수이다.</p>
+
+<h2 id="출력">출력</h2>
+
+<p>첫째 줄에 N번째 영화의 제목에 들어간 수를 출력한다.</p>
+
+<h2 id="예제-입력-1-복사">예제 입력 1 복사</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<h2 id="예제-출력-1-복사">예제 출력 1 복사</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1666
+</code></pre></div></div>
+
+<h2 id="출처">출처</h2>
+
+<ul>
+  <li>문제를 번역한 사람: <a href="https://www.acmicpc.net/user/baekjoon">baekjoon</a></li>
+  <li>어색한 표현을 찾은 사람: <a href="https://www.acmicpc.net/user/mwy3055">mwy3055</a></li>
+</ul>
+
+<h2 id="알고리즘-분류">알고리즘 분류</h2>
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/tag/125">브루트포스 알고리즘</a></li>
+</ul>
+
+<h3 id="내-풀이">내 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="s">'666'</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+        <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="n">cnt</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>1부터 다 돌면서 문자열 ‘666’이 포함된 모든 수를 확인했고 입력받은 n번째의 수를 만났을 때 그 수를 출력하도록 만들었다. 다시 생각해보니까 초깃값을 666으로 주고 해도 될 거같다. 속도에 별 차이는 없을 것 같지만….</p>
+:ET

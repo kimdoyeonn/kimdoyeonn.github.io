@@ -1,0 +1,50 @@
+I"	<h2 id="-문자열">✅ 문자열</h2>
+
+<ul>
+  <li>백틱, 큰따옴표, 작은 따옴표로 묶인 모든 문자</li>
+  <li>다양한 메소드와 속성을 사용해서 다룰 수 있음</li>
+  <li>문자열의 모든 메소드들은 원본 문자열을 변경하지 않음(<code class="language-plaintext highlighter-rouge">immutable</code>)</li>
+  <li>template literal:
+    <ul>
+      <li>+연산자를 사용하지 않고 문자열을 합칠 수 있음
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">san</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="err">Hi, </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="err">!</span><span class="s2">`</span><span class="p">);</span>
+<span class="c1">// 'Hi, san!'</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>문자열 길이 <code class="language-plaintext highlighter-rouge">str.length</code></li>
+  <li>문자열 글자에 접근 <code class="language-plaintext highlighter-rouge">str[4]</code></li>
+  <li>문자열 합치기 <code class="language-plaintext highlighter-rouge">str1 + str2</code></li>
+  <li>문자열 자르기
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">str.slice(0, 3)</code> 문자열, 배열에 둘 다 사용가능</li>
+      <li><code class="language-plaintext highlighter-rouge">str.substring(0, 3)</code> 문자열에만 사용</li>
+    </ul>
+  </li>
+  <li>영문 대문자 만들기 <code class="language-plaintext highlighter-rouge">str.toUpperCase()</code></li>
+  <li>영문 소문자 만들기 <code class="language-plaintext highlighter-rouge">str.toLowerCase()</code></li>
+  <li>문자열 중 원하는 문자의 인덱스 얻기
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">str.indexOf('d')</code>: 앞에서 탐색해서 제일 첫번째 나오는 문자 인덱스 반환</li>
+      <li><code class="language-plaintext highlighter-rouge">str.lastIndexOf('d')</code>: 제일 마지막에 나는 문자의 인덱스 반환</li>
+    </ul>
+  </li>
+  <li>문자열에 원하는 문자가 포함되어 있는지 검색
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">str.includes('hi')</code>: boolean 값 반환, 있으면 true 없으면 false</li>
+    </ul>
+  </li>
+  <li>문자열 잘라서 배열 만들기
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">str.split(" ")</code>: 원하는 문자를 기준으로 잘라 배열로 만듦</li>
+    </ul>
+  </li>
+  <li>배열을 문자열로 만들기
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">str.join(" ")</code>: 배열의 원소들 사이에 원하는 문자를 넣어서 문자 만들기</li>
+    </ul>
+  </li>
+</ul>
+:ET

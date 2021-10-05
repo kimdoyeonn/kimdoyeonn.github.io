@@ -1,0 +1,822 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[컴퓨터구조]24_입출력(I/O) 연결과 주소 지정 - 개발일기</title>
+<meta name="description" content="개발일기">
+
+
+  <meta name="author" content="Doyeon">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="개발일기">
+<meta property="og:title" content="[컴퓨터구조]24_입출력(I/O) 연결과 주소 지정">
+<meta property="og:url" content="http://localhost:4000/%EC%BB%B4%ED%93%A8%ED%84%B0%20%EA%B3%B5%ED%95%99/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0_24/">
+
+
+  <meta property="og:description" content="개발일기">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-06-11T00:00:00+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/%EC%BB%B4%ED%93%A8%ED%84%B0%20%EA%B3%B5%ED%95%99/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0_24/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Doyeon",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="개발일기 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발일기
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/TIL/">TIL</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#%EC%BB%B4%ED%93%A8%ED%84%B0-%EA%B3%B5%ED%95%99" itemprop="item"><span itemprop="name">%ec%bb%b4%ed%93%a8%ed%84%b0 %ea%b3%b5%ed%95%99</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">[컴퓨터구조]24_입출력(I/O) 연결과 주소 지정</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Doyeon</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://doyeonu.tistory.com/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Tistory</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/kimdoyeonn" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:doyeonkim.dyk@gmail.com">
+            <meta itemprop="email" content="doyeonkim.dyk@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[컴퓨터구조]24_입출력(I/O) 연결과 주소 지정">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2021-06-11T00:00:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[컴퓨터구조]24_입출력(I/O) 연결과 주소 지정
+</h1>
+          <!--
+            doyeon311 :
+              싱글페이지 (post) 에 제목 밑에 Updated 시간 표시
+              기존에는 read_time이 표기. read_time -> date 변경 
+            
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+          
+         -->
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <ul>
+  <li>입출력 주소 지정</li>
+  <li>입출력 버스 할당</li>
+  <li>입출력 수행의 분류</li>
+</ul>
+
+<hr />
+
+<h2 id="입출력-주소-지정">입출력 주소 지정</h2>
+
+<p>컴퓨터 시스템에는 다양한 입출력 장치 및 통신 포트 등이 연결된다. 이 장치들을 서로 구분을 하기 위해 각 입출력 장치 또는 통신 포트에 고유한 주소를 할당하게 된다.</p>
+
+<p>하나의 입출력 장치에 그 상태나 데이터의 입출력 등 용도에 따라 다수의 주소 할당이 가능하다. 일반 저장 공간에 할당된 주소에 비해 입출력 장치의 개수가 작기 때문이다<strong>.</strong></p>
+
+<ul>
+  <li>
+    <p><strong>메모리 맵 입출력(memory map I/O)</strong></p>
+
+    <p>메모리에 부여된 주소 공간의 일부를 입출력 주소 공간으로 활용한다.</p>
+
+    <ul>
+      <li>동일한 주소선과 주소 공간의 일부를 입출력 주소 공간으로 활용한다.</li>
+      <li>시스템은 지정된 주소 값에 의해 데이터 저장 공간과 I/O 장치를 구분한다.</li>
+      <li>모든 CPU에 대해 구현이 가능하지만, H/W적(주소 값에 따라) 분류 접근 구현이 필요하다.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>입출력 맵 입출력(I/O mapped I/O)</strong></p>
+
+    <p>독립된 메모리 주소 공간과 입출력 주소 공간</p>
+
+    <ul>
+      <li>메모리와 입출력 주소를 구분하는 제어선을 사용한다.</li>
+      <li>상호 구분되는 명령어가 필요하다.(상호 동일한 주소일 경우)</li>
+      <li>제어 신호를 통해 메모리/입출력 장치에 접근이 가능하도록 H/W적 구현이 필요하다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>메모리 맵 입출력은 모든 CPU에서 구현이 가능하지만 입출력 맵 입출력의 경우 I/O용 별도의 명령어와 이를 위한 외부 제어선이 있는 CPU에서만 구현이 가능하다. 단. PC에서는 양자 모두 구현이 가능하다고 알려져 있다.</p>
+
+<h2 id="입출력-버스-할당">입출력 버스 할당</h2>
+
+<h3 id="중앙-제어-버스-vs-분산-제어-버스">중앙 제어 버스 vs 분산 제어 버스</h3>
+
+<p><strong>중앙 제어 버스 시스템</strong></p>
+
+<p>구현 및 관리가 용이하나 제어기의 이상 시 버스 중재 및 활용에 지대한 결함이 발생할 수 있다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/53068706/121702593-fa0af400-cb0c-11eb-8c12-d5b7a7097c5b.png" alt="image" /></p>
+
+<p><strong>분산 제어 버스 시스템</strong></p>
+
+<p>버스 상의 모든 장치가 제어 기능을 나누어 실행한다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/53068706/121702848-32123700-cb0d-11eb-8170-77603983aaf8.png" alt="image" /></p>
+
+<ul>
+  <li>I/O 버스는 주로 중앙 제어 버스 시스템을 적용</li>
+  <li>시스템 버스로는 분산 제어 버스 시스템을 선호한다.</li>
+</ul>
+
+<h3 id="동적-중재-알고리즘">동적 중재 알고리즘</h3>
+
+<p>정적 우선 순위 알고리즘에 대해 시스템이 동작하고 있는 동안 장치들의 우선 순위를 변경 시킬 필요가 있을 경우 적용이 가능한 알고리즘을 동적 우선 순위 알고리즘이라고 한다.</p>
+
+<p><strong>시간 분할(time slice) alogrithm</strong></p>
+
+<p>연속적으로 주어지는 버스 시간을 고정된 길이의 시간 분할로 나누고 이를 라운드로빈(round-robin) 방식으로 각 프로세서에 할당, 버스에서의 위치에 관계없이 모든 요소들이 동등한 서비스를 받게 된다.</p>
+
+<p><strong>폴링(polling)</strong>을 이용한 버스 시스템</p>
+
+<ul>
+  <li>폴(poll) 라인으로 버스 승인(grant) 신호를 대체하여 모든 장치에 연결한다.</li>
+  <li>버스 제어기는 이 신호를 이용하여 각 장치의 주소를 결정한다.</li>
+  <li>지정된 순서에 따라 버스를 할당 받는다. 프로그램으로 우선 순위 변경이 가능하다.</li>
+</ul>
+
+<p><strong>LRU(Least recently used) algorithm</strong></p>
+
+<ul>
+  <li>가장 오랫동안 버스 서비스를 사용하지 못한 장치에게 우선권을 부여한다.</li>
+  <li>몇 번의 버스 사이클마다 LRU algorithm에 의해 각 장치의 우선순위가 계속 변경된다.</li>
+  <li>모든 프로세서가 버스에 접근 할 수 있는 기회를 동등하게 부여 받을 수 있다.</li>
+</ul>
+
+<p><strong>first-come &amp; first-serve</strong></p>
+
+<p>버스 제어기는 각 프로세서의 버스 요구 도착 시간 별 저장이 가능한 큐(queue)를 이용해 도착한 순서대로 서비스를 제공한다.</p>
+
+<p><strong>회전 데이지 체인 방식(rotating daisy chain)</strong></p>
+
+<p>모든 장치를 연결(closed loof)하여 차례로 버스 서비스를 제공하는 방식</p>
+
+<p>bus busy line에 의해 비활성,  활성을 따져서 세팅한다.</p>
+
+<h2 id="입출력-수행의-분류">입출력 수행의 분류</h2>
+
+<h3 id="동기-버스에-의한-수행">동기 버스에 의한 수행</h3>
+
+<p><img src="https://user-images.githubusercontent.com/53068706/121703706-0fcce900-cb0e-11eb-8e5d-fa751084ba19.png" alt="image" /></p>
+
+<p>버스에 연결된 모든 장치들에 동일하게 적용하는 버스 clock이 있고, 주소와 자료 및 다른 제어선은 버스 clock을 기준으로 전송된다.</p>
+
+<ul>
+  <li>bus clock
+    <ul>
+      <li>0 -&gt; 1
+        <ul>
+          <li>필요한 장치의 주소 및 제어 신호를 버스를 통해 발송한다.</li>
+          <li>지정된 장치는 주소를 식별한다.</li>
+        </ul>
+      </li>
+      <li>1 -&gt; 0
+        <ul>
+          <li>데이터 전송이 시작된다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>별도의 동기용 신호가 필요하지 않다.</li>
+  <li>버스에 연결된 모든 장치는 clock에 맞추어 입출력이 진행되도록 설계되어야 한다.</li>
+</ul>
+
+<h3 id="비동기-버스에-의한-수행">비동기 버스에 의한 수행</h3>
+
+<p><img src="https://user-images.githubusercontent.com/53068706/121703746-19eee780-cb0e-11eb-8ab7-cad2a83ee614.png" alt="image" /></p>
+
+<ul>
+  <li>
+    <p>주소 및 제어버스</p>
+
+    <p>주소선에 지정된  I/O장치 주소를 전송한다.</p>
+  </li>
+  <li>
+    <p>ready</p>
+
+    <p>I/O 전송 요구 ready 신호를 활성시킨다.</p>
+  </li>
+  <li>
+    <p>Data</p>
+
+    <p>data 전송</p>
+  </li>
+</ul>
+
+<ol>
+  <li>CPU로부터 I/O 제어기를 통해 해당 장치의 Ready 신호를 활성시킨다.</li>
+  <li>응답/자료 전송</li>
+  <li>작업 종료 신호의 비 활성화</li>
+</ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#%EC%BB%B4%ED%93%A8%ED%84%B0-%EA%B3%B5%ED%95%99" class="page__taxonomy-item" rel="tag">컴퓨터 공학</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0" class="page__taxonomy-item" rel="tag">컴퓨터구조</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#%EC%BB%B4%ED%93%A8%ED%84%B0-%EA%B3%B5%ED%95%99" class="page__taxonomy-item" rel="tag">컴퓨터 공학</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-06-11T00:00:00+00:00">June 11, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5B%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0%5D24_%EC%9E%85%EC%B6%9C%EB%A0%A5%28I%2FO%29+%EC%97%B0%EA%B2%B0%EA%B3%BC+%EC%A3%BC%EC%86%8C+%EC%A7%80%EC%A0%95%20http%3A%2F%2Flocalhost%3A4000%2F%25EC%25BB%25B4%25ED%2593%25A8%25ED%2584%25B0%2520%25EA%25B3%25B5%25ED%2595%2599%2F%25EC%25BB%25B4%25ED%2593%25A8%25ED%2584%25B0%25EA%25B5%25AC%25EC%25A1%25B0_24%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F%25EC%25BB%25B4%25ED%2593%25A8%25ED%2584%25B0%2520%25EA%25B3%25B5%25ED%2595%2599%2F%25EC%25BB%25B4%25ED%2593%25A8%25ED%2584%25B0%25EA%25B5%25AC%25EC%25A1%25B0_24%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F%25EC%25BB%25B4%25ED%2593%25A8%25ED%2584%25B0%2520%25EA%25B3%25B5%25ED%2595%2599%2F%25EC%25BB%25B4%25ED%2593%25A8%25ED%2584%25B0%25EA%25B5%25AC%25EC%25A1%25B0_24%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/%EC%BB%B4%ED%93%A8%ED%84%B0%20%EA%B3%B5%ED%95%99/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0_23/" class="pagination--pager" title="[컴퓨터구조]23_시스템 BUS 구성 및 제어
+">Previous</a>
+    
+    
+      <a href="/algorithm/algorithm-%EB%AA%BB%EC%83%9D%EA%B8%B4%EC%88%98/" class="pagination--pager" title="[algorithm]못생긴 수
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/pseudo-selector-css-variable/" rel="permalink">[TIL] <code class="language-plaintext highlighter-rouge">:root</code> 가상 선택자와 CSS 변수
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 20 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day18/" rel="permalink">[TIL] <code class="language-plaintext highlighter-rouge">withRouter</code> 정리
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 16 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day17-1/" rel="permalink">[TIL] React의 특징
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 15 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day16/" rel="permalink">[TIL] 고차함수
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 14 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="http://github.com/kimdoyeonn" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Doyeon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/%EC%BB%B4%ED%93%A8%ED%84%B0%20%EA%B3%B5%ED%95%99/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0_24/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/%EC%BB%B4%ED%93%A8%ED%84%B0%20%EA%B3%B5%ED%95%99/컴퓨터구조_24"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://doyeon311-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

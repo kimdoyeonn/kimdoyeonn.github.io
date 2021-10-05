@@ -1,0 +1,125 @@
+I"B<p>React는 강력한 합성모델을 가지고 있어, 상속 대신 합성을 사용하여 컴포넌트 간에 코드를 재사용하는 것이 좋습니다.</p>
+
+<h3 id="컴포넌트에-다른-컴포넌트를-담기">컴포넌트에 다른 컴포넌트를 담기</h3>
+
+<p>어떤 컴포넌트들은 어떤 자식 엘리먼트가 들어올 지 미리 예상할 수 없습니다. 범용적으로 박스역할을 하는 <code class="language-plaintext highlighter-rouge">Sidebar</code>나 <code class="language-plaintext highlighter-rouge">Dialog</code>와 같은 컴포넌트에서는 자주 볼 수 있는 패턴입니다.</p>
+
+<p>이런 컴포넌트에서는 <code class="language-plaintext highlighter-rouge">children</code> prop을 사용하여 자식 엘리먼트를 출력에 그대로 전달하는 것이 좋습니다.(예시에서는 <code class="language-plaintext highlighter-rouge">FancyBorder</code> 내부의 <code class="language-plaintext highlighter-rouge">h1</code>, <code class="language-plaintext highlighter-rouge">p</code> 태그들을 그대로 전달함)</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">FancyBorder</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="dl">"</span><span class="s2">FancyBorder FancyBorder-</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">props</span><span class="p">.</span><span class="nx">color</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">children</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">WelcomeDialog</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">FancyBorder</span> <span class="nx">color</span><span class="o">=</span><span class="dl">"</span><span class="s2">blue</span><span class="dl">"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">Dialog-title</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Welcome</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">Dialog-message</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Thank</span> <span class="nx">you</span> <span class="k">for</span> <span class="nx">visiting</span> <span class="nx">our</span> <span class="nx">spacecraft</span><span class="o">!&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/FancyBorder</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;FancyBorder&gt;</code> JSX 태그 안에 있는 것들이 <code class="language-plaintext highlighter-rouge">FancyBorder</code> 컴포넌트의 <code class="language-plaintext highlighter-rouge">children</code> prop으로 전달됩니다. <code class="language-plaintext highlighter-rouge">FancyBorder</code>는 <code class="language-plaintext highlighter-rouge">{props.children}</code>을 <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> 안에 렌더링하므로 전달된 엘리먼트들이 최종 출력됩니다.</p>
+
+<p>종종 컴포넌트에 여러 개의 구멍이 필요한 경우도 있습니다. 이런 경우에는 <code class="language-plaintext highlighter-rouge">children</code> 대신 자신만의 고유한 방식을 적용할 수도 있습니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">SplitPane</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">SplitPane</span><span class="dl">"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">SplitPane-left</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">left</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">SplitPane-right</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">right</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">SplitPane</span> <span class="nx">left</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="nx">Contacts</span> <span class="o">/&gt;</span><span class="p">}</span> <span class="nx">right</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="nx">Chat</span> <span class="o">/&gt;</span><span class="p">}</span> <span class="sr">/&gt;</span><span class="err">;
+</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;Contacts /&gt;</code>와 <code class="language-plaintext highlighter-rouge">&lt;Chat /&gt;</code> 같은 React 엘리먼트는 객체이기 때문에 데이터처럼 prop으로 전달할 수 있습니다. 이런 접근은 다른 라이브러리의 “슬롯(slots)”와 비슷해보이지만 React에서 prop으로 전달할 수 있는 것에는 제한이 없습니다.</p>
+
+<h3 id="특수화">특수화</h3>
+
+<p>어떤 컴포넌트의 “특수한 경우”인 컴포넌트를 고려해야 하는 경우가 있습니다.</p>
+
+<p>예를 들면, <code class="language-plaintext highlighter-rouge">WelcomDialog</code>는 <code class="language-plaintext highlighter-rouge">Dialog</code>의 특수한 경우라고 볼 수 있습니다.</p>
+
+<p>React에서는 이 역시 합성을 통해 해결할 수 있습니다. 더 구체적인 컴포넌트가 일반 컴포넌트를 렌더링하고 props를 통해 내용을 구성합니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Dialog</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">FancyBorder</span> <span class="nx">color</span><span class="o">=</span><span class="dl">"</span><span class="s2">blue</span><span class="dl">"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">Dialog-title</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">Dialog-message</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">message</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/FancyBorder</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">WelcomeDialog</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">Dialog</span> <span class="nx">title</span><span class="o">=</span><span class="dl">"</span><span class="s2">Welcome</span><span class="dl">"</span> <span class="nx">message</span><span class="o">=</span><span class="dl">"</span><span class="s2">Thank you for visiting our spacecraft!</span><span class="dl">"</span> <span class="o">/&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>합성은 클래스로 정의된 컴포넌트에서도 동일하게 적용됩니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Dialog</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">FancyBorder</span> <span class="nx">color</span><span class="o">=</span><span class="dl">"</span><span class="s2">blue</span><span class="dl">"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">Dialog-title</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">Dialog-message</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">message</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">children</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="sr">/FancyBorder</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">SignUpDialog</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">handleChange</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">handleSignUp</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleSignUp</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">login</span><span class="p">:</span> <span class="dl">""</span> <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">Dialog</span>
+        <span class="nx">title</span><span class="o">=</span><span class="dl">"</span><span class="s2">Mars Exploration Program</span><span class="dl">"</span>
+        <span class="nx">message</span><span class="o">=</span><span class="dl">"</span><span class="s2">How should we refer to you?</span><span class="dl">"</span>
+      <span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">login</span><span class="p">}</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleChange</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleSignUp</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Sign</span> <span class="nx">Me</span> <span class="nx">Up</span><span class="o">!&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/Dialog</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleChange</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">login</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span> <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleSignUp</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">`</span><span class="err">Welcome aboard, </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">login</span><span class="p">}</span><span class="err">!</span><span class="s2">`</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="상속은">상속은?</h3>
+
+<p>Facebook에서는 수천 개의 React 컴포넌트를 사용하지만, 컴포넌트를 상속 계층 구조로 작성을 권장할만한 사례를 아직 찾기 못했다고 합니다.</p>
+
+<p>props와 합성은 명시적이고 안전한 방법으로 컴포넌트의 모양과 동작을 커스터마이징하는데 필요한 모든 유연성을 제공합니다. 컴포넌트가 원시 타입의 값, React 엘리먼트 혹은 함수 등 어떤 props도 받을 수 있다는 것을 기억하세요</p>
+
+<p>UI가 아닌 기능을 여러 컴포넌트에서 재사용하기를 원한다면, 별도의 JavaScript 모듈로 분리하는 것이 좋습니다. 컴포넌트에서 해당 함수, 객체, 클래스 등을 import하여 사용할 수 있습니다. 상속받을 필요 없이 말이죠!</p>
+
+<p>출처: <a href="https://ko.reactjs.org/docs/composition-vs-inheritance.html">합성vs상속</a></p>
+:ET

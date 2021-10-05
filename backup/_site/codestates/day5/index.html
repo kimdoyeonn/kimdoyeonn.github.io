@@ -1,0 +1,814 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[TIL]5. CSS - 개발일기</title>
+<meta name="description" content="개발일기">
+
+
+  <meta name="author" content="Doyeon">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="개발일기">
+<meta property="og:title" content="[TIL]5. CSS">
+<meta property="og:url" content="http://localhost:4000/codestates/day5/">
+
+
+  <meta property="og:description" content="개발일기">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-08-30T00:00:00+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/codestates/day5/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Doyeon",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="개발일기 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          개발일기
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/TIL/">TIL</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#codestates" itemprop="item"><span itemprop="name">Codestates</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">[TIL]5. CSS</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Doyeon</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://doyeonu.tistory.com/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Tistory</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/kimdoyeonn" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:doyeonkim.dyk@gmail.com">
+            <meta itemprop="email" content="doyeonkim.dyk@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[TIL]5. CSS">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2021-08-30T00:00:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[TIL]5. CSS
+</h1>
+          <!--
+            doyeon311 :
+              싱글페이지 (post) 에 제목 밑에 Updated 시간 표시
+              기존에는 read_time이 표기. read_time -> date 변경 
+            
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+          
+         -->
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="-css">✅ CSS</h2>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* class selector */</span>
+<span class="nc">.title</span> <span class="p">{</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">blue</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* id selector */</span>
+<span class="nf">#userId</span> <span class="p">{</span>
+  <span class="py">fontweight</span><span class="p">:</span> <span class="m">400</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* tag selector */</span>
+<span class="nt">input</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">130px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>id: 한 문서 내에 하나의 요소에만 적용된 유일한 이름이어야 한다.</li>
+  <li>class: 보통 css를 적용하기 위해 사용한다. 여러 번 사용할 수 있음</li>
+</ul>
+
+<hr />
+
+<h3 id="적용-방법">적용 방법</h3>
+
+<ol>
+  <li>파일을 따로 분리하고 link 태그를 사용하여 연결한다.</li>
+  <li>html 파일 내에 style 태그 내부에 작성한다.</li>
+  <li>tag의 style 속성에 작성한다.</li>
+</ol>
+
+<ul>
+  <li>HTML 파일과 분리하여 정의하는 것이 권장됨
+파일 하나당 하나에만 집중할 수 있게 하기 위해 파일을 분리한다. HTML 파일에서는 HTML만 신경쓰고 CSS 파일에서는 CSS만 신경쓸 수 있도록 함</li>
+</ul>
+
+<hr />
+
+<h3 id="길이-단위">길이 단위</h3>
+
+<ul>
+  <li>절대단위
+    <ul>
+      <li>픽셀로 표현한다.<code class="language-plaintext highlighter-rouge">px</code></li>
+      <li>반응형 웹에서 픽셀같은 절대 길이 단위로 지정하면 컨테이너 사이즈를 조정해도 폰트 크기가 고정값으로 유지되어 변하지 않는다.</li>
+      <li>사용자가 브라우저 내 설정에서 폰트 사이즈를 조정해도 적용되지 않는다.</li>
+    </ul>
+  </li>
+  <li>상대단위
+    <ul>
+      <li>상위 요소의 글꼴 또는 뷰포트의 크기에 따라서 크기가 상대적으로 결정된다.</li>
+      <li>텍스트나 다른 요소의 크기가 페이지의 다른 모든 것에 비례하여 조정되도록 계획할 수 있다.</li>
+      <li><code class="language-plaintext highlighter-rouge">em</code>: 브라우저 기본 폰트 글꼴 크기에 상대적으로 결정</li>
+      <li><code class="language-plaintext highlighter-rouge">rem</code>: 루트 요소의 글꼴 크기에 상대적으로 결정</li>
+      <li><code class="language-plaintext highlighter-rouge">vw</code>, <code class="language-plaintext highlighter-rouge">vh</code>: 뷰포트의 너비, 높이에 상대적 비율</li>
+    </ul>
+  </li>
+  <li>
+    <p>상대 단위와 절대 단위를 정하는 기준</p>
+
+    <ol>
+      <li>기기나 브라우저 사이즈 등의 환경에 영향을 받지 않고 절대적인 크기로 정하는 경우
+<code class="language-plaintext highlighter-rouge">px</code>: 인쇄와 같이 화면의 사이즈가 정해진 경우에 유리하다.</li>
+      <li>일반적인 경우
+<code class="language-plaintext highlighter-rouge">rem</code>: 사용자가 설정한 기본 글꼴 크기를 따르므로 접근성에 유리하다.
+<code class="language-plaintext highlighter-rouge">em</code>은 부모 엘리먼트에 따라 상대적으로 크기가 변경되므로 계산이 어려운 반면, <code class="language-plaintext highlighter-rouge">rem</code>은 루트의 글자 크기에 따라서만 상대적으로 변하기 때문에 다루기 쉽다.</li>
+      <li>
+        <p>반응형 웹(responsive web)에서 기준점을 만들 때</p>
+
+        <ul>
+          <li>반응형 웹: 디바이스의 너비에 따라 유동적인 레이아웃이 적용되는 웹사이트</li>
+        </ul>
+
+        <p>디바이스 크기 별로, 가로모드, 세로모드 별로 다른 CSS를 적용해야 한다. 이 때에 디바이스 크기를 나누는 기준을 보통 <code class="language-plaintext highlighter-rouge">px</code>로 정한다.</p>
+      </li>
+      <li>
+        <p>화면 너비나 높이에 따른 상대적인 크기가 중요한 경우
+<code class="language-plaintext highlighter-rouge">vh</code>, <code class="language-plaintext highlighter-rouge">vw</code>
+화면을 가득 채우며 딱 떨어지게 스크롤되는 사이트들이 100vh, 100vw를 사용하여 구현한다.</p>
+
+        <p><code class="language-plaintext highlighter-rouge">body</code> 태그의 <code class="language-plaintext highlighter-rouge">%</code>는 HTML이 차지하는 모든 영역, 즉 눈에 보이지 않는 영역까지 포함한 비율이기 때문에 계산하기 쉽지 않다.</p>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="박스모델">박스모델</h3>
+
+<ul>
+  <li>
+    <p>박스를 구성하는 요소<br />
+<img src="http://tcpschool.com/lectures/img_css_boxmodel.png" alt="박스모델" /></p>
+
+    <ul>
+      <li>margin: 박스의 바깥 여백
+        <ul>
+          <li>음수값 지정이 가능하다. 여백에 음수 값을 지정하면 다른 엘리먼트와의 간격이 줄어들고 극단적으로 사용하면 화면에서 아예 사라지거나 다른 엘리먼트와 겹치게 만들 수 있다.</li>
+        </ul>
+      </li>
+      <li>border: 박스의 테두리</li>
+      <li>padding: 박스의 안쪽 여백</li>
+      <li>content: 내용</li>
+    </ul>
+  </li>
+  <li>
+    <p>박스의 종류</p>
+
+    <ul>
+      <li>block: 줄바꿈이 되고 크기를 지정할 수 있음 <code class="language-plaintext highlighter-rouge">div</code></li>
+      <li>inline: 줄바꿈이 되지 않고 크기를 지정할 수 없음, content만큼의 크기를 가짐 <code class="language-plaintext highlighter-rouge">span</code></li>
+      <li>inline-block: 줄바꿈이 되지 않고, 크기를 지정할 수 있음</li>
+    </ul>
+  </li>
+  <li>
+    <p>박스의 크기 계산
+<code class="language-plaintext highlighter-rouge">box-sizing</code> 값에 따라 크기 계산 방식이 달라진다.</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">content-box</code>: <code class="language-plaintext highlighter-rouge">width</code> = content이다. 실제 박스의 크기는 테두리 + 안쪽여백 + 내용 이다. 높이도 마찬가지임, 실제 화면에 보이는 박스크기를 계산하기 번거롭다.</li>
+      <li><code class="language-plaintext highlighter-rouge">border-box</code>: <code class="language-plaintext highlighter-rouge">width</code> = 테두리 + 안쪽여백 + 내용이다. 실제 화면에 보이는 박스 크기가 <code class="language-plaintext highlighter-rouge">width</code> 값이기 때문에 설정할 때 편하다.</li>
+      <li>기본값이 <code class="language-plaintext highlighter-rouge">content-box</code> 이기 때문에 css를 작성하기 전 먼저 <code class="language-plaintext highlighter-rouge">box-sizing</code> 속성을 <code class="language-plaintext highlighter-rouge">border-box</code>로 변경해주는 것이 편한다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>박스 바깥으로 벗어나는 콘텐츠 처리하기</p>
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">overflow</span><span class="o">:</span> <span class="nt">auto</span><span class="o">;</span>
+</code></pre></div>    </div>
+    <p>박스의 크기가 컨텐츠의 크기보다 작다면 컨텐츠는 박스 바깥으로 빠져나온다. <code class="language-plaintext highlighter-rouge">overflow</code> 속성을 사용하여 컨텐츠가 바깥으로 빠져나가는 경우에 박스 크기에 맞게 컨텐츠를 더이상 표시하지 않거나, 박스 안에 스크롤을 추가하여 콘텐츠를 확인할 수 있게 만들 수 있다.</p>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">auto</code>: 스크롤을 생성</li>
+      <li><code class="language-plaintext highlighter-rouge">hidden</code>: 넘치는 컨텐츠의 내용은 보여주지 않는다.</li>
+      <li><code class="language-plaintext highlighter-rouge">overflow-x</code>, <code class="language-plaintext highlighter-rouge">overflow-y</code>: x축과 y축을 지정해 가로 방향으로 스크롤하거나 세로 방향으로 스크롤 할 수 있게 지정한다.</li>
+    </ul>
+  </li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#codestates" class="page__taxonomy-item" rel="tag">codestates</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#til" class="page__taxonomy-item" rel="tag">TIL</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#codestates" class="page__taxonomy-item" rel="tag">codestates</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-08-30T00:00:00+00:00">August 30, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BTIL%5D5.+CSS%20http%3A%2F%2Flocalhost%3A4000%2Fcodestates%2Fday5%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcodestates%2Fday5%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcodestates%2Fday5%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/algorithm-.%EA%B8%B0%EB%91%A5%EA%B3%BC%EB%B3%B4/" class="pagination--pager" title="[algorithm]기둥과 보
+">Previous</a>
+    
+    
+      <a href="/codestates/day6/" class="pagination--pager" title="[TIL]2021-08-31
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/pseudo-selector-css-variable/" rel="permalink">[TIL] <code class="language-plaintext highlighter-rouge">:root</code> 가상 선택자와 CSS 변수
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 20 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day18/" rel="permalink">[TIL] <code class="language-plaintext highlighter-rouge">withRouter</code> 정리
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 16 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day17-1/" rel="permalink">[TIL] React의 특징
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 15 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h4 class="archive__item-title" itemprop="headline">
+      
+        <a href="/til/day16/" rel="permalink">[TIL] 고차함수
+</a>
+      
+    </h4>
+    <!-- 
+      doyeon311 : 
+      - 아카이브 싱글 페이지 (ex. categories ) 에 각 포스트 제목 밑에 Updated 시간 표시
+      - 기존에는 read_time이 표기 read_time -> date 변경
+      
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+     
+  -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> September 14 2021</p>
+    
+    <!-- <p class="archive__item-excerpt" itemprop="description">
+</p> -->
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="http://github.com/kimdoyeonn" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Doyeon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/codestates/day5/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/codestates/day5"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://doyeon311-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

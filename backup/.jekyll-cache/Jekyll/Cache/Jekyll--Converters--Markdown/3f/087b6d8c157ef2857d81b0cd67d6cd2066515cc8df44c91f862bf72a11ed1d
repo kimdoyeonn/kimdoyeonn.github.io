@@ -1,0 +1,25 @@
+I"�<ul>
+  <li>알고리즘이 얼마나 빠른지 표시하는 특별한 방법이다.</li>
+  <li>속도를 시간으로 나타내지 않고 연산횟수로 나타낸다.</li>
+  <li>O(n) 과 같은 형태로 알고리즘의 연산횟수를 표현한다. 이 때 대문자 O를 사용하기 때문에 빅오표기법임</li>
+  <li>최악의 실행시간을 나타낸다. 선형탐색의 경우 배열 인덱스 0에서 검색이 완료된다고 하더라도 <code class="language-plaintext highlighter-rouge">O(1)</code>이라고 표기하지 않는다. 알고리즘의 속도는 데이터의 크기에 따른 연산 횟수가 어떻게 증가하는지 측정하는 것이기 때문에, 선형 탐색의 실행시간은 <code class="language-plaintext highlighter-rouge">O(n)</code>이다. <code class="language-plaintext highlighter-rouge">O(n)</code>보다 느려지지 않는다는 일종의 보장이다.</li>
+  <li>때문에 <code class="language-plaintext highlighter-rouge">O(log n)</code>의 속도는 <code class="language-plaintext highlighter-rouge">O(n)</code>보다 빠르고, 리스트의 원소의 개수가 증가하면 증가할수록 상대적으로 더 빨라진다.</li>
+</ul>
+
+<h3 id="on"><code class="language-plaintext highlighter-rouge">O(n!)</code></h3>
+
+<ul>
+  <li>외판원 문제</li>
+  <li>데이터의 크기에 따른 실행속도의 증가가 엄청나고, 똑똑한 사람들도 더 이상 알고리즘을 향상시키는 것을 포기한 문제</li>
+  <li>
+    <p>한 외판원이 있다. 이 외판원은 가장 짧은 거리를 통해 다섯 개의 도시를 모두 방문하려고 한다.</p>
+
+    <p>도시를 방문하는 모든 경로를 따져보고 전체 거리를 더해서 가장 짧은 경로를 택함
+도시가 5개면 120가지, 6개면 720가지, 7개면 5040가지…! 연산횟수의 증가 속도가 어마무시함 n개의 도시가 있다면 n!의 연산이 필요한 것</p>
+
+    <p>도시가 100개 이상이라면 사실상 계산이 불가능한 수준임(태양이 먼저 사라질 정도) 때문에 다른 알고리즘을 찾아야 하는데, 더 빠른 알고리즘은 아직 알려져 있지 않다.</p>
+  </li>
+</ul>
+
+<p>출처: 그림으로 개념을 이해하는 알고리즘</p>
+:ET

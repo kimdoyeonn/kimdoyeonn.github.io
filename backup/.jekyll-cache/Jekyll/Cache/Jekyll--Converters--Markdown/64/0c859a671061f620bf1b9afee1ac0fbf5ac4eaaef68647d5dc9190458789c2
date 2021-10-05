@@ -1,0 +1,56 @@
+I"�<ul>
+  <li>참고: <a href="https://tutorial.djangogirls.org/ko/dynamic_data_in_templates/">장고걸스</a></li>
+  <li><a href="https://docs.djangoproject.com/en/2.0/ref/models/querysets/">쿼리셋에 대한 장고 공식문서</a></li>
+</ul>
+
+<p>블로그의 글들은 각각 다른 장소에 나누어져서 저장되어있다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Post</code> 모델 - <code class="language-plaintext highlighter-rouge">models.py</code></li>
+  <li><code class="language-plaintext highlighter-rouge">post_list</code> 모델 - <code class="language-plaintext highlighter-rouge">views.py</code></li>
+</ul>
+
+<p>각각 파일에 위처럼 들어있고, 앞으로는 템플릿도 추가해야한다. 이 장에서는 데이터베이스 안에 저장되어 있는 모델을 가져와 템플릿에 보여주는 걸 할 것이다.</p>
+
+<p>__뷰(view)__는 모델과 템플릿을 연결하는 역할을 한다. <code class="language-plaintext highlighter-rouge">post_list</code>를 뷰에 보여주고 이를 템플릿에 전달하기 위해서 모델을 가져와야한다. ( 뷰가 템플릿에서 모델을 선택하도록 만들어야 한다. )</p>
+
+<ol>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">blog/views.py</code>파일을 열고 <code class="language-plaintext highlighter-rouge">post_list</code></p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Post</span>
+   
+<span class="k">def</span> <span class="nf">post_list</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'blog/post_list.html'</span><span class="p">,</span> <span class="p">{})</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">models</code>앞에 <code class="language-plaintext highlighter-rouge">.</code>은 현재 디렉토리 또는 애플리케이션을 의미한다. 동일 디렉터리 내에 <code class="language-plaintext highlighter-rouge">views.py</code>와 <code class="language-plaintext highlighter-rouge">models.py</code>가 있기 때문에 <code class="language-plaintext highlighter-rouge">.파일명</code>으로 내용을 가져올 수 있다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Post</code>모델 불러오기, <code class="language-plaintext highlighter-rouge">Post</code> 모델에서 블로그 글을 가져오기 위해서는 <code class="language-plaintext highlighter-rouge">QuerySet</code>이 필요하다.</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 글 목록을 게시일`published_date` 기준으로 정렬
+</span><span class="n">Post</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">published_date__lte</span><span class="o">=</span><span class="n">timezone</span><span class="p">.</span><span class="n">now</span><span class="p">()).</span><span class="n">order_by</span><span class="p">(</span><span class="s">'published_date'</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span> <span class="c1"># timezone 모듈을 사용하기 위해
+</span><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Post</span>
+   
+<span class="k">def</span> <span class="nf">post_list</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">published_date__lte</span><span class="o">=</span><span class="n">timezone</span><span class="p">.</span><span class="n">now</span><span class="p">()).</span><span class="n">order_by</span><span class="p">(</span><span class="s">'published_date'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'blog/post_list.html'</span><span class="p">,</span> <span class="p">{})</span>
+   
+</code></pre></div>    </div>
+
+    <p>아직 <code class="language-plaintext highlighter-rouge">posts</code> QuerySet을 템플릿으로 보내지 않았다. (다음 장에서 할 것)</p>
+
+    <p><code class="language-plaintext highlighter-rouge">render</code>함수에는 매개변수 <code class="language-plaintext highlighter-rouge">request</code>와 <code class="language-plaintext highlighter-rouge">blog/post_list.html</code>템플릿이 들어있다. 맨 마지막에 있는 <code class="language-plaintext highlighter-rouge">{}</code>에 템플릿을 사용하기 위한 매개변수를 추가할 것이다.<code class="language-plaintext highlighter-rouge">{'posts': posts}</code> ` : `이전엔 문자열이 와야한다.</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'blog/post_list.html'</span><span class="p">,</span> <span class="p">{</span><span class="s">'posts'</span><span class="p">:</span> <span class="n">posts</span><span class="p">})</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+:ET

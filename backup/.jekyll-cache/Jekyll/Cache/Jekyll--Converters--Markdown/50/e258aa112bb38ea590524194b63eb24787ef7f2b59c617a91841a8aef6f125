@@ -1,0 +1,82 @@
+I"E<p>참고: doit 자료구조와 함께 배우는 알고리즘 입문</p>
+
+<h4 id="보이어무어법-알아보기">보이어무어법 알아보기</h4>
+
+<p>보이어무어법은 이론이나 실제 효율 면에서 KMP법보다 뛰어난 알고리즘입니다. 패턴의 끝 문자에서 시작하여 앞쪽을 향해 검사를 수행합니다. 이 과정에서 일치하지 않는 문자를 발견하면 미리 준비한 표를 바탕으로 패턴이 아동하는 값을 결정합니다.</p>
+
+<ul>
+  <li>각각의 문자를 만났을 때 패턴을 이동할 크기를 저장하는 표(건너뛰기 표)를 미리 만들어 둘 필요가 있다. 패턴의 길이가 n일 때 이동할 크기(이동량)는 다음과 같이 결정한다.
+    <ul>
+      <li>패턴에 포함되지 않는 문자를 만난 경우 - n만큼 이동</li>
+      <li>패턴에 포함되는 문자를 만난 경우
+        <ul>
+          <li>마지막에 나오는 위치의 인덱스가 k이면 이동량은 n - k - 1</li>
+          <li>같은 문자가 패턴 안에 중복해서 존재하지 않으면 패턴의 맨 끝 문자의 이동량은 n</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>여기서는 배열 하나를 사용하여 보이어무어법을 간략하게 나타냈다. 원래의 보이어무어법은 배열 2개를 사용해서 검사한다.</p>
+</blockquote>
+
+<pre><code class="language-PYTHON">def bm_match(txt: str, pat: str) -&gt; int:
+    """보이어무어법으로 문자열 검색"""
+
+    skip = [None] * 256                     # 건너뛰기 표
+
+    # 건너뛰기 표
+    for pt in range(256):               # 패턴의 길이만큼 밀기
+        skip[pt] = len(pat)
+    for pt in range(len(pat)):          # 패턴 안에 존재하는 문자는 len(pat) - pt - 1만큼 밀어줌
+        skip[ord(pat[pt])] = len(pat) - pt - 1
+
+    # 검색하기
+    while pt &lt; len(txt):
+        pp = len(pat) - 1
+        while txt[pt] == pat[pp]:
+            if pp == 0:
+                return pt
+            pt -= 1
+            pp -= 1
+
+        pt += skip[ord(txt[pt])] if skip[ord(txt[pt])] &gt; len(pat) - pp \
+            else len(pat) - pp
+
+    return -1
+</code></pre>
+
+<h4 id="문자열-검색-알고리즘의-시간-복잡도">문자열 검색 알고리즘의 시간 복잡도</h4>
+
+<p>텍스트의 길이 = n, 패턴의 길이 = m</p>
+
+<p><strong>브루트 포스법</strong></p>
+
+<p>시간 복잡도는 <code class="language-plaintext highlighter-rouge">O(mn)</code>이지만 일부러 꾸며 낸 패턴이 아니라면 <code class="language-plaintext highlighter-rouge">O(n)</code>이라고 알려져 있습니다. 단순한 알고리즘이지만 실제로는 아주 빠르게 동작합니다.</p>
+
+<p><strong>KMP법</strong></p>
+
+<p>시간 복잡도는 최악의 경우에도 <code class="language-plaintext highlighter-rouge">O(n)</code>입니다. 다만 처리하기 복잡하고 패턴 안에 반복이 없으면 효율이 좋지 않습니다. 그러나 검색 과정에서 주목하는 곳을 앞으로 되돌릴 필요가 전혀 없으므로 파일을 차례로 읽어들이면서 검색할 때 사용하면 좋습니다.</p>
+
+<p><strong>보이어무어법</strong></p>
+
+<p>시간복잡도는 최악의 경우라도 <code class="language-plaintext highlighter-rouge">O(n)</code>이고 평균 <code class="language-plaintext highlighter-rouge">O(n/m)</code>입니다. 배열 2개로 알고리즘을 구현하면 KMP법과 마찬가지로 배열을 만드는 데 복잡한 처리 과정이 필요하므로 효율성이 떨어집니다. 보이어무어법은 배열을 1개만 사용해도 충분히 빠릅니다.</p>
+
+<p>일반적으로 파이썬에서 문자열 검색을 하려면 표준 라이브러리를 사용하는 것을 추천합니다. 만약 표준 라이브러리를 사용하지 않는다면 보이어무어법(또는 개선한 방법)이나 상황에 따라서 브루트 포스법을 사용하는 경우가 많습니다.</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">ord()</code></p>
+
+    <p>파이썬 내장함수로, 단일 문자를 전달받아 그 문자의 유니코드 코드 포인트를 정수로 반환합니다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">chr()</code></p>
+
+    <p>파이썬 내장함수로 정수로된 유니코드 코드 포인트를 문자로 반환합니다.</p>
+  </li>
+</ul>
+
+:ET

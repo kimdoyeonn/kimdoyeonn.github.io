@@ -1,0 +1,89 @@
+I"n<p>flex에는 부모에 적용하는 속성과 자식에 적용하는 속성이 있다. 처음엔 혼란스럽고 헷갈렸는데, 쓰다보니까 편하고 쓸만한 것 같기도 하고… 아닌 것 같기도 하고… 쩃든 오늘은 css 셀렉터랑 flexbox를 공부했는데 보니까 내가 안 써본 flex 속성들이 몇 개 있길래 공부 겸 정리해보려고 한다. css 셀렉터는 써보면서 외워야 공부가 될 것 같아서 일단 간략하게 정리만 하구..</p>
+
+<hr />
+
+<h3 id="flex">flex</h3>
+
+<p>flex는 display 속성의 값 중 하나로 레이아웃을 짤 때 자주 사용하는 방식 중에 하나이다. 부모 엘리먼트에 <code class="language-plaintext highlighter-rouge">display: flex;</code>를 적용하면 사용할 수 있다.</p>
+
+<p>부모 엘리먼트에 <code class="language-plaintext highlighter-rouge">flex-direction</code> 속성을 사용해 주축을 정할 수 있다. 기본 값은 <code class="language-plaintext highlighter-rouge">row</code>이고, 반대는 <code class="language-plaintext highlighter-rouge">column</code> 이 있다.</p>
+
+<p>방향이 <code class="language-plaintext highlighter-rouge">row</code>일 때 부모 엘리먼트에서 <code class="language-plaintext highlighter-rouge">justify-content</code> 속성을 사용하면 수평 방향의 정렬, <code class="language-plaintext highlighter-rouge">align-items</code> 속성을 사용하면 수직 방향의 정렬을 정해줄 수 있다. <code class="language-plaintext highlighter-rouge">column</code>일 때는 주축이 수직방향으로 바뀌기 때문에 반대로 적용된다.</p>
+
+<p>자식 엘리먼트에서는 <code class="language-plaintext highlighter-rouge">flex-grow</code>, <code class="language-plaintext highlighter-rouge">flex-shrink</code>, <code class="language-plaintext highlighter-rouge">flex-basis</code> 속성이 있고,</p>
+
+<p>grow는 아이템이 주축 방향으로 얼마나 늘어날지 설정하는 속성이다. 기본값은 0이고 1 이상이 되면 전체 아이템들에 적용된 grow의 합에 대한 비율로 크기가 결정된다.
+shrink는 아이템이 얼마나 줄어들지 설정하는 속성이다. grow와 중첩되지 않도록 사용하는 것을 추천한다.
+basis는 아이템의 기본 크기를 설정하는 속성이다. 기본값은 auto이고 이 때 grow와 함께 사용하면 아이템의 크기를 뺀 공백을 기준으로 아이템의 크기가 결정되기 때문에 값을 0으로 해줘야 원하는 비율의 레이아웃을 구현할 수 있다.</p>
+
+<hr />
+
+<p>이제 거의 사용 안해봐서 잘 모르는 속성들~~~ 일단 부모 속성부터</p>
+
+<p><code class="language-plaintext highlighter-rouge">flex-wrap</code></p>
+
+<ul>
+  <li>줄 넘김을 처리하는 설정이다. 컨테이너가 더이상 아이템들을 한 줄에 담을 여유 공간이 없을 때 아이템 줄바꿈을 어떻게 할지 결정하는 속성이다.</li>
+  <li>nowrap : 기본값으로 줄넘김을 하지 않고 아이템이 밖으로 빠져나간다.</li>
+  <li>wrap : 아래로 줄을 넘긴다.</li>
+  <li>wrap-reverse : 줄을 넘기긴 하는데 위로 넘긴다.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">flex-flow</code></p>
+
+<ul>
+  <li>flex-direction, flex-wrap을 같이 사용할 수 있는 단축 속성이다.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">align-content</code></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">flex-wrap: wrap;</code>이 설정되어 있을 때, 아이템의 행이 2줄 이상이 될 수 있는데, 이 때 모든 아이템들을 같이 수직 방향으로 정렬할 수 있는 속성이다. 여러 행의 정렬을 조절한다. 값은 align-items와 동일하다.</li>
+</ul>
+
+<hr />
+
+<p>이제 자식 속성~~~</p>
+
+<p><code class="language-plaintext highlighter-rouge">order</code></p>
+
+<ul>
+  <li>각 아이템들의 순서를 결정하는 속성이다. 숫자를 값으로 가지며 숫자가 작을 수록 우선 순위를 가진다.</li>
+  <li>화면에 보이는 순서가 바뀌는 것뿐 HTML 문서의 구조 자체가 바뀌는 것은 아니기 때문에 접근성 측면에서 생각하면 사용에 주의해야 한다.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">align-self</code></p>
+
+<ul>
+  <li>아이템의 수적정렬을 결정하는 속성이다. 기본값은 auto이다.</li>
+  <li>기본값 auto만 빼면 align-items와 동일한 값을 사용할 수 있다.</li>
+  <li>속성이 적용될 때 align-items보다 우선순위를 가진다.</li>
+</ul>
+
+<hr />
+
+<h3 id="css-selector">css selector</h3>
+
+<p>처음엔 .이랑 #만 알면되는 줄 알았는데 알면 알수록 할 수 있는게 너무 많다 허허헣허허헣ㅎ헣허</p>
+
+<ul>
+  <li>자식 셀렉터 : <code class="language-plaintext highlighter-rouge">A &gt; B</code></li>
+  <li>자손 셀렉터 : <code class="language-plaintext highlighter-rouge">A B</code></li>
+  <li>자식 셀렉터는 바로 아래의 자식 엘리먼트들에만 적용되고, 자손 셀렉터는 자식 엘리먼트들뿐만 아니라 그 아래의, 그 아래의…. 모든 엘리먼트들에 적용된다는 점이 차이점이다.</li>
+  <li>인접 형제 셀렉터 : <code class="language-plaintext highlighter-rouge">A + B</code> A 뒤에 있는 B</li>
+  <li>형제 셀렉터 : <code class="language-plaintext highlighter-rouge">A ~ B</code> A와 같은 단계에 있는 모든 B</li>
+  <li>요소 상태 셀렉터
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">:checked</code> : 체크상태일 때</li>
+      <li><code class="language-plaintext highlighter-rouge">:enabled</code> : 사용가능한 상태일 때</li>
+      <li><code class="language-plaintext highlighter-rouge">:disabled</code> : 사용 불가능한 상태일 때</li>
+    </ul>
+  </li>
+  <li>정합성 확인 셀렉터
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">:valid</code> : 정합성 검증에 성공한 input 요소 또는 from 요소를 선택</li>
+      <li><code class="language-plaintext highlighter-rouge">:invalid</code> : 정합성 실패한 input 요소 또는 form 요소를 선택</li>
+    </ul>
+  </li>
+</ul>
+:ET

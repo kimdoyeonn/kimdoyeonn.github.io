@@ -1,0 +1,118 @@
+I"<h3 id="리눅스-명령어">리눅스 명령어</h3>
+
+<ul>
+  <li>아는 명령어도 있고 모르는 명령어도 있는데, 차차 사용하면서 외우면 될 것 같다</li>
+  <li>리눅스터미널을 실행하는 단축키: ctrl + alt + t</li>
+  <li>
+    <p>기본 명령어</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">pwd</code>: 현재 위치를 확인(print working directory)</li>
+      <li><code class="language-plaintext highlighter-rouge">mkdir</code>: 새로운 폴더 생성</li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">ls</code> : 폴더나 파일의 목록 출력</p>
+
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">-a</code>: 숨어있는 폴더나 파일 전부 보기</li>
+          <li><code class="language-plaintext highlighter-rouge">-l</code> : 폴더나 파일의 포맷을 전부 표시
+            <ul>
+              <li>제일 앞이 <code class="language-plaintext highlighter-rouge">d</code> 이면 디렉토리 <code class="language-plaintext highlighter-rouge">-</code> 이면 파일</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">nautilus</code> <code class="language-plaintext highlighter-rouge">open</code> : 현재 폴더를 파일 탐색기로 열기</li>
+      <li><code class="language-plaintext highlighter-rouge">cd</code> : 폴더에 진입</li>
+      <li><code class="language-plaintext highlighter-rouge">touch</code> : 새로운 파일 생성</li>
+      <li><code class="language-plaintext highlighter-rouge">cat</code> :파일의 내용을 터미널에 출력</li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">rm</code> : 폴더나 파일을 삭제</p>
+
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">rm</code> : 파일을 삭제</li>
+          <li><code class="language-plaintext highlighter-rouge">rm -rf</code> : 폴더를 삭제(<code class="language-plaintext highlighter-rouge">recursive</code> : 폴더를 지울 때, <code class="language-plaintext highlighter-rouge">force</code> : 질문받지 않고 강제로 지울 때)</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">mv</code> : 폴더나 파일의 위치를 이동하거나 이름을 변경</p>
+
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">mv 옮길거 옮길위치</code> 파일이나 폴더 옮기기</li>
+          <li><code class="language-plaintext highlighter-rouge">mv 이름 바꿀이름</code> 파일이나 폴더 이름 변경</li>
+        </ul>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">cp</code> : 폴더나 파일을 복사</p>
+
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">cp 복사할거이름 복사된거이름</code></li>
+          <li>폴더를 복사할 때는 <code class="language-plaintext highlighter-rouge">-r</code> 이 꼭 있어야함</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">sudo</code> : 관리자 권한
+        <ul>
+          <li>관리자 권한으로 만든 폴더의 소유자는 root가 됨</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">/</code> : 루트 디렉토리</li>
+      <li><code class="language-plaintext highlighter-rouge">~</code> : 홈 디렉토리</li>
+    </ul>
+  </li>
+  <li>절대 경로와 상대 경로
+    <ul>
+      <li>절대 경로의 시작은 루트디렉토리(<code class="language-plaintext highlighter-rouge">/</code>)</li>
+      <li>상대 경로의 시작은 현재 디렉토리(<code class="language-plaintext highlighter-rouge">.</code>)</li>
+    </ul>
+  </li>
+  <li>텍스트 에디터 nano 사용하여 파일을 수정하고 저장 <code class="language-plaintext highlighter-rouge">nano [수정할 파일]</code></li>
+</ul>
+
+<h3 id="패키지-매니저">패키지 매니저</h3>
+
+<p>리눅스의 패키지 매니저는 apt임
+패키지를 설치하기 전에 항상 <code class="language-plaintext highlighter-rouge">apt update</code>를 하고 설치받아야 한다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">apt update</code>: 패키지의 업데이트 여부 확인(관리자 권한 필요)</li>
+  <li><code class="language-plaintext highlighter-rouge">apt list --upgradable</code>: 업데이트 필요한 파일 조회</li>
+  <li><code class="language-plaintext highlighter-rouge">apt upgrade</code>: 프로그램 업그레이드(관리자 권한 필요)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">apt --only-upgrade instll 패키지이름</code> 특정패키지만 업그레이드 (관리자 권한 필요)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">apt show</code>: 프로그램의 정보 확인</li>
+  <li><code class="language-plaintext highlighter-rouge">apt install</code>: 프로그램 설치(관리자 권한 필요)</li>
+  <li><code class="language-plaintext highlighter-rouge">apt list --installed</code>: 설치된 프로그램 목록 보기</li>
+  <li><code class="language-plaintext highlighter-rouge">apt remove</code>: 프로그램 삭제(관리자 권한 필요)</li>
+  <li><code class="language-plaintext highlighter-rouge">apt search</code> : 패키지 검색</li>
+</ul>
+
+<h3 id="nodejs">Node.js</h3>
+
+<ul>
+  <li>자바스크립트 런타임</li>
+  <li>브라우저도 자바스크립트 런타임인데, 브라우저에서 자바스크립트를 실행하려면 HTML에 연결해서 HTML을 실행해야 하기 때문에 웹 페이지에서만 쓸 수 있었다. Node.js를 사용하면 브라우저 밖에서도 자바스크립트를 사용할 수 있기 때문에 서버 등의 다양한 활용이 가능하다.</li>
+  <li>nvm: node version manager, 다양한 버전의 노드를 설치하고 관리하는 도구, 다양한 버전의 노드를 변경해가면서 사용할 수 있다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">nvm install [버전넘버]</code></li>
+      <li><code class="language-plaintext highlighter-rouge">nvm use [버전넘버]</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>npm: node package manager, 노드용 패키지 매니저, 노드를 사용할 때 쓸 수 있는 거의 모든 모듈을 다운받을 수 있음</p>
+
+    <ul>
+      <li>package.json에 프로젝트에서 사용하는 모든 모듈의 정보가 저장되고 실제 모듈은 node_modules에 저장되는데, 프로젝트를 공유받은 사람은 package.json을 보고 다운받으면 동일한 실행이 가능하다.(<code class="language-plaintext highlighter-rouge">npm install</code>)</li>
+      <li>
+        <p>package.json 파일 안에</p>
+
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">scripts</code>는 프로젝트 내에서 사용가능한 명령어들 모음</li>
+          <li><code class="language-plaintext highlighter-rouge">dependencies</code>는 프로젝트가 실행되는데 필요한 모듈들(<code class="language-plaintext highlighter-rouge">npm install --save react</code> 하면 들어가는데 <code class="language-plaintext highlighter-rouge">--save</code>는 생략가능)</li>
+          <li><code class="language-plaintext highlighter-rouge">devDependenvies</code>는 프로젝트를 개발하는데 필요한 모듈들(테스트, lint 등, <code class="language-plaintext highlighter-rouge">npm install mocha --save-dev</code>로 설치하면 알아서 들어감)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+:ET

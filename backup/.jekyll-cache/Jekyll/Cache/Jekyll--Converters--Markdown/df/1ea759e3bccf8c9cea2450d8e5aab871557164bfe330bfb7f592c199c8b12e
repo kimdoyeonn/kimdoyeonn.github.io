@@ -1,0 +1,194 @@
+I"�A<ul>
+  <li>
+    <p>참고: <a href="https://tutorial.djangogirls.org/ko/django_forms/">장고걸스</a></p>
+  </li>
+  <li>
+    <p>관리자 기능을 거치지 않고 바로 글을 추가하거나 수정하는 기능 추가 (<code class="language-plaintext highlighter-rouge">form</code>)</p>
+  </li>
+  <li>
+    <p>장고는 아무런 준비 없이도 <code class="language-plaintext highlighter-rouge">form</code>을 만들 수 있고, <code class="language-plaintext highlighter-rouge">ModelForm</code>을 생성해 자동을 모델에 결과물을 저장할 수 있다.</p>
+  </li>
+  <li>
+    <p>폼을 만들어서 <code class="language-plaintext highlighter-rouge">Post</code>모델에 적용해보기</p>
+
+    <ol>
+      <li>
+        <p>폼만의 <code class="language-plaintext highlighter-rouge">forms.py</code>생성</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>blog
+ └── forms.py
+</code></pre></div>        </div>
+
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+     
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Post</span>
+     
+<span class="k">class</span> <span class="nc">PostForm</span><span class="p">(</span><span class="n">forms</span><span class="p">.</span><span class="n">ModelForm</span><span class="p">):</span>
+     
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Post</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">'title'</span><span class="p">,</span> <span class="s">'text'</span><span class="p">,)</span>
+</code></pre></div>        </div>
+
+        <ul>
+          <li>forms model을 import하고 <code class="language-plaintext highlighter-rouge">Post</code> model도 import함</li>
+          <li><code class="language-plaintext highlighter-rouge">PostForm</code> - 폼의 이름</li>
+          <li><code class="language-plaintext highlighter-rouge">forms.ModelForm</code> - 장고에 이 폼이 <code class="language-plaintext highlighter-rouge">ModelForm</code>인 것을 알려줌</li>
+          <li><code class="language-plaintext highlighter-rouge">class Meta</code> - 이 폼을 만들기 위해서 어떤 model이 쓰여야 하는지 장고에 알려줌 (<code class="language-plaintext highlighter-rouge">model = post</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">fields = ('title','text',)</code> - 폼에 필드를 넣어줌, <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">text</code>만 보여지게 됨 <code class="language-plaintext highlighter-rouge">author</code>는 현재 로그인 하고 있는 사람이 될 것이고, <code class="language-plaintext highlighter-rouge">created_date</code>는 글이 등록되는 시간이 될 것이다.</li>
+        </ul>
+
+        <p>이제 뷰에서 이 폼을 사용해 템플릿에 보여주기만 하면 됩니다. (링크, URL, 뷰, 템플릿 만들기)</p>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="폼과-페이지-링크">폼과 페이지 링크</h3>
+
+<p><code class="language-plaintext highlighter-rouge">blog/templates/blog/base.html</code>에서 class가 <code class="language-plaintext highlighter-rouge">page-header</code>인 <code class="language-plaintext highlighter-rouge">div</code>에 링크를 추가</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{% url 'post_new' %}"</span> <span class="na">class=</span><span class="s">"top-menu"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-plus"</span><span class="nt">&gt;&lt;/span&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</code></pre></div></div>
+
+<p>새로운 뷰 <code class="language-plaintext highlighter-rouge">post_vew</code>이고 부트스트랩 테마에 있는 <code class="language-plaintext highlighter-rouge">glyphicon glyphicon-plus</code>클래스로 더하기 기호가 보이게 된다.</p>
+
+<ul>
+  <li>이 상태로 실행하면 <code class="language-plaintext highlighter-rouge">NoReverseMatch</code>에러 발생</li>
+</ul>
+
+<h3 id="url">URL</h3>
+
+<p><code class="language-plaintext highlighter-rouge">blog/urls.py</code>에 코드 추가</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span> <span class="n">views</span><span class="p">.</span><span class="n">post_list</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'post_list'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'post/&lt;int:pk&gt;/'</span><span class="p">,</span> <span class="n">views</span><span class="p">.</span><span class="n">post_detail</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'post_detail'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'post/new/'</span><span class="p">,</span> <span class="n">views</span><span class="p">.</span><span class="n">post_new</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'post_new'</span><span class="p">),</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<ul>
+  <li>사이트를 다시 불러오면 <code class="language-plaintext highlighter-rouge">AttributeError</code>가 발생하는데 <code class="language-plaintext highlighter-rouge">post_new</code> 뷰를 구현하지 않았기 때문에 발생한다.</li>
+</ul>
+
+<h3 id="post_new-view"><code class="language-plaintext highlighter-rouge">post_new</code> view</h3>
+
+<p><code class="language-plaintext highlighter-rouge">blog/views.py</code>에서 from 줄 아래 코드 추가</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from django.shortcuts import render, get_object_or_404
+from django.utils import timezone
+from .models import Post
+from .forms import PostForm
+
+def post_list(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/post_list.html', {'posts':posts})
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/post_detail.html', {'post': post})
+
+def post_new(request):
+    form = PostForm()
+    return render(request, 'blog/post_edit.html', {'form': form})
+</code></pre></div></div>
+
+<h3 id="템플릿">템플릿</h3>
+
+<p><code class="language-plaintext highlighter-rouge">blog/templates/blog/post_edit.html</code>파일을 생성해 폼이 작동할 수 있게 만든다.</p>
+
+<ul>
+  <li>
+    <p>머저 폼이 보여야 합니다. <code class="language-plaintext highlighter-rouge">{{ form.as_p }}</code></p>
+  </li>
+  <li>
+    <p>위 코드를 HTML <code class="language-plaintext highlighter-rouge">form</code> 태그로 감싼다. <code class="language-plaintext highlighter-rouge">&lt;form method="POST"&gt;...&lt;/form&gt;</code></p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Save</code>버튼 - <code class="language-plaintext highlighter-rouge">&lt;button type="submit"&gt;Save&lt;/button&gt;</code></p>
+  </li>
+  <li>
+    <p>마지막으로 <code class="language-plaintext highlighter-rouge">&lt;form ...&gt;</code>에 <code class="language-plaintext highlighter-rouge">{% csrf_token %}</code>을 추가한다. 이 작업은 폼 보안을 위해 중요합니다! 이 작업을 빼놓고 저장하면 장고는 아래와 같은 에러를 발생시킬거에요 (로컬에서는 발생시키지 못함…)</p>
+
+    <p>`<img src="https://tutorial.djangogirls.org/ko/django_forms/images/csrf2.png" alt="CSFR Forbidden page" /></p>
+  </li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% extends 'blog/base.html' %}
+
+{% block content %}
+    <span class="nt">&lt;h1&gt;</span>New post<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">'POST'</span> <span class="na">class=</span><span class="s">'post-form'</span><span class="nt">&gt;</span>{% csrf_token %}
+        {{ form.as_p}}
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">'submit'</span> <span class="na">class=</span><span class="s">'save btn btn-default'</span><span class="nt">&gt;</span>Save<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+{% endblock %}
+</code></pre></div></div>
+
+<ul>
+  <li>여기서 화면을 다시 불러올 경우 화면은 나오지만 저장해도 새 글은 추가되지 않습니다! - <code class="language-plaintext highlighter-rouge">view 추가작업 필요!</code></li>
+</ul>
+
+<h3 id="폼-저장하기">폼 저장하기</h3>
+
+<p><code class="language-plaintext highlighter-rouge">blog/views.py</code></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">post_new</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">PostForm</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'blog/post_edit.html'</span><span class="p">,</span> <span class="p">{</span><span class="s">'form'</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
+</code></pre></div></div>
+
+<p>폼을 제출할 때 같은 뷰를 불러온다. 이 때 <code class="language-plaintext highlighter-rouge">request</code>에는 우리가 입력한 데이터가 있는데, <code class="language-plaintext highlighter-rouge">request.POST</code>가 가지고 있습니다. ( <code class="language-plaintext highlighter-rouge">POST</code>는 글 데이터를 등록하는(posting)하는 것을 의미한다. 블로그 글을 의미하는 post와는 관련 없음) HTML의 <code class="language-plaintext highlighter-rouge">&lt;form&gt;</code> 태그의 <code class="language-plaintext highlighter-rouge">method = "POST"</code>속성에 따라 POST로 넘겨진 폼 필드의 값들은 <code class="language-plaintext highlighter-rouge">request.POST</code>에 저장됩니다.</p>
+
+<p>이제 view에서 두 상황을 나누어 처리해볼 것이다.</p>
+
+<ol>
+  <li>처음 페이지에 접속했을 때: 새 글을 쓸 수 있게 폼이 비어있어야한다.</li>
+  <li>폼에 입력된 데이터를 view 페이지로 가지고 올 때: 조건문을 추가시켜야한다.(<code class="language-plaintext highlighter-rouge">if</code>)</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'POST'</span><span class="p">:</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">PostForm</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="n">POST</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">PostForm</span><span class="p">()</span>
+</code></pre></div></div>
+
+<ul>
+  <li>만약 <code class="language-plaintext highlighter-rouge">method</code>가 <code class="language-plaintext highlighter-rouge">POST</code>라면, 폼에서 받은 데이터를 <code class="language-plaintext highlighter-rouge">PostForm</code>으로 넘겨줘야하므로 <code class="language-plaintext highlighter-rouge">form = PostForm(request.POST)</code></li>
+</ul>
+
+<p>이제 폼에 들어있는 값들이 올바른지 확인해야한다. (모든 필드에는 값이 있어야 하고 잘못된 값이 있다면 저장되지 않아야한다) - <code class="language-plaintext highlighter-rouge">form.is_valid()</code> 사용</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">form</span><span class="p">.</span><span class="n">is_valid</span><span class="p">():</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="n">form</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">commit</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">post</span><span class="p">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">user</span>
+    <span class="n">post</span><span class="p">.</span><span class="n">published_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="p">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="n">post</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>
+</code></pre></div></div>
+
+<ul>
+  <li>여기서의 작업은 일반적으로 두 단계로 나눌 수 있다. 하나는 <code class="language-plaintext highlighter-rouge">form.save()</code>로 폼을 저장하는 작업, 나머지 하나는 작성자를 추가하는 작업이다. (<code class="language-plaintext highlighter-rouge">PostForm</code>에는 작성자 필드가 없지만, 필드 값은 필요함!)</li>
+  <li><code class="language-plaintext highlighter-rouge">commit=False</code>란 넘겨진 데이터를 바로 <code class="language-plaintext highlighter-rouge">Post</code> 모델에 저장하지는 말라는 뜻입니다. (작성자를 추가한 후 저장해야하기 때문) 대부분의 경우에는 <code class="language-plaintext highlighter-rouge">commit=False</code>를 사용하지 않고 <code class="language-plaintext highlighter-rouge">form.save()</code>를 사용해서 저장한다. 다만 여기서는 작성자 정보를 추가하고 저장해야 하므로 <code class="language-plaintext highlighter-rouge">commit=False</code>를 사용하는 것입니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">post.save()</code>는 변경사항(작성자정보가 포함된)을 유지할 것이고 새 블로그 글이 만들어 질것이다.</li>
+</ul>
+
+<p>끝으로 새 블로그 글을 작성한 다음에 <code class="language-plaintext highlighter-rouge">post_detail</code>페이지로 이동하기</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
+<span class="p">...</span>
+			<span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'post_detail'</span><span class="p">,</span><span class="n">pk</span><span class="o">=</span><span class="n">post</span><span class="p">.</span><span class="n">pk</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>새로 작성한 글을 볼 수 있도록 <code class="language-plaintext highlighter-rouge">post_detail</code>페이지로 가라고 수정한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">post_detail</code>은 이동해야한 뷰 이름</li>
+  <li><code class="language-plaintext highlighter-rouge">post_detail</code>에는 <code class="language-plaintext highlighter-rouge">pk</code>가 필요하기 때문에 <code class="language-plaintext highlighter-rouge">pk=post.pk</code>를 사용하여 뷰에게 값을 넘겨준다. 여기서 <code class="language-plaintext highlighter-rouge">post</code>는 새로 생성한 블로그 글</li>
+</ul>
+
+:ET

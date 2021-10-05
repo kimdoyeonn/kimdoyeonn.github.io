@@ -1,0 +1,84 @@
+I"�<h3 id="list">List</h3>
+
+<ul>
+  <li>
+    <p>여러개의 값을 담을 수 있는 변수</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list1 = [1,2,3,4,5]
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>값 읽어오기</p>
+
+    <ul>
+      <li>리스트를 사용할때는 0번째가 첫번째</li>
+      <li>첫번째 값 <code class="language-plaintext highlighter-rouge">list1[0]</code></li>
+      <li>두번째 값 <code class="language-plaintext highlighter-rouge">list1[1]</code></li>
+      <li>뒤에서 첫번째 값 <code class="language-plaintext highlighter-rouge">list1[-1]</code></li>
+      <li>뒤에서 두번째 값 <code class="language-plaintext highlighter-rouge">list1[-2]</code></li>
+      <li>리스트에 들어있는 값 보다 큰 값을 읽어오려고 하면 에러
+        <ul>
+          <li>예. 위의 list1에서 <code class="language-plaintext highlighter-rouge">list1[5]</code> 또는 <code class="language-plaintext highlighter-rouge">list1[-6]</code>은 에러</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>값 쓰기</p>
+
+    <ul>
+      <li>변수와 같이 <code class="language-plaintext highlighter-rouge">list1[0]=10</code>이라고 하면 list의 첫번째 값이 10으로 변경</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="리스트-수정">리스트 수정</h3>
+
+<h4 id="리스트에-새로운-값을-추가하는-방법">리스트에 새로운 값을 추가하는 방법</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">list1=[1,2,3]</code>이라고 할 때</li>
+  <li>append를 이용
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">list1.append(4)</code></li>
+      <li>append를 이용하면 리스트에 새로운 값이 추가된다.</li>
+    </ul>
+  </li>
+  <li>뒤에 새로운 리스트를 더하기
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">list2=list1+[4]</code></li>
+      <li>list1은 그대로 두고, 새로운 리스트를 만들어 낸다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="리스트에-값이-들어있는지-확인하는-방법">리스트에 값이 들어있는지 확인하는 방법</h4>
+
+<ul>
+  <li>
+    <p>in 연산을 이용</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#12라는 값이 리스트에 들어있는지 확인하는 코드
+n=12
+if n in list1:
+    print('{}가 리스트에 있다.'.format(n))
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="리스트에서-필요-없는-값을-지우는-방법">리스트에서 필요 없는 값을 지우는 방법</h4>
+
+<ul>
+  <li>del을 이용해서 특정 위치의 값을 지우기
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">del list1[10]</code> 리스트의 10번째 값을 지워라</li>
+    </ul>
+  </li>
+  <li>remove를 이용해서 특정 값을 지우기
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">list1.remove(40)</code>을 하면 리스트에 40이라는 값이 있는경우 삭제</li>
+      <li>여러개의 값이 있는 경우 가장 앞에 있는 하나만 지워짐</li>
+    </ul>
+  </li>
+</ul>
+:ET

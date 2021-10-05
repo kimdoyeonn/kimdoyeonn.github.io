@@ -1,0 +1,14 @@
+I"�<ol>
+  <li>
+    <p>github.com에 접속하여 새로운 repository를 생성하고, repository의 주소를 복사</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">git remote add origin URL주소</code></p>
+  </li>
+  <li>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit -m 'blabla commit message'
+git push origin main
+</code></pre></div>    </div>
+  </li>
+</ol>
+:ET

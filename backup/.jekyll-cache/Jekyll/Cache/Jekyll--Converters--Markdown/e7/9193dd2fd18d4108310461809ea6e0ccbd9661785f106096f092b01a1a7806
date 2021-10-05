@@ -1,0 +1,1222 @@
+I"��<ul>
+  <li>정리되어 있지 않음</li>
+</ul>
+
+<p>멱등성: 모든 접속자에게 동일하게 서비스됨</p>
+
+<h1 id="javascript">JavaScript</h1>
+
+<ul>
+  <li>1996년에 brendan Eich가 제작하여 발표한 Script언어</li>
+  <li>C언어로 만들어진 언어</li>
+  <li>Web browser에서 JavaScript Engine을 사용하여 실행되는 언어</li>
+  <li>inline, embed, external file 방식 3가지로 사용</li>
+  <li>동적 데이터형/동적할당 ( 값이 할당될 때 변수의 데이터형이 설정되는 것 )</li>
+  <li>
+    <p>JavaScript를 기반으로한 다양한 library들이 제공 ( JQuery Angular.js, Node.js, View.js, React 등 )</p>
+  </li>
+  <li>
+    <p>inline: 태그에 직접 정의하여 사용하는 방식</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">태그명</span> <span class="nx">onXXX</span><span class="o">=</span><span class="dl">"</span><span class="s2">javascript코드</span><span class="dl">"</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>embed: HTML <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>태그의 자식태그로 등록</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    <span class="nx">javascript</span> <span class="nx">code</span>
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>external file 방식</p>
+
+    <p>확장자는 .js</p>
+
+    <p>필요한 HTML에서 <code class="language-plaintext highlighter-rouge">&lt;script src="xxx.js" type="text/javascript"&gt;&lt;/script&gt;</code></p>
+  </li>
+  <li>작성방법, 변수, 연산자, 제어문, function, JavaScript 객체들, HTML, Form Control 처리, closure, prototype</li>
+</ul>
+
+<h3 id="코딩-주의">코딩 주의</h3>
+
+<ul>
+  <li>대소문자를 구분</li>
+  <li>괄호는 짝으로</li>
+  <li>;은 생략할 수 있다.</li>
+</ul>
+
+<h3 id="출력">출력</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//HTML &lt;body&gt; 태그 출력: 이전의 &lt;body&gt; 내용을 삭제하고 출력</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">출력할</span> <span class="nx">내용</span><span class="p">);</span>
+<span class="c1">//경고창 출력: 코드의 실행을 멈춤</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">출력내용</span><span class="p">);</span>
+<span class="c1">//console 출력 (debug 시)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">출력내용</span><span class="p">);</span>
+
+</code></pre></div></div>
+
+<h3 id="variable">Variable</h3>
+
+<ul>
+  <li>
+    <p>필요한 값을 일시적으로 저장하기 위해</p>
+  </li>
+  <li>
+    <p>가독성 향상</p>
+  </li>
+  <li>
+    <p>데이터형을 개발자가 설정할 수 없다.(값 할당 시에 데이터형이 설정된다)</p>
+  </li>
+  <li>
+    <p>지역변수와 전역변수가 지원 -&gt; 변수 작성하는 문법 구분</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">지역변수</span>
+<span class="mi">1</span><span class="p">.</span> <span class="nx">선언</span><span class="p">)</span>
+	<span class="kd">var</span> <span class="nx">변수명</span><span class="p">;</span> <span class="nx">변수를</span> <span class="nx">재선언</span><span class="p">,</span> <span class="nx">값</span> <span class="nx">재할당</span>
+	<span class="kd">let</span> <span class="nx">변수명</span><span class="p">;</span> <span class="nx">변수를</span> <span class="nx">재선언</span> <span class="nx">할</span> <span class="nx">수</span> <span class="nx">없다</span><span class="p">.</span> <span class="nx">값</span> <span class="nx">재할당</span> <span class="nx">가능</span>
+	<span class="kd">const</span> <span class="nx">변수명</span><span class="p">;</span> <span class="nx">변수를</span> <span class="nx">재선언</span> <span class="nx">할</span> <span class="nx">ㅜ</span> <span class="nx">없다</span><span class="p">.</span> <span class="nx">값을</span> <span class="nx">재할당</span> <span class="nx">할</span> <span class="nx">수</span> <span class="nx">없다</span><span class="p">.(</span> <span class="nx">배열</span><span class="p">,</span> <span class="k">new</span> <span class="nx">생성하는</span> <span class="nx">변수</span> <span class="nx">예외적</span> <span class="nx">가능</span> <span class="p">)</span>
+<span class="mi">2</span><span class="p">.</span> <span class="nx">값할당</span> <span class="p">(</span><span class="nx">데이터형이</span> <span class="nx">결정됨</span><span class="p">)</span>
+	<span class="nx">변수명</span> <span class="o">=</span> <span class="nx">값</span><span class="p">;</span>
+<span class="mi">3</span><span class="p">.</span> <span class="nx">값</span> <span class="nx">사용</span>
+	<span class="nx">출력</span><span class="p">,</span> <span class="nx">연산</span><span class="p">,</span> <span class="nx">재할당</span>
+
+</code></pre></div>    </div>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">전역변수</span>
+<span class="mi">1</span><span class="p">.</span> <span class="nx">선언</span><span class="p">):</span> <span class="nx">var를</span> <span class="nx">사용하지</span> <span class="nx">않고</span> <span class="nx">변수를</span> <span class="nx">선언하면서</span> <span class="nx">값</span> <span class="nx">할당</span>
+	<span class="nx">변수명</span> <span class="o">=</span> <span class="nx">값</span><span class="p">;</span>
+<span class="nx">위치에</span> <span class="nx">따라서</span> <span class="nx">var를</span> <span class="nx">붙여서</span> <span class="nx">선언해도</span> <span class="nx">전역변수로</span> <span class="nx">사용할</span> <span class="nx">수</span> <span class="nx">있다</span><span class="p">.</span>
+
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="변수에-할당할-수-있는-값의-종류">변수에 할당할 수 있는 값의 종류</h3>
+
+<ul>
+  <li>
+    <p>문자가 없음</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//String</span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">문자열...</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">문자열...</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>숫자는 정수, 실수를 모두 포함한다</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Number</span>
+<span class="nx">a</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+<span class="nx">a</span> <span class="o">=</span> <span class="mf">6.4</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="연산자">연산자</h3>
+
+<ul>
+  <li>
+    <p>최단산쉬 관리 삼대 콤마</p>
+
+    <ol>
+      <li>
+        <p>단항</p>
+
+        <p>~ ! + - *</p>
+
+        <p>~ : 1의 보수연산</p>
+
+        <p>! : not</p>
+      </li>
+      <li>
+        <p>산술</p>
+      </li>
+      <li>
+        <p>쉬프트 <code class="language-plaintext highlighter-rouge">&lt;&lt;</code> ` »<code class="language-plaintext highlighter-rouge"> </code>»&gt;`</p>
+      </li>
+      <li>
+        <p>관계 <code class="language-plaintext highlighter-rouge">&lt;</code> <code class="language-plaintext highlighter-rouge">&gt;</code> <code class="language-plaintext highlighter-rouge">&lt;=</code> <code class="language-plaintext highlighter-rouge">&gt;=</code> <code class="language-plaintext highlighter-rouge">==</code> <code class="language-plaintext highlighter-rouge">===</code> <code class="language-plaintext highlighter-rouge">!=</code> <code class="language-plaintext highlighter-rouge">!==</code></p>
+
+        <p><code class="language-plaintext highlighter-rouge">==</code>: 값이 같은지 비교</p>
+
+        <p><code class="language-plaintext highlighter-rouge">===</code>: 값과 데이터형이 모두 같은지 비교</p>
+      </li>
+      <li>
+        <p>논리</p>
+      </li>
+    </ol>
+
+    <p>여러개의 관계연산자를 묶을때</p>
+
+    <ul>
+      <li>
+        <p>일반 논리</p>
+
+        <p>&amp;&amp; : 모두 참일 때 참</p>
+
+        <table>
+          <tbody>
+            <tr>
+              <td> </td>
+              <td>: 모두 거짓일 때 거짓</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <p>비트 논리</p>
+
+        <table>
+          <tbody>
+            <tr>
+              <td>&amp;</td>
+              <td>^</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+
+    <ol>
+      <li>
+        <p>삼항</p>
+      </li>
+      <li>
+        <p>대입</p>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="제어문">제어문</h3>
+
+<ul>
+  <li>
+    <p>프로그램의 순차적인 흐름을 변경해줄 수 있는 문장</p>
+
+    <h4 id="조건문">조건문</h4>
+
+    <ul>
+      <li>if 다중if</li>
+      <li>if~ else</li>
+      <li>switch~ case: 값이 같은지 비교하여 실행할 때</li>
+    </ul>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span><span class="p">(){</span>
+       <span class="k">case</span> <span class="nx">상수</span><span class="p">:</span><span class="nx">수행문장들</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+       <span class="k">case</span> <span class="nx">상수</span><span class="p">:</span>
+       <span class="k">default</span><span class="p">:</span> <span class="nx">일치하는</span> <span class="nx">상수가</span> <span class="nx">없을때</span> <span class="nx">수행할</span> <span class="nx">문장들</span><span class="p">;</span>
+       <span class="p">}</span>
+</code></pre></div>    </div>
+
+    <h4 id="반복문">반복문</h4>
+
+    <ul>
+      <li>
+        <p>for문: 시작과 끝을 알 때</p>
+
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="o">~~</span><span class="p">){</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>while문: 시작과 끝을 모를 때</p>
+      </li>
+      <li>do ~ while문:</li>
+      <li>break;</li>
+      <li>continue;</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="javascript의-proposal-기능사용하기-위한-plugin-tern">javascript의 proposal 기능사용하기 위한 plugin: Tern</h4>
+
+<h2 id="array">Array</h2>
+
+<ul>
+  <li>
+    <p>일괄처리에 사용</p>
+  </li>
+  <li>
+    <p>일차원 배열만 지원</p>
+  </li>
+  <li>
+    <p>가변길이형( 값을 추가하면 방의 갯수가 증가한다. )</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span><span class="p">.</span> <span class="nx">배열생성</span>
+<span class="kd">var</span> <span class="nx">배열명</span><span class="o">=</span><span class="k">new</span> <span class="nb">Array</span><span class="p">();</span>
+<span class="mi">2</span><span class="p">.</span> <span class="nx">값할당</span>
+<span class="nx">배열명</span><span class="p">[</span><span class="nx">인덱스</span><span class="p">]</span><span class="o">=</span><span class="nx">값</span><span class="p">;</span>
+<span class="mi">3</span><span class="p">.</span> <span class="nx">방의</span>  <span class="nx">개수</span>
+<span class="nx">배열명</span><span class="p">.</span><span class="nx">length</span>
+<span class="mi">4</span><span class="p">.</span> <span class="nx">값얻기</span>
+<span class="nx">배열명</span><span class="p">[</span><span class="nx">인덱스</span><span class="p">]</span>
+<span class="nx">모든</span> <span class="nx">방의</span> <span class="nx">값</span> <span class="nx">출력</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">배열명</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">배열명</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="nx">배열의</span> <span class="nx">초기화</span>
+<span class="kd">let</span> <span class="nx">배열명</span><span class="o">=</span><span class="p">[</span><span class="nx">값</span><span class="p">,,,];</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="함수--function-">함수 ( function )</h3>
+
+<ul>
+  <li>
+    <p>일을 구분하여 만들 때</p>
+  </li>
+  <li>
+    <p>중복코드를 최소화</p>
+  </li>
+  <li>
+    <p>호출하여 사용한다. ( 사용자 동작에 의해 )</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">함수명</span><span class="p">(</span><span class="nx">매개변수</span><span class="p">,,,){</span>
+    <span class="nx">코드작성</span>
+
+    <span class="k">return</span> <span class="nx">값</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>호출 다른함수 호출: <code class="language-plaintext highlighter-rouge">함수명(값,,,);</code></p>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>동작</th>
+      <th>속성</th>
+      <th>주적용태그</th>
+      <th>사용예</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>클릭</td>
+      <td>onclick</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="button"&gt;</code> <br /><code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> <br /><code class="language-plaintext highlighter-rouge">&lt;td&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="button"onclick="함수명(값,,,)"&gt;</code></td>
+    </tr>
+    <tr>
+      <td>body 로딩</td>
+      <td>onload</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;body&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;body onload="함수명(값,,,)"&gt;</code></td>
+    </tr>
+    <tr>
+      <td>마우스포인터가 <br />특정위치에 들어갔을 때</td>
+      <td>onmouseover<br />onmouseenter</td>
+      <td>모든 태그</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;img onmouseover="함수명(값,,,)"&gt;</code></td>
+    </tr>
+    <tr>
+      <td>마우스포인터가 <br />특정 위치에서 나갔을 때</td>
+      <td>onmouseout</td>
+      <td>모든 태그</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;img onmouseout="함수명(값,,,)"&gt;</code></td>
+    </tr>
+    <tr>
+      <td>포인터가 <br />움직였을 때</td>
+      <td>onmousemove</td>
+      <td>모든 태그</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;img onmousemove="함수명(값,,,)"&gt;</code></td>
+    </tr>
+    <tr>
+      <td>키가 눌릴 때</td>
+      <td>onkeydown</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="text, password"&gt;</code> <br /><code class="language-plaintext highlighter-rouge">&lt;textarea&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="text" onkeydown="함수명(값,,,)"&gt;</code></td>
+    </tr>
+    <tr>
+      <td>키가 올라올 때</td>
+      <td>onkeyup</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="text, password"&gt;</code><br /> <code class="language-plaintext highlighter-rouge">&lt;textarea&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="text" onkeyup="함수명(값,,,)"&gt;</code></td>
+    </tr>
+    <tr>
+      <td>값이 변경될 때</td>
+      <td>onchange</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;select&gt;</code><br /> <code class="language-plaintext highlighter-rouge">&lt;input type="text, password"&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;select onchange="함수명(값,,,)"&gt;</code>: 다른 옵션이 선택되었을 때 함수가 호출<br /> <code class="language-plaintext highlighter-rouge">&lt;input type="text" onchange="함수명(값,,,)"&gt;</code>: 커서가 들어갔을 때의 값과 커서가 나갔을 때의 값이 다르다면 호출</td>
+    </tr>
+    <tr>
+      <td>커서가 <br />빠져나갔을 때</td>
+      <td>onblur</td>
+      <td>커서를 가지는 모든 태그</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="text" onblur="함수명(값,,,)"&gt;</code></td>
+    </tr>
+    <tr>
+      <td>더블클릭</td>
+      <td>ondblclick</td>
+      <td>모든 클릭</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="button" ondblclick="함수명(값,,,)"&gt;</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="이차원-배열">이차원 배열</h3>
+
+<ul>
+  <li>
+    <p>일차원 배열 방안에 일차원 배열이 정의</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//작성법)</span>
+<span class="c1">//1. 일차원 배열 생성</span>
+	<span class="kd">var</span> <span class="nx">arr2</span><span class="o">=</span><span class="k">new</span> <span class="nb">Array</span><span class="p">();</span>
+<span class="c1">//2. 일차원 배열 방에 일차원 배열 생성</span>
+	<span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="k">new</span> <span class="nb">Array</span><span class="p">();</span>
+	<span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="k">new</span> <span class="nb">Array</span><span class="p">();</span>
+	<span class="nx">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="k">new</span> <span class="nb">Array</span><span class="p">();</span>
+	<span class="nx">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="k">new</span> <span class="nb">Array</span><span class="p">();</span>
+<span class="c1">//3. 값 할당</span>
+	<span class="nx">배열명</span><span class="p">[</span><span class="nx">바깥배열</span> <span class="nx">인덱스</span><span class="p">][</span><span class="nx">안쪽배열인덱스</span><span class="p">]</span> <span class="o">=</span> <span class="nx">값</span><span class="p">;</span>
+	<span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+	<span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">20</span><span class="p">;</span>
+	<span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">30</span><span class="p">;</span>
+	<span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="mi">40</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <p>```</p>
+  </li>
+</ul>
+
+<h3 id="내장함수">내장함수</h3>
+
+<p>​```javascript
+//수학함수
+Math.round(실수); //반올림
+Math.ceil(실수); //올림
+Math.floor(실수); //내림
+parseInt(값); //문자열,실수 -&gt; 정수
+Math.random(); //난수 0.000000…1~ 0.999999999 중 하나
+Math.abs(); //절댓값 음수 -&gt; 양수</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+```javascript
+//문자열 함수
+문자열변수.toUpperCase()//대문자로
+문자열변수.toLowerCase()//소문자로
+문자열.length//길이 함수가 아니므로 ()를 붙이지 않는다.
+문자열.indexOf(찾을 문자열);//문자열의 인덱스
+문자열.charAt(인덱스)//특정 인덱스의 문자
+자를 문자열.substring(시작인덱스, 보고싶은 문자 끝인덱스+1)//문자열 자르기
+문자열.replace(찾을문자,바꿀문자); //문자열 찾아서 바꾸기
+문자열.trim(); //앞뒤공백제거
+문자열.concat("붙일문자열");//문자열 붙이기
+자를문자열.split('기준');//문자열 잘라서 배열에 넣기
+</code></pre></div></div>
+
+<h3 id="날짜정보얻기">날짜정보얻기</h3>
+
+<ul>
+  <li>객체를 생성 ( Date )</li>
+  <li>접속자 컴퓨터의 날짜 정보가 얻어진다. ( 동일날짜 x )</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//1. 생성</span>
+<span class="kd">var</span> <span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+<span class="c1">//2. 함수 호출</span>
+<span class="c1">//년:</span>
+<span class="nx">date</span><span class="p">.</span><span class="nx">getFullYear</span><span class="p">();</span>
+<span class="nx">date</span><span class="p">.</span><span class="nx">getYear</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1900</span><span class="p">;</span>
+<span class="c1">//월:</span>
+<span class="nx">date</span><span class="p">.</span><span class="nx">getMonth</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//0월부터 나옴으로 +1을 해주어야한다.</span>
+<span class="c1">//일</span>
+<span class="nx">date</span><span class="p">.</span><span class="nx">getDate</span><span class="p">();</span>
+<span class="c1">//시</span>
+<span class="nx">date</span><span class="p">.</span><span class="nx">getHour</span><span class="p">();</span>
+<span class="c1">//분</span>
+<span class="nx">date</span><span class="p">.</span><span class="nx">getMinute</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h2 id="html-form-control의-값-받기">HTML Form Control의 값 받기</h2>
+
+<p>HTML Form Control: 사용자가 입력한 값을 받기위한 HTML</p>
+
+<ul>
+  <li>
+    <p>id 로 받기 (form 태그가 없어도 된다.)</p>
+
+    <ul>
+      <li>id만 존재하는 경우에는 back-end로 값이 전달되지 않는다.</li>
+    </ul>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//1. Form Control에 id를 부여
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"name"</span> <span class="nt">/&gt;</span>
+//2. script에서 id에 해당하는 control얻기
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+  <span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//2-1. id에 해당하는 Control얻기</span>
+    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">id명</span><span class="dl">"</span><span class="p">);</span>
+    <span class="c1">//2-2. 얻어낸 HTML Form Control에서 값 얻기(value속성 사용)</span>
+    <span class="kd">var</span> <span class="nx">val</span> <span class="o">=</span> <span class="nx">변수명</span><span class="p">.</span><span class="nx">value</span><span class="p">();</span> <span class="c1">//사용자가 입력한 값</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">&lt;form&gt;</code>태그 사용</p>
+
+    <ol>
+      <li>
+        <p>form 태그에 name 설정</p>
+
+        <pre><code class="language-php+HTML">&lt;form name = "frm"&gt;
+</code></pre>
+      </li>
+      <li>
+        <p>control에 name 설정</p>
+
+        <pre><code class="language-php+HTML">&lt;input type="text" name="name"&gt;
+.
+.
+&lt;/form&gt;
+</code></pre>
+      </li>
+      <li>
+        <p>javascript에서 값을 얻는다.</p>
+      </li>
+    </ol>
+
+    <p>3-1. form태그를 name 속성을 사용하여 얻는다.</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">form이름</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <p>3-2. 얻어진 form객체를 사용하여 Control에 접근</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">obj</span><span class="p">.</span><span class="nx">접근할</span> <span class="nx">control명</span><span class="p">;</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <p>3-3. 값얻기</p>
+
+    <ul>
+      <li>
+        <p>이름 속성이 유일할 때 <code class="language-plaintext highlighter-rouge">폼 이름.control이름.value;</code></p>
+      </li>
+      <li>
+        <p>이름 속성이 중복될 때 ( 배열 ) <code class="language-plaintext highlighter-rouge">폼이름.control이름[인덱스].value;</code></p>
+      </li>
+      <li>
+        <p>인덱스는 control이 정의된 순서</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>radio, checkbox 는 사용자가 확인한 값만 얻는다.</p>
+
+    <ul>
+      <li>폼이름.control명[인덱스].checked -&gt; true/false</li>
+    </ul>
+  </li>
+  <li>
+    <p>select는 사용자가 선택한 값만 얻는다.</p>
+    <ul>
+      <li>선택한 옵션의 인덱스 얻기</li>
+      <li>폼이름.control명.selectedIndex</li>
+      <li>옵션이 선택된 상태인지?</li>
+      <li>폼이름.control명[인덱스].selected</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="div에-html을-설정">div에 HTML을 설정</h4>
+
+<ul>
+  <li>
+    <p>동적으로 화면 변경</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//1. div 얻기(div 속성)</span>
+<span class="kd">var</span> <span class="nx">divNode</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">id명</span><span class="dl">"</span><span class="p">);</span>
+<span class="c1">//2. HTML 생성</span>
+<span class="o">&lt;</span><span class="nx">b</span><span class="o">&gt;</span>
+<span class="c1">//3. 생성 HTML 을 div 객체 생성</span>
+    <span class="nx">divNode</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="p">;</span>
+                <span class="c1">//HTML을 생성하며 설정</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="html-form-control에-값-설정">HTML Form Control에 값 설정</h4>
+
+<ul>
+  <li>
+    <p>이름 유일</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">폼이름</span><span class="p">.</span><span class="nx">control이름</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">값</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>이름 중복( 배열 )</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">폼이름</span><span class="p">.</span><span class="nx">control이름</span><span class="p">[</span><span class="nx">인덱스</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">값</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>check 상태변경 ( radio, checkbox )</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">폼이름</span><span class="p">.</span><span class="nx">control이름</span><span class="p">[</span><span class="nx">인덱스</span><span class="p">].</span><span class="nx">checked</span> <span class="o">=</span> <span class="kc">true</span> <span class="o">/</span> <span class="kc">false</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>selected 상태변경(select)</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">폼이름</span><span class="p">.</span><span class="nx">control이름</span><span class="p">[</span><span class="nx">인덱스</span><span class="p">].</span><span class="nx">selected</span> <span class="o">=</span> <span class="kc">true</span> <span class="o">/</span> <span class="kc">false</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="함수">함수</h2>
+
+<ul>
+  <li>
+    <p>기명함수</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">함수명</span><span class="p">()</span> <span class="p">{}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>무기명함수: 자동호출(이벤트 처리)</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//문법)</span>
+<span class="kd">var</span> <span class="nx">변수명</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">매개변수</span><span class="p">){</span>
+    <span class="nx">코딩</span><span class="p">,,,</span>
+<span class="p">}</span>
+
+<span class="c1">//호출</span>
+<span class="nx">변수명</span><span class="p">(</span><span class="nx">값</span><span class="p">,,,);</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="이벤트-처리">이벤트 처리</h4>
+
+<ol>
+  <li>
+    <p>HTML Tag에 속성으로 처리</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">&lt;태그명 onXXX="이벤트처리할함수명(...)"&gt;</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>무기명 함수를 이용하여 처리 ( 자동호출 )</p>
+
+    <ul>
+      <li>코드의 재사용성이 매우 떨어진다.</li>
+    </ul>
+
+    <ol>
+      <li>
+        <p>이벤트를 발생시킬 tag를 찾아</p>
+
+        <p><code class="language-plaintext highlighter-rouge">document.getElementById("id명")</code></p>
+      </li>
+      <li>
+        <p>이벤트 속성에</p>
+
+        <p><code class="language-plaintext highlighter-rouge">.onxxx</code></p>
+      </li>
+      <li>
+        <p>무기명 함수로 처리</p>
+
+        <p><code class="language-plaintext highlighter-rouge">= function(){ 이벤트가 발생했을 때 처리할 코드 }</code></p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>이벤트에 등록하여 처리</p>
+
+    <ol>
+      <li>
+        <p>이벤트를 발생시킬 tag를 찾아</p>
+
+        <p><code class="language-plaintext highlighter-rouge">document.getElementById("id명")</code></p>
+      </li>
+      <li>
+        <p>이벤트에 등록시킬 이벤트 종류와 처리함수를 등록시켜 처리</p>
+
+        <p><code class="language-plaintext highlighter-rouge">.addEventListener("이벤트종류","처리할 함수명");</code></p>
+      </li>
+    </ol>
+
+    <ul>
+      <li>
+        <p>함수는 이벤트가 발생하명 자동호출됨으로 ()를 쓰면 안된다.</p>
+      </li>
+      <li>
+        <p>이벤트 종류는 on을 제외하고 작성 ex) onclick이면 click으로</p>
+      </li>
+    </ul>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">test</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="팝업창">팝업창</h2>
+
+<ul>
+  <li>
+    <p>정보제공용으로 사용</p>
+  </li>
+  <li>
+    <p>비모달</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//window는 javascript 객체의 최상위 객체</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span>
+  <span class="dl">"</span><span class="s2">팝업창에 넣을 HTML</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">창id</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">width:넓이,height:높이,top=x좌표,left=y좌표</span><span class="dl">"</span>
+<span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="window">window</h4>
+
+<ul>
+  <li>javascript객체의 최상위 객체</li>
+  <li>document
+    <ul>
+      <li>HTML문서에 접근</li>
+    </ul>
+  </li>
+  <li>event
+    <ul>
+      <li>event 발생(키코드값)</li>
+    </ul>
+  </li>
+  <li>location
+    <ul>
+      <li>페이지 이동</li>
+      <li>browser 가 제공하는 Storage를 사용( HTML5 )</li>
+    </ul>
+  </li>
+  <li>history
+    <ul>
+      <li>브라우저에 로딩되었던 페이지들로 이동</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="값전달">값전달</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">opner</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">폼이름</span><span class="p">.</span><span class="nx">control이름</span><span class="p">.</span><span class="nx">value</span><span class="o">=</span><span class="nx">부모창으로</span> <span class="nx">전달할</span> <span class="nx">값</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="이벤트키이벤트">이벤트(키이벤트)</h2>
+
+<ul>
+  <li>
+    <p>키코드 얻기</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">keyCode</span><span class="p">;</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">which</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="페이지-이동javascript">페이지 이동(javascript)</h2>
+
+<ul>
+  <li>
+    <p>단순 페이지 이동</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">이동페이지url</span><span class="dl">"</span><span class="p">;</span> <span class="c1">//HTML  jsp</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>URL 치환(뒤로가기가 X)</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="dl">"</span><span class="s2">이동한페이지url</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">&lt;form&gt;</code>태그의 전송 (submit()함수 사용)</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">폼이름</span><span class="p">.</span><span class="nx">submit</span><span class="p">();</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">&lt;meta&gt;</code>: HTML의 정보설정하는 일</p>
+
+        <p><code class="language-plaintext highlighter-rouge">&lt;meta charset="UTF-8"&gt;</code> -&gt; HTML page의 charset 설정</p>
+
+        <p><code class="language-plaintext highlighter-rouge">&lt;meta name="description" content="페이지설명"/&gt;</code></p>
+
+        <p><code class="language-plaintext highlighter-rouge">&lt;meta http-equiv="refresh" content="대기할초;이동할url"&gt;</code></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>confirm Dialog</p>
+
+    <ul>
+      <li>
+        <p>사용자의 의향을 물어볼 때 사용</p>
+
+        <p><code class="language-plaintext highlighter-rouge">confirm("메세지")</code></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>HTML</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"URL"</span><span class="nt">&gt;&lt;/a&gt;</span>//다른 JSP, HTML 페이지와 연결
+<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"JSPURL"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">""</span> <span class="nt">/&gt;</span>//
+  <span class="nt">&lt;form&gt;</span>태그안에 HTML Form Control에 입력된 값들이 JSP로 전달<span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <p>java.sql 패키지에서 디비연동하고 인터페이스 : 4.class</p>
+  </li>
+  <li>
+    <p>로딩된 드라이버 Connection : 2</p>
+  </li>
+  <li>
+    <p>쿼리문 생성하고 실행하는 : 3. createstatement</p>
+  </li>
+  <li>
+    <p>객체는 쿼리문을 알수 없으면 쿼리문을 실행하는 단계 : statement sql</p>
+  </li>
+  <li>
+    <p>오토커밋을 해제하기 위해 개발자가 호출해야하는 커넥션 : setAutoCommit(false)</p>
+  </li>
+  <li>
+    <p>java에서 여러개의 쿼리문으로 트랜잭션이 구성되어 있다면 method안에서 connection들의 연결을 끊는다.</p>
+  </li>
+  <li>
+    <p>바인드 변수를 이용하여 값만 추후에 입력 : 2</p>
+  </li>
+  <li>
+    <p>DBMS의 프로시저 : 1</p>
+  </li>
+  <li>
+    <p>조회 쿼리문을 수행한 테이블에 정보를 얻는 작업 1.ResultSet</p>
+  </li>
+  <li>
+    <p>다음중 DB 벤더사가 제공하는 것 : Driver</p>
+  </li>
+  <li>
+    <p>이해관계자들에게 서비스 품질에 대한 정보를 제공하기 위한 : 소프트웨어 테스트</p>
+  </li>
+  <li>
+    <p>테스팅 개념으로 올바른것 : 1 - 일반적으로 작업이 끝난 후 처음에 요구된것과 현재 상태의 차이</p>
+  </li>
+  <li>
+    <p>자바에서 가장 많이 사용하는 : 4. JUnit</p>
+  </li>
+  <li>
+    <p>단위 테스트의 단위 : method</p>
+  </li>
+  <li>
+    <p>equal : 예상값과 실제값이 같은</p>
+  </li>
+  <li>
+    <p>2 : Test</p>
+  </li>
+  <li>
+    <p>Junit에서 제공하는 ~ : 4번.</p>
+  </li>
+  <li>
+    <p>제이유닛에서 제공하는 테으스 메소드로 ㅂ로 수 없는것 : 1. 5번 반복하여 테스트 진행</p>
+  </li>
+  <li>
+    <p>제이유닛에서 지원하는 테스트메소드로 볼수 없는것 : 4. assertInnull</p>
+  </li>
+  <li>
+    <p>enableOnjre</p>
+  </li>
+</ol>
+
+<h3 id="history">history</h3>
+
+<ul>
+  <li>
+    <p>web browser가 가동된 후 방문했던 site의 기록을 사용하는 객체</p>
+  </li>
+  <li>
+    <p>서버에서 변경된 내용을 확인할 수 없다.</p>
+  </li>
+  <li>
+    <p>웹 브라우저가 종료되면 history는 사라진다.</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">hisotry</span><span class="p">.</span><span class="nx">go</span><span class="p">()</span><span class="nx">나</span> <span class="nx">back</span><span class="p">()</span><span class="nx">사용</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>생성된 history의 수는 history.length로 얻을 수 있다.</p>
+  </li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//사용법&gt;</span>
+<span class="c1">//뒤로</span>
+<span class="nx">history</span><span class="p">.</span><span class="nx">back</span><span class="p">()</span>
+<span class="c1">//앞으로</span>
+<span class="nx">history</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="nx">이동할</span> <span class="nx">단계</span><span class="p">)</span><span class="c1">//1,2,3, -1 (back과 같음)</span>
+
+</code></pre></div></div>
+
+<h2 id="storage">Storage</h2>
+
+<ul>
+  <li>
+    <p>HTML5에서 제공되는 browser 내 저장공간</p>
+  </li>
+  <li>
+    <p>Cookie 의 대체기술</p>
+  </li>
+  <li>
+    <p>Cookie</p>
+
+    <ul>
+      <li>접속자정보를 접속자의 HDD에 File로 생성하여 저장하는 기술</li>
+      <li>문자열만 저장가능</li>
+      <li>키와 값의 쌍으로 이루어진 데이터</li>
+      <li>최대 1Mbyte정보</li>
+    </ul>
+  </li>
+  <li>
+    <p>localStorage, sesssionStorage 두가지 제공</p>
+  </li>
+  <li>localStorage
+    <ul>
+      <li>웹서버와 접속이 끊어져도 정보를 사용할 수 있는 storage</li>
+    </ul>
+  </li>
+  <li>
+    <p>sessionStorage</p>
+
+    <ul>
+      <li>웹 서버에 연결되어있을 때에만 정보를 저장하고 사용할 수 있는 Storage</li>
+      <li>session: 컴퓨터끼리의 연결</li>
+    </ul>
+  </li>
+  <li>
+    <p>window에서 제공</p>
+  </li>
+  <li>
+    <p>문자열, 다른 데이터형을 저장할 수 있다</p>
+  </li>
+  <li>
+    <p>5Mbyte 정보를 저장할 수 있다.</p>
+  </li>
+  <li>
+    <p>접속자의 정보를 저장할 떄 사용( ID저장, 팝업창 제어 )</p>
+  </li>
+  <li>웹 비연결성(웹서버는 접속자에게 정보를 제공항 후 연결을 끊는다)</li>
+</ul>
+
+<ol>
+  <li>
+    <p>서버의 자원소모가 적다(H/W가 고사양X)</p>
+
+    <ul>
+      <li>서버는 접속자의 상태를 알 수 없다.(연결유지 기술: session, cookie)</li>
+      <li>
+        <p>실시간으로 변경된 정보를 모든 접속자에게 반영할 수 없다.( client pull로 해결 )-&gt; 실시간 정보반영이 어렵다</p>
+
+        <h4 id="session">session</h4>
+
+        <p>접속자의 정보를 웹서버의 memory에 저장(해킹안전)</p>
+
+        <h4 id="cookie">cookie</h4>
+
+        <p>접속자의 정보를 접속자의 HDD에 저장 ( 해킹위험 )</p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<ul>
+  <li>사용법)</li>
+</ul>
+
+<ol>
+  <li>
+    <p>값 설정</p>
+
+    <ul>
+      <li>
+        <p>서버에 연결되어 있을 때에만 사용</p>
+
+        <p>window.sessionStorage</p>
+      </li>
+      <li>
+        <p>서버와 연결을 끊었을 떄에도 유지</p>
+
+        <p>window.localStorage</p>
+      </li>
+    </ul>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">ss</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">sessionStorage</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">ls</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">;</span>
+
+<span class="nx">ls</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="dl">"</span><span class="s2">키</span><span class="dl">"</span><span class="p">,</span> <span class="nx">값</span><span class="p">);</span>
+<span class="nx">ss</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="dl">"</span><span class="s2">키</span><span class="dl">"</span><span class="p">,</span> <span class="nx">값</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>값 얻기</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ls</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="dl">"</span><span class="s2">키</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>값 삭제</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ls</span><span class="p">.</span><span class="nx">removeItem</span><span class="p">(</span><span class="dl">"</span><span class="s2">키</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>모든 Stotage</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ls</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h1 id="json">JSON</h1>
+
+<p>javascript object notation</p>
+
+<ul>
+  <li>이름과 값의 쌍으로 데이터를 사용할 때</li>
+  <li>간단한 형태로 값을 저장하고, 전달하는 객체</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//문법</span>
+<span class="p">{</span> <span class="nl">이름</span><span class="p">:</span> <span class="nx">값</span><span class="p">,</span><span class="nx">이름</span><span class="p">:</span> <span class="nx">값</span> <span class="p">}</span><span class="c1">//값: 문자열 숫자 boolean function</span>
+
+<span class="c1">//사용법</span>
+<span class="c1">//1. 값을 가진 JSON을 변수에 담는다</span>
+<span class="c1">//문자열</span>
+<span class="kd">var</span> <span class="nx">data</span><span class="o">=</span><span class="dl">"</span><span class="s2">{이름:값,이름 값,,,}</span><span class="dl">"</span>
+<span class="c1">//2. JSON Object으로 생성</span>
+<span class="kd">var</span> <span class="nx">json_obj</span><span class="o">=</span><span class="nb">eval</span><span class="p">(</span><span class="dl">"</span><span class="s2">(</span><span class="dl">"</span><span class="o">+</span><span class="nx">data</span><span class="o">+</span><span class="dl">"</span><span class="s2">)</span><span class="dl">"</span><span class="p">);</span>
+<span class="c1">//3. 값얻기</span>
+<span class="nx">json객체명</span><span class="p">.</span><span class="nx">이름</span>
+<span class="c1">//4. 값 삭제</span>
+<span class="k">delete</span> <span class="nx">json객체명</span><span class="p">.</span><span class="nx">이름</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="json-array">JSON Array</h2>
+
+<ul>
+  <li>
+    <p>JSON으로 배열을 만드는 것</p>
+
+    <ol>
+      <li>
+        <p>JSON Object을 배열에 넣는다.</p>
+
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">[{이름: 값,,,},{이름: 값,,,},,]</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>JSON Array 객체를 만든다.</p>
+
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">jsonArr</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="dl">"</span><span class="s2">(</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">d</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">)</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>반복</p>
+
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">jsonArr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">jsonArr</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">이름</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="복합json">복합JSON</h2>
+
+<ul>
+  <li>
+    <p>JSON Object 안에 JSON Array를 가진 경우</p>
+
+    <p>“{이름:값,이름:[{이름:값,,,},{이름:값,,,},,,,],,,,,}”
+정보— 데이터—————————–</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span>
+  <span class="dl">"</span><span class="s2">{writer:'송유빈',pubData:'2020-07-06',data:[{img:'daram.jpg',desc:'설명'},,,]}</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">JSONObj</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="dl">"</span><span class="s2">(</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">data</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">)</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">jsonArr</span> <span class="o">=</span> <span class="nx">jsonObj</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="nx">jsonArr</span><span class="p">.</span><span class="nx">writer</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">송유빈</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">jsonArr</span><span class="p">.</span><span class="nx">pubData</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">2020-07-06</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">jsonArr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">jsonArr</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">img</span><span class="p">;</span>
+  <span class="nx">jsonArr</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">desc</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="재귀호출함수">재귀호출함수</h3>
+
+<ul>
+  <li>
+    <p>일정시간마다 함수를 호출하는 함수</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">호출할함수명</span><span class="p">,</span> <span class="nx">ms</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="closure">Closure</h3>
+
+<ul>
+  <li>
+    <p>접근권한 변경</p>
+  </li>
+  <li>
+    <p>함수안에 함수 정의</p>
+
+    <ul>
+      <li>세부업무를 묶어 하나의 업무를 구현할 수 있다.</li>
+    </ul>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//형식)</span>
+<span class="c1">//무기명함수형식: 처리해야할 일이 많은 경우</span>
+<span class="c1">//() 형식: 처리해야할 일이 적은 경우</span>
+
+<span class="kd">var</span> <span class="nx">변수명</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">변수명</span><span class="p">;</span>
+  <span class="kd">function</span> <span class="nx">함수명</span><span class="p">()</span> <span class="p">{}</span> <span class="c1">//업무를 위한 세부업무</span>
+<span class="p">})();</span> <span class="c1">//하나의 업무</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>객체생성없이 사용할 수 있다. new없이 직접호출이 가능하다</p>
+  </li>
+  <li>
+    <p>내부함수는 함수 밖에서 호출할 수 없다.</p>
+
+    <ul>
+      <li>
+        <p>closure를 사용하면 가능</p>
+
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//작성법</span>
+
+<span class="c1">//무기명함수형식: 처리해야할 일이 많은 경우</span>
+<span class="k">return</span> <span class="p">{</span><span class="nx">외부에서</span> <span class="nx">호출할</span> <span class="na">이름</span><span class="p">:</span> <span class="nx">내부함수</span><span class="p">,</span> <span class="na">외부호출이름</span><span class="p">:</span> <span class="nx">내부함수</span><span class="p">,,,}</span>
+<span class="c1">//호출</span>
+<span class="nx">변수명</span><span class="p">.</span><span class="nx">이름</span><span class="p">;</span>
+<span class="nx">변수명</span><span class="p">.</span><span class="nx">이름</span><span class="p">();</span>
+</code></pre></div>        </div>
+
+        <p>//() 형식: 처리해야할 일이 적은 경우
+var 변수명=({이름:값,이름:fucntion(){…}…});
+//호출
+변수명.이름;
+변수명.이름();
+```</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="class-작성">Class 작성</h2>
+
+<ul>
+  <li>업무를 구분하여 만들기 위해 사용</li>
+  <li>참조형 데이터형: new 사용하여 객치를 생성한 후 사용</li>
+  <li>사용자정의 자료형: 제공되는 데이터형을 묶어 사용하는 것</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//작성법</span>
+<span class="kd">function</span> <span class="nx">생성자</span><span class="p">(</span><span class="nx">매개변수</span><span class="p">,,,){</span>
+    <span class="kd">var</span> <span class="nx">변수명</span><span class="p">;</span>
+    <span class="p">.</span>
+    <span class="p">.</span>
+    <span class="kd">function</span> <span class="nx">함수명</span><span class="p">(</span><span class="nx">매개변수</span><span class="p">,,){</span>
+
+    <span class="p">}</span><span class="c1">//closure가 필요</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">변수명</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">변수명</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+
+    <span class="p">}</span><span class="c1">//closure가 필요없음</span>
+<span class="p">}</span>
+
+<span class="c1">//사용</span>
+<span class="c1">//1. 생성</span>
+<span class="kd">var</span> <span class="nx">객체명</span><span class="o">=</span><span class="k">new</span> <span class="nx">생성자</span><span class="p">(</span><span class="nx">값</span><span class="p">,,,);</span>
+<span class="c1">//2. 변수호출</span>
+<span class="nx">객체명</span><span class="p">.</span><span class="nx">변수명</span><span class="p">;</span>
+<span class="c1">//3. 함수호출</span>
+<span class="nx">객체명</span><span class="p">.</span><span class="nx">무기명함수저장변수명</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h2 id="상속">상속</h2>
+
+<ul>
+  <li>코드의 재사용성 향상</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">부모</span><span class="p">(){</span>
+    <span class="p">..</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">자식</span><span class="p">(){</span>
+    <span class="p">..</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>상속의 문법</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">자식</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">부모</span><span class="p">();</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>자식클래스 생성</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">변수명</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">자식</span><span class="p">();</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="정규식">정규식</h2>
+
+<ul>
+  <li>많은 문자열에서 원하는 문자열이 있는지 찾기 위한 식</li>
+  <li>replace사용, match 사용</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//순환 /[  범위  ]/g</span>
+<span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">AbaZt10~가나하Te!</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">test</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[</span><span class="sr">a-zA-Z0-9</span><span class="se">]</span><span class="sr">/g</span><span class="p">,</span> <span class="dl">""</span><span class="p">));</span>
+</code></pre></div></div>
+
+<ul>
+  <li>범위(시작-끝)
+    <ul>
+      <li>한글 ㄱ-힣</li>
+      <li>영어 A-Z a-z</li>
+      <li>숫자 0-9</li>
+      <li>특수문자는 범위가 없다. 없애고 싶은 문자를 모두 입력해주어야함</li>
+    </ul>
+  </li>
+</ul>
+:ET

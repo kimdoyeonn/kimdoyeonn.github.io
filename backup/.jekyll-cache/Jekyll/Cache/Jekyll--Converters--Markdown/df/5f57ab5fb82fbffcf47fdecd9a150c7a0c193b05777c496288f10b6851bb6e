@@ -1,0 +1,42 @@
+I"�<h2 id="-반복문">✅ 반복문</h2>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{}</span>
+
+<span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>for문은 끝날 시점을 알 때 사용
+    <ul>
+      <li>정해진 조건 안에서만 반복</li>
+    </ul>
+  </li>
+  <li>while문은 끝날 시점이 명확하지 않을 때 사용
+    <ul>
+      <li>조건에 부합하는 한 계속 반복함</li>
+    </ul>
+  </li>
+  <li>
+    <p>이중포문</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">i</span><span class="p">}</span><span class="err">-</span><span class="p">${</span><span class="nx">j</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li>안쪽 for문이 모두 돌아야 바깥 for문이 다음 순서로 넘어갈 수 있다. 다음 순서로 넘어가서 다시 안쪽 포문이 반복됨</li>
+      <li>시간과 분의 관계라고 생각하면 됨, 1시에서 2시로 넘어가려면 60분이 다 지나야 하는 것과 같음</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<p>원래 다 알고 있던 것들이라서 복습하는 겸 알고 있던게 진짜로 아는게 맞는지 확인하는 겸하면서 공부를 하고 있다. 지금까지는 어려운 점 없이 수월하게 넘어가고 있는 것 같다. 아직 익숙한 것들만 배워서 그런지 국비에서 자바 배운 것으로 취업을 했어야 하나 하는 걱정도 있다. 그래도 이미 마음 먹은거 후회하지 말고 앞만 보자 하고 버티는 중이다. 이미 배운 것들도 복습하면서 또 배우고 하면 언젠간 다 도움이 되겠지!</p>
+:ET

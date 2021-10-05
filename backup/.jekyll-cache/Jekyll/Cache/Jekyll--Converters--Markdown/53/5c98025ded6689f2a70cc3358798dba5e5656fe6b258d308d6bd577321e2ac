@@ -1,0 +1,211 @@
+I"V:<ul>
+  <li>참고: <a href="https://tutorial.djangogirls.org/ko/css/">장고걸스</a></li>
+</ul>
+
+<p>CSS(Cascading Style Sheets): HTML과 같이 마크업언어로 작성된 웹사이트의 외관을 꾸미기 위해 사용되는 언어</p>
+
+<h3 id="부트스트랩bootstrap">부트스트랩(bootstrap)</h3>
+
+<ul>
+  <li>
+    <p>설치하기</p>
+
+    <p><code class="language-plaintext highlighter-rouge">html</code>파일 내 <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>에 아래의 링크를 넣어야한다.</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"</span><span class="nt">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>정적파일 (static files)</p>
+
+    <ul>
+      <li>CSS와 이미지파일이 해당됩니다. 이 컨텐츠는 요청 내용에 따라 바뀌는 것이 아니기 때문에 모든 사용자들이 동일한 내용을 볼 수 있습니다.</li>
+    </ul>
+
+    <p>서버에서 <code class="language-plaintext highlighter-rouge">collectstatic</code>을 실행할 때처럼 장고는 admin에서 정적 파일을 어디서 찾아야하는지 이미 알고있습니다. 때문에 <code class="language-plaintext highlighter-rouge">blog</code>에 정적파일을 추가하면 됩니다.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    djangogirls
+    ├── blog
+    │   ├── migrations
+    │   ├── static
+    │   └── templates
+    └── mysite
+</code></pre></div>    </div>
+
+    <p>장고는 app폴더 안에 있는 <code class="language-plaintext highlighter-rouge">static</code>폴더를 자동을 찾을 수 있고 이 안에 들어있는 컨텐츠를 정적 파일로 사용합니다.</p>
+  </li>
+  <li>
+    <p>CSS파일 만들기</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">django/blog/static/css/blog.css</code></p>
+      </li>
+      <li>
+        <p>제목 색상 바꾸기</p>
+
+        <p>색상은 <code class="language-plaintext highlighter-rouge">#</code>으로 시작해서 알파벳과 숫자 중 6개를 조합해 헥사코드(hexacode)로 나타냅니다.  인터넷에서 원하는 색상을 검색해 사용하거나 <code class="language-plaintext highlighter-rouge">red</code>나 <code class="language-plaintext highlighter-rouge">green</code>같이  <a href="https://www.w3schools.com/colors/colors_names.asp">이미 정해진 색</a>을 사용할 수도 있다.</p>
+
+        <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">h1</span> <span class="nt">a</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#FCA205</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">h1 a</code>: CSS 셀렉터(selector)라고 한다. <code class="language-plaintext highlighter-rouge">h1</code>요소 안의 <code class="language-plaintext highlighter-rouge">a</code>요소에 스타일을 적용한다는 뜻</li>
+        </ul>
+      </li>
+      <li>
+        <p>CSS파일에서는 HTML 파일에 있는 각 요소들에 스타일을 정의할 때 요소를 식별하는 방법</p>
+
+        <ol>
+          <li>
+            <p>요소의 이름 사용하기(태그 이름): <code class="language-plaintext highlighter-rouge">a</code>, <code class="language-plaintext highlighter-rouge">h1</code>, <code class="language-plaintext highlighter-rouge">body</code></p>
+          </li>
+          <li>
+            <p><code class="language-plaintext highlighter-rouge">class</code>속성이나 <code class="language-plaintext highlighter-rouge">id</code>속성(요소에 부여된 이름)</p>
+
+            <p><code class="language-plaintext highlighter-rouge">class</code>는 요소 그룹을 정의하고, <code class="language-plaintext highlighter-rouge">id</code>는 특정 요소를 가리킵니다.</p>
+
+            <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://en.wikipedia.org/wiki/Django"</span> <span class="na">class=</span><span class="s">"external_link"</span> <span class="na">id=</span><span class="s">"link_to_wiki_page"</span><span class="nt">&gt;</span>
+</code></pre></div>            </div>
+          </li>
+        </ol>
+
+        <p><a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS Selctor 참고</a></p>
+      </li>
+      <li>
+        <p>HTML에 CSS 추가하기</p>
+
+        <ul>
+          <li>
+            <p><code class="language-plaintext highlighter-rouge">blog/templates/blog/post_list.html</code>파일 맨 처음에 아래 코드를 추가한다.</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% load static %}
+</code></pre></div>            </div>
+
+            <p>여기서 정적파일을 로딩</p>
+          </li>
+          <li>
+            <p><code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>안에 부트스트랩 CSS파일 링크 다음에 아래에 코드를 추가한다.</p>
+
+            <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"{% static 'css/blog.css' %}"</span><span class="nt">&gt;</span>
+</code></pre></div>            </div>
+
+            <p>브라우저는 위에서부터 순서대로 파일을 읽으므로 파일이 올바른 위치에 있는지 확인해야합니다. 그렇지 않으면 파일 코드가 부트스트랩 파일의 코드를 무시할 수 있습니다.</p>
+          </li>
+          <li>
+            <p><code class="language-plaintext highlighter-rouge">static</code>파일 정보 인식 <code class="language-plaintext highlighter-rouge">collectstatic</code></p>
+
+            <p>아래의 명령어를 실행하면 <code class="language-plaintext highlighter-rouge">djangogirls/static</code>의 하위로 복사된다.</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python manage.py collectstatic
+</code></pre></div>            </div>
+
+            <p>흩어져있는 static 파일들을 모아 특정 디렉터리로 옮기는 작업을 한다. <code class="language-plaintext highlighter-rouge">setting.py</code>파일 안에 정의되어 있는 <code class="language-plaintext highlighter-rouge">STATIC_ROOT</code>디렉터리로 옮겨진다.</p>
+          </li>
+          <li>
+            <p>제목 폰트 바꾸기</p>
+
+            <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"//fonts.googleapis.com/css?family=Lobster&amp;subset=latin,latin-ext"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+</code></pre></div>            </div>
+
+            <p>Google Fonts에서 가져온 <a href="https://fonts.google.com/specimen/Lobster?query=lob&amp;sidebar.open=true&amp;selection.family=Roboto"><em>Lobster</em> </a></p>
+
+            <ul>
+              <li><code class="language-plaintext highlighter-rouge">head</code>에 추가</li>
+            </ul>
+
+            <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">h1</span> <span class="nt">a</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#FCA205</span><span class="p">;</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'Lobster'</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>CSS는 클래스 개념을 가지고 있습니다. 클래스는 HTML의 코드 일부에 이름을 붙이고 그 부분만 특정 스타일을 사용할 수 있게 해줍니다. 각기 다른 div 구분할 때 유용하게 쓰입니다.</p>
+
+<ul>
+  <li>
+    <p>태그에 이름 지정</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'page-header'</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'post'</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>태그에 스타일 지정, 클래스셀렉터는 <code class="language-plaintext highlighter-rouge">.</code></p>
+
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.page-header</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="m">#ff9400</span><span class="p">;</span>
+    <span class="nl">margin-top</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span> <span class="m">20px</span> <span class="m">20px</span> <span class="m">40px</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nc">.page-header</span> <span class="nt">h1</span><span class="o">,</span> <span class="nc">.page-header</span> <span class="nt">h1</span> <span class="nt">a</span><span class="o">,</span> <span class="nc">.page-header</span> <span class="nt">h1</span> <span class="nt">a</span><span class="nd">:visited</span><span class="o">,</span> <span class="nc">.page-header</span> <span class="nt">h1</span> <span class="nt">a</span><span class="nd">:active</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#ffffff</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">36pt</span><span class="p">;</span>
+    <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nc">.content</span> <span class="p">{</span>
+    <span class="nl">margin-left</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span> <span class="p">{</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'Lobster'</span><span class="p">,</span> <span class="nb">cursive</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nc">.date</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#828282</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nc">.save</span> <span class="p">{</span>
+    <span class="nl">float</span><span class="p">:</span> <span class="nb">right</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nc">.post-form</span> <span class="nt">textarea</span><span class="o">,</span> <span class="nc">.post-form</span> <span class="nt">input</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nc">.top-menu</span><span class="o">,</span> <span class="nc">.top-menu</span><span class="nd">:hover</span><span class="o">,</span> <span class="nc">.top-menu</span><span class="nd">:visited</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#ffffff</span><span class="p">;</span>
+    <span class="nl">float</span><span class="p">:</span> <span class="nb">right</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">26pt</span><span class="p">;</span>
+    <span class="nl">margin-right</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nc">.post</span> <span class="p">{</span>
+    <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">70px</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nc">.post</span> <span class="nt">h1</span> <span class="nt">a</span><span class="o">,</span> <span class="nc">.post</span> <span class="nt">h1</span> <span class="nt">a</span><span class="nd">:visited</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#000000</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'page-header'</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/"</span><span class="nt">&gt;</span>Django Girls Blog<span class="nt">&lt;/a&gt;&lt;/h1&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'content container'</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'row'</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'col-md-8'</span><span class="nt">&gt;</span>
+                      
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><a href="https://www.codecademy.com/catalog/all">CSS 추천 강의</a></p>
+
+:ET

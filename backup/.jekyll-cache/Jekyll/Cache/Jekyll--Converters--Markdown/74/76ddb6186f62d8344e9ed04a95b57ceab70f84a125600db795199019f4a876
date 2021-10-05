@@ -1,0 +1,35 @@
+I"�<p>절차형 프로그래밍은 무엇을 <strong>어떻게</strong> 할 것인가에 가깝고, 선언형 프로그래밍은 <strong>무엇을</strong> 할 것인가와 가깝다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="p">(</span><span class="nx">arr</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">result</span> <span class="o">+=</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">(</span><span class="nx">arr</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>배열의 합을 구하는 로직을 작성한다고 해보자 절차형으로 작성한다면 위와 같은 방식으로 작성할 수 있을 것이다. 배열을 가지고 어떻게 해서 합을 구할 것인지가 구체적으로 드러난 코드이다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">cur</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">acc</span> <span class="o">+</span> <span class="nx">cur</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>똑같이 배열의 합을 구하는 로직을 선언형 프로그래밍으로 작성하면 위와 같은 방식으로 작성할 수 있다. reduce 메소드를 이용하여 배열의 합을 구하는 코드이고, 절차형으로 작성한 코드에 비하면 상당부분이 생략된 것을 알 수 있다.</p>
+
+<blockquote>
+  <p>절차형 프로그래밍은 <strong>어떻게</strong>에 초점이 맞춰진 방식이고, 선언형 프로그래밍은 <strong>무엇을</strong>에 초점이 맞춰진 방식이다. 선언형 프로그래밍 방식에서는 <strong>어떻게</strong>의 부분을 누군가 할 수 있다는 가정하에 <strong>무엇을</strong> 부분에 초점을 맞추는 것이기 때문에 선언형 프로그래밍이 제대로 동작하기 위해서는 절차형으로 작성된 <strong>어떻게</strong>에 대한 부분이 추상화 되어 있어야 한다.</p>
+</blockquote>
+
+<p>출처 :</p>
+
+<ul>
+  <li><a href="https://boxfoxs.tistory.com/430">명령형 프로그래밍 VS 선언형 프로그래밍</a></li>
+  <li><a href="https://dzone.com/articles/imperative-vs-declarative-javascript">Imperative vs. Declarative JavaScript</a></li>
+</ul>
+:ET

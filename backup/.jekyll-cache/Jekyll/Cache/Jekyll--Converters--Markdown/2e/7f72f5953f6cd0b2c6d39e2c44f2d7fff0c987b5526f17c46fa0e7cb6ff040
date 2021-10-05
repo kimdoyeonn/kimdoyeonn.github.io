@@ -1,0 +1,82 @@
+I"�<ul>
+  <li><strong>constant 변수</strong>
+    <ul>
+      <li>변수를 상수처럼 사용할 때 -&gt; 가독성은 올리고 값은 변경할 수 없게</li>
+      <li>기준값으로 사용할 때</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">데이터형</span> <span class="n">상수명</span> <span class="o">=</span> <span class="n">값</span><span class="o">;</span><span class="c1">//작성위치가 고정되어있다( 클래스 선언 바로 아래에 )</span>
+</code></pre></div></div>
+
+<p>사용할 때는 <strong>constant명</strong> 또는 <strong>class명.constant명</strong>으로 쓴다</p>
+
+<ul>
+  <li>
+    <p><strong>public</strong>: 클래스 외부에서 접근가능</p>
+  </li>
+  <li>
+    <p><strong>static</strong>: 모든 메모리에서 접근 가능 / 공용 메모리</p>
+  </li>
+  <li>
+    <p><strong>final</strong>: 값 변경 불가</p>
+  </li>
+  <li>
+    <p><strong>tilde연산</strong> ( ~ )</p>
+
+    <ul>
+      <li>-(n+1)의 결과를 출력한다</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="wrapper-class">Wrapper Class</h2>
+
+<ul>
+  <li>
+    <p>기본형 데이터형과 같은 이름을 가진 클래스(byte Byte 둘이 다름)</p>
+  </li>
+  <li>
+    <p>기본형 데이터형을 감싸서 객체로 만들어 여러가지 기능을 사용할 수 있도록 만들어준다.</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">byte</span> <span class="n">b</span><span class="o">=</span><span class="mi">10</span><span class="o">;</span>
+<span class="nc">Byte</span> <span class="n">bObj</span><span class="o">=</span> <span class="k">new</span> <span class="nc">Byte</span><span class="o">(</span><span class="n">b</span><span class="o">);</span>
+<span class="n">bObj</span><span class="o">.</span><span class="na">intValue</span><span class="o">();</span> <span class="c1">//int형 값으로 변환된 값을 반환</span>
+<span class="n">bObj</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="kt">byte</span><span class="o">,</span><span class="kt">byte</span><span class="o">);</span><span class="c1">//바이트 값을 비교</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="연산자--operator-">연산자 ( Operator )</h2>
+
+<p>최단산쉬관리삼대콤마</p>
+
+<ol>
+  <li>최우선 ()</li>
+  <li>단항 ~ ! + - ++ –</li>
+  <li>산술</li>
+  <li>쉬프트</li>
+  <li>관계</li>
+  <li>논리</li>
+  <li>삼항</li>
+  <li>대입</li>
+  <li>콤마</li>
+</ol>
+
+<h2 id="접근지정자">접근지정자</h2>
+
+<ul>
+  <li>static method
+    <ul>
+      <li>constant 형태로 쓸 수 있는 메소트</li>
+      <li>객체화를 하지 않고 쓸 수 있는 메소드</li>
+    </ul>
+  </li>
+  <li>instance method
+    <ul>
+      <li>객체화를 하여 사용하는 메소드</li>
+    </ul>
+  </li>
+</ul>
+:ET

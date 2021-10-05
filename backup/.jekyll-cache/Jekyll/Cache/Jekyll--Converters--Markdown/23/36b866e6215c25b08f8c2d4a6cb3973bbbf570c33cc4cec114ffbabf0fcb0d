@@ -1,0 +1,26 @@
+I"<p>여러 번 메이븐 때문에 고생을 했었는데 그 동안 고생한 것도 이 방법으로 해결할 수 있지 않았을까 싶어서 나중에 이 문제로 또 고생할 나를 위해 기록해놓으려고 한다.</p>
+
+<h3 id="현상">현상</h3>
+
+<ul>
+  <li>
+    <p>메이븐으로 받아와야하는 jar를 찾지 못함</p>
+  </li>
+  <li>pom.xml에 필요한 dependency는 잘 들어가 있음</li>
+  <li>.m/repository~~ 에 확인해봐도 잘 들어가 있음</li>
+  <li>maven update, clean 수십번 해봐도 안됨</li>
+  <li>pom.xml이 똑같은 다른 프로젝트는 잘 실행되는데 어떤건 또 안됨</li>
+</ul>
+
+<h3 id="해결">해결</h3>
+
+<ul>
+  <li>프로젝트가 저장되어있는 워크스페이스 폴더 내부에서 <code class="language-plaintext highlighter-rouge">\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps</code> 여기서 문제가 발생한 프로젝트 폴더를 클릭</li>
+  <li>안에서 <code class="language-plaintext highlighter-rouge">WEB-INF\lib</code> 로 이동하면 현재 프로젝트에 적용된 jar 파일들이 쭉 나오는데, 오류가 발생한 jar가 존재하지 않는다면 jar 파일을 찾아서 복붙</li>
+  <li><code class="language-plaintext highlighter-rouge">C:\Users\사용자이름\.m2\repository</code> 경로로 들어가면 메이븐이 저장한 jar 파일을 찾을 수 있음</li>
+</ul>
+
+<blockquote>
+  <p>이렇게 해도 되는건지 모르겠지만.. 일단 실행이 되니까 너무 속시원하다😝</p>
+</blockquote>
+:ET

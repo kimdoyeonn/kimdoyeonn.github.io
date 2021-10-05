@@ -1,0 +1,131 @@
+I"�<p>참고: <a href="https://www.acmicpc.net/problem/2225">백준</a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">시간 제한</th>
+      <th style="text-align: left">메모리 제한</th>
+      <th style="text-align: left">제출</th>
+      <th style="text-align: left">정답</th>
+      <th style="text-align: left">맞은 사람</th>
+      <th style="text-align: left">정답 비율</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">2 초</td>
+      <td style="text-align: left">128 MB</td>
+      <td style="text-align: left">19582</td>
+      <td style="text-align: left">8519</td>
+      <td style="text-align: left">6138</td>
+      <td style="text-align: left">42.035%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="문제">문제</h2>
+
+<p>0부터 N까지의 정수 K개를 더해서 그 합이 N이 되는 경우의 수를 구하는 프로그램을 작성하시오.</p>
+
+<p>덧셈의 순서가 바뀐 경우는 다른 경우로 센다(1+2와 2+1은 서로 다른 경우). 또한 한 개의 수를 여러 번 쓸 수도 있다.</p>
+
+<h2 id="입력">입력</h2>
+
+<p>첫째 줄에 두 정수 N(1 ≤ N ≤ 200), K(1 ≤ K ≤ 200)가 주어진다.</p>
+
+<h2 id="출력">출력</h2>
+
+<p>첫째 줄에 답을 1,000,000,000으로 나눈 나머지를 출력한다.</p>
+
+<h2 id="예제-입력-1-복사">예제 입력 1 복사</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>20 2
+</code></pre></div></div>
+
+<h2 id="예제-출력-1-복사">예제 출력 1 복사</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>21
+</code></pre></div></div>
+
+<h3 id="내-풀이">내 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+
+<span class="n">dp</span> <span class="o">=</span> <span class="p">[[],</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">dp</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">temp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">l</span><span class="p">]</span>
+        <span class="n">temp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">%</span> <span class="mi">1000000000</span>
+    <span class="n">dp</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">n</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>k = 1인 경우에는 모든 수에서 한가지 경우밖에 나올 수 없다.</p>
+
+<p>k = 2인 경우에는</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>n = 0 -&gt; 00
+n = 1 -&gt; 01, 10 
+n = 2 -&gt; 02, 11, 20
+n = 3 -&gt; 03, 12, 21, 30 
+...
+</code></pre></div></div>
+<p>각 경우를 표로 만들어서 확인해보면 다음과 같다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">n = 0</th>
+      <th style="text-align: center">n = 1</th>
+      <th style="text-align: center">n = 2</th>
+      <th style="text-align: center">n = 3</th>
+      <th style="text-align: center">n = 4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">k = 1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">k = 2</td>
+      <td style="text-align: center"><strong>1</strong></td>
+      <td style="text-align: center"><strong>2</strong></td>
+      <td style="text-align: center"><strong>3</strong></td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">k = 3</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">‘6’</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">15</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">k = 4</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">20</td>
+      <td style="text-align: center">35</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>0부터 n까지의 수를 k개 뽑아서 만드는 경우의 수를 정리한 것이다.</p>
+
+<p>각 수열이 서로에게 영향을 주고 있는 것을 확인할 수 있다. (ex. 6 = 1 + 2 + 3 )</p>
+:ET

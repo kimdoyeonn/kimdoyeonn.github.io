@@ -1,0 +1,103 @@
+I"<ul>
+  <li>
+    <p>컴퓨터 구조란 어떤 과목인가?</p>
+
+    <ul>
+      <li>컴퓨터 구조로 본 패러다임의 변화
+        <ul>
+          <li>컴퓨터의 태동</li>
+          <li>사무자동화 기계</li>
+          <li>네트워크 단말, 통신기기</li>
+          <li>현대
+            <ul>
+              <li>유비쿼터스</li>
+              <li>Mobile, Wireless</li>
+              <li>IOT</li>
+              <li>Smart Computer(Machine learning/Deep learning)/AI(Artificial Intelligent)…</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <p>패러다임에 따른 컴퓨터 구조가 어떻게 변화할지</p>
+  </li>
+</ul>
+
+<h3 id="컴퓨터의-태동">컴퓨터의 태동</h3>
+
+<p><img src="https://media.vlpt.us/images/underlier12/post/6320dff8-a99a-44a9-9b5d-d08ff03f14fc/image.png" alt="img" /></p>
+
+<h3 id="사무자동화-기계">사무자동화 기계</h3>
+
+<ul>
+  <li>자료 <strong>준비</strong>기기 : 워드프로세서, 복사기, 프린터</li>
+  <li>자료 <strong>처리</strong>기기 : 워드프로세서, 개인용 컴퓨터</li>
+  <li>자료 <strong>전송</strong>기기 : 팩스, 이메일, 원격 회의 시스템</li>
+  <li>자료 <strong>저장</strong>기기 : 마이크로 필름, COM -&gt; CAR, 광디스크 -&gt; 하드디스크</li>
+</ul>
+
+<h3 id="네트워크기기-통신기기">네트워크기기, 통신기기</h3>
+
+<p><img src="https://media.vlpt.us/images/underlier12/post/1106b149-03e7-4428-872b-66552a43d3e3/image.png" alt="img" /></p>
+
+<p>통신망에 해당하는 <strong>코어</strong>를 통해 개개인(통신사)에 해당하는 <strong>엣지</strong>들이 서로 네트워킹하는 구조</p>
+
+<ul>
+  <li>코어의 서버도 컴퓨터, 엣지도 컴퓨터</li>
+</ul>
+
+<h3 id="현대">현대</h3>
+
+<h4 id="유비쿼터스-시대의-도래">유비쿼터스 시대의 도래</h4>
+
+<blockquote>
+  <p>Ubiquitous: 신은 어디에나 존재한다</p>
+</blockquote>
+
+<ul>
+  <li>Ubiquitous 컴퓨팅: 유비쿼터스 + 컴퓨팅</li>
+  <li>
+    <p>CPU를 병렬로 연결할 수 있는 병렬 시스템의 발전 등으로 가능해짐</p>
+  </li>
+  <li>실세계의 매핑(mapping : 지도화)를 통한 가상 세계 구성 -&gt; 초연결(제 3 공간)에 의한 신개념의 도입</li>
+</ul>
+
+<h4 id="mobile--wireless-전성시대">Mobile &amp; Wireless 전성시대</h4>
+
+<ul>
+  <li>피처폰과 스마트폰의 차이점
+    <ul>
+      <li>자이로스코프 센서를 이용해 스마트폰은 자신의 위치를 파악</li>
+    </ul>
+  </li>
+  <li>유선 사업자와 스마트폰 사업자의 위상 변화
+    <ul>
+      <li>핸드폰을 개발하여 유선사업자들에게 팔던 사업자들이 스마트폰을 개발하면서 세계적인 기업으로 성장하여 세계 사업을 선동</li>
+    </ul>
+  </li>
+  <li>컴퓨터 구성요소(병렬 프로세싱)의 변화
+    <ul>
+      <li>파이프라인, 멀티스레딩, 병렬 프로세싱이 컴퓨터 구성요소를 변화시킴</li>
+    </ul>
+  </li>
+  <li>세대별 진화의 정도
+    <ul>
+      <li>3g, 4g, LTE(long term evolution), 5g, 6g</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="iotinternet-of-thing-시대의-자화상">IOT(internet of thing) 시대의 자화상</h4>
+
+<p>사물 인터넷은 사람, 사물, 공간, 데이터 등 모든 것이 인터넷으로 서로 연결되어, 정보가 생성 수집 공유 활용되는 <strong>초연결 인터넷</strong></p>
+
+<ul>
+  <li>모바일 기반의 IOT, 클라우드, 빅데이터가 연계된 새로운 가치와 서비스 창출(모바일 기반으로)</li>
+</ul>
+
+<h4 id="smart-computermachine-learningdeep-learningai">Smart Computer(Machine learning/Deep learning/AI)</h4>
+
+<p>인공지능은 컴퓨터에 의한 활용으로 인간의 추론적 기능과 지능적인 행동을 재연하려는 시도</p>
+
+:ET

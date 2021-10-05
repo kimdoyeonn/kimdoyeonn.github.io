@@ -1,0 +1,182 @@
+I"�O<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Greeting</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">isLoggedIn</span> <span class="o">=</span> <span class="nx">props</span><span class="p">.</span><span class="nx">isLoggedIn</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isLoggedIn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">&lt;</span><span class="nc">UserGreeting</span> <span class="p">/&gt;;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">GuestGreeting</span> <span class="p">/&gt;;</span>
+<span class="p">}</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+  <span class="c1">// Try changing to isLoggedIn={true}:</span>
+  <span class="p">&lt;</span><span class="nc">Greeting</span> <span class="na">isLoggedIn</span><span class="p">=</span><span class="si">{</span><span class="kc">false</span><span class="si">}</span> <span class="p">/&gt;,</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">root</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">isLoggedIn</code>의 값에 따라 다른 컴포넌트를 렌더링함</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">LoginControl</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">handleLoginClick</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleLoginClick</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">handleLogoutClick</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleLogoutClick</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">isLoggedIn</span><span class="p">:</span> <span class="kc">false</span> <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleLoginClick</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">isLoggedIn</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleLogoutClick</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">isLoggedIn</span><span class="p">:</span> <span class="kc">false</span> <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">isLoggedIn</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isLoggedIn</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">button</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isLoggedIn</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">button</span> <span class="o">=</span> <span class="p">&lt;</span><span class="nc">LogoutButton</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleLogoutClick</span><span class="si">}</span> <span class="p">/&gt;;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">button</span> <span class="o">=</span> <span class="p">&lt;</span><span class="nc">LoginButton</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleLoginClick</span><span class="si">}</span> <span class="p">/&gt;;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Greeting</span> <span class="na">isLoggedIn</span><span class="p">=</span><span class="si">{</span><span class="nx">isLoggedIn</span><span class="si">}</span> <span class="p">/&gt;</span>
+        <span class="si">{</span><span class="nx">button</span><span class="si">}</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(&lt;</span><span class="nc">LoginControl</span> <span class="p">/&gt;,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">root</span><span class="dl">"</span><span class="p">));</span>
+</code></pre></div></div>
+
+<ul>
+  <li>로그인 상태: 인사말과 로그아웃버튼을 렌더링 (<code class="language-plaintext highlighter-rouge">isLoggedIn</code>이 <code class="language-plaintext highlighter-rouge">true</code>)</li>
+  <li>로그아웃 상태: 가입안내와 로그인버튼을 렌더링(<code class="language-plaintext highlighter-rouge">isLoggedIn</code>이 <code class="language-plaintext highlighter-rouge">false</code>)</li>
+</ul>
+
+<h3 id="논리-연산자-로-if를-인라인으로-표현하기">논리 연산자 &amp;&amp;로 if를 인라인으로 표현하기</h3>
+
+<p>JSX 안에는 중괄호를 이용해서 표현식을 사용할 수 있다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Mailbox</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">unreadMessages</span> <span class="o">=</span> <span class="nx">props</span><span class="p">.</span><span class="nx">unreadMessages</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">unreadMessages</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>You have <span class="si">{</span><span class="nx">unreadMessages</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span> unread messages.<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+      <span class="p">)</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">messages</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">React</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Re: React</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Re:Re: React</span><span class="dl">"</span><span class="p">];</span>
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+  <span class="p">&lt;</span><span class="nc">Mailbox</span> <span class="na">unreadMessages</span><span class="p">=</span><span class="si">{</span><span class="nx">messages</span><span class="si">}</span> <span class="p">/&gt;,</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">root</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>JavaScript에서 <code class="language-plaintext highlighter-rouge">true &amp;&amp; expression</code>은 항상 <code class="language-plaintext highlighter-rouge">expression</code>으로 평가되고 <code class="language-plaintext highlighter-rouge">false &amp;&amp; expression</code>은 항상 <code class="language-plaintext highlighter-rouge">false</code>로 평가된다.</li>
+  <li>따라서 <code class="language-plaintext highlighter-rouge">&amp;&amp;</code> 뒤의 엘리먼트는 조건이 <code class="language-plaintext highlighter-rouge">true</code>일 때 출력됨 (조건이 <code class="language-plaintext highlighter-rouge">false</code>라면 무시)</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="si">{</span> <span class="nx">count</span> <span class="o">&amp;&amp;</span> <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Messages: <span class="si">{</span><span class="nx">count</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">false</code>로 평가될 수 있는 표현식을 반환하면 <code class="language-plaintext highlighter-rouge">&amp;&amp;</code> 뒤에 있는 표현식은 건너뛰지만 false로 평가될 수 있는 표현식이 반환된다는 것에 주의해야 한다. 위의 예시에서는 <code class="language-plaintext highlighter-rouge">&lt;div&gt;0&lt;/div&gt;</code>이 render 메서드에서 반환된다.</li>
+</ul>
+
+<h3 id="조건부-연산자로-if-else-구문-인라인으로-표현하기">조건부 연산자로 If-Else 구문 인라인으로 표현하기</h3>
+
+<ul>
+  <li>JavaScript의 삼항연산자를 사용한다. <code class="language-plaintext highlighter-rouge">condition ? true : false</code></li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">isLoggedIn</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isLoggedIn</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      The user is <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">isLoggedIn</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">currently</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">not</span><span class="dl">'</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> logged in.
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">isLoggedIn</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isLoggedIn</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">isLoggedIn</span>
+        <span class="p">?</span> <span class="p">&lt;</span><span class="nc">LogoutButton</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleLogoutClick</span><span class="si">}</span> <span class="p">/&gt;</span>
+        <span class="p">:</span> <span class="p">&lt;</span><span class="nc">LoginButton</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleLoginClick</span><span class="si">}</span> <span class="p">/&gt;</span>
+      <span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>가독성은 좀 떨어지지만 더 큰 표현식에도 이 구문을 사용할 수 있다.</li>
+</ul>
+
+<p>조건이 너무 복잡하다면 컴포넌트를 분리하기 좋은 때 일 수도 있다;</p>
+
+<h3 id="컴포넌트가-렌더링하는-것을-막기">컴포넌트가 렌더링하는 것을 막기</h3>
+
+<p>다른 컴포넌트에 의해 렌더링 될 때 컴포넌트 자체를 숨기고 싶을 때가 있을 수 있다. 이때는 렌더링 결과를 출력하는 대신 <code class="language-plaintext highlighter-rouge">null</code>을 반환하면 해결할 수 있다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">WarningBanner</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">props</span><span class="p">.</span><span class="nx">warn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="s">"warning"</span><span class="p">&gt;</span>Warning!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">Page</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">showWarning</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">handleToggleClick</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleToggleClick</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleToggleClick</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">((</span><span class="nx">state</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
+      <span class="na">showWarning</span><span class="p">:</span> <span class="o">!</span><span class="nx">state</span><span class="p">.</span><span class="nx">showWarning</span><span class="p">,</span>
+    <span class="p">}));</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WarningBanner</span> <span class="na">warn</span><span class="p">=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">showWarning</span><span class="si">}</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleToggleClick</span><span class="si">}</span><span class="p">&gt;</span>
+          <span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">showWarning</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">Hide</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">Show</span><span class="dl">"</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(&lt;</span><span class="nc">Page</span> <span class="p">/&gt;,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">root</span><span class="dl">"</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>위의 예시는 <code class="language-plaintext highlighter-rouge">&lt;WarningBanner /&gt;</code> 가 prop의 <code class="language-plaintext highlighter-rouge">warn</code> 값에 의해 렌더링됩니다. ( <code class="language-plaintext highlighter-rouge">false</code>일 경우 렌더링되지 않음)</p>
+
+<p>출처 : <a href="https://ko.reactjs.org/docs/conditional-rendering.html">조건부 렌더링</a></p>
+:ET

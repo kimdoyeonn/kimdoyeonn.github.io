@@ -1,0 +1,90 @@
+I"�<p>참고: <a href="https://www.acmicpc.net/problem/2231">백준</a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">시간 제한</th>
+      <th style="text-align: left">메모리 제한</th>
+      <th style="text-align: left">제출</th>
+      <th style="text-align: left">정답</th>
+      <th style="text-align: left">맞은 사람</th>
+      <th style="text-align: left">정답 비율</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">2 초</td>
+      <td style="text-align: left">192 MB</td>
+      <td style="text-align: left">34746</td>
+      <td style="text-align: left">16898</td>
+      <td style="text-align: left">13690</td>
+      <td style="text-align: left">48.267%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="문제">문제</h2>
+
+<p>어떤 자연수 N이 있을 때, 그 자연수 N의 분해합은 N과 N을 이루는 각 자리수의 합을 의미한다. 어떤 자연수 M의 분해합이 N인 경우, M을 N의 생성자라 한다. 예를 들어, 245의 분해합은 256(=245+2+4+5)이 된다. 따라서 245는 256의 생성자가 된다. 물론, 어떤 자연수의 경우에는 생성자가 없을 수도 있다. 반대로, 생성자가 여러 개인 자연수도 있을 수 있다.</p>
+
+<p>자연수 N이 주어졌을 때, N의 가장 작은 생성자를 구해내는 프로그램을 작성하시오.</p>
+
+<h2 id="입력">입력</h2>
+
+<p>첫째 줄에 자연수 N(1 ≤ N ≤ 1,000,000)이 주어진다.</p>
+
+<h2 id="출력">출력</h2>
+
+<p>첫째 줄에 답을 출력한다. 생성자가 없는 경우에는 0을 출력한다.</p>
+
+<h2 id="예제-입력-1-복사">예제 입력 1 복사</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>216
+</code></pre></div></div>
+
+<h2 id="예제-출력-1-복사">예제 출력 1 복사</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>198
+</code></pre></div></div>
+
+<h2 id="출처">출처</h2>
+
+<p><a href="https://www.acmicpc.net/category/1">ICPC</a> &gt; <a href="https://www.acmicpc.net/category/7">Regionals</a> &gt; <a href="https://www.acmicpc.net/category/42">Asia Pacific</a> &gt; <a href="https://www.acmicpc.net/category/211">Korea</a> &gt; <a href="https://www.acmicpc.net/category/detail/1067">Asia Regional - Seoul 2005</a> B번</p>
+
+<ul>
+  <li>데이터를 추가한 사람: <a href="https://www.acmicpc.net/user/kimtree97">kimtree97</a>, <a href="https://www.acmicpc.net/user/yjwr0528">yjwr0528</a></li>
+</ul>
+
+<h2 id="링크">링크</h2>
+
+<ul>
+  <li><a href="https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1356">ACM-ICPC Live Archive</a></li>
+  <li><a href="http://acm.tju.edu.cn/toj/showp2502.html">TJU Online Judge</a></li>
+</ul>
+
+<h2 id="알고리즘-분류">알고리즘 분류</h2>
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/tag/125">브루트포스 알고리즘</a></li>
+</ul>
+
+<h3 id="내-풀이">내 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+
+
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="p">[</span><span class="n">number</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+            <span class="n">temp</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>가장 작은 수를 구해야하므로 1부터 확인하는데 문자열 반복문으로 각 자릿수의 값을 나누고, 그 합을 확인했다. 생성자가 없는 수는 끝까지 종료 조건문을 통과하지 못할 것이므로 else문으로 0을 출력하게 했다.</p>
+:ET

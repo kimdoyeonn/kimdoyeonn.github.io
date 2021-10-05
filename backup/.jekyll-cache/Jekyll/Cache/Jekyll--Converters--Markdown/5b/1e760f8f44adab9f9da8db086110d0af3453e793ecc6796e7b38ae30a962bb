@@ -1,0 +1,37 @@
+I"�<p>원본 repository의 변경사항을 fork한 repository에 적용할 때 사용했다.</p>
+
+<ol>
+  <li>
+    <p>원본 repository를 remote repository로 추가해야함</p>
+
+    <p>변경사항을 가져올 원본 repository를 upstream이라는 이름으로 remote reqository에 추가한다.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add upstream 원본URL
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">git remote -v</code>을 실행하면 제대로 추가되었는지 확인할 수 있음</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">fetch</code>를 사용하여 원본 repository의 변경사항 가져오기</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch upstream
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>checkout을 사용하여 브랜치 선택(ex. main)</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout main
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>upstream의 기본 branch(ex.<code class="language-plaintext highlighter-rouge">upstream/main</code>)를 로컬 기본 branch로 merge. 이 과정에서 내 로컬 변경사항들의 손실없이 upstream repository와 동기화된다.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge upstream/main
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>참조:</p>
+
+<p><a href="https://json.postype.com/post/210431">	https://json.postype.com/post/210431	</a></p>
+:ET

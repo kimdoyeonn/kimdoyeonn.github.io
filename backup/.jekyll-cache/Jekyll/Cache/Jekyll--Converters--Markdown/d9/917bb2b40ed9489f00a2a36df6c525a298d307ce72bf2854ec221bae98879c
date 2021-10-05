@@ -1,0 +1,21 @@
+I"�<p>참고: <a href="https://tutorial.djangogirls.org/ko/html/">장고걸스</a></p>
+
+<p><code class="language-plaintext highlighter-rouge">blog/templates/blog</code>디렉토리에 템플릿이 저장됨, 없다면 만들어주기, 안에는 <code class="language-plaintext highlighter-rouge">post_list.html</code>이라는 새 파일 만들기</p>
+
+<p>넣고싶은 HTML을 작성한 후 깃허브에 커밋푸쉬하기</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git status
+git add --all .
+git status
+git commit -m 'Changed the HTML for the site.'
+git push
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">pythonanywhere 콘솔페이지</code>를 열고 배시 콘솔아래서</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ~/my-first-blog
+git pull
+</code></pre></div></div>
+
+<p>URL로 이동해서 적용이 완료되었는지 확인</p>
+:ET

@@ -1,0 +1,94 @@
+I"b<ul>
+  <li>참고: <a href="https://www.acmicpc.net/step/10">백준</a></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">시간 제한</th>
+      <th style="text-align: left">메모리 제한</th>
+      <th style="text-align: left">제출</th>
+      <th style="text-align: left">정답</th>
+      <th style="text-align: left">맞은 사람</th>
+      <th style="text-align: left">정답 비율</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">2 초</td>
+      <td style="text-align: left">128 MB</td>
+      <td style="text-align: left">27685</td>
+      <td style="text-align: left">15867</td>
+      <td style="text-align: left">14313</td>
+      <td style="text-align: left">58.162%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="문제">문제</h2>
+
+<p>한수는 지금 (x, y)에 있다. 직사각형의 왼쪽 아래 꼭짓점은 (0, 0)에 있고, 오른쪽 위 꼭짓점은 (w, h)에 있다. 직사각형의 경계선까지 가는 거리의 최솟값을 구하는 프로그램을 작성하시오.</p>
+
+<h2 id="입력">입력</h2>
+
+<p>첫째 줄에 x, y, w, h가 주어진다.</p>
+
+<h2 id="출력">출력</h2>
+
+<p>첫째 줄에 문제의 정답을 출력한다.</p>
+
+<h2 id="제한">제한</h2>
+
+<ul>
+  <li>1 ≤ w, h ≤ 1,000</li>
+  <li>1 ≤ x ≤ w-1</li>
+  <li>1 ≤ y ≤ h-1</li>
+  <li>x, y, w, h는 정수</li>
+</ul>
+
+<h2 id="예제-입력-1-복사">예제 입력 1 복사</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6 2 10 3
+</code></pre></div></div>
+
+<h2 id="예제-출력-1-복사">예제 출력 1 복사</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+<h2 id="출처">출처</h2>
+
+<ul>
+  <li>문제를 번역한 사람: <a href="https://www.acmicpc.net/user/baekjoon">baekjoon</a></li>
+</ul>
+
+<h2 id="알고리즘-분류">알고리즘 분류</h2>
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/tag/124">수학</a></li>
+  <li><a href="https://www.acmicpc.net/problem/tag/100">기하학</a></li>
+</ul>
+
+<h3 id="풀이">풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+
+<span class="c1"># 1
+</span><span class="n">dist1</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">x</span> <span class="k">if</span> <span class="n">w</span> <span class="o">-</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">w</span><span class="o">//</span><span class="mi">2</span> <span class="k">else</span> <span class="n">x</span>
+<span class="n">dist2</span> <span class="o">=</span> <span class="n">h</span> <span class="o">-</span> <span class="n">y</span> <span class="k">if</span> <span class="n">h</span> <span class="o">-</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">h</span><span class="o">//</span><span class="mi">2</span> <span class="k">else</span> <span class="n">y</span>
+<span class="k">print</span><span class="p">(</span><span class="n">dist1</span> <span class="k">if</span> <span class="n">dist1</span> <span class="o">&lt;</span> <span class="n">dist2</span> <span class="k">else</span> <span class="n">dist2</span><span class="p">)</span>
+
+<span class="c1"># 2
+</span><span class="n">dist</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">-</span><span class="n">y</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">dist</span><span class="p">))</span>
+</code></pre></div></div>
+
+<ol>
+  <li>너비, 높이에서 x, y를 뺀 값과 너비, 높이의 1/2를 비교하여 반절보다 뺀 값이 작으면 뺀 값을, 아니면 x,y를 각각 dist1, dist2에 넣고 dist1과 dist2 중에 작은 값을 출력</li>
+  <li>x, y, w-x, h-y를 모두 리스트에 넣고 리스트의 <code class="language-plaintext highlighter-rouge">min()</code>함수를 사용하여 최소 값을 출력</li>
+</ol>
+
+<blockquote>
+  <p>2번 방법으로 푼 다른 사람은 속도가 더 빨리 나온거같은데 내가 해보니 둘의 속도가 비슷했다. 서버의 상황에 따라 속도가 다르게 찍히나보다.</p>
+</blockquote>
+:ET

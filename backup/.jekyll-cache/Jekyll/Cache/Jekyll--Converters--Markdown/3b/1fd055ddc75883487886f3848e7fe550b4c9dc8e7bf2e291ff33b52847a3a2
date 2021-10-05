@@ -1,0 +1,38 @@
+I"-	<h4 id="언어-설정">언어 설정</h4>
+
+<p><code class="language-plaintext highlighter-rouge">settings.py</code>에서</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">LANGUAGE_CODE</span> <span class="o">=</span> <span class="s">'ko'</span> <span class="c1"># en-us
+</span></code></pre></div></div>
+
+<p>장고 관리자에서는 글을 추가, 수정, 삭제할 수 있다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">blog/admin.py</code>에서</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Post</span>
+
+<span class="n">admin</span><span class="p">.</span><span class="n">site</span><span class="p">.</span><span class="n">register</span><span class="p">(</span><span class="n">Post</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>앞에서 정의했던 <code class="language-plaintext highlighter-rouge">Post</code>모델을 <code class="language-plaintext highlighter-rouge">import</code></li>
+  <li>관리자 페이지에서 만든 모델을 보려면 <code class="language-plaintext highlighter-rouge">admin.site.register(Post)</code>로 모델 등록</li>
+  <li>관리자 페이지는 <code class="language-plaintext highlighter-rouge">python manage.py runserver</code>를 실행후 브라우저에서 http://127.0.0.1:8000/admin/로 이동하여 확인</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/53068706/107882460-d3f19080-6f2c-11eb-8341-2181c6ebb356.png" alt="django_runserver_admin" /></p>
+
+<p>( 된다! 신기해! )</p>
+
+<ul>
+  <li>
+    <p>로그인을 하려면 모든 권한을 가진 superuser를 생성해야한다.</p>
+
+    <p>커맨드라인으로 돌아가서 <code class="language-plaintext highlighter-rouge">python manage.py createsuperuser</code>실행, 사용자이름, 이메일, 암호 입력</p>
+  </li>
+  <li>
+    <p>관리자 페이지에서 방금 만든 계정으로 로그인을 해보면 블로그 포스팅, 등등 여러가지 관리자 기능을 사용할 수 있다.</p>
+  </li>
+</ul>
+:ET

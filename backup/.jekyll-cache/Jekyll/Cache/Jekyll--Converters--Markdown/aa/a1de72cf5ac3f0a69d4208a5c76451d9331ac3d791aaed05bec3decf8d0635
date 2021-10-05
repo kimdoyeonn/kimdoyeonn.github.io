@@ -1,0 +1,12 @@
+I"<p>참고: <a href="https://ko.wikipedia.org/wiki/Pip_(%ED%8C%A8%ED%82%A4%EC%A7%80_%EA%B4%80%EB%A6%AC%EC%9E%90)">위키백과</a></p>
+
+<p>pip는 파이썬으로 작성된 패키지 소프트웨어를 설치, 관리하는 패키지 관리 시스템이다. 파이썬 3.4 이후에 버전에는 같이 포함되어있다.</p>
+
+<h3 id="패키지-설치하기">패키지 설치하기</h3>
+
+<h4 id="장고-설치">장고 설치</h4>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">pip</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="nx">Django</span><span class="o">==</span><span class="mf">3.1.4</span><span class="w">
+</span></code></pre></div></div>
+
+:ET

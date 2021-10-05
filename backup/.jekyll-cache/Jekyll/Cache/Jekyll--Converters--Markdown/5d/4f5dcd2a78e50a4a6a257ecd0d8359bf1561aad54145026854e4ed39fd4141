@@ -1,0 +1,47 @@
+I"�<h3 id="repl">REPL</h3>
+
+<ul>
+  <li>Powershell에서 파일 이름 없이 python이라고만 입력하면 나오는 창</li>
+  <li>파이썬 코드를 한 줄씩 입력해 가면서 테스트 해 볼 수 있는 입력창</li>
+  <li>REPL을 종료하려면 <code class="language-plaintext highlighter-rouge">exit()</code>라고 입력</li>
+  <li>Read-Evel_print Loop의 약자</li>
+  <li>코드를 읽어서 평가(실행)하고 결과를 출력하는 루프(반복)</li>
+  <li>잘 모르는 기능을 테스트해볼 때 유용</li>
+</ul>
+
+<blockquote>
+  <p>크롬의 개발자 콘솔과 비슷한 역할인가보다.</p>
+</blockquote>
+
+<h3 id="shell-사용법">Shell 사용법</h3>
+
+<ul>
+  <li>그래픽 셸: GUI(Graphical User Interface)</li>
+  <li>명령줄 셸: CLI(Command Line Interface)</li>
+</ul>
+
+<h4 id="shell-명령어">Shell 명령어</h4>
+
+<ul>
+  <li>pwd: 현재 폴더 경로 출력 (print working directory)</li>
+  <li>ls: 현재 폴더 내용물 출력 (list segments)</li>
+  <li>cd <code class="language-plaintext highlighter-rouge">폴더명</code>: 다른 폴더로 이동 (change directory)
+    <ul>
+      <li>cd <code class="language-plaintext highlighter-rouge">..</code> : 상위 폴더로 이동</li>
+      <li><code class="language-plaintext highlighter-rouge">ls</code>에서 나오는 폴더 명을 입력해야함</li>
+    </ul>
+  </li>
+  <li>cp: 파일을 다른 이름으로 복사 (copy)</li>
+  <li>rm: 파일을 삭제 (remove)
+    <ul>
+      <li>휴지통에 들어가지 않고 바로 지워지기 때문에 주의해서 사용</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="파일이름-자동완성">파일이름 자동완성</h4>
+
+<ul>
+  <li>파일 이름을 입력할때는 앞 1~2글자만 입력하고 tab키를 누르면 자동 완성되는 기능</li>
+</ul>
+:ET

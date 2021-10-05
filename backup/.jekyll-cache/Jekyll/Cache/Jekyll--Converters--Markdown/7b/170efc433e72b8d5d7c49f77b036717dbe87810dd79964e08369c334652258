@@ -1,0 +1,39 @@
+I"P<p>참고: doit 자료구조와 함께 배우는 알고리즘 입문</p>
+
+<p>리스트(list)는 데이터에 순서를 매겨 늘어놓은 자료구조이다.</p>
+
+<h3 id="연결-리스트-알아보기">연결 리스트 알아보기</h3>
+
+<p>연결리스트는 가장 단순한 리스트 구조 중 하나로, 구조가 단순한 리스트로 선형 리스트(linear list), 연결 리스트(linked list)가 있다. 스택과 큐도 리스트 자료구조에 속하는데, 파이썬에서 제공하는 리스트 자료형과는 다르다.</p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Single_linked_list.png/400px-Single_linked_list.png" alt="img" /></p>
+
+<p>데이터가 순서대로 나열되고 각 데이터가 화살표로 연결되어 있습니다. 이런 구조에서는 누군가를 건너뛰거나 뒤돌아 앞 사람에게 연결해서는 안됩니다. 연결 리스트에서 각각의 원소(element)를 노드(node)라고 합니다. 노드가 갖고 있는 것은 데이터와 뒤쪽 노드를 가리키는(참조하는) 포인터(pointer)입니다. 특별히 맨 앞에 있는 노드를 머리노드(head node), 맨 끝에 있는 노드를 꼬리 노드(tail node)라고 합니다. 또 각 노드에서 바로 앞에 있는 노드를 앞쪽 노드(prodecessor node), 바로 뒤에 있는 노드를 뒤쪽 노드(successor node)라고 합니다.</p>
+
+<h3 id="배열로-연결리스트-만들기">배열로 연결리스트 만들기</h3>
+
+<p>비상연락망 같은 연결리스트를 구현한 예이다. 어떤 회원 그룹의 데이터를 나타내는 튜플은 int형인 회원번호와 str형인 회원 이름, 전화번호로 구성된다. 여기서 중간에 새로운 회원 정보를 삽입하기 위해서는 삽입된 자리 이후의 데이터는 한칸씩 뒤로 옮겨져야한다.</p>
+
+<p>현재 list형 배열인 data의 원소는 7개이다. 현재 회원은 5명이고 data[5], data[6]은 등록되지 않은 상태이다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="s">'John'</span><span class="p">,</span> <span class="s">'999-999-1234'</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">33</span><span class="p">,</span> <span class="s">'Paul'</span><span class="p">,</span> <span class="s">'999-999-1235'</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">57</span><span class="p">,</span> <span class="s">'Mike'</span><span class="p">,</span> <span class="s">'999-999-1236'</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">69</span><span class="p">,</span> <span class="s">'Rita'</span><span class="p">,</span> <span class="s">'999-999-1237'</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="s">'Alan'</span><span class="p">,</span> <span class="s">'999-999-1238'</span><span class="p">),</span>
+    <span class="bp">None</span><span class="p">,</span>
+    <span class="bp">None</span><span class="p">,</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<h4 id="뒤쪽-노드-꺼내기">뒤쪽 노드 꺼내기</h4>
+
+<p>배열의 각 원소에는 연락할 순서대로 데이터가 저장되어 있다. 연락하는 데 필요한 ‘뒤쪽 노드 꺼내기’는 인덱스 값이 1만큼 큰 원소에 접근하여 얻을 수 있다.</p>
+
+<h4 id="노드의-삽입과-삭제">노드의 삽입과 삭제</h4>
+
+<p>예를 들어 회원번호가 55인 회원이 새로 가입하여 그 데이터를 회우너 번호 12와 33사이에 갑입해야한다고 가정해보자. 이 경우 삽입한 원소 이후의 모든 원소가 하나씩 뒤로 이동해야 한다. 원소를 삭제하는 경우에도 배열 안의 일부 원소를 모두 이동해야 한다.</p>
+
+<p>따라서 단순한 배열로 구현한 연결리스트는 데이터를 삽입, 삭제할 때 데이터를 옮겨야 하므로 효율적이지 않다.</p>
+:ET

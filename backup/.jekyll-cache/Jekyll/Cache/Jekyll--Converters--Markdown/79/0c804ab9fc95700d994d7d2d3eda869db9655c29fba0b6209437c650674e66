@@ -1,0 +1,88 @@
+I"5<h3 id="dom의-개념">DOM의 개념</h3>
+
+<p>Document Object Model의 약자로 HTML 요소를 Object처럼 조작할 수 있는 Model을 말한다. 문서 내의 모든 요소를 정의하고, 접근할 수 있는 방법을 제공한다. DOM이라는 구조를 기반으로, JavaScript로 프로그램을 작성하여 HTML을 조작한다.</p>
+
+<p>BOM(Browser Object Model)이 DOM과 함께 통칭되기도 한다. BOM은 웹 브라우저와 관련된 객체의 집합으로 window 객체를 통해 브라우저에 접근한다. 정확히는 자바스크립트가 아닌 웹 브라우저가 제공하는 기능이다.</p>
+
+<h3 id="dom의-구조">DOM의 구조</h3>
+
+<p>여러 구성요소가 부모-자식 관계를 가지고 있는 노드트리구조이다.</p>
+
+<p><strong>HTML과 DOM의 차이</strong></p>
+
+<p>브라우저는 사용자가 요청해서 받아온 HTML 문서를 파싱하여 DOM 트리를 그리고, CSS파일을 파싱하여 이를 결합한 후 렌더링하는 작업을 통해 우리가 보고있는 화면을 그린다.</p>
+
+<p>HTML은 단순히 규칙에 따라 정해진 태그, 속성값으로 이루어진 언어이며, DOM은 브라우저가 HTML을 파싱한 후 생성되는 객체 모델로, document에 접근가능한 API이다.</p>
+
+<p>DOM은 document 객체를 통해 HTML(root document)에 접근한다.</p>
+
+<p><strong>HTML에서 JS 파일을 불러올 때 주의할 점</strong></p>
+
+<p>script 태그는 &lt;/body&gt; 직전에 작성해야 한다.</p>
+
+<p>브라우저가 HTML을 파싱할 때, 위에서 아래로 읽는데, 중간에 script를 만나면 HTML을 읽는 것을 잠시 멈추고 script를 해석한다. 이 때 script를 읽다가 아직 해석되지 않은 HTML 태그를 만나게 된다면 의도하지 않은 오류가 발생하게 될 수도 있다. 때문에 HTML 문서가 다 파싱된 후인 &lt;/body&gt; 태그 직전에 작성해주어야 한다.</p>
+
+<p><strong>DOM과 JavaScript의 차이</strong></p>
+
+<p>HTML은 프로그래밍을 위해서 만들어진 언어가 아니기 때문에 조건문, 반복문을 사용할 수 없고, 정보를 저장하기에도 적합한 언어가 아니다. 그래서 자바스크립트라는 프로그래밍 언어와 DOM을 활용하여 HTML에 접근하고 조작한다.</p>
+
+<p>DOM을 활용할 수 있는 언어는 JavaScript만 있는 것은 아니지만 JavaScript가 가장 오래되고 안정적인 방법이다. 또, HTML 구조가 JavaScript의 객체 구조와 같은 트리구조라서 자바스크립트의 DOM이 브라우저에 적합하다.</p>
+
+<h3 id="crud">CRUD</h3>
+
+<p><strong>CREATE</strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">createElement</code> : 새로운 엘리먼트를 생성한다.</p>
+
+<p><strong>READ</strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">querySelector</code> : 조건에 맞는 첫번째 엘리먼트를 조회한다.</p>
+
+<p>document 객체의 자식 메서드이지만, element 객체의 자식 메서드이기도 하기 때문에 document 객체뿐만 아니라 모든 엘리먼트에서 사용할 수 있다. <code class="language-plaintext highlighter-rouge">querySelectorAll</code>도 마찬가지이다.</p>
+
+<p>여러가지 셀렉터들을 조합하여 복잡한 조회도 수행할 수 있다. <code class="language-plaintext highlighter-rouge">querySelectorAll</code>도 마찬가지이다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">querySelectorAll</code> : 조건에 맞는 모든 엘리먼트를 조회</p>
+
+<p><code class="language-plaintext highlighter-rouge">children</code> : 엘리먼트의 자식 엘리먼트 조회</p>
+
+<p><code class="language-plaintext highlighter-rouge">parentNode</code>, <code class="language-plaintext highlighter-rouge">parentElement</code> : 엘리먼트의 부모 엘리먼트 조회</p>
+
+<p><strong>UPDATE</strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">textContent</code> : 태그 사이의 문자열을 수정할 때 사용</p>
+
+<p><code class="language-plaintext highlighter-rouge">id</code> id 속성을 수정할 때 사용</p>
+
+<p><code class="language-plaintext highlighter-rouge">classList</code> : 엘리먼트의 class를 조회, 삭제, 수정, 추가 등 관리할 때 사용한다. add, remove를 사용하여 원하는 동작을 할 수 있다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">setAttribute</code> : 속성을 수정할 때 사용한다. 첫번째 인자로는 속성이름, 두번째 인자로는 값을 넣고 실행한다. 어떤 태그를 어떤 값으로 변경하려 하는지 직관적으로 확인할 수 있다.</p>
+
+<p><strong>DELETE</strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">remove</code> : 삭제하려는 엘리먼트에 사용하면 엘리먼트가 삭제된다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">removeChild</code> : 삭제하려는 엘리먼트의 부모노드에서 사용한다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">innerHTML = ""</code> : 자식의 모든 엘리머트를 삭제한다. 사용에 간단하지만 XSS Attack의 위험이 있으므로 사용하지 않는 것이 좋다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">textContent = ""</code> : 모든 자식 엘리먼트를 삭제한다.</p>
+
+<ul>
+  <li>XSS Attack : script 태그를 활용하여 강제로 해커가 원하는 스크립트를 실행시키는 공격이다. HTML 태그를 직접 삽입하여 실행하는 형태의 메소드(ex. innerHTML)는 항상 XSS Attack의 위험을 가지고 있다.</li>
+</ul>
+
+<p><strong>APPEND</strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">appendChild</code> : append 메서드와는 다르게 Node 객체만 받을 수 있고, 한번에 하나의 자식 요소만 설정할 수 있다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">append</code> : append 메서드를 활용하면 노드 객체(Node object)나 DOMString(text)를 사용할 수 있다. 또한 한번에 여러 개의 자식 요소를 설정할 수 있다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">insertBefore</code> : 원하는 위치에 노드를 넣을 수 있다.</p>
+
+<hr />
+
+<p><strong><code class="language-plaintext highlighter-rouge">innerHTML</code>과 <code class="language-plaintext highlighter-rouge">textContent</code>의 차이</strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">innerHTML</code>은 이름 그대로 HTML을 반환한다. <code class="language-plaintext highlighter-rouge">textContent</code>는 노드 내의 텍스트를 반환한다. <code class="language-plaintext highlighter-rouge">textContent</code>는 HTML로 분석할 필요가 없다는 점에서 <code class="language-plaintext highlighter-rouge">innerHTML</code>보다 성능이 좋다. 그리고 <code class="language-plaintext highlighter-rouge">textContent</code>는 XSS 공격의 위험이 없다.</p>
+:ET

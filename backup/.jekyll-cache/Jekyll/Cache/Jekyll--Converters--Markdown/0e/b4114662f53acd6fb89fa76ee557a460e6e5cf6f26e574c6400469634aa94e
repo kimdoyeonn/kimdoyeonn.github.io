@@ -1,0 +1,90 @@
+I"�<h3 id="sql-실행">SQL 실행</h3>
+
+<ol>
+  <li>cmd 창에서 sqlplus 실행</li>
+  <li>사용자명 <code class="language-plaintext highlighter-rouge">system</code>, 비밀번호 <code class="language-plaintext highlighter-rouge">설치시 입력했던 비밀번호</code>
+    <ul>
+      <li>비밀번호를 까먹었으면 재설정해주어야함</li>
+    </ul>
+  </li>
+</ol>
+
+<p><img src="https://user-images.githubusercontent.com/53068706/113149743-4fee3080-926e-11eb-9771-85a27346ed37.png" alt="image" /></p>
+
+<h3 id="db에-생성된-계정-확인">DB에 생성된 계정 확인</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">all_users</span><span class="p">;</span>	<span class="o">//</span> <span class="err">모든</span> <span class="err">계정에</span> <span class="err">대한</span> <span class="err">정보</span> <span class="err">확인</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">dba_users</span><span class="p">;</span>	<span class="o">//</span> <span class="err">모든</span> <span class="err">계정에</span> <span class="err">대한</span> <span class="err">정보</span> <span class="err">확인</span>
+<span class="k">select</span> <span class="n">username</span> <span class="k">from</span> <span class="n">all_users</span><span class="p">;</span>		<span class="o">//</span> <span class="err">모든</span> <span class="err">계정에</span> <span class="err">대한</span> <span class="err">이름</span> <span class="err">확인</span>
+<span class="k">select</span> <span class="n">username</span> <span class="k">from</span> <span class="n">dba_users</span><span class="p">;</span>		<span class="o">//</span> <span class="err">모든</span> <span class="err">계정에</span> <span class="err">대한</span> <span class="err">이름</span> <span class="err">확인</span>
+</code></pre></div></div>
+
+<h3 id="sql-사용자-계정-생성">sql 사용자 계정 생성</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">create</span> <span class="k">user</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="n">identified</span> <span class="k">by</span> <span class="p">[</span><span class="n">password</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>계정 생성 후 계정이 생성됐는지 확인</p>
+
+<h3 id="계정-비밀번호-변경">계정 비밀번호 변경</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">alter</span> <span class="k">user</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="n">identified</span> <span class="k">by</span> <span class="p">[</span><span class="k">new</span> <span class="n">password</span><span class="p">];</span>
+</code></pre></div></div>
+
+<h3 id="계정-권한-할당">계정 권한 할당</h3>
+
+<ul>
+  <li>DB설치시 자동으로 생성되어있는 관리자 계정으로만 권한을 줄 수 있음(sys, system)</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">grant</span> <span class="k">create</span> <span class="err">권한명</span> <span class="k">to</span> <span class="err">계정</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>create user: 데이터 베이스 유저 생성 권한</li>
+  <li>select any table: 모든 유저의 테이블 조회 권한</li>
+  <li>create any table: 모든 유저의 테이블 생성 권한</li>
+  <li>create session: 데이터베이스 접속 권한</li>
+  <li>create table: 테이블 생성 권한</li>
+  <li>create view: 뷰 생성 권한</li>
+  <li>create proced user: 프로시저 생성 권한</li>
+  <li>create sequence: 시퀀스 생성 권한</li>
+  <li>sysdba: 데이터베이스를 관리하는 최고 권한</li>
+  <li>sysoper: 데이터베이스를 관리하는 권한</li>
+</ul>
+
+<h3 id="revoke-권한-제거">revoke 권한 제거</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">revoke</span> <span class="err">권한명</span> <span class="p">(</span><span class="err">시스템명령</span> <span class="err">또는</span> <span class="k">SQL</span> <span class="err">명령</span><span class="p">)</span> <span class="k">on</span> <span class="err">테이블명</span> <span class="k">from</span> <span class="err">계정</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="계정-삭제">계정 삭제</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">drop</span> <span class="k">user</span> <span class="err">계정명</span> <span class="k">cascade</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/53068706/113153701-52eb2000-9272-11eb-9b3a-613994fd8821.png" alt="image" /></p>
+
+<ol>
+  <li>
+    <p>사용자 계정 만들기(위 사진에 없음)</p>
+  </li>
+  <li>
+    <p>권한 부여</p>
+  </li>
+  <li>
+    <p>사용자 계정에 테이블 공간 설정</p>
+  </li>
+  <li>
+    <p>테이블 공간에 쿼터 할당</p>
+
+    <blockquote>
+      <p>quota: 테이블 스페이스 할당량 지정</p>
+
+      <p>사용하고자 하는 테이블 스페이스 전체 용량 중 유저가 사용할 수 있는 양을 지정해 주는 옵션</p>
+    </blockquote>
+  </li>
+</ol>
+
+<p>출처: https://m.blog.naver.com/PostView.nhn?blogId=isaac7263&amp;logNo=221359434614&amp;proxyReferer=https:%2F%2Fwww.google.com%2F</p>
+:ET
