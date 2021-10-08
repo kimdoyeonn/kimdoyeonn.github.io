@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://doyeon311.github.io/sitemap.xml

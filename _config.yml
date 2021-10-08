@@ -6,14 +6,15 @@
 title: Kim Doyeon
 subtitle: ''
 description: ''
-keywords:
-author: Doyeon
+keywords: IT
+author: YEON
 language: en
-timezone: ''
+timezone: 'Asia/Seoul'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://kimdoyeonn.github.io
+url: http://kimdoyeonn.github.io/
+root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -31,7 +32,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :year-:month-:day-:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link:
@@ -97,9 +98,11 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/kimdoyeonn/kimdoyeonn.github.io
+  branch: main
