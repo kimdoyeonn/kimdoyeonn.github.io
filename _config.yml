@@ -106,3 +106,20 @@ deploy:
   type: git
   repo: https://github.com/kimdoyeonn/kimdoyeonn.github.io
   branch: main
+
+# SEO
+feed:
+  type: rss2 #피드의 종류(atom/rss2)
+  path: rss2.xml #피드가 생성될 경로
+  limit: 20 #최신 포스트의 개수(0 또는 false 설정시 모든 포스트)
+
+sitemap:
+  path: sitemap.xml #생성될 경로
+  tag: false #sitemap에 tag 포함 여부
+  category: false #sitemap에 category 포함 여부
+
+robotstxt:
+  useragent: '*'
+  allow:
+    - /
+  sitemap: /sitemap.xml
