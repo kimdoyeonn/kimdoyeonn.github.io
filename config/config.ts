@@ -1,0 +1,2 @@
+export const prefix =
+  process.env.NODE_ENV === 'production' ? 'https://kimdoyeonn.github.io/public' : ''

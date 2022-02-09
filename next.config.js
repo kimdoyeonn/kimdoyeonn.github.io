@@ -101,3 +101,14 @@ module.exports = withBundleAnalyzer({
     return config
   },
 })
+
+module.exports = {
+  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://kimdoyeonn.github.io' : '',
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
+}

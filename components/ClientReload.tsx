@@ -6,18 +6,18 @@ import Router from 'next/router'
  * Re-triggers getStaticProps when watched mdx files change
  *
  */
-export const ClientReload = () => {
-  // Exclude socket.io from prod bundle
-  useEffect(() => {
-    import('socket.io-client').then((module) => {
-      const socket = module.io()
-      socket.on('reload', () => {
-        Router.replace(Router.asPath, undefined, {
-          scroll: false,
-        })
-      })
-    })
-  }, [])
+// export const ClientReload = () => {
+//   // Exclude socket.io from prod bundle
+//   useEffect(() => {
+//     import('socket.io-client').then((module) => {
+//       const socket = module.io()
+//       socket.on('reload', () => {
+//         Router.replace(Router.asPath, undefined, {
+//           scroll: false,
+//         })
+//       })
+//     })
+//   }, [])
 
-  return null
-}
+//   return null
+// }
