@@ -1,218 +1,254 @@
-![tailwind-nextjs-banner](/public/static/images/twitter-card.png)
+<div align="center">
 
-# Tailwind Nextjs Starter Blog
+  <img src="./assets/gatsby-starter-bee.png" width="360px" />
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/timlrx/tailwind-nextjs-starter-blog?style=social)](https://GitHub.com/timlrx/tailwind-nextjs-starter-blog/stargazers/)
-[![GitHub forks](https://img.shields.io/github/forks/timlrx/tailwind-nextjs-starter-blog?style=social)](https://GitHub.com/timlrx/tailwind-nextjs-starter-blog/network/)
-[![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Ftimlrxx)](https://twitter.com/timlrxx)
-[![Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&link=https://github.com/sponsors/timlrx)](https://github.com/sponsors/timlrx)
+</div>
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/timlrx/tailwind-nextjs-starter-blog)
+[![Financial Contributors on Open Collective](https://opencollective.com/gatsby-starter-bee/all/badge.svg?label=financial+contributors)](https://opencollective.com/gatsby-starter-bee) [![Greenkeeper badge](https://badges.greenkeeper.io/JaeYeopHan/gatsby-starter-bee.svg)](https://greenkeeper.io/)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/JaeYeopHan/gatsby-starter-bee.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/JaeYeopHan/gatsby-starter-bee/alerts/)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4b1962ce-6206-4d8f-9516-63be92294198/deploy-status)](https://app.netlify.com/sites/gatsby-starter-bee/deploys)
 
-This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) blogging starter template. Probably the most feature-rich Next.js markdown blogging template out there. Comes out of the box configured with the latest technologies to make technical writing a breeze. Easily configurable and customizable. Perfect as a replacement to existing Jekyll and Hugo individual blogs.
+<a href="https://twitter.com/JbeeLjyhanll">
+<img alt="Twitter: JbeeLjyhanll" src="https://img.shields.io/twitter/follow/JbeeLjyhanll.svg?style=social" target="_blank" />
+</a>
 
-Check out the documentation below to get started.
+[한국어🇰🇷](./README.ko.md)
 
-Facing issues? Check the [FAQ page](https://github.com/timlrx/tailwind-nextjs-starter-blog/wiki) and do a search on past issues. Feel free to open a new issue if none has been posted previously.
+![screenshot](./assets/screenshot.png)
 
-Feature request? Check the past discussions to see if it has been brought up previously. Otherwise, feel free to start a new discussion thread. All ideas are welcomed!
+In this template...
 
-## Examples
+- 💄 Code highlight with Fira Code font
+- 🧙 CLI Tool
+- 😄 Emoji (emojione)
+- 🗣 Social share feature (Twitter, Facebook)
+- 💬 Comment feature (disqus, utterances)
+- ☕ 'Buy me a coffee' service
+- 🤖 GA
+- ⭐ Enhance UX
+- ⚙ Configurable
 
-- [Demo Blog](https://tailwind-nextjs-starter-blog.vercel.app/) - this repo
-- [My personal blog](https://www.timlrx.com) - modified to auto-generate blog posts with dates
-- [Aloisdg's cookbook](https://tambouille.vercel.app/) - with pictures and recipes!
-- [GautierArcin's demo with next translate](https://tailwind-nextjs-starter-blog-seven.vercel.app/) - includes translation of mdx posts, [source code](https://github.com/GautierArcin/tailwind-nextjs-starter-blog/tree/demo/next-translate)
-- [David Levai's digital garden](https://davidlevai.com/) - customized design and added email subscriptions
-- [Thinh's Corner](https://thinhcorner.com/) - [customized layout](https://github.com/Th1nhNg0/th1nhng0.vercel.app/blob/5e73a420828d82f01e7147512a2c3273c4ec19f8/layouts/PostLayout.js) with sticky side table of contents
-- [Leo's Blog](https://leohuynh.dev) - Tuan Anh Huynh's personal site. Add Snippets Page, Author Profile Card, Image Lightbox, ...
-- [thvu.dev](https://thvu.dev) - Added `mdx-embed`, view count, reading minutes and more.
-- [fiqrychoerudin.dev](https://www.fiqrychoerudin.dev/) - simple portfolio.
-- [irvin.dev](https://www.irvin.dev/) - Irvin Lin's personal site. Added YouTube embedding.
-- [the all JavaScript Blog](https://the-all-javascript-blog.vercel.app/) - a JavaScript enlightenment blog uses this
-- [KirillSo.com](https://www.kirillso.com/) - Personal blog & website.
-- [DevBoy Blog](https://devboy.vercel.app/) - M.Reza's personal blog
-- [slightlysharpe.com](https://slightlysharpe.com) - [Tincre's](https://tincre.com) main company blog
-- [blog.b00st.com](https://blog.b00st.com) - [b00st.com's](https://b00st.com) main music promotion blog
-- [astrosaurus.me](https://astrosaurus.me/) - Ephraim Atta-Duncan's Personal Blog
-- [dhanrajsp.me](https://dhanrajsp.me/) - Dhanraj's personal site and blog.
-- [blog.r00ks.io](https://blog.r00ks.io/) - Austin Rooks's personal blog ([source code](https://github.com/Austionian/blog.r00ks)).
-- [alfoncode.com](https://alfoncode.com) - Alfonso García's personar website. Customized design ([source code](https://github.com/alfoncode/personal-web))
+> [About this Template](https://www.gatsbyjs.org/starters/JaeYeopHan/gatsby-starter-bee/)
 
-Using the template? Feel free to create a PR and add your blog to this list.
+## Demo
 
-## Motivation
+- [Default Theme](https://gatsby-starter-bee.netlify.com/)
 
-I wanted to port my existing blog to Nextjs and Tailwind CSS but there was no easy out of the box template to use so I decided to create one. Design is adapted from [Tailwindlabs blog](https://github.com/tailwindlabs/blog.tailwindcss.com).
+<details>
+  <summary>Use case</summary>
+  <p>
+    <img src="./assets/demos.png" alt="demo-image">
+    <ul>
+      <li>JBEE.io: https://jbee.io</li>
+      <li>Rinae's devlog: https://rinae.dev/</li>
+      <li>Seungdols Company: https://seungdols.dev/</li>
+      <li>Kooku's log: https://kooku.netlify.com/</li>
+      <li>SOSOLOG: https://so-so.dev/</li>
+      <li>delivan.dev: https://delivan.dev/</li>
+      <li>Jungin's blog: https://jungin.netlify.com/</li>
+      <li>Zero's blog: https://awesomezero.com/</li>
+      <li>Jonathan's blog: https://www.learningsomethingnew.com/</li>
+      <li>@deveely-log: https://deveely-log.netlify.com/</li>
+      <li>Hanul's blog: https://hanul-dev.netlify.com/</li>
+      <li>Hoons Blog: https://hoons-up.netlify.com/</li>
+      <li>JWN.cool: https://jwn.cool</li>
+      <li>ugaemi's dev note: https://ugaemi.github.io</li>
+      <li>Minsu's Dev Log: https://alstn2468.github.io/</li>
+      <li>Yungi's Dev Blog: https://yungis.dev/</li>
+      <li>< Taenylog />: https://taeny.dev/</li>
+      <li>brouk's devlog: https://brouk-devlog.netlify.com/</li>
+      <li>CoodingPenguin's Repository: https://cooding-penguin.netlify.com/</li>
+      <li>Garima's Tech Blog: https://garimasingh.netlify.app/ </li>
+      <li>DevRappers.dev: https://devrappers.dev/</li>
+      <li>Let's doodle: https://duduling-blog.netlify.app/</li>
+      <li>noopy.dev: https://noopy.dev/</li>
+      <li>Hong_Devlog: https://hong-dev.github.io/</li>
+      <li>samsara-ku's devlog: https://samsara-ku.dev/</li>
+      <li>muse.kim: https://muse.kim/</li>
+      <li>cereme.dev: https://cereme.dev</li>
+      <li>taekki.dev: https://taekki.dev</li>
+      <li>kkh913's Developer Blog: https://kkh913.github.io</li>
+      <li>Merrily, Code: https://merrily-code.netlify.app/</li>
+      <li>jeeneee's devlog: https://jeeneee.dev</li>
+      <li>Noah's devlog: https://noah0316.github.io/</li>
+      <li>bobs log: https://undefine.me</li>
+      <li>irosyadi: https://irosyadi.netlify.app</li>
+      <li>yujolog: https://yujo11.github.io/</li>
+      <li>hexdrinker's devlog: https://hexdrinker.dev</li>
+      <li>gparkki.io: https://gparkkii.github.io/</li>
+      <li>BO.LOG: https://b5bo.github.io</li>
+    </ul>
+  </p>
+</details>
 
-I wanted it to be nearly as feature-rich as popular blogging templates like [beautiful-jekyll](https://github.com/daattali/beautiful-jekyll) and [Hugo Academic](https://github.com/wowchemy/wowchemy-hugo-modules) but with the best of React's ecosystem and current web development's best practices.
+> If you're using this template, Please Pull Request for `Use case`!
 
-## Features
+## 😎 Quick Start
 
-- Easy styling customization with [Tailwind 3.0](https://tailwindcss.com/blog/tailwindcss-v3) and primary color attribute
-- Near perfect lighthouse score - [Lighthouse report](https://www.webpagetest.org/result/210111_DiC1_08f3670c3430bf4a9b76fc3b927716c5/)
-- Lightweight, 45kB first load JS, uses Preact in production build
-- Mobile-friendly view
-- Light and dark theme
-- Self-hosted font with [Fontsource](https://fontsource.org/)
-- Supports [plausible](https://plausible.io/), [simple analytics](https://simpleanalytics.com/) and google analytics
-- [MDX - write JSX in markdown documents!](https://mdxjs.com/)
-- Server-side syntax highlighting with line numbers and line highlighting via [rehype-prism-plus](https://github.com/timlrx/rehype-prism-plus)
-- Math display supported via [KaTeX](https://katex.org/)
-- Citation and bibliography support via [rehype-citation](https://github.com/timlrx/rehype-citation)
-- Automatic image optimization via [next/image](https://nextjs.org/docs/basic-features/image-optimization)
-- Flexible data retrieval with [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)
-- Support for tags - each unique tag will be its own page
-- Support for multiple authors
-- Blog templates
-- TOC component
-- Support for nested routing of blog posts
-- Newsletter component with support for mailchimp, buttondown, convertkit and klaviyo
-- Supports [giscus](https://github.com/laymonage/giscus), [utterances](https://github.com/utterance/utterances) or disqus
-- Projects page
-- Preconfigured security headers
-- SEO friendly with RSS feed, sitemaps and more!
+### 1. Create a Gatsby site
 
-## Sample posts
-
-- [A markdown guide](https://tailwind-nextjs-starter-blog.vercel.app/blog/github-markdown-guide)
-- [Learn more about images in Next.js](https://tailwind-nextjs-starter-blog.vercel.app/blog/guide-to-using-images-in-nextjs)
-- [A tour of math typesetting](https://tailwind-nextjs-starter-blog.vercel.app/blog/deriving-ols-estimator)
-- [Simple MDX image grid](https://tailwind-nextjs-starter-blog.vercel.app/blog/pictures-of-canada)
-- [Example of long prose](https://tailwind-nextjs-starter-blog.vercel.app/blog/the-time-machine)
-- [Example of Nested Route Post](https://tailwind-nextjs-starter-blog.vercel.app/blog/nested-route/introducing-multi-part-posts-with-nested-routing)
-
-## Quick Start Guide
-
-1. JS (official support)
-
-```bash
-npx degit https://github.com/timlrx/tailwind-nextjs-starter-blog.git
+```sh
+# create a new Gatsby site using the blog starter
+npx gatsby new my-blog-starter https://github.com/JaeYeopHan/gatsby-starter-bee
 ```
 
-or with TypeScript (community support)
+> If you are not using `npx`, following [Gatsby Getting Started](https://www.gatsbyjs.org/docs/quick-start)
 
-```bash
-npx degit timlrx/tailwind-nextjs-starter-blog#typescript
+```sh
+npm install -g gatsby-cli
+gatsby new my-blog-starter https://github.com/JaeYeopHan/gatsby-starter-bee
 ```
 
-2. Personalize `siteMetadata.js` (site related information)
-3. Personalize `authors/default.md` (main author)
-4. Modify `projectsData.js`
-5. Modify `headerNavLinks.js` to customize navigation links
-6. Add blog posts
-7. Deploy on Vercel
+### 2. Start developing
 
-## Installation
-
-```bash
-npm install
-```
-
-## Development
-
-First, run the development server:
-
-```bash
+```sh
+cd my-blog-starter/
 npm start
+# open localhost:8000
 ```
 
-or
+### 3. Add your content
 
-```bash
-npm run dev
+You can write...
+
+- contents to blog in `content/blog` directory.
+- resume `content/__about` directory.
+
+> With markdown syntax and some meta data
+
+#### Support script for creating new post
+
+![cli-tool-example](assets/cli-tool-example.gif)
+
+```sh
+npm run post
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+👉 Use **gatsby-post-gen** (<https://github.com/JaeYeopHan/gatsby-post-gen>)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### 4. Fix meta data
 
-## Extend / Customize
+You can fix meta data of blog in `/gatsby-meta-config.js` file.
 
-`data/siteMetadata.js` - contains most of the site related information which should be modified for a user's need.
+### 5. Publish with [netlify](https://netlify.com)
 
-`data/authors/default.md` - default author information (required). Additional authors can be added as files in `data/authors`.
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/JaeYeopHab/gatsby-starter-bee)
 
-`data/projectsData.js` - data used to generate styled card on the projects page.
+:bulb: if you want to deploy github pages, add following script to package.json
 
-`data/headerNavLinks.js` - navigation links.
-
-`data/logo.svg` - replace with your own logo.
-
-`data/blog` - replace with your own blog posts.
-
-`public/static` - store assets such as images and favicons.
-
-`tailwind.config.js` and `css/tailwind.css` - contain the tailwind stylesheet which can be modified to change the overall look and feel of the site.
-
-`css/prism.css` - controls the styles associated with the code blocks. Feel free to customize it and use your preferred prismjs theme e.g. [prism themes](https://github.com/PrismJS/prism-themes).
-
-`components/social-icons` - to add other icons, simply copy an svg file from [Simple Icons](https://simpleicons.org/) and map them in `index.js`. Other icons use [heroicons](https://heroicons.com/).
-
-`components/MDXComponents.js` - pass your own JSX code or React component by specifying it over here. You can then call them directly in the `.mdx` or `.md` file. By default, a custom link and image component is passed.
-
-`layouts` - main templates used in pages.
-
-`pages` - pages to route to. Read the [Next.js documentation](https://nextjs.org/docs) for more information.
-
-`next.config.js` - configuration related to Next.js. You need to adapt the Content Security Policy if you want to load scripts, images etc. from other domains.
-
-## Post
-
-### Frontmatter
-
-Frontmatter follows [Hugo's standards](https://gohugo.io/content-management/front-matter/).
-
-Currently 7 fields are supported.
-
-```
-title (required)
-date (required)
-tags (required, can be empty array)
-lastmod (optional)
-draft (optional)
-summary (optional)
-images (optional, if none provided defaults to socialBanner in siteMetadata config)
-authors (optional list which should correspond to the file names in `data/authors`. Uses `default` if none is specified)
-layout (optional list which should correspond to the file names in `data/layouts`)
+```json
+"scripts": {
+    "deploy": "gatsby build && gh-pages -d public -b master -r 'git@github.com:${your github id}/${github page name}.github.io.git'"
+}
 ```
 
-Here's an example of a post's frontmatter:
+## 🧐 Customize
 
-```
----
-title: 'Introducing Tailwind Nexjs Starter Blog'
-date: '2021-01-12'
-lastmod: '2021-01-18'
-tags: ['next-js', 'tailwind', 'guide']
-draft: false
-summary: 'Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.'
-images: ['/static/images/canada/mountains.jpg', '/static/images/canada/toronto.jpg']
-authors: ['default', 'sparrowhawk']
-layout: PostLayout
----
+### ⚙ Gatsby config
+
+```sh
+/root
+├── gatsby-browser.js // font, polyfill, onClientRender ...
+├── gatsby-config.js // Gatsby config
+├── gatsby-meta-config.js // Template meta config
+└── gatsby-node.js // Gatsby Node config
 ```
 
-### Compose
+### ⛑ Structure
 
-Run `node ./scripts/compose.js` to bootstrap a new post.
+```sh
+src
+├── components // Just component with styling
+├── layout // home, post layout
+├── pages // routing except post: /(home), /about
+├── styles
+│   ├── code.scss
+│   ├── dark-theme.scss
+│   ├── light-theme.scss
+│   └── variables.scss
+└── templates
+    ├── blog-post.js
+    └── home.js
+```
 
-Follow the interactive prompt to generate a post with pre-filled front matter.
+### 🎨 Style
 
-## Deploy
+You can customize color in `src/styles` directory.
 
-**Vercel**  
-The easiest way to deploy the template is to use the [Vercel Platform](https://vercel.com) from the creators of Next.js. Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```sh
+src/styles
+├── code.scss
+├── dark-theme.scss
+├── light-theme.scss
+└── variables.scss
+```
 
-**Netlify / GitHub Pages / Firebase etc.**  
-As the template uses `next/image` for image optimization, additional configurations have to be made to deploy on other popular static hosting websites like [Netlify](https://www.netlify.com/) or [GitHub Pages](https://pages.github.com/). An alternative image optimization provider such as Imgix, Cloudinary or Akamai has to be used. Alternatively, replace the `next/image` component with a standard `<img>` tag. See [`next/image` documentation](https://nextjs.org/docs/basic-features/image-optimization) for more details.
+### 🍭 Tips (You can change...)
 
-The API routes used in the newsletter component cannot be used in a static site export. You will need to use a form API endpoint provider and substitute the route in the newsletter component accordingly. Other hosting platforms such as Netlify also offer alternative solutions - please refer to their docs for more information.
+- Profile image! (replace file in `/content/assets/profile.png`)
+- Favicon image! (replace file in `/content/assets/felog.png`)
+- Header gradient! (\$theme-gradient `/styles/variables.scss`)
+- Utterances repository! (replace repository address in `/gatsby-meta-config.js`)
+  - ⚠️ Please check, this guide(<https://utteranc.es/>)
 
-## Support
+## ☕ Like it?
 
-Using the template? Support this effort by giving a star on GitHub, sharing your own blog and giving a shoutout on Twitter or becoming a project [sponsor](https://github.com/sponsors/timlrx).
+<a href="https://www.buymeacoffee.com/jbee" target="_blank">
+  <img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" >
+</a>
 
-## Licence
+## 🤔 If
 
-[MIT](https://github.com/timlrx/tailwind-nextjs-starter-blog/blob/master/LICENSE) © [Timothy Lin](https://www.timrlx.com)
+If you are currently writing in the Medium, consider migration with [medium-to-own-blog](https://github.com/mathieudutour/medium-to-own-blog)!
+
+## :bug: Bug reporting
+
+[Issue](https://github.com/JaeYeopHan/gatsby-starter-bee/issues)
+
+## 🎁 Contributing
+
+[Contributing guide](./CONTRIBUTING.md)
+
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+
+<a href="https://github.com/JaeYeopHan/gatsby-starter-bee/graphs/contributors">
+<img src="https://opencollective.com/gatsby-starter-bee/contributors.svg?width=890&button=false" />
+</a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/gatsby-starter-bee/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/gatsby-starter-bee"><img src="https://opencollective.com/gatsby-starter-bee/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/gatsby-starter-bee/contribute)]
+
+<a href="https://opencollective.com/gatsby-starter-bee/organization/0/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/gatsby-starter-bee/organization/1/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/gatsby-starter-bee/organization/2/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/gatsby-starter-bee/organization/3/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/gatsby-starter-bee/organization/4/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/gatsby-starter-bee/organization/5/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/gatsby-starter-bee/organization/6/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/gatsby-starter-bee/organization/7/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/gatsby-starter-bee/organization/8/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/gatsby-starter-bee/organization/9/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/9/avatar.svg"></a>
+
+## LICENSE
+
+[MIT](./LICENSE)
+
+<div align="center">
+
+<sub><sup>Project by <a href="https://github.com/JaeYeopHan">@Jbee</a></sup></sub><small>✌</small>
+
+</div>
