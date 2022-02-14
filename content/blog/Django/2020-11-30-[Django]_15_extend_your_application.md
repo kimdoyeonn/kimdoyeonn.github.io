@@ -1,8 +1,5 @@
 ---
-title: "[django]15. 프로그램 애플리케이션 확장하기"
-excerpt: ""
-category:
-  - django
+title: '[django]15. 프로그램 애플리케이션 확장하기'
 tags: [python, django]
 ---
 
@@ -14,8 +11,6 @@ tags: [python, django]
 - 이제 블로그 게시글이 각 페이지마다 보이게 만들어 봅시다!
 - 이미 앞에서 `Post`모델은 만들었으니 `models.py`에 새로 추가할 내용은 없어요
 
-
-
 ### Post에 템플릿 링크 만들기
 
 `blog/templates/blog/post_list.html`파일에 링크를 추가한다. (제목부분)
@@ -24,15 +19,13 @@ tags: [python, django]
 <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
 ```
 
-`{% url 'post_detail' pk=post.pk %}`에서 `{% %}`는 장고 탬플릿 태그를 말합니다. 
+`{% url 'post_detail' pk=post.pk %}`에서 `{% %}`는 장고 탬플릿 태그를 말합니다.
 
 `blog.views.post_detail`는 `post_detail` view의 경로입니다. 여기서 `blog`는 응용프로그램의 이름이고, `views`는 `views.py` 파일 명, `post_detail`은 view의 이름입니다.
 
 `pk = post.pk`에서 `pk`는 데이터베이스의 각 레코드를 식별하는 기본키 (`Primary Key` )의 줄임말 입니다. Post 모델에서 기본 키를 지정하지 않았기 때문에 장고는 `pk`라는 필드를 추가해 새로운 게시글이 추가 될 때마다 그 값이 1,2,3,,, 으로 증가하게 됩니다. Post 객체의 다른 필드 (제목, 작성자 등)에 엑세스하는 것과 같은 방식으로 post.pk를 작성하여 기본 키에 엑세스 합니다. `post.pk`를 써서 기본키에 접근할 수 있고 같은 방법으로 다른 필드 (`title`, `auther`)에도 접근할 수 있다. (? 앞 문장이랑 같은 말?)
 
 - 이대로 실행을 할 경우 `post_detail` view를 만들지 않았기 때문에 오류 메세지가 나옵니다.
-
-
 
 ### Post 상세 페이지 URL 만들기
 
@@ -52,8 +45,6 @@ path('post/<int:pk>/', views.post_detail, name='post_detail')
 
 - 이대로 실행할 경우 뷰가 없기 때문에 에러가 남!
 
-
-
 ### Post 상세 페이지 내 뷰 추가하기
 
 `blog/views.py`에 매개변수 `pk`를 포함하는 함수를 추가해봅시다. `def post_detail(request, pk):`라고 정의합니다. urls(`pk`)와 동일하게 이름을 사용해야 합니다. 변수를 생략할 경우에도 오류 발생
@@ -63,8 +54,6 @@ Post.objects.get(pk=pk) # 블로그 게시물 한 개만 볼 경우 쿼리셋
 ```
 
 만약 해당 `primary key( pk )`의 `Post`를 찾지 못하면 오류가 날 거에요 장고에서는 이를 해결하기 위해 `get_object_or_404`라는 기능을 제공해요 `pk`에 해당하는 `Post`가 없을 경우 `404`페이지를 보여주는 기능이에요 이 페이지는 원하는 대로 꾸미는 것도 가능해요
-
-
 
 ```python
 from django.shortcuts import render, get_object_or_404
@@ -82,24 +71,21 @@ def post_detail(request, pk):
 
 - 메인 페이지는 실행되지만 게시글의 제목을 클릭할 경우 템플릿이 없기 때문에 오류남!
 
-
-
 ### Post 상세 페이지 템플릿 만들기
 
 `blog/templates/blog` 디렉터리 안에 `post_detail,html`파일을 생성하고 아래의 코드를 작성해준다.
 
 ```html
-{% extends 'blog/base.html' %}
-{% block content %}
-    <div class='post'>
-        {% if post.published_date %}
-            <div class='date'>
-                {{ post.published_date }}
-            </div>
-        {% endif %}
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.text|linebreaksbr }}</p>
-    </div>
+{% extends 'blog/base.html' %} {% block content %}
+<div class="post">
+  {% if post.published_date %}
+  <div class="date">
+    {{ post.published_date }}
+  </div>
+  {% endif %}
+  <h1>{{ post.title }}</h1>
+  <p>{{ post.text|linebreaksbr }}</p>
+</div>
 {% endblock %}
 ```
 

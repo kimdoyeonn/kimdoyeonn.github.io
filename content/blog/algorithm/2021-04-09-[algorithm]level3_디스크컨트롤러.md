@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level3 디스크 컨트롤러"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level3 디스크 컨트롤러'
+
 tags: [algorithm, programmers]
 ---
 
@@ -67,8 +65,6 @@ tags: [algorithm, programmers]
 - 1ms 시점에 9ms 걸리는 작업 요청이 들어옵니다.
 - 2ms 시점에 6ms 걸리는 작업 요청이 들어옵니다.
 
-
-
 ### 내 풀이
 
 ```python
@@ -78,7 +74,7 @@ def solution(jobs):
     answer, i, now = 0, 0, 0
     start = -1
     cnt = len(jobs)
-    
+
     heap = []
     # 모든 작업이 종료될 때까지 반복
     while i < cnt:
@@ -87,7 +83,7 @@ def solution(jobs):
             if start < job[0] <= now:
                 # 작업 수행시간을 기준으로 오름차순 정렬
                 heapq.heappush(heap, [job[1], job[0]])
-        
+
         if heap:
             current = heapq.heappop(heap)
             start = now

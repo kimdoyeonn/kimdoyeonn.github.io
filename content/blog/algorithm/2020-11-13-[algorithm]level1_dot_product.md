@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level1 내적"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level1 내적'
+
 tags: [python, programmers, algorithm]
 ---
 
@@ -12,14 +10,14 @@ tags: [python, programmers, algorithm]
 
 이때, a와 b의 내적은 `a[0]*b[0] + a[1]*b[1] + ... + a[n-1]*b[n-1]` 입니다. (n은 a, b의 길이)
 
-------
+---
 
 ##### 제한사항
 
 - a, b의 길이는 1 이상 1,000 이하입니다.
 - a, b의 모든 수는 -1,000 이상 1,000 이하입니다.
 
-------
+---
 
 ##### 입출력 예
 
@@ -28,7 +26,7 @@ tags: [python, programmers, algorithm]
 | `[1,2,3,4]` | `[-3,-1,0,2]` | 3      |
 | `[-1,0,1]`  | `[1,0,-1]`    | -2     |
 
-------
+---
 
 ##### 입출력 예 설명
 
@@ -39,8 +37,6 @@ tags: [python, programmers, algorithm]
 입출력 예 #2
 
 - a와 b의 내적은 `(-1)*1 + 0*0 + 1*(-1) = -2` 입니다.
-
-
 
 ### 내가 푼 코드
 
@@ -53,8 +49,6 @@ def solution(a, b):
     return answer
 ```
 
-
-
 ### 다른 사람 코드
 
 ```python
@@ -65,8 +59,6 @@ def solution(a, b):
 
     return answer
 ```
-
-
 
 > 한 번 봤다고 넘어가지말고 따로 한 번씩이라도 더 기록을 해놓고 정리를 해놔야겠다. 전에 본 적이 있는 함순데 생각이 안나서 못써먹었다...
 >

@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level1 크레인 인형뽑기 게임"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level1 크레인 인형뽑기 게임'
+
 tags: [python, programmers, algorithm]
 ---
 
@@ -38,8 +36,8 @@ tags: [python, programmers, algorithm]
 
 ##### **입출력 예**
 
-| board                                                        | moves             | result |
-| ------------------------------------------------------------ | ----------------- | ------ |
+| board                                                         | moves             | result |
+| ------------------------------------------------------------- | ----------------- | ------ |
 | [[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]] | [1,5,3,5,1,2,1,4] | 4      |
 
 ##### **입출력 예에 대한 설명**
@@ -49,10 +47,6 @@ tags: [python, programmers, algorithm]
 인형의 처음 상태는 문제에 주어진 예시와 같습니다. 크레인이 [1, 5, 3, 5, 1, 2, 1, 4] 번 위치에서 차례대로 인형을 집어서 바구니에 옮겨 담은 후, 상태는 아래 그림과 같으며 바구니에 담는 과정에서 터트려져 사라진 인형은 4개 입니다.
 
 ![crane_game_104.jpg](https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/bb0f59c7-6b72-485a-8302-217fe53ea88f/crane_game_104.jpg)
-
-
-
-
 
 ### 내 풀이
 
@@ -93,8 +87,6 @@ def solution(board, moves):
 
 - 인형을 따로 담은 다음에 같은 인형을 삭제하는 방식으로 풀었는데, 인형을 꺼내면서 바로바로 삭제하는 방법이 더 좋은 방법일 것 같다.
 
-
-
 ### 다른 사람 풀이
 
 ```python
@@ -112,9 +104,8 @@ def solution(board, moves):
                     if stacklist[-1] == stacklist[-2]:
                         stacklist.pop(-1)
                         stacklist.pop(-1)
-                        answer += 2     
+                        answer += 2
                 break
 
     return answer
 ```
-

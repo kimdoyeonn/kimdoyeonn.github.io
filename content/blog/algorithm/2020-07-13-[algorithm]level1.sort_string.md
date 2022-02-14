@@ -1,8 +1,5 @@
 ---
-title: "[algorithm]level1. 문자열 내림차순으로 배치하기"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level1. 문자열 내림차순으로 배치하기'
 tags: [algorithm, programmers, java]
 ---
 

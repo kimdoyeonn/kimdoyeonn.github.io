@@ -1,8 +1,6 @@
 ---
-title: "[algorithm] 배열과 연결 리스트"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm] 배열과 연결 리스트'
+
 tags: [algorithm]
 ---
 

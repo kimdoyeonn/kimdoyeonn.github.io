@@ -1,14 +1,9 @@
 ---
-title: "[doit_algorithm] 08-4 원형 이중 연결 리스트-2"
-excerpt: ""
-category:
-  - doit_algorithm
+title: '[doit_algorithm] 08-4 원형 이중 연결 리스트-2'
 tags: [python, doit_algorithm]
 ---
 
 참고: doit 자료구조와 함께 배우는 알고리즘 입문
-
-
 
 ### 노드 삭제
 
@@ -22,7 +17,7 @@ tags: [python, doit_algorithm]
             self.no -= 1
             if self.current is self.head:
                 self.current = self.head.next
-    
+
     def remove(self, p: Node) -> None:
         """노드 p를 삭제"""
         ptr = self.head.next
@@ -43,17 +38,13 @@ tags: [python, doit_algorithm]
         """꼬리 노드 삭제"""
         self.current = self.head.prev   # 꼬리 노드 head.prev를 삭제
         self.remove_current_node()
-    
+
     def clear(self) -> None:
         """모든 노드를 삭제"""
         while not self.is_empty():      # 리스트 전체가 빌 때까지
             self.remove_first()         # 머리 노드를 삭제
         self.no = 0
 ```
-
-
-
-
 
 ### 이터레이터
 
@@ -76,4 +67,3 @@ class DoubleLinkedListReverseIterator:
             self.current = self.current.prev
             return data
 ```
-

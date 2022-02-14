@@ -1,8 +1,5 @@
 ---
-title: "[django]7. Django urls"
-excerpt: ""
-category:
-  - django
+title: '[django]7. Django urls'
 tags: [python, django]
 ---
 
@@ -43,8 +40,6 @@ urlpatterns = [
 ```
 
 - 장고는 `admin/`로 시작하는 모든 URL을 view와 대조해 찾아냅니다. 무수히 많은 URL이 `admin URL`에 포함될 수 있어 일일이 모두 쓸 수 없기 때문에 정규 표현식을 사용한 것
-
-
 
 ### 나의 첫 번째 Django url!
 

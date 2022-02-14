@@ -1,13 +1,7 @@
 ---
-title: "[django]9. HTML"
-excerpt: ""
-category:
-  - django
+title: '[django]9. HTML'
 tags: [python, django]
-
----
-
-참고: [장고걸스](https://tutorial.djangogirls.org/ko/html/)
+---참고: [장고걸스](https://tutorial.djangogirls.org/ko/html/)
 
 `blog/templates/blog`디렉토리에 템플릿이 저장됨, 없다면 만들어주기, 안에는 `post_list.html`이라는 새 파일 만들기
 

@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]1929번 소수 구하기"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]1929번 소수 구하기'
+
 tags: [python, baekjoon, algorithm]
 ---
 
@@ -51,8 +49,6 @@ M이상 N이하의 소수를 모두 출력하는 프로그램을 작성하시오
 - [소수 판정](https://www.acmicpc.net/problem/tag/9)
 - [에라토스테네스의 체](https://www.acmicpc.net/problem/tag/67)
 
-
-
 ### 내 풀이
 
 ```python
@@ -72,8 +68,6 @@ for num in range(m, n + 1):
         print(num)
 ```
 
-
-
 #### 에라토스테네스의 체
 
 ![에라토스테네스의 체](https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif)
@@ -89,8 +83,6 @@ for num in range(m, n + 1):
 9. 자기 자신을 제외한 7의 배수를 모두 지운다.
 10. 위의 과정을 반복하면 구하는 구간의 모든 소수가 남는다.
 
-출처: [위키백과]([https://ko.wikipedia.org/wiki/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98_%EC%B2%B4](https://ko.wikipedia.org/wiki/에라토스테네스의_체))
-
-
+출처: [위키백과](<[https://ko.wikipedia.org/wiki/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98_%EC%B2%B4](https://ko.wikipedia.org/wiki/에라토스테네스의_체)>)
 
 - 전에 프로그래머스에 이걸 사용해서 풀어야 효율성이 나오는 문제가 있었어서 쉽게 풀었다. 소수를 찾을 떄 가장 효율적이고 빠른 알고리즘인가보다

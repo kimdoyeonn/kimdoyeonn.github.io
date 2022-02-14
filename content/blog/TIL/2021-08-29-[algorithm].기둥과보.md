@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]기둥과 보"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]기둥과 보'
+
 tags: [algorithm, 이코테, programmers]
 ---
 

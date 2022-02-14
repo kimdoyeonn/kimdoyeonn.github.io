@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level2 다리를 지나는 트럭"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level2 다리를 지나는 트럭'
+
 tags: [python, programmers, algorithm]
 ---
 
@@ -45,8 +43,6 @@ solution 함수의 매개변수로 다리 길이 bridge_length, 다리가 견딜
 | 100           | 100    | [10,10,10,10,10,10,10,10,10,10] | 110    |
 
 [출처](http://icpckorea.org/2016/ONLINE/problem.pdf)
-
-
 
 ### 내 풀이
 

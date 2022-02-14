@@ -1,14 +1,7 @@
 ---
-title: "[javascript]Node.js란?"
-excerpt: ""
-category:
-  - javascript
+title: '[javascript]Node.js란?'
 tags: [javascript]
 ---
-
-
-
-
 
 ### Node.js
 
@@ -22,7 +15,6 @@ tags: [javascript]
 - 위와 같은 특징을 가지고 있어 데이터를 실시간으로 다루는 애플리케이션이나 싱글페이지 애플리케이션(SPA), 입출력이 잦은 애플리케이션을 개발할 때 뛰어난 효율성을 발휘합니다.
 - 단, 싱글 쓰레드 모델이기 때문에 하나의 작업 자체가 시간이 많이 걸리면 전체 시스템의 성능이 아주 급격하게 나빠지므로 CPU 사용률이 높은 애플리케이션에서는 Node.js 사용을 권장하지 않습니다.
 
-출처: 
+출처:
 
-[Node.js 면접준비]: https://velog.io/@ehgks0000/Node-js-%EB%A9%B4%EC%A0%91%EC%A4%80%EB%B9%84
-
+[node.js 면접준비]: https://velog.io/@ehgks0000/Node-js-%EB%A9%B4%EC%A0%91%EC%A4%80%EB%B9%84

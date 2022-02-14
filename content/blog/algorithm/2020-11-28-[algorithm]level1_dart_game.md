@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level1 다트게임"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level1 다트게임'
+
 tags: [python, programmers, algorithm]
 ---
 
@@ -25,7 +23,7 @@ tags: [python, programmers, algorithm]
 8. Single(`S`), Double(`D`), Triple(`T`)은 점수마다 하나씩 존재한다.
 9. 스타상(`*`), 아차상(`#`)은 점수마다 둘 중 하나만 존재할 수 있으며, 존재하지 않을 수도 있다.
 
-0~10의 정수와 문자 S, D, T, *, #로 구성된 문자열이 입력될 시 총점수를 반환하는 함수를 작성하라.
+0~10의 정수와 문자 S, D, T, \*, #로 구성된 문자열이 입력될 시 총점수를 반환하는 함수를 작성하라.
 
 ### 입력 형식
 
@@ -34,7 +32,7 @@ tags: [python, programmers, algorithm]
 
 - 점수는 0에서 10 사이의 정수이다.
 - 보너스는 S, D, T 중 하나이다.
-- 옵선은 *이나 # 중 하나이며, 없을 수도 있다.
+- 옵선은 \*이나 # 중 하나이며, 없을 수도 있다.
 
 ### 출력 형식
 
@@ -43,19 +41,17 @@ tags: [python, programmers, algorithm]
 
 ### 입출력 예제
 
-| 예제 | dartResult | answer | 설명                        |
-| ---- | ---------- | ------ | --------------------------- |
-| 1    | `1S2D*3T`  | 37     | 11 * 2 + 22 * 2 + 33        |
-| 2    | `1D2S#10S` | 9      | 12 + 21 * (-1) + 101        |
-| 3    | `1D2S0T`   | 3      | 12 + 21 + 03                |
-| 4    | `1S*2T*3S` | 23     | 11 * 2 * 2 + 23 * 2 + 31    |
-| 5    | `1D#2S*3S` | 5      | 12 * (-1) * 2 + 21 * 2 + 31 |
-| 6    | `1T2D3D#`  | -4     | 13 + 22 + 32 * (-1)         |
-| 7    | `1D2S3T*`  | 59     | 12 + 21 * 2 + 33 * 2        |
+| 예제 | dartResult | answer | 설명                         |
+| ---- | ---------- | ------ | ---------------------------- |
+| 1    | `1S2D*3T`  | 37     | 11 _ 2 + 22 _ 2 + 33         |
+| 2    | `1D2S#10S` | 9      | 12 + 21 \* (-1) + 101        |
+| 3    | `1D2S0T`   | 3      | 12 + 21 + 03                 |
+| 4    | `1S*2T*3S` | 23     | 11 _ 2 _ 2 + 23 \* 2 + 31    |
+| 5    | `1D#2S*3S` | 5      | 12 _ (-1) _ 2 + 21 \* 2 + 31 |
+| 6    | `1T2D3D#`  | -4     | 13 + 22 + 32 \* (-1)         |
+| 7    | `1D2S3T*`  | 59     | 12 + 21 _ 2 + 33 _ 2         |
 
 [해설 보러가기](http://tech.kakao.com/2017/09/27/kakao-blind-recruitment-round-1/)
-
-
 
 ### 내 풀이
 
@@ -83,19 +79,19 @@ def solution(dartResult):
         'D':2,
         'T':3,
     }
-    
+
     # 길이가 3이면 -1
     options_dict = {
         '*':2,
         '#':-1,
     }
-    
+
     temp = []
     data = ''
-    
+
     for ind, ch in enumerate(dartResult):
         data += ch
-        
+
         if ch in options_dict:
             data = ''
             continue
@@ -105,9 +101,9 @@ def solution(dartResult):
             else:
                 temp.append(data)
             data = ''
-            
+
     for ind, data in enumerate(temp):
-        
+
         if data[-1] in bonus_dict:
             num = data[:-1]
             bonus = data[-1]
@@ -117,23 +113,23 @@ def solution(dartResult):
             bonus = data[-2]
 
         temp[ind] = score_dict[num] ** bonus_dict[bonus]
-        
+
         if ind > 0 and option == '*':
             temp[ind-1] *= options_dict[option]
-            
+
         temp[ind] *= options_dict[option] if option in options_dict else 1
 
     answer = sum(temp)
-    
+
     return answer
 ```
 
-1. 일단 문자열을 일회씩 나눠주기 위해 `dartResult`를 반복문 돌리면서  문자를 하나씩 이어붙임 - 옵션을 있을수도 없을수도 있지만 보너스는 무조건 있으므로 보너스를 기준으로 문자열을 잘랐음
-   - `if`: 
+1. 일단 문자열을 일회씩 나눠주기 위해 `dartResult`를 반복문 돌리면서 문자를 하나씩 이어붙임 - 옵션을 있을수도 없을수도 있지만 보너스는 무조건 있으므로 보너스를 기준으로 문자열을 잘랐음
+   - `if`:
      - `options_dict`를 붙이냐 안붙이느냐에 대한 판단은 다른 조건문에서 해야하므로 data를 ''로 초기화하고 continue함
      - 따로 조건을 주지 않을 경우 option 문자가 다음 요소에 붙어서 나옴
 2. `elif`: `bonus_dict`에 들어있는 문자일 때
-   - `if`: 
+   - `if`:
      - 마지막 요소를 확인할 때 옵션을 확인하려다 out of range되지 않도록 `ind < len(dartResult)-1`
      - 보너스의 다음 문자가 옵션일 경우`dartResult[ind+1] in options_dict`
      - 위의 두 조건을 만족할 경우 현재 가지고 있는 data + 옵션문자열을 append
@@ -144,9 +140,9 @@ def solution(dartResult):
    - `else` 마지막 문자가 보너스가 아닐 경우 마지막 문자는 옵션, 뒤에서 두번째 문자는 보너스, 그 나머지는 숫자
 4. 점수 계산
    - 수와 보너스 문자를 사용해서 기본적으로 가지고 있는 부분을 계산
-   - 직전 값이 없는 1회차에 `*`가 나올 경우 직전 값을 계산할 수 없으므로 (`ind > 0`: 인덱스가 0일 경우 통과하지 못함) 그걸 제외한 경우는 직전 값에 *2를 해줌
+   - 직전 값이 없는 1회차에 `*`가 나올 경우 직전 값을 계산할 수 없으므로 (`ind > 0`: 인덱스가 0일 경우 통과하지 못함) 그걸 제외한 경우는 직전 값에 \*2를 해줌
    - 현재 값에 적용하는 옵션은 dictionary를 사용하여 dictionary의 값을 곱해주거나 키가 존재하지 않을 경우 1을 곱해주어 값이 변하지 않게했다
 
-> * 점수를 dictionary에 넣은 이유
+> - 점수를 dictionary에 넣은 이유
 >
 >   수의 길이가 동일하지 않다는걸 해결하려고 하다가 dictionary로 만들면 어떻게 되지 않을까 하고 만들었는데 (점수가 10개밖에 없기도 했고) 결과적으로 dictionary여야하는 방법을 사용하지 않았다. 나중에는 다른 값들과의 통일성을 위해서 dictionary를 지우지 않았음

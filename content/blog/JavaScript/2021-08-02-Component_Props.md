@@ -1,8 +1,5 @@
 ---
-title: "Component와 Props"
-excerpt: ""
-category:
-  - React
+title: 'Component와 Props'
 tags: [React]
 ---
 
@@ -12,7 +9,7 @@ tags: [React]
 
 ```jsx
 function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return <h1>Hello, {props.name}</h1>
 }
 ```
 
@@ -25,7 +22,7 @@ Arrow Function을 사용하여 컴포넌트를 정의할 수 있습니다.
 ```jsx
 class Welcome extends React.Component {
   render() {
-    return <h1>Hello, {this.props.name}</h1>;
+    return <h1>Hello, {this.props.name}</h1>
   }
 }
 ```
@@ -37,19 +34,19 @@ render함수에서 React 엘리먼트를 리턴해준다. state를 사용하여 
 이전까지는 React 엘리먼트를 DOM 태그로 나타냈습니다. 또. React 엘리먼트는 사용자 정의 컴포넌트로도 나타낼 수 있습니다.
 
 ```jsx
-const element = <div />;
-const element = <Welcome name="Sara" />;
+const element = <div />
+const element = <Welcome name="Sara" />
 ```
 
 React는 사용자 정의 컴포넌트로 작성한 엘리먼트를 발견하면 JSX 어트리뷰트와 자식을 해당 컴포넌트에 단일 객체로 전달합니다. 이 객체를 "props"라고 합니다.
 
 ```jsx
 function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return <h1>Hello, {props.name}</h1>
 }
 
-const element = <Welcome name="Sara" />;
-ReactDOM.render(element, document.getElementById("root"));
+const element = <Welcome name="Sara" />
+ReactDOM.render(element, document.getElementById('root'))
 ```
 
 "Hello, Sara"를 렌더링하는 예시입니다.
@@ -83,7 +80,7 @@ function Comment(props) {
       <div className="Comment-text">{props.text}</div>
       <div className="Comment-date">{formatDate(props.date)}</div>
     </div>
-  );
+  )
 }
 ```
 
@@ -97,7 +94,7 @@ function Comment(props) {
 function Avatar(props) {
   return (
     <img className="Avatar" src={props.user.avatarUrl} alt={props.user.name} />
-  );
+  )
 }
 ```
 
@@ -118,7 +115,7 @@ function Comment(props) {
       <div className="Comment-text">{props.text}</div>
       <div className="Comment-date">{formatDate(props.date)}</div>
     </div>
-  );
+  )
 }
 ```
 
@@ -131,7 +128,7 @@ function UserInfo(props) {
       <Avatar user={props.user} />
       <div className="UserInfo-name">{props.user.name}</div>
     </div>
-  );
+  )
 }
 ```
 
@@ -145,7 +142,7 @@ function Comment(props) {
       <div className="Comment-text">{props.text}</div>
       <div className="Comment-date">{formatDate(props.date)}</div>
     </div>
-  );
+  )
 }
 ```
 
@@ -159,7 +156,7 @@ function Comment(props) {
 
 ```jsx
 function sum(a, b) {
-  return a + b;
+  return a + b
 }
 ```
 
@@ -169,7 +166,7 @@ function sum(a, b) {
 
 ```jsx
 function withdraw(account, amount) {
-  account.total -= amount;
+  account.total -= amount
 }
 ```
 

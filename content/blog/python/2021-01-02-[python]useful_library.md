@@ -1,8 +1,6 @@
 ---
-title: "[python]코딩테스트에서 유용한 표준 라이브러리"
-excerpt: ""
-category:
-  - algorithm
+title: '[python]코딩테스트에서 유용한 표준 라이브러리'
+
 tags: [python, algorithm, coding_test]
 ---
 

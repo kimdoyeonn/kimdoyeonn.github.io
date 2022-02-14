@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level1 체육복"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level1 체육복'
+
 tags: [python, programmers, algorithm]
 ---
 
@@ -22,11 +20,11 @@ tags: [python, programmers, algorithm]
 
 ##### 입출력 예
 
-| n    | lost   | reserve   | return |
-| ---- | ------ | --------- | ------ |
-| 5    | [2, 4] | [1, 3, 5] | 5      |
-| 5    | [2, 4] | [3]       | 4      |
-| 3    | [3]    | [1]       | 2      |
+| n   | lost   | reserve   | return |
+| --- | ------ | --------- | ------ |
+| 5   | [2, 4] | [1, 3, 5] | 5      |
+| 5   | [2, 4] | [3]       | 4      |
+| 3   | [3]    | [1]       | 2      |
 
 ##### 입출력 예 설명
 
@@ -47,9 +45,9 @@ def solution(n, lost, reserve):
 
     # 여벌옷이 있는데 도난당한 학생을 먼저 걸러주어야함
     # 먼저 걸러주지 않으면 반복문을 돌면서 앞의 학생을 처리할 때 필요없는데 빌림당할수도 있음
-    f_lost = [std for std in lost if not (std in reserve)] 
+    f_lost = [std for std in lost if not (std in reserve)]
     # list(set(lost)-set(reserve))
-    f_reserve = [std for std in reserve if not (std in lost)] 
+    f_reserve = [std for std in reserve if not (std in lost)]
     # list(set(reserve)-set(lost))
 
 
@@ -78,8 +76,6 @@ def solution(n, lost, reserve):
             _lost.remove(b)
     return n - len(_lost)
 ```
-
-
 
 > `not in`을 사용할 수 있다는걸 몰랐다. 나중에 써먹어야지
 > `set(x)-set(y)`도 할 수 있는지 몰랐다. 중복된 자료를 걸러낼 때 사용하면 편할 것 같다.

@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level3 가장 긴 펠린드롬"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level3 가장 긴 펠린드롬'
+
 tags: [algorithm, programmers]
 ---
 
@@ -20,7 +18,7 @@ tags: [algorithm, programmers]
 - 문자열 s의 길이 : 2,500 이하의 자연수
 - 문자열 s는 알파벳 소문자로만 구성
 
-------
+---
 
 ##### 입출력 예
 
@@ -37,8 +35,6 @@ tags: [algorithm, programmers]
 입출력 예 #2
 2번째자리 'b'를 기준으로 aba가 팰린드롬이 되므로 3을 return합니다.
 
-
-
 ### 내 풀이
 
 ```python
@@ -53,7 +49,7 @@ def solution(s):
             start += 1
 ```
 
-제일 긴 펠린드롬을 찾는 문제이므로 문자열의 길이부터 하나씩 빼면서 해당 길이의 펠린드롬이 문자열에 존재하는지 확인하는 방식으로 문제를 풀었습니다. 
+제일 긴 펠린드롬을 찾는 문제이므로 문자열의 길이부터 하나씩 빼면서 해당 길이의 펠린드롬이 문자열에 존재하는지 확인하는 방식으로 문제를 풀었습니다.
 
 for문이 주어진 s의 길이부터 1씩 빼면서 확인할 길이를 length에 넣어주고, while문에서는 length만큼의 문자열을 잘라서 이 문자열이 펠린드롬인지 아닌지를 확인합니다.
 

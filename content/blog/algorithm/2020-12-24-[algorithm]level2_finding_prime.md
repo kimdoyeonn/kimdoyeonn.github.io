@@ -1,14 +1,10 @@
 ---
-title: "[algorithm]level2 소수 찾기"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level2 소수 찾기'
+
 tags: [python, programmers, algorithm]
 ---
 
 참고: [프로그래머스](https://programmers.co.kr/learn/courses/30/lessons/42839)
-
-
 
 ###### 문제 설명
 
@@ -41,15 +37,13 @@ tags: [python, programmers, algorithm]
 
 [출처](http://2009.nwerc.eu/results/nwerc09.pdf)
 
-
-
 ### 내 풀이
 
 ```python
 def solution(numbers):
     answer = 0
 
-    # 주어진 문자열로 얻을 수 있는 모든 조합을 
+    # 주어진 문자열로 얻을 수 있는 모든 조합을
     # 인덱스로 seqs에 저장
     seqs = []
     temp = []
@@ -67,7 +61,7 @@ def solution(numbers):
         if len(n) == len(nums[-1]):
             break
 	# ---------------------------------
-    
+
     # 앞에서 얻은 조합으로 숫자를 조합해서 temp에 저장
     temp = []
     for seq in seqs:
@@ -76,11 +70,11 @@ def solution(numbers):
             num += numbers[int(ind)]
         temp.append(num)
     # ----------------------------
-    
+
 	# 만들어진 숫자들의 중복 제거
     temp = list(set(list(map(int, temp))))
     # ----------------------
-    
+
     # 나올 수 있는 모든 수가 담긴 temp에서 소수를 확인
     for t in temp:
         if t == 0 or t == 1:
@@ -94,4 +88,3 @@ def solution(numbers):
 
     return answer
 ```
-

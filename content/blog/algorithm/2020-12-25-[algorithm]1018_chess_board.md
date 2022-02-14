@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]1018번 체스판 다시 칠하기"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]1018번 체스판 다시 칠하기'
+
 tags: [python, baekjoon, algorithm]
 ---
 
@@ -80,8 +78,6 @@ WWWWWWWWWWBWB
 
 - [브루트포스 알고리즘](https://www.acmicpc.net/problem/tag/125)
 
-
-
 ### 내 풀이
 
 ```python
@@ -125,4 +121,4 @@ for i in range(n-8+1):
 print(temp)
 ```
 
-만들어질 수 있는 판의 경우를 미리 만든 다음에 주어진 판에서 8*8씩 잘라 만들어 둔 판과 비교하면서 칠해야하는 자리의 최솟값을 구했다.
+만들어질 수 있는 판의 경우를 미리 만든 다음에 주어진 판에서 8\*8씩 잘라 만들어 둔 판과 비교하면서 칠해야하는 자리의 최솟값을 구했다.

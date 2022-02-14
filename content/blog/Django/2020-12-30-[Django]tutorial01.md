@@ -1,27 +1,20 @@
 ---
-title: "[Django]장고튜토리얼-장고앱작성하기 part1"
-excerpt: ""
-category:
-  - django
+title: '[Django]장고튜토리얼-장고앱작성하기 part1'
 tags: [python, django]
 ---
 
 출처: [첫번째 장고앱 작성하기](https://docs.djangoproject.com/ko/3.1/intro/tutorial01/)
 
-간단한 설문조사 어플리케이션 만들기 
+간단한 설문조사 어플리케이션 만들기
 
 - 사람들이 설문 내용을 보고 직접 투표할 수 있는 개방된 사이트
 - 관리자가 설문을 추가, 변경, 삭제할 수 있는 관리용 사이트
-
-
 
 #### django 설치되어있는지, 버전 확인하기
 
 ```powershell
 $ python -m django --version
 ```
-
-
 
 ### 프로젝트 만들기
 
@@ -39,9 +32,7 @@ Django를 처음 사용한다면 초기 설정에 주의를 기울여야한다. 
 
   > 작성한 코드는 DocumentRoot의 바깥에 두는 것을 추천합니다. 웹서버의 DocumentRoot에 존재할 경우 웹을 통해 외부의 사람들이 Python 코드를 직접 열어볼 수 있는 위험이 있기 때문에 보안에 좋지 않습니다.
 
-
-
-- `startproject`에서 생성되는 것
+* `startproject`에서 생성되는 것
 
   ```
   mysite/
@@ -64,8 +55,6 @@ Django를 처음 사용한다면 초기 설정에 주의를 기울여야한다. 
   - `mysite/asgi.py` 프로젝트를 제공하기 위한 ASGI 호환 웹 서버의 진입점 [자세히](https://docs.djangoproject.com/ko/3.1/howto/deployment/asgi/)
   - `mysite/wsgi.py` 현재 프로젝트를 서비스하기 위한 WSGI 호환 웹 서버의 진입점 [자세히](https://docs.djangoproject.com/ko/3.1/howto/deployment/wsgi/)
 
-
-
 ### 개발서버
 
 #### Django 프로젝트가 제대로 작동하는지 확인
@@ -81,8 +70,6 @@ $ python manage.py runserver
 > runserver의 자동 변경 기능
 >
 > 개발 서버는 요청이 돌어올 때마다 자동으로 Python 코드를 다시 불러옵니다. 코드의 변경사항을 반영하기 위해서 굳이 서버를 재가동 하지 않아도 됩니다. 그러나, 파일을 추가하는 등의 몇몇의 동작은 개발 서버가 자동으로 인식하지 못하기 때문에, 이런 상황에서는 서버를 재가동 해야 적용됩니다.
-
-
 
 ### 설문조사 앱 만들기
 
@@ -105,8 +92,6 @@ polls
 	tests.py
 	views.py
 ```
-
-
 
 ### 첫번째 뷰 작성하기
 
@@ -161,11 +146,7 @@ $ python manage.py runserver
 
 http://localhost:8000/polls/ -> index 뷰에서 정의한 텍스트가 보임
 
-
-
-
-
-`path()`함수에는 2개의 필수 인수인 route와 view, 2개의 선택 가능한 인수 kwargs, name까지 모두 4개의 인수가 전달되었습니다. 
+`path()`함수에는 2개의 필수 인수인 route와 view, 2개의 선택 가능한 인수 kwargs, name까지 모두 4개의 인수가 전달되었습니다.
 
 ### path() 인수: route
 

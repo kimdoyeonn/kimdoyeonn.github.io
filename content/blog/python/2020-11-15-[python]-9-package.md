@@ -1,8 +1,5 @@
 ---
-title: "[python]9. 패키지"
-excerpt: ""
-category:
-  - python
+title: '[python]9. 패키지'
 tags: [python, jump-to-python, packages]
 ---
 
@@ -37,8 +34,6 @@ game/
 - `sound`, `graphic`, `play` - 서브 디렉터리
 - 패키지 구조로 모듈을 만들면 다른 모듈과 이름이 겹치더라도 더 안전하게 사용할 수 있다.
 
-
-
 ### 패키지 만들기
 
 1. 루트디렉터리와 그 아래의 서브 디렉터리들을 생성하고 .py파일들을 만든다.
@@ -50,8 +45,6 @@ game/
    ```
    set PYTHONPATH=C:/doit
    ```
-
-   
 
 ### 실행하기
 
@@ -72,9 +65,7 @@ game/
 
 - import game을 수행하면 game 디렉어리의 모듈 또는 game 디렉터리의 `__init__.py`에 정의한 것만 참조할 수 있다.
 - `import game.sound.echo.echo_test`처럼 함수를 사용하는 것도 불가능하다
-  도트 연산자(.)를 사용해서 import a.b.c 처럼 import할 때 가장 마지막 항목인  c는 반드시 모듈 또는 패키지여야만 한다.
-
-
+  도트 연산자(.)를 사용해서 import a.b.c 처럼 import할 때 가장 마지막 항목인 c는 반드시 모듈 또는 패키지여야만 한다.
 
 ### `__init__.py`의 용도
 
@@ -93,8 +84,6 @@ game/
   > `from game.sound.echo import *`은 `__all__`과 상관없이 무조건 import된다.
   >
   > -> from의 마지막 항목이 모듈인 경우
-
-
 
 ### relative 패키지
 

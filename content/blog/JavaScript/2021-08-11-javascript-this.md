@@ -1,8 +1,5 @@
 ---
-title: "[javascript] this는 무엇인가?"
-excerpt: ""
-category:
-  - javascript
+title: '[javascript] this는 무엇인가?'
 tags: [javascript]
 ---
 
@@ -10,18 +7,18 @@ tags: [javascript]
 
 ```js
 var person1 = {
-  name: "Chris",
-  greeting: function () {
-    alert("Hi! I'm " + this.name + ".");
+  name: 'Chris',
+  greeting: function() {
+    alert("Hi! I'm " + this.name + '.')
   },
-};
+}
 
 var person2 = {
-  name: "Brian",
-  greeting: function () {
-    alert("Hi! I'm " + this.name + ".");
+  name: 'Brian',
+  greeting: function() {
+    alert("Hi! I'm " + this.name + '.')
   },
-};
+}
 ```
 
 객체 멤버의 컨텍스트가 바뀌는 경우에도 언제나 정확한 값을 사용하게 해줍니다. 예시와 같이 두 개의 다른 객체가 각각 다른 이름으로 인스턴스로 생성된 상태에서 인사말을 출력하기 위해 객체의 name을 참조해야 할 때 사용합니다.
@@ -37,36 +34,36 @@ var person2 = {
 
 ```js
 // call 또는 apply의 첫 번째 인자로 객체가 전달될 수 있으며 this가 그 객체에 묶임
-var obj = { a: "Custom" };
+var obj = { a: 'Custom' }
 
 // 변수를 선언하고 변수에 프로퍼티로 전역 window를 할당
-var a = "Global";
+var a = 'Global'
 
 function whatsThis() {
-  return this.a; // 함수 호출 방식에 따라 값이 달라짐
+  return this.a // 함수 호출 방식에 따라 값이 달라짐
 }
 
-whatsThis(); // this는 'Global'. 함수 내에서 설정되지 않았으므로 global/window 객체로 초기값을 설정한다.
-whatsThis.call(obj); // this는 'Custom'. 함수 내에서 obj로 설정한다.
-whatsThis.apply(obj); // this는 'Custom'. 함수 내에서 obj로 설정한다.
+whatsThis() // this는 'Global'. 함수 내에서 설정되지 않았으므로 global/window 객체로 초기값을 설정한다.
+whatsThis.call(obj) // this는 'Custom'. 함수 내에서 obj로 설정한다.
+whatsThis.apply(obj) // this는 'Custom'. 함수 내에서 obj로 설정한다.
 ```
 
 - call과 apply의 차이
 
 ```js
 function add(c, d) {
-  return this.a + this.b + c + d;
+  return this.a + this.b + c + d
 }
 
-var o = { a: 1, b: 3 };
+var o = { a: 1, b: 3 }
 
 // 첫 번째 인자는 'this'로 사용할 객체이고,
 // 이어지는 인자들은 함수 호출에서 인수로 전달된다.
-add.call(o, 5, 7); // 16
+add.call(o, 5, 7) // 16
 
 // 첫 번째 인자는 'this'로 사용할 객체이고,
 // 두 번째 인자는 함수 호출에서 인수로 사용될 멤버들이 위치한 배열이다.
-add.apply(o, [10, 20]); // 34
+add.apply(o, [10, 20]) // 34
 ```
 
 출처

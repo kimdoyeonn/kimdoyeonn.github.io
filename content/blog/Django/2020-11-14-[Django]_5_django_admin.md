@@ -1,8 +1,5 @@
 ---
-title: "[django]5. 장고 관리자"
-excerpt: ""
-category:
-  - django
+title: '[django]5. 장고 관리자'
 tags: [python, django]
 ---
 
@@ -14,11 +11,7 @@ tags: [python, django]
 LANGUAGE_CODE = 'ko' # en-us
 ```
 
-
-
 장고 관리자에서는 글을 추가, 수정, 삭제할 수 있다.
-
-
 
 `blog/admin.py`에서
 

@@ -1,8 +1,5 @@
 ---
-title: "[django]4. 장고 모델"
-excerpt: ""
-category:
-  - django
+title: '[django]4. 장고 모델'
 tags: [python, django]
 ---
 
@@ -24,8 +21,6 @@ tags: [python, django]
 여기서 사용할 건 `SQLite`데이터 베이스: 기본 장고 데이터베이스 어댑터이다.
 
 쉽게 말해 데이터베이스 안의 모델이란 엑셀 스프레드시트라고 말할 수 있다.(모델도 열(필드)과 행(데이터)로 구성되어있다)
-
-
 
 ### 어플리케이션 만들기
 
@@ -67,11 +62,9 @@ blog 디렉토리가 생성되고 그 안에 여러 파일도 세팅된다.
   ]
   ```
 
-  
-
 ### 블로그 글 모델 만들기
 
-모든 `Model`객체는 `blog/models.py`파일에 선언하여 모델을 만든다. 파일을 열어서 안에 있는 모든 내용을 삭제한 후 
+모든 `Model`객체는 `blog/models.py`파일에 선언하여 모델을 만든다. 파일을 열어서 안에 있는 모든 내용을 삭제한 후
 
 ```python
 from django.conf import settings
@@ -79,7 +72,7 @@ from django.db import models
 from django.utils import timezone
 
 
-class Post(models.Model): 
+class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
@@ -108,8 +101,6 @@ class Post(models.Model):
 - `models.ForeignKey`
   다른 모델에 대한 링크를 의미한다.
 - [장고문서](https://docs.djangoproject.com/en/2.0/ref/models/fields/#field-types)
-
-
 
 ### 데이터베이스에 모델을 위한 테이블 만들기
 

@@ -1,8 +1,5 @@
 ---
-title: "[javascript]일급 함수"
-excerpt: ""
-category:
-  - javascript
+title: '[javascript]일급 함수'
 tags: [javascript]
 ---
 
@@ -14,10 +11,10 @@ tags: [javascript]
 
 ```js
 const foo = function() {
-   console.log("foobar");
+  console.log('foobar')
 }
 // 변수를 사용해 호출
-foo();
+foo()
 ```
 
 - 익명 함수를 변수에 할당 한 다음, 그 변수를 사용하여 끝에 괄호 `()`를 추가하여 함수를 호출했습니다.
@@ -29,13 +26,13 @@ foo();
 
 ```js
 function sayHello() {
-    return "Hello ";
+  return 'Hello '
 }
 function greeting(helloMessage, name) {
-    console.log(helloMessage() + name);
+  console.log(helloMessage() + name)
 }
 
-greeting(sayHello, "JavaScript!");
+greeting(sayHello, 'JavaScript!')
 ```
 
 - `sayHello()` 함수를 `greeting()` 함수의 인자로 전달했습니다. 이것이 함수를 어떻게 변수처럼 다루는지 보여주는 예시입니다.
@@ -47,9 +44,9 @@ greeting(sayHello, "JavaScript!");
 
 ```js
 function sayHello() {
-    return function() {
-        console.log("Hello!");
-    }
+  return function() {
+    console.log('Hello!')
+  }
 }
 ```
 
@@ -61,12 +58,12 @@ function sayHello() {
 
    ```js
    const sayHello = function() {
-       return function() {
-           console.log("Hello!")
-       }
+     return function() {
+       console.log('Hello!')
+     }
    }
-   const myFunc = sayHello();
-   myFunc();	// "Hello!"
+   const myFunc = sayHello()
+   myFunc() // "Hello!"
    ```
 
    - 만약 `sayHello` 함수를 직접 호출하면, 반환된 함수를 호출하지 않고 함수 자체를 반환합니다. 그러므로 반환된 함수를 다른 변수에 저장하여 사용해야 합니다.
@@ -75,12 +72,11 @@ function sayHello() {
 
    ```js
    function sayHello() {
-       return function () {
-           console.log("Hello!");
-       }
+     return function() {
+       console.log('Hello!')
+     }
    }
-   sayHello()();
+   sayHello()()
    ```
 
    - 이중괄호 `()()`을 사용해 반환함 함수를 호출할 수 있습니다.
-

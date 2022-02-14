@@ -1,8 +1,5 @@
 ---
-title: "[project]관리자화면HTML+간단한 CSS"
-excerpt: ""
-category:
-  - html
+title: '[project]관리자화면HTML+간단한 CSS'
 tags: [html, project]
 ---
 
@@ -98,12 +95,12 @@ tags: [html, project]
         </table>
       </div>
       <div id="result_paging">
-        <a href=""><img src="" title="이전페이지" /></a>
-        <a href=""><img src="" title="1" /></a>
-        <a href=""><img src="" title="2" /></a>
-        <a href=""><img src="" title="3" /></a>
-        <a href=""><img src="" title="4" /></a>
-        <a href=""><img src="" title="다음페이지" /></a>
+        <a href=""><img src="" title="이전페이지"/></a>
+        <a href=""><img src="" title="1"/></a>
+        <a href=""><img src="" title="2"/></a>
+        <a href=""><img src="" title="3"/></a>
+        <a href=""><img src="" title="4"/></a>
+        <a href=""><img src="" title="다음페이지"/></a>
       </div>
     </div>
   </body>

@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level1 실패율"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level1 실패율'
+
 tags: [python, programmers, algorithm]
 ---
 
@@ -31,10 +29,10 @@ tags: [python, programmers, algorithm]
 
 ##### 입출력 예
 
-| N    | stages                   | result      |
-| ---- | ------------------------ | ----------- |
-| 5    | [2, 1, 2, 6, 2, 4, 3, 3] | [3,4,2,1,5] |
-| 4    | [4,4,4,4,4]              | [4,1,2,3]   |
+| N   | stages                   | result      |
+| --- | ------------------------ | ----------- |
+| 5   | [2, 1, 2, 6, 2, 4, 3, 3] | [3,4,2,1,5] |
+| 4   | [4,4,4,4,4]              | [4,1,2,3]   |
 
 ##### 입출력 예 설명
 
@@ -63,17 +61,15 @@ tags: [python, programmers, algorithm]
 
 - [4,1,2,3]
 
-
-
 ### 내 풀이
 
 ```python
 def solution(N, stages): # N: 스테이지의 개수, stages: 스테이지의 번호가 담긴 배열
     answer = []
-    
+
     passed_cnt = len(stages) # 초기값: 통과한 사용자+현재 머무는 사용자 = stages의 길이
     stage_dict = {}
-    
+
     for i in range(1,N+1):
         stages_cnt = stages.count(i)
         if stages_cnt == 0:
@@ -81,10 +77,10 @@ def solution(N, stages): # N: 스테이지의 개수, stages: 스테이지의 �
         else:
             stage_dict[i] = stages_cnt/passed_cnt
         passed_cnt -= stages_cnt
-        
+
     sorted_dict = sorted(stage_dict.items(), reverse=True, key=lambda x: x[1])
     answer = [stage for stage, _ in sorted_dict]
-    
+
     return answer
 ```
 
@@ -100,4 +96,3 @@ def solution(N, stages): # N: 스테이지의 개수, stages: 스테이지의 �
    - lambda에 stage_dict[x]로 주면 value로 정렬한다는 뜻
    - 결과는 key가 출력됨
 8. 정렬한 값에서 스테이지만 가져와서 반환해줌
-

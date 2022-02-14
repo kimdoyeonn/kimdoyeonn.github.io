@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]1978번 소수 찾기"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]1978번 소수 찾기'
+
 tags: [python, baekjoon, algorithm]
 ---
 
@@ -49,8 +47,6 @@ tags: [python, baekjoon, algorithm]
 - [소수 판정](https://www.acmicpc.net/problem/tag/9)
 - [에라토스테네스의 체](https://www.acmicpc.net/problem/tag/67)
 
-
-
 ### 내 풀이
 
 ```python
@@ -72,4 +68,3 @@ print(cnt)
 
 - 1은 소수가 아니므로 continue
 - 2는 소수이므로 결과에 포함되어야하는데, 2는 반복문 내부 코드가 실행되지 않고 else문이 실행되어 계산됨
-

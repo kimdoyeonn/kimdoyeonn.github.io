@@ -1,8 +1,5 @@
 ---
-title: "State와 Lifecycle"
-excerpt: ""
-category:
-  - React
+title: 'State와 Lifecycle'
 tags: [React]
 ---
 
@@ -13,11 +10,11 @@ function tick() {
       <h1>Hello, world!</h1>
       <h2>It is {new Date().toLocaleTimeString()}.</h2>
     </div>
-  );
-  ReactDOM.render(element, document.getElementById("root"));
+  )
+  ReactDOM.render(element, document.getElementById('root'))
 }
 
-setInterval(tick, 1000);
+setInterval(tick, 1000)
 ```
 
 위 방법은 렌더링된 출력값을 변경하기 위해 `ReactDOM.render()`를 호출함
@@ -29,14 +26,14 @@ function Clock(props) {
       <h1>Hello, world!</h1>
       <h2>It is {props.date.toLocaleTimeString()}.</h2>
     </div>
-  );
+  )
 }
 
 function tick() {
-  ReactDOM.render(<Clock />, document.getElementById("root"));
+  ReactDOM.render(<Clock />, document.getElementById('root'))
 }
 
-setInterval(tick, 1000);
+setInterval(tick, 1000)
 ```
 
 state를 추가하여 캡슐화하면 한 번만 코드를 작성하고 Clock이 스스로 업데이트하도록 만들 수 있음
@@ -55,7 +52,7 @@ class Clock extends React.Component {
         <h1>Hello, world!</h1>
         <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
       </div>
-    );
+    )
   }
 }
 ```
@@ -69,8 +66,8 @@ class Clock extends React.Component {
 ```jsx
 class Clock extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = { date: new Date() };
+    super(props)
+    this.state = { date: new Date() }
   }
 
   render() {
@@ -79,11 +76,11 @@ class Clock extends React.Component {
         <h1>Hello, world!</h1>
         <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
       </div>
-    );
+    )
   }
 }
 
-ReactDOM.render(<Clock />, document.getElementById("root"));
+ReactDOM.render(<Clock />, document.getElementById('root'))
 ```
 
 - 클래스 컴포넌트는 항상 `props`로 기본 constructor를 호출해야 합니다.
@@ -99,8 +96,8 @@ ReactDOM.render(<Clock />, document.getElementById("root"));
 ```jsx
 class Clock extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = { date: new Date() };
+    super(props)
+    this.state = { date: new Date() }
   }
 
   componentDidMount() {}
@@ -113,7 +110,7 @@ class Clock extends React.Component {
         <h1>Hello, world!</h1>
         <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
       </div>
-    );
+    )
   }
 }
 ```
@@ -160,22 +157,22 @@ tick() {
 ```jsx
 class Clock extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = { date: new Date() };
+    super(props)
+    this.state = { date: new Date() }
   }
 
   componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), 1000);
+    this.timerID = setInterval(() => this.tick(), 1000)
   }
 
   componentWillUnmount() {
-    clearInterval(this.timerID);
+    clearInterval(this.timerID)
   }
 
   tick() {
     this.setState({
       date: new Date(),
-    });
+    })
   }
 
   render() {
@@ -184,11 +181,11 @@ class Clock extends React.Component {
         <h1>Hello, world!</h1>
         <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
       </div>
-    );
+    )
   }
 }
 
-ReactDOM.render(<Clock />, document.getElementById("root"));
+ReactDOM.render(<Clock />, document.getElementById('root'))
 ```
 
 1. `<Clock />`가 `ReactDOM.render()`로 전달되었을 때 React는 `Clock` 컴포넌트의 constructor를 호출합니다. `Clock`이 현재 시각을 표시해야 하기 때문에 현재 시각이 포함된 객체로 `this.state`를 초기화합니다. 나중에 이 state를 업데이트할 것입니다.
@@ -206,10 +203,10 @@ ReactDOM.render(<Clock />, document.getElementById("root"));
 
    ```jsx
    // Wrong
-   this.state.comment = "Hello";
+   this.state.comment = 'Hello'
 
    // Correct
-   this.setState({ comment: "Hello" });
+   this.setState({ comment: 'Hello' })
    ```
 
 2. State 업데이트는 비동기적일 수도 있습니다.
@@ -220,19 +217,19 @@ ReactDOM.render(<Clock />, document.getElementById("root"));
    // Wrong
    this.setState({
      counter: this.state.counter + this.props.increment,
-   });
+   })
 
    // Correct
    this.setState((state, props) => ({
      counter: state.counter + props.increment,
-   }));
+   }))
 
    // Correct
-   this.setState(function (state, props) {
+   this.setState(function(state, props) {
      return {
        counter: state.counter + props.increment,
-     };
-   });
+     }
+   })
    ```
 
 3. State 업데이트는 변합됩니다.
@@ -257,7 +254,7 @@ ReactDOM.render(<Clock />, document.getElementById("root"));
 
 ```jsx
 function FormattedDate(props) {
-  return <h2>It is {props.date.toLocaleTimeString()}.</h2>;
+  return <h2>It is {props.date.toLocaleTimeString()}.</h2>
 }
 ```
 
@@ -277,10 +274,10 @@ function App() {
       <Clock />
       <Clock />
     </div>
-  );
+  )
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById('root'))
 ```
 
 각 `Clock`은 자신만의 타이머를 설정하고 독립적으로 업데이트를 합니다.

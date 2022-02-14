@@ -1,8 +1,5 @@
 ---
-title: "[algorithm]level1 모의고사"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level1 모의고사'
 tags: [algorithm, programmers, java]
 ---
 

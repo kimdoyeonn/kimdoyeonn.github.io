@@ -1,8 +1,5 @@
 ---
-title: "[web]브라우저의 동작 원리"
-excerpt: ""
-category:
-  - web
+title: '[web]브라우저의 동작 원리'
 tags: [web]
 ---
 

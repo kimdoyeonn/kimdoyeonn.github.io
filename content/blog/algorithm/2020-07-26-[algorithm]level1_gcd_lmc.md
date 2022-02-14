@@ -1,8 +1,5 @@
 ---
-title: "[algorithm]level1 최대공약수와 최소공배수"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level1 최대공약수와 최소공배수'
 tags: [algorithm, programmers, java]
 ---
 

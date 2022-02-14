@@ -1,11 +1,7 @@
 ---
-title: "[DB]MySQL CRUD 문법"
-excerpt: ""
-category:
-  - DB
+title: '[DB]MySQL CRUD 문법'
 tags: [DB, MySQL]
 ---
-
 
 참고: 생활코딩 MySQL 강의
 

@@ -1,8 +1,5 @@
 ---
-title: "[javascript] use strict란?"
-excerpt: ""
-category:
-  - javascript
+title: '[javascript] use strict란?'
 tags: [javascript]
 ---
 

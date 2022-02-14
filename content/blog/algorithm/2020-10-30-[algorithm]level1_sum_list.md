@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level1 행렬의 덧셈"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level1 행렬의 덧셈'
+
 tags: [python, programmers, algorithm]
 ---
 

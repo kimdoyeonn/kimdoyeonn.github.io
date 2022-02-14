@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level2 카펫"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level2 카펫'
+
 tags: [python, programmers, algorithm]
 ---
 
@@ -32,32 +30,29 @@ Leo가 본 카펫에서 갈색 격자의 수 brown, 노란색 격자의 수 yell
 | 8     | 1      | [3, 3] |
 | 24    | 24     | [8, 6] |
 
-
-
 ### 내 풀이
 
 ```python
 def solution(brown, yellow):
     answer = []
-    
+
     area = brown + yellow
-    
+
     height = 3
     while 1:
-        
+
         if area % height == 0:
             width = area // height
             if brown == (height + width)*2-4:
                 break
-        
+
         height += 1
-        
+
     answer = [width, height]
-    
+
     return answer
 ```
 
 노란부분과 갈색부분의 합이 넓이이고 높이와 너비의 최솟값이 3안 것을 이용해서 풀었다.
 
 높이의 최솟값인 3부터 하나씩 늘려가면서 넓이에 나누어떨어지는 수를 찾아서 그 떄 갈색 부분의 개수와 문제에서 주어진 갈색부분의 개수를 비교하면 조건에 맞는 너비와 높이를 구할 수 있었다.
-

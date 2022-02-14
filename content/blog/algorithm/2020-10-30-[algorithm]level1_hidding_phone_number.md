@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level1 핸드폰 번호 가리기"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level1 핸드폰 번호 가리기'
+
 tags: [python, programmers, algorithm]
 ---
 

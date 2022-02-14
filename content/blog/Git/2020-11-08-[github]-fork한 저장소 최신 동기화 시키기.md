@@ -1,8 +1,5 @@
 ---
-title: "[github] fork한 저장소 동기회시키기"
-excerpt: ""
-category:
-  - github
+title: '[github] fork한 저장소 동기회시키기'
 tags: [github, remote, fetch, merge, checkout]
 ---
 
@@ -36,9 +33,9 @@ tags: [github, remote, fetch, merge, checkout]
    git merge upstream/main
    ```
 
-참조: 
+참조:
 
 [https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/syncing-a-fork]: https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/syncing-a-fork
 [https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/configuring-a-remote-for-a-fork]: https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/configuring-a-remote-for-a-fork
 
-[	https://json.postype.com/post/210431	](https://json.postype.com/post/210431)
+[ https://json.postype.com/post/210431 ](https://json.postype.com/post/210431)

@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level2 전화번호 목록"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level2 전화번호 목록'
+
 tags: [python, programmers, algorithm]
 ---
 
@@ -49,13 +47,13 @@ tags: [python, programmers, algorithm]
 def solution(phone_book):
     answer = True
     pre_phone = sorted(phone_book, key=lambda x: len(x))
-    
+
     for i, pre in enumerate(pre_phone):
         for p in pre_phone[i+1:]:
             if p.startswith(pre):
                 return False
-    
-    
+
+
     return answer
 ```
 

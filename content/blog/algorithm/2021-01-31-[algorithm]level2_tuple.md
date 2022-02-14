@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level2 튜플"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level2 튜플'
+
 tags: [python, programmers, algorithm]
 ---
 

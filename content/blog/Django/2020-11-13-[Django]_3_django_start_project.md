@@ -1,8 +1,5 @@
 ---
-title: "[django]3. 나의 첫 번째 장고 프로젝트"
-excerpt: ""
-category:
-  - django
+title: '[django]3. 나의 첫 번째 장고 프로젝트'
 tags: [python, django]
 ---
 
@@ -17,8 +14,6 @@ PS C:\~~~\djangogirls> myvenv\Scripts\activate
 - `manage.py`: 스크립트인데 사이트 관리를 도와주는 역할 이 스크립트를 사용하여 다른 설치 없이, 컴퓨터에서 웹 서버를 시작할 수 있다.
 - `setting.py`: 웹 사이트 설정이 있는 파일
 - `urls.py`: `urlresolver`가 사용하는 패턴 목록을 포함
-
-
 
 ### 설정 변경
 
@@ -43,8 +38,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 ```python
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 ```
-
-
 
 ### 데이터베이스 설정하기
 

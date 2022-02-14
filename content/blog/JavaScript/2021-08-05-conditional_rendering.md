@@ -1,25 +1,22 @@
 ---
-title: "조건부 렌더링"
-excerpt: ""
-category:
-  - React
+title: '조건부 렌더링'
 tags: [React]
 ---
 
 ```jsx
 function Greeting(props) {
-  const isLoggedIn = props.isLoggedIn;
+  const isLoggedIn = props.isLoggedIn
   if (isLoggedIn) {
-    return <UserGreeting />;
+    return <UserGreeting />
   }
-  return <GuestGreeting />;
+  return <GuestGreeting />
 }
 
 ReactDOM.render(
   // Try changing to isLoggedIn={true}:
   <Greeting isLoggedIn={false} />,
-  document.getElementById("root")
-);
+  document.getElementById('root')
+)
 ```
 
 - `isLoggedIn`의 값에 따라 다른 컴포넌트를 렌더링함
@@ -27,27 +24,27 @@ ReactDOM.render(
 ```jsx
 class LoginControl extends React.Component {
   constructor(props) {
-    super(props);
-    this.handleLoginClick = this.handleLoginClick.bind(this);
-    this.handleLogoutClick = this.handleLogoutClick.bind(this);
-    this.state = { isLoggedIn: false };
+    super(props)
+    this.handleLoginClick = this.handleLoginClick.bind(this)
+    this.handleLogoutClick = this.handleLogoutClick.bind(this)
+    this.state = { isLoggedIn: false }
   }
 
   handleLoginClick() {
-    this.setState({ isLoggedIn: true });
+    this.setState({ isLoggedIn: true })
   }
 
   handleLogoutClick() {
-    this.setState({ isLoggedIn: false });
+    this.setState({ isLoggedIn: false })
   }
 
   render() {
-    const isLoggedIn = this.state.isLoggedIn;
-    let button;
+    const isLoggedIn = this.state.isLoggedIn
+    let button
     if (isLoggedIn) {
-      button = <LogoutButton onClick={this.handleLogoutClick} />;
+      button = <LogoutButton onClick={this.handleLogoutClick} />
     } else {
-      button = <LoginButton onClick={this.handleLoginClick} />;
+      button = <LoginButton onClick={this.handleLoginClick} />
     }
 
     return (
@@ -55,11 +52,11 @@ class LoginControl extends React.Component {
         <Greeting isLoggedIn={isLoggedIn} />
         {button}
       </div>
-    );
+    )
   }
 }
 
-ReactDOM.render(<LoginControl />, document.getElementById("root"));
+ReactDOM.render(<LoginControl />, document.getElementById('root'))
 ```
 
 - 로그인 상태: 인사말과 로그아웃버튼을 렌더링 (`isLoggedIn`이 `true`)
@@ -71,7 +68,7 @@ JSX 안에는 중괄호를 이용해서 표현식을 사용할 수 있다.
 
 ```jsx
 function Mailbox(props) {
-  const unreadMessages = props.unreadMessages;
+  const unreadMessages = props.unreadMessages
   return (
     <div>
       <h1>Hello!</h1>
@@ -79,14 +76,14 @@ function Mailbox(props) {
         <h2>You have {unreadMessages.length} unread messages.</h2>
       )}
     </div>
-  );
+  )
 }
 
-const messages = ["React", "Re: React", "Re:Re: React"];
+const messages = ['React', 'Re: React', 'Re:Re: React']
 ReactDOM.render(
   <Mailbox unreadMessages={messages} />,
-  document.getElementById("root")
-);
+  document.getElementById('root')
+)
 ```
 
 - JavaScript에서 `true && expression`은 항상 `expression`으로 평가되고 `false && expression`은 항상 `false`로 평가된다.
@@ -145,23 +142,23 @@ render() {
 ```jsx
 function WarningBanner(props) {
   if (!props.warn) {
-    return null;
+    return null
   }
 
-  return <div className="warning">Warning!</div>;
+  return <div className="warning">Warning!</div>
 }
 
 class Page extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = { showWarning: true };
-    this.handleToggleClick = this.handleToggleClick.bind(this);
+    super(props)
+    this.state = { showWarning: true }
+    this.handleToggleClick = this.handleToggleClick.bind(this)
   }
 
   handleToggleClick() {
-    this.setState((state) => ({
+    this.setState(state => ({
       showWarning: !state.showWarning,
-    }));
+    }))
   }
 
   render() {
@@ -169,14 +166,14 @@ class Page extends React.Component {
       <div>
         <WarningBanner warn={this.state.showWarning} />
         <button onClick={this.handleToggleClick}>
-          {this.state.showWarning ? "Hide" : "Show"}
+          {this.state.showWarning ? 'Hide' : 'Show'}
         </button>
       </div>
-    );
+    )
   }
 }
 
-ReactDOM.render(<Page />, document.getElementById("root"));
+ReactDOM.render(<Page />, document.getElementById('root'))
 ```
 
 위의 예시는 `<WarningBanner />` 가 prop의 `warn` 값에 의해 렌더링됩니다. ( `false`일 경우 렌더링되지 않음)

@@ -1,14 +1,10 @@
 ---
-title: "[algorithm]4948번 배르트랑 공준"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]4948번 배르트랑 공준'
+
 tags: [python, baekjoon, algorithm]
 ---
 
 참고: [백준](https://www.acmicpc.net/problem/4948)
-
-
 
 | 시간 제한 | 메모리 제한 | 제출  | 정답  | 맞은 사람 | 정답 비율 |
 | :-------- | :---------- | :---- | :---- | :-------- | :-------- |
@@ -22,7 +18,7 @@ tags: [python, baekjoon, algorithm]
 
 예를 들어, 10보다 크고, 20보다 작거나 같은 소수는 4개가 있다. (11, 13, 17, 19) 또, 14보다 크고, 28보다 작거나 같은 소수는 3개가 있다. (17,19, 23)
 
-자연수 n이 주어졌을 때, n보다 크고, 2n보다 작거나 같은 소수의 개수를 구하는 프로그램을 작성하시오. 
+자연수 n이 주어졌을 때, n보다 크고, 2n보다 작거나 같은 소수의 개수를 구하는 프로그램을 작성하시오.
 
 ## 입력
 
@@ -71,8 +67,6 @@ tags: [python, baekjoon, algorithm]
 - [정수론](https://www.acmicpc.net/problem/tag/95)
 - [소수 판정](https://www.acmicpc.net/problem/tag/9)
 - [에라토스테네스의 체](https://www.acmicpc.net/problem/tag/67)
-
-
 
 ### 내 풀이
 

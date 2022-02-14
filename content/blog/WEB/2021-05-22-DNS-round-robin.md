@@ -1,8 +1,5 @@
 ---
-title: "[network]DNS Round Robin이란?"
-excerpt: ""
-category:
-  - network
+title: '[network]DNS Round Robin이란?'
 tags: [network]
 ---
 
@@ -18,10 +15,6 @@ DNS란 Domain Name System의 약자로서 IP 네트워크에서 사용하는 시
 
 웹 서버 주소에 해당하는 IP 주소 테이블을 가지고 있는 서버라고 할 수 있습니다. google.com이 가리키고 있는 IP 주소를 브라우저에게 반환합니다.
 
-
-
-
-
 ### DNS 과정
 
 1. DNS Query
@@ -31,10 +24,6 @@ DNS란 Domain Name System의 약자로서 IP 네트워크에서 사용하는 시
 2. IP Communication
 
    IP를 받아온 유저는 리퀘스트 메세지 발송을 통하여 정상적으로 네트워크 통신을 실시합니다.
-
-
-
-
 
 ## DNS round robin
 
@@ -53,8 +42,6 @@ Domain에 대한 IP 요청 쿼리시 round-robin 방식으로 IP를 반환합니
 즉, DNS 서버에 대한 Round Robin 형식으로 구성할 경우 로드 밸러서가 필요가 없습니다.
 
 부하에 대한 걱정을 할 필요가 없다는 뜻입니다.
-
-
 
 **단점**
 
@@ -84,8 +71,6 @@ Domain에 대한 IP 요청 쿼리시 round-robin 방식으로 IP를 반환합니
 
    DNS round robin은 어디까지나 부하분산을 위한 방법이지 다중화 방법은 아니므로 다른 S/W와 조합하여 관리할 필요가 있습니다.
 
-   
-
 **극복방법**
 
 ### 다중 구성 방식 (Synchronous Time-Division Multiplexing)
@@ -100,6 +85,6 @@ AP 서버에 VIP(Vitual IP)를 부여해서 다중화를 구성한다. 각 AP서
 
 ### 최소 연결 방식(Least connection)
 
-*로드 밸런서의 도입을 통한 구성*
+_로드 밸런서의 도입을 통한 구성_
 
 접속 클라이언트 수가 가장 적은 서버를 선택한다. 로드밸런서에서 실시간으로 connection 수를 관리하거나 각 서버에서 주기적으로 알려주는 것이 필요하다.

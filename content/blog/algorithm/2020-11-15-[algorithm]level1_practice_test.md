@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level1 모의고사"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level1 모의고사'
+
 tags: [python, programmers, algorithm]
 ---
 
@@ -43,8 +41,6 @@ tags: [python, programmers, algorithm]
 
 - 모든 사람이 2문제씩을 맞췄습니다.
 
-
-
 #### 내 풀이
 
 ```python
@@ -66,7 +62,7 @@ def solution(answers):
             score[1] += 1
         if answers[i] == std_answer[2][i]:
             score[2] += 1
-        
+
 
     return [std for std in [1,2,3] if max(score) == score[std-1]]
 ```
@@ -95,6 +91,3 @@ def solution(answers):
 
     return result
 ```
-
-
-

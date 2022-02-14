@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]7568번 덩치"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]7568번 덩치'
+
 tags: [python, baekjoon, algorithm]
 ---
 
@@ -63,8 +61,6 @@ N명의 집단에서 각 사람의 덩치 등수는 자신보다 더 "큰 덩치
 
 - [구현](https://www.acmicpc.net/problem/tag/102)
 - [브루트포스 알고리즘](https://www.acmicpc.net/problem/tag/125)
-
-
 
 ### 내 풀이
 

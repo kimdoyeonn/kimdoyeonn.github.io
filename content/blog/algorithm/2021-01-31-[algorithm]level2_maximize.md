@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level2 수식 최대화"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level2 수식 최대화'
+
 tags: [python, programmers, algorithm]
 ---
 
@@ -54,7 +52,7 @@ IT 벤처 회사를 운영하고 있는 `라이언`은 매년 사내 해커톤 �
 
 - 같은 연산자끼리는 앞에 있는 것의 우선순위가 더 높습니다.
 
-------
+---
 
 ##### **입출력 예**
 
@@ -62,8 +60,6 @@ IT 벤처 회사를 운영하고 있는 `라이언`은 매년 사내 해커톤 �
 | ---------------------- | ------ |
 | `"100-200*300-500+20"` | 60420  |
 | `"50*6-3*2"`           | 300    |
-
-
 
 ### 내 풀이
 
@@ -73,7 +69,7 @@ from itertools import permutations
 from copy import deepcopy
 def solution(expression):
     answer = 0
-    
+
     # 숫자와 연산자를 나눠서 express_list에 넣어준다
     express_list = deque()
     num = ''
@@ -86,10 +82,10 @@ def solution(expression):
             express_list.append(ex)
     else:
         express_list.append(num)
-    
+
     # 연산자의 우선순위에 때라 나올 수 있는 순열을 구한다
     orders = list(permutations(['+','-','*']))
-    
+
     # 위에서 구한 우선순위들에 따라 모든 값을 계산해본다
     price = 0
     for order in orders:
@@ -102,7 +98,7 @@ def solution(expression):
                     temp[-1] = eval(str(temp[-1])+o+str(temp.popleft()))
                 else:
                     temp.append(temp.popleft())
-                    temp.append(temp.popleft()) 
+                    temp.append(temp.popleft())
             else:
                 temp.append(temp.popleft())
         if abs(temp[0]) > answer:	# 3

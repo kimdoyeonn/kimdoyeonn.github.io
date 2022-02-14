@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level3 여행경로"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level3 여행경로'
+
 tags: [algorithm, programmers]
 ---
 
@@ -23,9 +21,9 @@ tags: [algorithm, programmers]
 
 ##### 입출력 예
 
-| tickets                                                      | return                                     |
-| ------------------------------------------------------------ | ------------------------------------------ |
-| [["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]]             | ["ICN", "JFK", "HND", "IAD"]               |
+| tickets                                                                         | return                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------ |
+| [["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]]                                | ["ICN", "JFK", "HND", "IAD"]               |
 | [["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]] | ["ICN", "ATL", "ICN", "SFO", "ATL", "SFO"] |
 
 ##### 입출력 예 설명
@@ -38,8 +36,6 @@ tags: [algorithm, programmers]
 
 ["ICN", "SFO", "ATL", "ICN", "ATL", "SFO"] 순으로 방문할 수도 있지만 ["ICN", "ATL", "ICN", "SFO", "ATL", "SFO"] 가 알파벳 순으로 앞섭니다.
 
-
-
 ### 내 풀이
 
 ```python
@@ -48,28 +44,28 @@ def solution(tickets):
     def dfs():
         temp = ["ICN"]
         answer = []
-        
+
         while temp:
             port = temp[-1]
-            
+
             if port not in routes or routes[port] == []:
                 answer.append(temp.pop())
             else:
                 temp.append(routes[port].pop(0))
-        
+
         return answer[::-1]
-    
-    
+
+
     routes = defaultdict(list)
     for ticket in tickets:
         key, value = ticket
         routes[key].append(value)
-    
+
     for key in routes:
         routes[key].sort()
-        
-    answer = dfs()    
-    
+
+    answer = dfs()
+
     return answer
 ```
 

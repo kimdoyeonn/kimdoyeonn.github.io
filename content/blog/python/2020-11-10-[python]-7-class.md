@@ -1,8 +1,5 @@
 ---
-title: "[python]7. 클래스"
-excerpt: ""
-category:
-  - python
+title: '[python]7. 클래스'
 tags: [python, jump-to-python, class]
 ---
 
@@ -22,9 +19,7 @@ tags: [python, jump-to-python, class]
 
     - a는 Cookie의 인스턴스
 
-      
-
-- 사칙연산 계산기 예제
+* 사칙연산 계산기 예제
 
 ```python
 class FourCal:
@@ -63,8 +58,6 @@ print(a.sub())
 print(a.div())
 
 ```
-
-
 
 ### 생성자(Constructor)
 
@@ -108,8 +101,6 @@ print(a.sub())
 print(a.div())
 
 ```
-
-
 
 ### 클래스의 상속(inheritance)
 
@@ -160,4 +151,3 @@ print(id(Family.lastname)) # 140434541531008
 print(id(a.lastname)) # 140434541531008
 print(id(b.lastname)) # 140434541531008
 ```
-

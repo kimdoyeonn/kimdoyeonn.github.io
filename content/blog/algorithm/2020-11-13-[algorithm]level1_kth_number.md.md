@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level1 k번째 숫자"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level1 k번째 숫자'
+
 tags: [python, programmers, algorithm]
 ---
 
@@ -52,35 +50,30 @@ def solution(array, commands):
     return answer
 ```
 
-
-
 ### 다른 사람 풀이
 
 ```python
 def solution(array, commands):
     answer = []
-	
+
     # 1
     for command in commands:
         temp = array[:]
         i,j,k = command
         num = sorted(temp[i-1:j])
         answer.append(num[k-1])
-	
+
     # 2
     list(map(lambda x:sorted(array[x[0]-1:x[1]])[x[2]-1], commands))
-    
+
     # 3
     return [sorted(array[i-1:j])[k-1] for i,j,k in commands]
-    
+
     return answer
 
 
 ```
 
-
-
 > `i,j,k = command` 너무 신기해
 >
 > `lambda` 를 더 공부해야겠다
-

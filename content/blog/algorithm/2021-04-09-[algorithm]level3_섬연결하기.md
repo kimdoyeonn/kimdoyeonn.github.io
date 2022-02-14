@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level3 섬 연결하기"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level3 섬 연결하기'
+
 tags: [algorithm, programmers]
 ---
 
@@ -16,16 +14,16 @@ n개의 섬 사이에 다리를 건설하는 비용(costs)이 주어질 때, 최
 
 - 섬의 개수 n은 1 이상 100 이하입니다.
 - costs의 길이는 `((n-1) * n) / 2`이하입니다.
-- 임의의 i에 대해, costs[i][0] 와 costs[i] [1]에는 다리가 연결되는 두 섬의 번호가 들어있고, costs[i] [2]에는 이 두 섬을 연결하는 다리를 건설할 때 드는 비용입니다.
+- 임의의 i에 대해, costs[i][0] 와 costs[i][1]에는 다리가 연결되는 두 섬의 번호가 들어있고, costs[i][2]에는 이 두 섬을 연결하는 다리를 건설할 때 드는 비용입니다.
 - 같은 연결은 두 번 주어지지 않습니다. 또한 순서가 바뀌더라도 같은 연결로 봅니다. 즉 0과 1 사이를 연결하는 비용이 주어졌을 때, 1과 0의 비용이 주어지지 않습니다.
 - 모든 섬 사이의 다리 건설 비용이 주어지지 않습니다. 이 경우, 두 섬 사이의 건설이 불가능한 것으로 봅니다.
 - 연결할 수 없는 섬은 주어지지 않습니다.
 
 **입출력 예**
 
-| n    | costs                                     | return |
-| ---- | ----------------------------------------- | ------ |
-| 4    | [[0,1,1],[0,2,2],[1,2,5],[1,3,1],[2,3,8]] | 4      |
+| n   | costs                                     | return |
+| --- | ----------------------------------------- | ------ |
+| 4   | [[0,1,1],[0,2,2],[1,2,5],[1,3,1],[2,3,8]] | 4      |
 
 **입출력 예 설명**
 
@@ -33,18 +31,16 @@ costs를 그림으로 표현하면 다음과 같으며, 이때 초록색 경로�
 
 ![image.png](https://grepp-programmers.s3.amazonaws.com/files/production/13e2952057/f2746a8c-527c-4451-9a73-42129911fe17.png)
 
-
-
 ### 내 풀이
 
 ```python
 def solution(n, costs):
     answer = 0
-    
+
     def union(x, y):
         x = cycle[x]
         y = cycle[y]
-        
+
         if x < y:
             cycle[y] = x
             for i, c in enumerate(cycle):
@@ -55,11 +51,11 @@ def solution(n, costs):
             for i, c in enumerate(cycle):
                 if c == x:
                     cycle[i] = y
-                    
-        
+
+
     costs.sort(key=lambda x: x[2])
     cycle = [i for i in range(n)]
-    
+
     for cost in costs:
         if cycle[cost[0]] != cycle[cost[1]]:
             union(cost[0], cost[1])

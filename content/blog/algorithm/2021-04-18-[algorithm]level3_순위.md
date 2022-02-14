@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level3 순위"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level3 순위'
+
 tags: [algorithm, programmers]
 ---
 
@@ -21,27 +19,25 @@ n명의 권투선수가 권투 대회에 참여했고 각각 1번부터 n번까�
 
 ##### 입출력 예
 
-| n    | results                                  | return |
-| ---- | ---------------------------------------- | ------ |
-| 5    | [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]] | 2      |
+| n   | results                                  | return |
+| --- | ---------------------------------------- | ------ |
+| 5   | [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]] | 2      |
 
 ##### 입출력 예 설명
 
 2번 선수는 [1, 3, 4] 선수에게 패배했고 5번 선수에게 승리했기 때문에 4위입니다.
 5번 선수는 4위인 2번 선수에게 패배했기 때문에 5위입니다.
 
-
-
 ### 내 풀이
 
 ```python
 def solution(n, results):
     answer = 0
-    
+
     wins, loses = {}, {}
     for i in range(1, n+1):
         wins[i], loses[i] = set(), set()
-    
+
     for i in range(1, n+1):
         for result in results:
             a, b = result
@@ -49,17 +45,17 @@ def solution(n, results):
                 wins[i].add(b)
             if b == i:
                 loses[i].add(a)
-        
+
         for win in loses[i]:
             wins[win].update(wins[i])
-        
+
         for lose in wins[i]:
             loses[lose].update(loses[i])
-    
+
     for i in range(1, n+1):
         if len(wins[i]) + len(loses[i]) == n-1:
             answer += 1
-            
+
     return answer
 ```
 
@@ -68,8 +64,7 @@ def solution(n, results):
 
 위의 개념까지는 알았는데 코드로 표현할 방법을 찾지를 못해서 좀 찾아보고 풀 수 있었다.
 
-- 진 사람 목록이 들어갈 `loses`와 이긴 사람 목록이 들어갈 `wins`을 딕셔너리 형태로 만들고,  선수를 key로 하고 value에 set을 초기화해준다.
+- 진 사람 목록이 들어갈 `loses`와 이긴 사람 목록이 들어갈 `wins`을 딕셔너리 형태로 만들고, 선수를 key로 하고 value에 set을 초기화해준다.
 - 1번부터 차례대로 1이 이기거나 진 경기를 찾아서 wins와 loses에 추가해주고, 1에게 이긴 선수(`loses[1]`)는 1이 이긴 선수들(`wins[1]`)을 이기니까 이긴 선수들의 wins에 1이 이긴 선수들(`wins[1]`)을 업데이트 해준다.
 - 마찬가지로 1이 이긴 선수들(`wins[1]`)은 1이 진 선수들(`loses[1]`)에게 지니까 1에게 진 선수들의 loses에 1이 이긴 선수들(`wins[1]`)을 업데이트 해준다.
 - 주어진 경기 결과를 정리한 후, `wins[i]의 수 + loses[i]의 수`가 본인을 제외한 `n-1`과 같다면 정확한 경기 순위를 알 수 있는 것이므로 answer에 1을 더하면서 모든 선수들을 확인하면 결과를 얻을 수 있다.
-

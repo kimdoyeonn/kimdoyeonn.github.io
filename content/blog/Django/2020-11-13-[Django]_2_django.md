@@ -1,8 +1,5 @@
 ---
-title: "[django]2. 장고란?"
-excerpt: ""
-category:
-  - django
+title: '[django]2. 장고란?'
 tags: [python, django]
 ---
 
@@ -19,7 +16,6 @@ tags: [python, django]
 
 #### view 함수
 
-- 특정 정보를 데이터베이스에서 찾을 수 있다. 
+- 특정 정보를 데이터베이스에서 찾을 수 있다.
 - 수정: 수정권한이 있는지 확인 후, 수정, 알림
 - 장고는 그 알림을 받아서 사용자의 웹 브라우저로 보내주는 역할을 한다.
-

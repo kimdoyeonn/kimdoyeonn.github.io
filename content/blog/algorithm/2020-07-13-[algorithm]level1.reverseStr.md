@@ -1,8 +1,5 @@
 ---
-title: "[algorithm]level1 자연수 뒤집어 배열로 만들기"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level1 자연수 뒤집어 배열로 만들기'
 tags: [algorithm, programmers, java]
 last_modified_at: 2020-07-13T08:06:00-05:00
 ---
@@ -23,9 +20,9 @@ last_modified_at: 2020-07-13T08:06:00-05:00
 
         long temp = 0;
         for(int i = length-1; i > -1;i--){
-			//제일 높은 자리부터 10의 제곱으로 나눠서 한자리씩 배열에 넣어줌
-			answer[i] = (int)(n/Math.pow(10,i));
-			n=n-(long)Math.pow(10,i) * answer[i];//다음 자리를 넣을 때 필요없는 자리를 가져오지 않기 위해 윗자리수는 지워줌
+   //제일 높은 자리부터 10의 제곱으로 나눠서 한자리씩 배열에 넣어줌
+   answer[i] = (int)(n/Math.pow(10,i));
+   n=n-(long)Math.pow(10,i) * answer[i];//다음 자리를 넣을 때 필요없는 자리를 가져오지 않기 위해 윗자리수는 지워줌
         }
         return answer;
     }

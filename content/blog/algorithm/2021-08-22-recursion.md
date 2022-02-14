@@ -1,8 +1,6 @@
 ---
-title: "[algorithm] 재귀"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm] 재귀'
+
 tags: [algorithm]
 ---
 

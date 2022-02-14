@@ -1,14 +1,9 @@
 ---
-title: "[python]10. 예외처리"
-excerpt: ""
-category:
-  - python
+title: '[python]10. 예외처리'
 tags: [python, jump-to-python, exception]
 ---
 
 - 참고: [점프투파이썬](https://wikidocs.net/30)
-
-
 
 ### try, except문
 
@@ -36,8 +31,6 @@ except ZeroDivisionError as e:
     print(e)
 ```
 
-
-
 ### try..finally
 
 finally절은 try문 수행 도중 예외 발생 여부에 상관없이 항상 수행된다. 보통 사용한 리소스를 close할 때에 많이 사용한다.
@@ -51,8 +44,6 @@ finally:
 ```
 
 foo.txt 파일을 쓰기모드로 연 후에 try문을 수행한 후 예외 발생 여부와 상관없이 finally절에서 `f.close()`로 열린 파일을 닫을 수 있다.
-
-
 
 ### 여러 개의 오류 처리하기
 
@@ -76,8 +67,6 @@ except (발생오류1, 발생오류2) as e:
 
 2개 이상의 오류를 동일하게 처리하려면 위와 같이 괄호를 사용하여 함꼐 묶여서 처리하면 된다.
 
-
-
 ### 오류 회피하기
 
 ```python
@@ -88,8 +77,6 @@ except FileNotFoundError:
 ```
 
 `pass`를 사용하여 오류를 그냥 회피하도록 할 수 있다.
-
-
 
 ### 오류 발생시키기
 
@@ -124,7 +111,7 @@ Eagle 클래스는 Bird 클래스를 상속받는다. Eagle 클래서에서 fly�
 
 > 상속받는 클래스에서 함수를 재구현하는 것을 메서드 오버라이딩이라고 부린다.
 
-`NotImplementedError`가 발생하지 않게 하려면 Eagle  클래스에 fly 함수를 반드시 구현해야 한다.
+`NotImplementedError`가 발생하지 않게 하려면 Eagle 클래스에 fly 함수를 반드시 구현해야 한다.
 
 ```python
 class Eagle(Bird):
@@ -134,8 +121,6 @@ class Eagle(Bird):
 eagle = Eagle()
 eagle.fly()
 ```
-
-
 
 ### 예외 만들기
 
@@ -149,7 +134,7 @@ def say_nick(nick):
     if nick == '바보':
         raise MyError()
     print(nick)
-    
+
 try:
     say_nick("천사")
     say_nick("바보")
@@ -158,11 +143,10 @@ except MyError as e:
     print("허용되지 않는 별명입니다.")
 ```
 
-오류메세지를 출력했을 때 오류 메세지가 보이게 하려면 오류 클래스에 `__str__`메서드를 구현해야 한다. 
+오류메세지를 출력했을 때 오류 메세지가 보이게 하려면 오류 클래스에 `__str__`메서드를 구현해야 한다.
 
 ```python
 class MyError(Exception):
     def __str__(self):
         return "허용되지 않는 별명입니다."
 ```
-

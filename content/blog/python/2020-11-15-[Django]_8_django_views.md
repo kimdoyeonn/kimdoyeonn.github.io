@@ -1,8 +1,5 @@
 ---
-title: "[django]8. Django 뷰 만들기"
-excerpt: ""
-category:
-  - django
+title: '[django]8. Django 뷰 만들기'
 tags: [python, django]
 ---
 
@@ -10,8 +7,6 @@ tags: [python, django]
 
 뷰(view)는 애플리케이션의 로직을 넣는 곳이다.
 이전 장에서 만들었던 `모델`에서 필요한 정보를 받아와서 `템플릿`에 전달하는 역할을 한다.
-
-
 
 #### blog/views.py
 

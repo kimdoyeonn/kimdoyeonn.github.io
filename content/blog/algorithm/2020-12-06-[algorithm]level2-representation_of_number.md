@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level2 숫자의 표현"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level2 숫자의 표현'
+
 tags: [python, programmers, algorithm]
 ---
 
@@ -23,22 +21,18 @@ Finn은 요즘 수학공부에 빠져 있습니다. 수학 공부를 하던 Finn
 
 - n은 10,000 이하의 자연수 입니다.
 
-------
+---
 
 ##### 입출력 예
 
-| n    | result |
-| ---- | ------ |
-| 15   | 4      |
+| n   | result |
+| --- | ------ |
+| 15  | 4      |
 
 ##### 입출력 예 설명
 
 입출력 예#1
 문제의 예시와 같습니다.
-
-
-
-
 
 ### 내 풀이
 
@@ -58,7 +52,7 @@ def solution(n):
             elif comp > n:
                 temp += 1
                 break
-        
+
         if temp == n:
             answer += 1
             break
@@ -67,8 +61,6 @@ def solution(n):
 
 - 1부터 더해보기 시작해서 값이 나오면 answer+1하고 break, 값이 넘어가면 break 다음은 2(temp)부터 더해보고 ~~~ 반복
 - 주어진 값과 더하기 시작할 값이 같아지면 answer+1하고 break
-
-
 
 ### 다른 사람 풀이
 
@@ -85,4 +77,3 @@ def expressions(num):
 - 약수: 1, 5, 10 -> 10은 짝수 이므로 제외
   - 1: 20
   - 5: 4+4+4+4+4 -> 2+3+4+5+6
-

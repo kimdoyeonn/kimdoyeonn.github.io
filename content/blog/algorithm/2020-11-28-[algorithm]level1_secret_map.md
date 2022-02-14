@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level1 비밀지도"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level1 비밀지도'
+
 tags: [python, programmers, algorithm]
 ---
 
@@ -49,8 +47,6 @@ tags: [python, programmers, algorithm]
 
 [해설 보러가기](http://tech.kakao.com/2017/09/27/kakao-blind-recruitment-round-1/)
 
-
-
 ### 내 풀이
 
 ```python
@@ -83,8 +79,6 @@ def solution(n, arr1, arr2):
    - `row[::-1]`
 5. 이걸 주어진 arr1, arr2의 길이만큼 돌리면 결과를 얻을 수 있음
 
-
-
 ### 다른 사람 풀이
 
 ```python
@@ -92,7 +86,7 @@ def solution(n, arr1, arr2):
     answer = []
     for i,j in zip(arr1,arr2):
         a12 = str(bin(i|j)[2:])
-        a12=a12.rjust(n,'0') 
+        a12=a12.rjust(n,'0')
         a12=a12.replace('1','#')
         a12=a12.replace('0',' ')
         answer.append(a12)

@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level2 H-Index"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level2 H-Index'
+
 tags: [python, programmers, algorithm]
 ---
 
@@ -33,8 +31,6 @@ H-Index는 과학자의 생산성과 영향력을 나타내는 지표입니다. 
 
 ※ 공지 - 2019년 2월 28일 테스트 케이스가 추가되었습니다.
 
-
-
 ### 내 풀이
 
 ```python
@@ -42,18 +38,18 @@ def solution(citations):
     n = len(citations)
     citations.sort(reverse=True)
     i = 0
-    
+
     while citations[i] > i:
         i += 1
         if i == n:
             break
-            
+
     return i
 ```
 
 1. `나머지 논문이 h번 이하 인용되었다면` -> citations를 정렬한 이유 ( 반복문을 돌면서 큰 수부터 확인하기 위해 내림차순 )
 
-   ​	`[6, 5, 3, 1, 0]`
+   ​ `[6, 5, 3, 1, 0]`
 
 2. 정렬하여 얻은 결과를 반복하면서 인덱스와 인덱스에 해당하는 원소를 비교한다.
 
@@ -65,7 +61,7 @@ def solution(citations):
 
    3 > 2
 
-   1 > 3  -> False -> return 3
+   1 > 3 -> False -> return 3
 
    while문이 다 돌 때까지 탈출 조건에 만족하지 않는 경우가 있을 수 있다. [2, 2]
 

@@ -1,8 +1,5 @@
 ---
-title: "[디자인패턴]싱글톤(Singleton)"
-excerpt: ""
-category:
-  - network
+title: '[디자인패턴]싱글톤(Singleton)'
 tags: [network]
 ---
 

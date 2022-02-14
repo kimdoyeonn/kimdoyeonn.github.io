@@ -1,8 +1,5 @@
 ---
-title: "합성 (Composition) vs 상속 (Inheritance)"
-excerpt: ""
-category:
-  - React
+title: '합성 (Composition) vs 상속 (Inheritance)'
 tags: [React]
 ---
 
@@ -17,10 +14,10 @@ React는 강력한 합성모델을 가지고 있어, 상속 대신 합성을 사
 ```js
 function FancyBorder(props) {
   return (
-    <div className={"FancyBorder FancyBorder-" + props.color}>
+    <div className={'FancyBorder FancyBorder-' + props.color}>
       {props.children}
     </div>
-  );
+  )
 }
 ```
 
@@ -31,7 +28,7 @@ function WelcomeDialog() {
       <h1 className="Dialog-title">Welcome</h1>
       <p className="Dialog-message">Thank you for visiting our spacecraft!</p>
     </FancyBorder>
-  );
+  )
 }
 ```
 
@@ -46,11 +43,11 @@ function SplitPane(props) {
       <div className="SplitPane-left">{props.left}</div>
       <div className="SplitPane-right">{props.right}</div>
     </div>
-  );
+  )
 }
 
 function App() {
-  return <SplitPane left={<Contacts />} right={<Chat />} />;
+  return <SplitPane left={<Contacts />} right={<Chat />} />
 }
 ```
 
@@ -71,13 +68,13 @@ function Dialog(props) {
       <h1 className="Dialog-title">{props.title}</h1>
       <p className="Dialog-message">{props.message}</p>
     </FancyBorder>
-  );
+  )
 }
 
 function WelcomeDialog() {
   return (
     <Dialog title="Welcome" message="Thank you for visiting our spacecraft!" />
-  );
+  )
 }
 ```
 
@@ -91,15 +88,15 @@ function Dialog(props) {
       <p className="Dialog-message">{props.message}</p>
       {props.children}
     </FancyBorder>
-  );
+  )
 }
 
 class SignUpDialog extends React.Component {
   constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSignUp = this.handleSignUp.bind(this);
-    this.state = { login: "" };
+    super(props)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSignUp = this.handleSignUp.bind(this)
+    this.state = { login: '' }
   }
 
   render() {
@@ -111,15 +108,15 @@ class SignUpDialog extends React.Component {
         <input value={this.state.login} onChange={this.handleChange} />
         <button onClick={this.handleSignUp}>Sign Me Up!</button>
       </Dialog>
-    );
+    )
   }
 
   handleChange(e) {
-    this.setState({ login: e.target.value });
+    this.setState({ login: e.target.value })
   }
 
   handleSignUp() {
-    alert(`Welcome aboard, ${this.state.login}!`);
+    alert(`Welcome aboard, ${this.state.login}!`)
   }
 }
 ```

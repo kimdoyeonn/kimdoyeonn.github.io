@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level3 멀리 뛰기"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level3 멀리 뛰기'
+
 tags: [algorithm, programmers]
 ---
 
@@ -24,10 +22,10 @@ tags: [algorithm, programmers]
 
 ##### 입출력 예
 
-| n    | result |
-| ---- | ------ |
-| 4    | 5      |
-| 3    | 3      |
+| n   | result |
+| --- | ------ |
+| 4   | 5      |
+| 3   | 3      |
 
 ##### 입출력 예 설명
 
@@ -39,8 +37,6 @@ tags: [algorithm, programmers]
 (1칸, 2칸)
 (1칸, 1칸, 1칸)
 총 3가지 방법으로 멀리 뛸 수 있습니다.
-
-
 
 ### 내 풀이
 
@@ -55,7 +51,7 @@ def solution(n):
     return dp[n]
 ```
 
-다이나믹프로그래밍 알고리즘으로 풀었다. 
+다이나믹프로그래밍 알고리즘으로 풀었다.
 
 - 점화식
 

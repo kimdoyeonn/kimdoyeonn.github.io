@@ -1,8 +1,5 @@
 ---
-title: "[algorithm]level1 하샤드수"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level1 하샤드수'
 tags: [algorithm, programmers, java]
 ---
 
@@ -48,11 +45,11 @@ public boolean solution(int x) {
 
         while(input > 0){
             //10을 계속 나눠주면서 그 나머지를 더하면 모든 자리의 합이 구해진다.
-        	sum += input % 10;
+         sum += input % 10;
             input = input/10;
         }
 
-    	//입력값이 sum으로 나누어떨어지면 하샤드수
+     //입력값이 sum으로 나누어떨어지면 하샤드수
         if( x % sum == 0){
             answer = true;
         }

@@ -1,8 +1,5 @@
 ---
-title: "이벤트 처리하기"
-excerpt: ""
-category:
-  - React
+title: '이벤트 처리하기'
 tags: [React]
 ---
 
@@ -30,15 +27,15 @@ DOM 엘리먼트에서 이벤트를 처리하는 방식과 매우 유사하고, 
   ```jsx
   function Form() {
     function handleSubmit(e) {
-      e.preventDefault();
-      console.log("You clicked submit.");
+      e.preventDefault()
+      console.log('You clicked submit.')
     }
 
     return (
       <form onSubmit={handleSubmit}>
         <button type="submit">Submit</button>
       </form>
-    );
+    )
   }
   ```
 
@@ -51,29 +48,29 @@ DOM 엘리먼트에서 이벤트를 처리하는 방식과 매우 유사하고, 
   ```jsx
   class Toggle extends React.Component {
     constructor(props) {
-      super(props);
-      this.state = { isToggleOn: true };
+      super(props)
+      this.state = { isToggleOn: true }
 
       // callback에서 this가 작동하도록 하려면 다음과 같이 바인딩해줘야함
-      this.handleClick = this.handleClick.bind(this);
+      this.handleClick = this.handleClick.bind(this)
     }
 
     handleClick() {
-      this.setState((prevState) => ({
+      this.setState(prevState => ({
         isToggleOn: !prevState.isToggleOn,
-      }));
+      }))
     }
 
     render() {
       return (
         <button onClick={this.handleClick}>
-          {this.state.isToggleOn ? "ON" : "OFF"}
+          {this.state.isToggleOn ? 'ON' : 'OFF'}
         </button>
-      );
+      )
     }
   }
 
-  ReactDOM.render(<Toggle />, document.getElementById("root"));
+  ReactDOM.render(<Toggle />, document.getElementById('root'))
   ```
 
   - JSX 콜백 안에서 `this`의 의미에 대해 주의해야함! JS에서 클래스 메서드는 기본적으로 [바인딩](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) 되어 있지 않다. `this.handelClick`을 바인딩하지 않고 onClick에 전달하였다면, 함수가 실제 호출될 때 this는 undefined가 됨
@@ -91,11 +88,11 @@ DOM 엘리먼트에서 이벤트를 처리하는 방식과 매우 유사하고, 
          // 이 문법은 `this`가 handleClick 내에서 바인딩되도록 합니다.
          // 주의: 이 문법은 *실험적인* 문법입니다.
          handleClick = () => {
-           console.log("this is:", this);
-         };
+           console.log('this is:', this)
+         }
 
          render() {
-           return <button onClick={this.handleClick}>Click me</button>;
+           return <button onClick={this.handleClick}>Click me</button>
          }
        }
        ```
@@ -109,12 +106,12 @@ DOM 엘리먼트에서 이벤트를 처리하는 방식과 매우 유사하고, 
        ```jsx
        class LoggingButton extends React.Component {
          handleClick() {
-           console.log("this is:", this);
+           console.log('this is:', this)
          }
 
          render() {
            // 이 문법은 `this`가 handleClick 내에서 바인딩되도록 합니다.
-           return <button onClick={() => this.handleClick()}>Click me</button>;
+           return <button onClick={() => this.handleClick()}>Click me</button>
          }
        }
        ```

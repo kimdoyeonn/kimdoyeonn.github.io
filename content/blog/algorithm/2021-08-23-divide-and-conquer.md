@@ -1,8 +1,6 @@
 ---
-title: "[algorithm] 분할정복"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm] 분할정복'
+
 tags: [algorithm]
 ---
 

@@ -1,8 +1,5 @@
 ---
-title: "[TIL] `:root` 가상 선택자와 CSS 변수"
-excerpt: ""
-category:
-  - TIL
+title: '[TIL] `:root` 가상 선택자와 CSS 변수'
 tags: [TIL, CSS]
 ---
 
@@ -41,7 +38,7 @@ css에서 사용할 변수를 선언할 때 많이 사용한다.
        ```css
        h3::before {
          counter-increment: section;
-         content: "Section " counter(section) ": ";
+         content: 'Section ' counter(section) ': ';
        }
        ```
 

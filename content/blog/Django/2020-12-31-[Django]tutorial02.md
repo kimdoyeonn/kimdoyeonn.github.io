@@ -1,14 +1,9 @@
 ---
-title: "[Django]장고튜토리얼-장고앱작성하기 part2"
-excerpt: ""
-category:
-  - django
+title: '[Django]장고튜토리얼-장고앱작성하기 part2'
 tags: [python, django]
 ---
 
 출처: [첫번째 장고앱 작성하기](https://docs.djangoproject.com/ko/3.1/intro/tutorial02/)
-
-
 
 ### 데이터베이스 설치
 
@@ -48,15 +43,13 @@ SQLite를 데이터베이스로 사용하지 않는 경우, USER, PASSWORD, HOST
   $ python manage.py migrate
   ```
 
-  migrate 명령어는 INSTALLED_APPS 설정을 보고 mysite/settings.py파일의 데이터베이스 설정과 앱과 함께 제공되는 데이터베이스 마이그레이션에 때라 필요한 데이터베이스 테이블을 만듭니다. 
-
-
+  migrate 명령어는 INSTALLED_APPS 설정을 보고 mysite/settings.py파일의 데이터베이스 설정과 앱과 함께 제공되는 데이터베이스 마이그레이션에 때라 필요한 데이터베이스 테이블을 만듭니다.
 
 ### 모델 만들기
 
 모델이란 부가적인 메타데이터를 가진 데이터베이스의 구조를 말합니다.
 
-설문조사 앱에서는 Question, Choice 두개의 모델을 만듭니다. Question은 질문과 등록일을 가지고 Choice는 선택 문자열과 투표 집계, 두개의 필드를 가집니다. 각각의 Choice는 Question과 관련되어 있습니다. 
+설문조사 앱에서는 Question, Choice 두개의 모델을 만듭니다. Question은 질문과 등록일을 가지고 Choice는 선택 문자열과 투표 집계, 두개의 필드를 가집니다. 각각의 Choice는 Question과 관련되어 있습니다.
 
 이러한 개념들은 파이썬 클래스들을 통해 보여집니다. `polls/models.py`파일을 아래와 같이 수정하세요
 
@@ -92,15 +85,13 @@ Field 클래스의 생성자에 선택적인 첫번째 위치 인수를 전달�
 
 이것은 데이터베이스 스키마에서만 필요한 것이 아닌 값을 검증할 때도 쓰입니다.
 
-또한 Field는 다양한 선택적 인수들을 가질 수 있습니다. 
+또한 Field는 다양한 선택적 인수들을 가질 수 있습니다.
 
 - `default`를 사용하여 votes의 기본값을 0으로 설정
 
-__`ForeignKey`를 사용한 관계설정__
+**`ForeignKey`를 사용한 관계설정**
 
 - 각각의 Choice가 하나의 Question에 관계된다는 것을 장고에게 알려줍니다. Django는 다대일(many-to-one), 다대다(many-to-many) 일대일(one-to-one)과 같은 모든 일반 데이터베이스의 관계들을 지원합니다.
-
-
 
 ### 모델의 활성화
 
@@ -145,14 +136,12 @@ $ python manage.py sqlmigrate polls 0001
 
 - 테이블 이름은 앱의 이름과 모델의 이름(소문자)이 조합되어 자동으로 생성됩니다. 이 경우, 앱의 이름 polls와 소문자로 표기된 모델의 이름 question과 choice가 합쳐집니다. (이 동작을 재지정하여 수정할 수 있습니다.(override))
 - 기본 키(ID)가 자동으로 추가됩니다.(이 동작 역시 재지정할 수 있습니다.)
-- 관례에 따라 Django는 외래 키 필드명에 '_id'가 자동으로 추가됩니다.(재지정 가능)
+- 관례에 따라 Django는 외래 키 필드명에 '\_id'가 자동으로 추가됩니다.(재지정 가능)
 - 외래키 관계는 제약 조건에 의해 명시됩니다. `DEFERRABLE`은 걱정하지 않아도 됩니다. PostgreSQL에 트랜잭션이 끝날 때까지 외래 키를 적용하지 않도록 지시합니다.(`FOREIGN KEYDEFERRABLE`)
 - 사용하는 데이터베이스에 따라 데이터베이스 고유의 필드타입이 조정됩니다. 따라서, 자동 증가 필드를 생성할 경우 `auto_increment`(MySQL), `serial`(PostgreSQL), (SQLite)와 같이 사용하는 데이터베이스에 따라 적절한 필드타입이 자동으로 선택됩니다. 필드 명에 사용되는 인용부호도 상황에 따라 겹따옴표나 홑따옴표가 적절히 선택됩니다.`integer primary key autoincrement`
 
 - `sqlmigrate` 명령은 실제로 데이터베이스에서 마이그레이션을 실행하지 않습니다. 대신 SQL Django가 필요하다고 생각하는 것을 볼 수 있도록 화면에 출력합니다. Django가 수행 할 작업을 확인하거나 변경하기 위해 SQL 스크립트가 필요한 데이터베이스 관리자가 있는 경우 유용합니다.
 - 명령을 통해 마이그레이션을 수행하거나 데이터베이스를 건들이지 않고도 프로젝트의 문제를 확인할 수 있습니다. `python manage.py check`
-
-
 
 ```powershell
 $ python manage.py migrate
@@ -175,8 +164,6 @@ $ python manage.py migrate
 manage.py 유틸리티로 [어떤 일을 할 수 있는지](https://docs.djangoproject.com/ko/3.1/ref/django-admin/)
 
 #### [API 가지고 놀기](https://docs.djangoproject.com/ko/3.1/intro/tutorial02/#playing-with-the-api)
-
-
 
 ### 관리자 페이지
 
@@ -204,8 +191,6 @@ LANGUAGE_CODE = 'ko-kr'
 TIME_ZONE = 'Asia/Seoul'
 ```
 
-
-
 #### 관리 사이트에서 poll app 변경가능하도록 만들기
 
 `polls.admin.py`
@@ -218,8 +203,6 @@ admin.site.register(Question)
 ```
 
 ![django_poll_app_등록](https://user-images.githubusercontent.com/53068706/107882535-3cd90880-6f2d-11eb-8f0a-73c5f9ba8541.PNG)
-
-
 
 #### 관리 기능 탐색하기
 

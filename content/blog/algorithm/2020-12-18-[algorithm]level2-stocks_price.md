@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]level2 주식 가격"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]level2 주식 가격'
+
 tags: [python, programmers, algorithm]
 ---
 
@@ -31,8 +29,6 @@ tags: [python, programmers, algorithm]
 - 4초 시점의 ₩2은 1초간 가격이 떨어지지 않았습니다.
 - 5초 시점의 ₩3은 0초간 가격이 떨어지지 않았습니다.
 
-
-
 #### 내 풀이
 
 ```python
@@ -51,4 +47,3 @@ def solution(prices):
 분류는 큐, 스택이라고 써있는데, 완전탐색으로 풀리는 문제였다. 큐, 스택으로 풀어보려고 코드를 짜긴했는데 효율성 0점이라 통과하질 못했다..
 
 for문을 두번 돌렸고, 바깥 for문은 prices 배열 전체를, 안쪽 for문은 바깥 for문에서 들어온 i 다음부터 끝까지의 배열을 반복했다. 안쪽 for문은 i에 있는 값보다 값이 작아질 때까지 반복문을 돌고 작아지면 작아지는데까지 걸린 시간을 배열의 길이로 계산하여 answer에 넣어주고 break한다. 반복문이 다 돌 때까지 조건문이 True가 안되면 끝까지 가격이 떨어지지 않았다는 말이므로 그 길이를 else문에서 계산해준다.
-

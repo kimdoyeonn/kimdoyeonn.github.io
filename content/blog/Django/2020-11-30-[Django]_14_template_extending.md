@@ -1,14 +1,9 @@
 ---
-title: "[django]14. 템플릿 확장하기"
-excerpt: ""
-category:
-  - django
+title: '[django]14. 템플릿 확장하기'
 tags: [python, django]
 ---
 
 - 참고: [장고걸스](https://tutorial.djangogirls.org/ko/template_extending/)
-
-
 
 ### 템플릿 확장(template extending)
 
@@ -36,17 +31,16 @@ blog
 
 ```html
 <body>
-    <div class="page-header">
-        <h1><a href="/">Django Girls Blog</a></h1>
+  <div class="page-header">
+    <h1><a href="/">Django Girls Blog</a></h1>
+  </div>
+  <div class="content container">
+    <div class="row">
+      <div class="col-md-8">
+        {% block content %} {% endblock %}
+      </div>
     </div>
-    <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
-            </div>
-        </div>
-    </div>
+  </div>
 </body>
 ```
 
@@ -57,19 +51,15 @@ blog
   `post_list.html`에서 `{% for post in posts %}`부터 `{% endfor %}`를 제외하고 모두 지운다. 그리고 이 코드는 컨텐츠 블록에 대한 템플릿의 일부로 쓰이게 된다.
 
   ```html
-  {% extends 'blog/base.html' %}
-  {% block content %}
-  {% for post in posts %}
-      <div class='post'>
-          <div class='date'>
-              <p>published: {{post.published_date}}</p>
-          </div>
-          <h1><a href="">{{post.title}}</a></h1>
-          <p>{{post.text|linebreaksbr}}</p>
-      </div>
-  {% endfor %}
-  {% endblock %}
+  {% extends 'blog/base.html' %} {% block content %} {% for post in posts %}
+  <div class="post">
+    <div class="date">
+      <p>published: {{post.published_date}}</p>
+    </div>
+    <h1><a href="">{{post.title}}</a></h1>
+    <p>{{post.text|linebreaksbr}}</p>
+  </div>
+  {% endfor %} {% endblock %}
   ```
 
   `{% extends 'blog/base.html' %}`는 파일에 제일 첫줄에 작성해야한다. 실행해보면 잘 되는 것을 확인할 수 있음{% endraw %}
-

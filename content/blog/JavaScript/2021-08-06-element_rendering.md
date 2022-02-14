@@ -1,8 +1,5 @@
 ---
-title: "엘리먼트 렌더링"
-excerpt: ""
-category:
-  - React
+title: '엘리먼트 렌더링'
 tags: [React]
 ---
 
@@ -27,8 +24,8 @@ React로 구현된 애플리케이션은 일반적으로 하나의 루트 DOM �
 React 엘리먼트를 루트 DOM 노트에 렌더링하려면 `ReactDOM.render()`로 전달하면 됩니다.
 
 ```jsx
-const element = <h1>Hello, world</h1>;
-ReactDOM.render(element, document.getElementById("root"));
+const element = <h1>Hello, world</h1>
+ReactDOM.render(element, document.getElementById('root'))
 ```
 
 ### 렌더링 된 엘리먼트 업데이트하기
@@ -44,11 +41,11 @@ function tick() {
       <h1>Hello, world!</h1>
       <h2>It is {new Date().toLocaleTimeString()}.</h2>
     </div>
-  );
-  ReactDOM.render(element, document.getElementById("root"));
+  )
+  ReactDOM.render(element, document.getElementById('root'))
 }
 
-setInterval(tick, 1000);
+setInterval(tick, 1000)
 ```
 
 `setInterval()` 콜백을 이용해 초마다 `ReactDOM.render()`를 호출하는 예시입니다.

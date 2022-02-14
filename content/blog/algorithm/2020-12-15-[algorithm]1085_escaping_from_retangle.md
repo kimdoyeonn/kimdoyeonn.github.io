@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]1085번 직사각형에서 탈출"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]1085번 직사각형에서 탈출'
+
 tags: [python, baekjoon, algorithm]
 ---
 
@@ -52,8 +50,6 @@ tags: [python, baekjoon, algorithm]
 - [수학](https://www.acmicpc.net/problem/tag/124)
 - [기하학](https://www.acmicpc.net/problem/tag/100)
 
-
-
 ### 풀이
 
 ```python
@@ -72,4 +68,4 @@ print(min(dist))
 1. 너비, 높이에서 x, y를 뺀 값과 너비, 높이의 1/2를 비교하여 반절보다 뺀 값이 작으면 뺀 값을, 아니면 x,y를 각각 dist1, dist2에 넣고 dist1과 dist2 중에 작은 값을 출력
 2. x, y, w-x, h-y를 모두 리스트에 넣고 리스트의 `min()`함수를 사용하여 최소 값을 출력
 
->2번 방법으로 푼 다른 사람은 속도가 더 빨리 나온거같은데 내가 해보니 둘의 속도가 비슷했다. 서버의 상황에 따라 속도가 다르게 찍히나보다.
+> 2번 방법으로 푼 다른 사람은 속도가 더 빨리 나온거같은데 내가 해보니 둘의 속도가 비슷했다. 서버의 상황에 따라 속도가 다르게 찍히나보다.

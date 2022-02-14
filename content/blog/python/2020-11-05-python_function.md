@@ -1,8 +1,5 @@
 ---
-title: "[python] 함수 정리(계속 업데이트)"
-excerpt: ""
-category:
-  - python
+title: '[python] 함수 정리(계속 업데이트)'
 tags: [python, function]
 ---
 
@@ -41,6 +38,7 @@ tags: [python, function]
 
   - 문자열 내장 함수
   - 모든 old를 new로 치환한 값을 반환합니다.
+
 - `count`인수가 주어졌다면 `count`만큼의 값만 치환됩니다.
 - `zip(*iterables)`
 
@@ -56,7 +54,7 @@ tags: [python, function]
 t = [1,5,3,6,2]
 for p in enumerate(t):
     print(p)
-    
+
 (0, 1)
 (1, 5)
 (2, 3)
@@ -73,4 +71,3 @@ index: 2, value: 3
 index: 3, value: 6
 index: 4, value: 2
 ```
-

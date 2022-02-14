@@ -1,14 +1,9 @@
 ---
-title: "[doit_algorithm] 07-1 브루트 포스법"
-excerpt: ""
-category:
-  - doit_algorithm
+title: '[doit_algorithm] 07-1 브루트 포스법'
 tags: [python, doit_algorithm]
 ---
 
 참고: doit 자료구조와 함께 배우는 알고리즘 입문
-
-
 
 #### 문자열 검색이란?
 
@@ -16,11 +11,9 @@ tags: [python, doit_algorithm]
 
 - 검색되는 문자열을 text, 찾아내는 문자열을 pattern이라고 한다.
 
-
-
 #### 브루트 포스법 알아보기
 
-- 선형 검색을 단순하게 확장한 알고리즘이라서 __단순법__이라고 합니다.
+- 선형 검색을 단순하게 확장한 알고리즘이라서 **단순법**이라고 합니다.
 - 이미 검사한 위치를 기억하지 못하므로 브루트 포스법은 효율이 좋지 않다.
 
 ```python
@@ -40,11 +33,9 @@ def bf_match(txt: str, pat: str) -> int:
     return pt - pp if pp == len(pat) else -1
 ```
 
-
-
 #### 멤버십 연산자와 표준 라이브러리를 사용한 문자열 검색
 
-__멤버십 연산자로 구현하기__
+**멤버십 연산자로 구현하기**
 
 membership operator인 in과 not in을 사용하면 어떤 문자열이 다른 문자열 안에 포함되어 있는지 검색할 수 있습니다.
 
@@ -55,11 +46,9 @@ ptn not in txt
 
 이 방법은 어떤 문자열이 다른 문자열 안에 포함되어 있는지 판단할 수는 있지만 그 위치는 알지 못합니다.
 
+**find, index 계열 함수로 구현하기**
 
-
-__find, index 계열 함수로 구현하기__
-
-str 클래스형에 소속된 find(), rfind(), index(), rindex() 함수는 문자열을 검색하여 검색한 문자열의 위치를 반환합니다. 
+str 클래스형에 소속된 find(), rfind(), index(), rindex() 함수는 문자열을 검색하여 검색한 문자열의 위치를 반환합니다.
 
 - `find()`
 
@@ -95,9 +84,7 @@ str 클래스형에 소속된 find(), rfind(), index(), rindex() 함수는 문�
 
   rfind() 함수와 같은 기능을 수행합니다. 다만 sub가 발견되지 않으면 예외 처리로 ValueError를 내보냅니다.
 
-
-
-__with()계열 함수로 구현하기__
+**with()계열 함수로 구현하기**
 
 어떤 문자열이 다른 문자열의 시작이나 끝에 포함되어 있는지를 판단합니다.
 
@@ -114,4 +101,5 @@ __with()계열 함수로 구현하기__
   ```python
   str.endswith(suffix[, start[, end]])
   ```
+
   문자열이 suffix로 끝나면 True, 아니면 False를 반환힙니다. start가 지정되어 있으면 그 위치에서 판단을 시작하고, end가 지정되어 있으면 그 위치에서 비교를 중단합니다.

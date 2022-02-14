@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]3009번 네 번째 집"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]3009번 네 번째 집'
+
 tags: [python, baekjoon, algorithm]
 ---
 
@@ -54,8 +52,6 @@ tags: [python, baekjoon, algorithm]
 
 - [구현](https://www.acmicpc.net/problem/tag/102)
 - [기하학](https://www.acmicpc.net/problem/tag/100)
-
-
 
 ### 내 풀이
 

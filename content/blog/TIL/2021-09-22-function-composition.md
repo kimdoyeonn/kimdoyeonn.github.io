@@ -1,8 +1,5 @@
 ---
-title: "[TIL] 함수 컴포지션(Function Composition)"
-excerpt: ""
-category:
-  - TIL
+title: '[TIL] 함수 컴포지션(Function Composition)'
 tags: [TIL, JavaScript]
 ---
 
@@ -11,10 +8,10 @@ tags: [TIL, JavaScript]
 ![https://www.educative.io/api/edpresso/shot/5882797525827584/image/5346167031332864](https://www.educative.io/api/edpresso/shot/5882797525827584/image/5346167031332864)
 
 ```jsx
-const A = (x) => x * x;
-const B = (x) => x * 4;
+const A = x => x * x
+const B = x => x * 4
 
-let result = B(A(4));
+let result = B(A(4))
 // A(4) = 4 * 4 = 16
 // B(16) = 16 * 4 = 64
 // result = 64
@@ -25,15 +22,12 @@ let result = B(A(4));
 ## `compose`
 
 ```jsx
-const compose =
-  (...fns) =>
-  (x) =>
-    fns.reduceRight((y, fn) => fn(y), x);
+const compose = (...fns) => x => fns.reduceRight((y, fn) => fn(y), x)
 
-const A = (x) => x * x;
-const B = (x) => x * 4;
+const A = x => x * x
+const B = x => x * 4
 
-let result = compose(B, A)(4); // 64
+let result = compose(B, A)(4) // 64
 ```
 
 `compose` 를 사용하면 위와 같이 변경할 수 있다. compose함수에 실행할 함수의 목록을 넘겨주면 새로운 함수가 반환되고, 새로 받은 함수의 인자를 넘겨주면 함수 목록의 역순으로 함수를 실행해서 결과를 반환한다. 여기서 역순으로 실행되는 함수를 반대로 바꾼 것이 `pipe` 함수이다.
@@ -41,15 +35,12 @@ let result = compose(B, A)(4); // 64
 ## `pipe`
 
 ```jsx
-const pipe =
-  (...fns) =>
-  (x) =>
-    fns.reduce((y, fn) => fn(y), x);
+const pipe = (...fns) => x => fns.reduce((y, fn) => fn(y), x)
 
-const A = (x) => x * x;
-const B = (x) => x * 4;
+const A = x => x * x
+const B = x => x * 4
 
-let result = pipe(A, B)(4); // 64
+let result = pipe(A, B)(4) // 64
 ```
 
 `compose` 함수와는 반대로 reduce를 사용했기 때문에 인자로 넘겨받은 실행할 함수 목록을 앞에서부터 순서대로 실행시켜 값을 반환합니다.

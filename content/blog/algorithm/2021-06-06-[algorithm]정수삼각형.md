@@ -1,8 +1,6 @@
 ---
-title: "[algorithm]정수삼각형"
-excerpt: ""
-category:
-  - algorithm
+title: '[algorithm]정수삼각형'
+
 tags: [algorithm, 이코테, baekjoon]
 ---
 
@@ -57,8 +55,6 @@ tags: [algorithm, 이코테, baekjoon]
 
 [Olympiad](https://www.acmicpc.net/category/2) > [International Olympiad in Informatics](https://www.acmicpc.net/category/99) > [IOI 1994](https://www.acmicpc.net/category/detail/541) 1번
 
-
-
 ### 내 풀이
 
 ```python
@@ -81,6 +77,6 @@ print(max(triangle[-1]))
 
 아래층에서 윗층의 가까운 숫자 두개 중 큰 수를 더하는 과정이 반복하면 마지막 층에서 최댓값을 구할 수 있다. 여기서 두 수 중 큰 수를 더하는 작은 과정이 반복되므로 다이나믹 프로그래밍 알고리즘을 사용했다.
 
-점화식은 `dp[i][j]  = dp[i][j] + max(dp[i-1][j], dp[i-1][j-1])` 이다.
+점화식은 `dp[i][j] = dp[i][j] + max(dp[i-1][j], dp[i-1][j-1])` 이다.
 
 하지만 양 끝에 위치한 숫자의 윗층 숫자는 두개가 아니므로 `i==0` 일 때와 `i==n-1`일 때는 예외로 처리해주었고 나머지 인덱스는 점화식으로 처리했다.

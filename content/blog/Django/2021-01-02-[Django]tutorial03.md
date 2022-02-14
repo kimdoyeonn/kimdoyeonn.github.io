@@ -1,14 +1,9 @@
 ---
-title: "[Django]장고튜토리얼-장고앱작성하기 part3"
-excerpt: ""
-category:
-  - django
+title: '[Django]장고튜토리얼-장고앱작성하기 part3'
 tags: [python, django]
 ---
 
 출처: [첫번째 장고앱 작성하기](https://docs.djangoproject.com/ko/3.1/intro/tutorial03/)
-
-
 
 ### 뷰(view)
 
@@ -20,8 +15,6 @@ tags: [python, django]
 - 월별 축적 페이지 - 주어진 월의 날짜 별 항목들을 표시합니다.
 - 날짜별 축적 페이지 = 주어진 난ㄹ짜의 모든 항목들을 표시합니다.
 - 댓글 기능 - 특정 항목의 댓글을 다룰 수 있는 기능
-
-
 
 poll 어플리케이션에서는 다음 네개의 view를 만들어 보겠습니다.
 
@@ -37,8 +30,6 @@ URL로부터 뷰를 얻기 위해, Django는 URLconfs 라는 것을 사용합니
 좀 더 자세한 정보는 [URL dispatcher](https://docs.djangoproject.com/ko/3.1/topics/http/urls/)
 
 ---
-
-
 
 ### 뷰 추가하기
 
@@ -81,8 +72,6 @@ detail(request=<HttpRequest object>, question_id=34)
 
 ---
 
-
-
 ### 뷰가 실제로 뭔가를 하도록 만들기
 
 각 뷰는 두 가지 중 하나를 하도록 되어 있습니다.
@@ -93,8 +82,6 @@ detail(request=<HttpRequest object>, question_id=34)
 당신이 작성한 뷰는 데이터베이스의 레코드를 읽을 수 있습니다. 또한 뷰는 Django나 Python에서 서드파티로 제공되는 템플릿 시스템을 사용할 수도 있습니다. 뷰는 PDF를 생성하거나, XML을 출력하거나, 실시간으로 ZIP파일을 만들 수 있습니다.뷰는 당신이 원하는 무엇이든, Python의 어떤 라이브러리라도 사용할 수 있습니다.
 
 Django에 필요한 것은 HttpResponse 객체 혹은 예외 입니다. 그렇게 다루는 게 편리하기 때문입니다.
-
-
 
 뷰에서 사용할 수 있는 템플릿을 작성하여 Python코드로부터 디자인을 분리하도록 Django의 템플릿 시스템을 사용해 봅시다.
 
@@ -145,7 +132,7 @@ def index(request):
 
 #### **render()**
 
-템플릿에 context를 채워넣어 표현한 결과를 HttpResponse 객체와 함께 돌려주는 구문은 자주 쓰는 용법입니다. 따라서 Django는 이런 표현을 쉽게 표현할 수 있도록 단축기능을 제공합니다. **index()**뷰를 단축기능으로 작성하면 다음과 같습니다. 
+템플릿에 context를 채워넣어 표현한 결과를 HttpResponse 객체와 함께 돌려주는 구문은 자주 쓰는 용법입니다. 따라서 Django는 이런 표현을 쉽게 표현할 수 있도록 단축기능을 제공합니다. **index()**뷰를 단축기능으로 작성하면 다음과 같습니다.
 
 ```python
 from django.shortcuts import render
@@ -167,8 +154,6 @@ def index(request):
 **render()** 함수는 request 객체를 첫번째 인수로 받고 템플릿 이름을 두번째 인수로 받으며, context 사전형 객체를 세번째 선택적(optional)인수로 받습니다. 인수로 지정된 context로 표현된 템플릿의 **HttpResponse**객체가 반환됩니다.
 
 ---
-
-
 
 ### 404 에러 일으키기
 
@@ -201,9 +186,6 @@ def detail(request, question_id):
 
 > **ObjectDoesNotExist** 예외를 자동으로 잡아내는 대신 **get_object_or_404()** 도움 한수를 사용하거나, **ObjectDoesNotExist** 예외를 사용하는 대신 **Http404**를 사용하는 이유는 무엇일까요?
 >
-> 모델 계층에 연결하는 방법이기 때문입니다. 
+> 모델 계층에 연결하는 방법이기 때문입니다.
 >
 > Django의 중요한 설계 목표는 약결합(loose coupling)을 관리하는데에 있습니다. 일부 제어된 결합이 **django.shortcuts** 모듈에도 도입되었습니다.
-
-
-

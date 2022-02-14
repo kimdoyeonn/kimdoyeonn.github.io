@@ -1,8 +1,5 @@
 ---
-title: "[django]10. 장고 ORM과 쿼리셋(QuertSets)"
-excerpt: ""
-category:
-  - django
+title: '[django]10. 장고 ORM과 쿼리셋(QuertSets)'
 tags: [python, django]
 ---
 
@@ -35,16 +32,12 @@ myvenv/Scripts/activate
 
 위와 같은 문자열이 뜨면 장고 인터렉티브 콘솔(interactive console)로 들어온 것이다. 파이썬 프롬프트와 비슷하지만 장고만의 기능을 사용할 수 있는 곳이기도 하다. 파이썬의 모든 명령어도 사용할 수 있음
 
-
-
 ### 모든 객체 조회하기
 
 ```python
 from blog.models import Post
 Post.objects.all()
 ```
-
-
 
 ### 객체 생성하기
 
@@ -57,8 +50,6 @@ me = User.objects.get(username='doyeon')
 Post.objects.create(auther=me, title='Sample title', text='Text')
 Post.objects.all() # 게시물이 만들어졌는지 확인
 ```
-
-
 
 ### 필터링하기
 
@@ -75,16 +66,14 @@ Post.objects.filter(title__contains='title')
 
   ```python
   from django.utils import timezone
-  
+
   post = Post.objects.get(title='Sample title')
   post.publish() # 게시
-  
+
   Post.objects.filter(published_date__lte=timezone.now()) # 먼저 게시하려는 게시물의 인스턴스를 얻어야한다.
   # lte = less than equal 작거나 같다
   # published_date__lte = timezone.now() 발생된 시간이 현재 시간보다 작거나 같은 경우를 필터링해서 보여준다.
   ```
-
-  
 
 ### 정렬하기
 
@@ -95,8 +84,6 @@ Post.objects.order_by('created_date') # 오름차순 정렬
 Post.objects.order_by('-created_date') # '-'를 붙여줄 경우 내림차순 정렬
 ```
 
-
-
 ### 쿼리셋 연결하기
 
 쿼리셋들을 함께 연결(chaining)하여 사용할 수 있다.
@@ -104,4 +91,3 @@ Post.objects.order_by('-created_date') # '-'를 붙여줄 경우 내림차순 �
 ```python
 Post.objects.filter(published_date__lte=timezone.now()).oreder_by('published_date')
 ```
-
