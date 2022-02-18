@@ -1,6 +1,9 @@
 ---
 title: '[github] fork한 저장소 동기회시키기'
-tags: [github, remote, fetch, merge, checkout]
+date: 2020-11-08 01:02:93
+category: Git
+thumbnail: { thumbnailSrc }
+draft: false
 ---
 
 원본 repository의 변경사항을 fork한 repository에 적용할 때 사용했다.
@@ -38,4 +41,4 @@ tags: [github, remote, fetch, merge, checkout]
 [https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/syncing-a-fork]: https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/syncing-a-fork
 [https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/configuring-a-remote-for-a-fork]: https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/configuring-a-remote-for-a-fork
 
-[ https://json.postype.com/post/210431 ](https://json.postype.com/post/210431)
+[https://json.postype.com/post/210431](https://json.postype.com/post/210431)

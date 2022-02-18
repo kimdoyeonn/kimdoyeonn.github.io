@@ -1,6 +1,9 @@
 ---
-title: '[Java]MVC 패턴이란?'
-tags: [Java]
+title: '[Java] MVC 패턴이란?'
+date: 2021-05-28 00:02:22
+category: Java
+thumbnail: { thumbnailSrc }
+draft: false
 ---
 
 [참고](https://universitytomorrow.com/35)

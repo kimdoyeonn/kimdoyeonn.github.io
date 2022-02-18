@@ -1,6 +1,9 @@
 ---
 title: '[github]디폴트 브랜치 main으로 전환하기'
-tags: [github, branch]
+date: 2021-02-14 01:02:93
+category: Git
+thumbnail: { thumbnailSrc }
+draft: false
 ---
 
 ![github](https://user-images.githubusercontent.com/53068706/107882617-bb35aa80-6f2d-11eb-9c95-a9818e03212c.png)
