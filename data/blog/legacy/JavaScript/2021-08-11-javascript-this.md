@@ -1,5 +1,6 @@
 ---
 title: '[javascript] this는 무엇인가?'
+date: 2021-08-11
 tags: [javascript]
 ---
 

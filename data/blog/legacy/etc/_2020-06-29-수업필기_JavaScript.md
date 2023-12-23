@@ -1,11 +1,8 @@
 ---
 title: "JavaScript"
-excerpt: "JavaScript 수업 필기 (복습,정리필요)"
-
 categories: JavaScript
 tags:
   - JavaScript
-last_modified_at: 2020-06-29T08:06:00-05:00
 ---
 
 - 정리되어 있지 않음

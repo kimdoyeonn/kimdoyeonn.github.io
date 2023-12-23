@@ -1,5 +1,6 @@
 ---
 title: '[javascript]JIT 컴파일'
+date: 2021-07-06
 tags: [javascript]
 ---
 

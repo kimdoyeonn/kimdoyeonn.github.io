@@ -1,5 +1,6 @@
 ---
 title: 'State와 Lifecycle'
+date: 2021-08-03
 tags: [React]
 ---
 
@@ -123,10 +124,10 @@ class Clock extends React.Component {
 
 ```jsx
 componentDidMount() {
-	this.timerID = setInterval(
-		() => this.tick(),
-		1000
-	)
+ this.timerID = setInterval(
+  () => this.tick(),
+  1000
+ )
 }
 ```
 
@@ -138,7 +139,7 @@ componentDidMount() {
 
 ```jsx
 componentWillUnmount() {
-	clearInterval(this.timerID);
+ clearInterval(this.timerID);
 }
 ```
 
@@ -238,7 +239,7 @@ ReactDOM.render(<Clock />, document.getElementById('root'))
 
 ---
 
-### 데이터는 아래로 흐릅니다.
+### 데이터는 아래로 흐릅니다
 
 부모 컴포넌트나 자식 컴포넌트 모두 특정 컴포넌트가 어떤 상태인지 알 수 없고, 그들이 함수나 클래스로 정의되었는지에 대해 알아야 할 필요도 없습니다.
 

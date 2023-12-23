@@ -1,5 +1,6 @@
 ---
 title: '[DB]DBMS와 RDBMS'
+date: 2021-01-21
 tags: [DB, DBMS]
 ---
 

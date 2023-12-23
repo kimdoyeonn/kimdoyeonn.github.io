@@ -1,6 +1,6 @@
 ---
 title: '이벤트 루프(Event Loop)'
-date: 2021-10-15 16:08:23
+date: 2021-10-15
 categories:
 tags:
 ---
@@ -8,14 +8,13 @@ tags:
 
 자바스크립트는 싱글 스레드 기반 언어이다. 즉, 한 번에 하나의 작업만 처리할 수 있다. 하지만 실제로 자바스크립트를 사용해보면 많은 작업을 동시에 처리할 수 있다는 것을 알 수 있다. 예를 들어 HTML 요소가 애니메이션 효과를 통해 움직이면서 마우스 이벤트를 받아 처리하기도 하고, 웹 서버에서는 동시에 여러 개의 HTTP 요청을 처리하기도 한다. 어떻게 스레드가 하나인데 이런 일을 할 수 있을까?
 
-일단 이렇게 한 번에 여러 개의 작업을 할 수 있는 것을 동시성(Concurrency)라고 한다. 자바스크립트는 동시성을 지원하기 위해 이벤트 루프(Event Loop)를 사용한다. 이벤트 루프는 브라우저에 내장된 기능으로, V8 같은 자바스크립트 엔진에는 없는 기능이다. 
+일단 이렇게 한 번에 여러 개의 작업을 할 수 있는 것을 동시성(Concurrency)라고 한다. 자바스크립트는 동시성을 지원하기 위해 이벤트 루프(Event Loop)를 사용한다. 이벤트 루프는 브라우저에 내장된 기능으로, V8 같은 자바스크립트 엔진에는 없는 기능이다.
 
 ## 자바스크립트 엔진
 
-
 ![https://joshua1988.github.io/images/posts/web/translation/how-js-works/js-engine-structure.png](https://joshua1988.github.io/images/posts/web/translation/how-js-works/js-engine-structure.png)
 
-자바스크립트 엔진은 크게 힙 영역과 콜스택 영역 두 가지로 구분할 수 있다. 
+자바스크립트 엔진은 크게 힙 영역과 콜스택 영역 두 가지로 구분할 수 있다.
 
 ### 콜 스택(Call Stack)
 
@@ -27,7 +26,7 @@ tags:
 
 ## 자바스크립트 런타임
 
-위에 콜 스택의 특징에서 확인할 수 있듯이 자바스크립트 엔진은 실행된 작업을 순차적으로 실행하기 때문에 자바스크립트 엔진 만으로는 비동기 처리를 할 수 없다. 때문에 소스코드의 평가와 실행을 제외한 모든 비동기 처리는 자바스크립트 런타임 즉, 브라우저나 Node.js에서 담당한다. 
+위에 콜 스택의 특징에서 확인할 수 있듯이 자바스크립트 엔진은 실행된 작업을 순차적으로 실행하기 때문에 자바스크립트 엔진 만으로는 비동기 처리를 할 수 없다. 때문에 소스코드의 평가와 실행을 제외한 모든 비동기 처리는 자바스크립트 런타임 즉, 브라우저나 Node.js에서 담당한다.
 
 ![https://miro.medium.com/max/700/1*4lHHyfEhVB0LnQ3HlhSs8g.png](https://miro.medium.com/max/700/1*4lHHyfEhVB0LnQ3HlhSs8g.png)
 
@@ -35,7 +34,7 @@ tags:
 
 ```jsx
 setTimeout(function cb() {
-	console.log('Hi');
+ console.log('Hi');
 }, 5000);
 
 console.log('Hi Hi');
@@ -49,7 +48,7 @@ Web API가 종료되면 콜백 함수는 콜백 큐로 푸시된다. 콜스택�
 
 ```jsx
 setTimeout(function cb() {
-	console.log('Hi');
+ console.log('Hi');
 }, 0);
 
 console.log('Hi Hi');
@@ -62,6 +61,7 @@ console.log('Hi Hi');
 자바스크립트는 싱글 스레드 기반 언어라 한 번에 하나의 작업만 수행할 수 있다. 하지만 Web API, 콜백큐, 이벤트 루프 덕분에 멀티 스레드의 동작도 할 수 있다.
 
 참고:
+
 - [How JavaScript works: an overview of the engine, the runtime, and the call stack](https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf)
 - 모던 자바스크립트 Deep Dive
 - [어쨌든 이벤트 루프는 무엇입니까? | Philip Roberts | JSConf EU](https://www.youtube.com/watch?v=8aGhZQkoFbQ)

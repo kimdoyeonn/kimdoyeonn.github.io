@@ -2,7 +2,6 @@
 title: '[Java] MVC 패턴이란?'
 date: 2021-05-28 00:02:22
 category: Java
-thumbnail: { thumbnailSrc }
 draft: false
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: '[javascript]프로토타입 기반 언어'
+date: 2021-07-06
 tags: [javascript]
 ---
 

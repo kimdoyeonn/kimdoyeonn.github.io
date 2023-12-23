@@ -1,5 +1,6 @@
 ---
 title: 'State 끌어올리기'
+date: 2021-08-08
 tags: [React]
 ---
 

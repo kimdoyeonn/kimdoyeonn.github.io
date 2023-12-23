@@ -2,7 +2,6 @@
 title: '[Java] 객체지향프로그래밍이란?'
 date: 2021-05-23 00:02:22
 category: Java
-thumbnail: { thumbnailSrc }
 draft: false
 ---
 

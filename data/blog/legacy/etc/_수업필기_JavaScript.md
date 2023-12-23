@@ -64,20 +64,20 @@ console.log(출력내용);
   ```javascript
   지역변수
   1. 선언)
-  	var 변수명; 변수를 재선언, 값 재할당
-  	let 변수명; 변수를 재선언 할 수 없다. 값 재할당 가능
-  	const 변수명; 변수를 재선언 할 ㅜ 없다. 값을 재할당 할 수 없다.( 배열, new 생성하는 변수 예외적 가능 )
+   var 변수명; 변수를 재선언, 값 재할당
+   let 변수명; 변수를 재선언 할 수 없다. 값 재할당 가능
+   const 변수명; 변수를 재선언 할 ㅜ 없다. 값을 재할당 할 수 없다.( 배열, new 생성하는 변수 예외적 가능 )
   2. 값할당 (데이터형이 결정됨)
-  	변수명 = 값;
+   변수명 = 값;
   3. 값 사용
-  	출력, 연산, 재할당
+   출력, 연산, 재할당
 
   ```
 
   ```javascript
   전역변수
   1. 선언): var를 사용하지 않고 변수를 선언하면서 값 할당
-  	변수명 = 값;
+   변수명 = 값;
   위치에 따라서 var를 붙여서 선언해도 전역변수로 사용할 수 있다.
 
   ```
@@ -114,7 +114,7 @@ console.log(출력내용);
 
   2. 산술
 
-  3. 쉬프트 `<<` ` >>` `>>>`
+  3. 쉬프트 `<<` `>>` `>>>`
 
   4. 관계 `<` `>` `<=` `>=` `==` `===` `!=` `!==`
 
@@ -144,11 +144,11 @@ console.log(출력내용);
 
 - 프로그램의 순차적인 흐름을 변경해줄 수 있는 문장
 
-  #### 조건문
+#### 조건문
 
-  - if 다중if
-  - if~ else
-  - switch~ case: 값이 같은지 비교하여 실행할 때
+- if 다중if
+- if~ else
+- switch~ case: 값이 같은지 비교하여 실행할 때
 
   ```javascript
   switch(){
@@ -158,20 +158,20 @@ console.log(출력내용);
          }
   ```
 
-  #### 반복문
+#### 반복문
 
-  - for문: 시작과 끝을 알 때
+- for문: 시작과 끝을 알 때
 
     ```javascript
     for(var i=0;~~){
     }
     ```
 
-  - while문: 시작과 끝을 모를 때
+- while문: 시작과 끝을 모를 때
 
-    - do ~ while문:
-    - break;
-    - continue;
+  - do ~ while문:
+  - break;
+  - continue;
 
 #### javascript의 proposal 기능사용하기 위한 plugin: Tern
 
@@ -220,15 +220,15 @@ console.log(출력내용);
 
 | 동작                                        | 속성                         | 주적용태그                                        | 사용예                                                                                                                                                                                         |
 | ------------------------------------------- | ---------------------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 클릭                                        | onclick                      | `<input type="button">` <br/>`<img>` <br/>`<td>`  | `<input type="button"onclick="함수명(값,,,)">`                                                                                                                                                 |
+| 클릭                                        | onclick                      | `<input type="button">` `<br/>``<img>` `<br/>``<td>`  | `<input type="button"onclick="함수명(값,,,)">`                                                                                                                                                 |
 | body 로딩                                   | onload                       | `<body>`                                          | `<body onload="함수명(값,,,)">`                                                                                                                                                                |
-| 마우스포인터가 <br/>특정위치에 들어갔을 때  | onmouseover<br/>onmouseenter | 모든 태그                                         | `<img onmouseover="함수명(값,,,)">`                                                                                                                                                            |
-| 마우스포인터가 <br/>특정 위치에서 나갔을 때 | onmouseout                   | 모든 태그                                         | `<img onmouseout="함수명(값,,,)">`                                                                                                                                                             |
-| 포인터가 <br/>움직였을 때                   | onmousemove                  | 모든 태그                                         | `<img onmousemove="함수명(값,,,)">`                                                                                                                                                            |
-| 키가 눌릴 때                                | onkeydown                    | `<input type="text, password">` <br/>`<textarea>` | `<input type="text" onkeydown="함수명(값,,,)">`                                                                                                                                                |
-| 키가 올라올 때                              | onkeyup                      | `<input type="text, password">`<br/> `<textarea>` | `<input type="text" onkeyup="함수명(값,,,)">`                                                                                                                                                  |
-| 값이 변경될 때                              | onchange                     | `<select>`<br/> `<input type="text, password">`   | `<select onchange="함수명(값,,,)">`: 다른 옵션이 선택되었을 때 함수가 호출<br> `<input type="text" onchange="함수명(값,,,)">`: 커서가 들어갔을 때의 값과 커서가 나갔을 때의 값이 다르다면 호출 |
-| 커서가 <br/>빠져나갔을 때                   | onblur                       | 커서를 가지는 모든 태그                           | `<input type="text" onblur="함수명(값,,,)">`                                                                                                                                                   |
+| 마우스포인터가 `<br/>`특정위치에 들어갔을 때  | onmouseover`<br/>`onmouseenter | 모든 태그                                         | `<img onmouseover="함수명(값,,,)">`                                                                                                                                                            |
+| 마우스포인터가 `<br/>`특정 위치에서 나갔을 때 | onmouseout                   | 모든 태그                                         | `<img onmouseout="함수명(값,,,)">`                                                                                                                                                             |
+| 포인터가 `<br/>`움직였을 때                   | onmousemove                  | 모든 태그                                         | `<img onmousemove="함수명(값,,,)">`                                                                                                                                                            |
+| 키가 눌릴 때                                | onkeydown                    | `<input type="text, password">` `<br/>``<textarea>` | `<input type="text" onkeydown="함수명(값,,,)">`                                                                                                                                                |
+| 키가 올라올 때                              | onkeyup                      | `<input type="text, password">``<br/>` `<textarea>` | `<input type="text" onkeyup="함수명(값,,,)">`                                                                                                                                                  |
+| 값이 변경될 때                              | onchange                     | `<select>``<br/>` `<input type="text, password">`   | `<select onchange="함수명(값,,,)">`: 다른 옵션이 선택되었을 때 함수가 호출`<br>` `<input type="text" onchange="함수명(값,,,)">`: 커서가 들어갔을 때의 값과 커서가 나갔을 때의 값이 다르다면 호출 |
+| 커서가 `<br/>`빠져나갔을 때                   | onblur                       | 커서를 가지는 모든 태그                           | `<input type="text" onblur="함수명(값,,,)">`                                                                                                                                                   |
 | 더블클릭                                    | ondblclick                   | 모든 클릭                                         | `<input type="button" ondblclick="함수명(값,,,)">`                                                                                                                                             |
 
 ### 이차원 배열
@@ -238,18 +238,18 @@ console.log(출력내용);
   ```javascript
   //작성법)
   //1. 일차원 배열 생성
-  	var arr2=new Array();
+   var arr2=new Array();
   //2. 일차원 배열 방에 일차원 배열 생성
-  	arr[0]=new Array();
-  	arr[1]=new Array();
-  	arr[2]=new Array();
-  	arr[3]=new Array();
+   arr[0]=new Array();
+   arr[1]=new Array();
+   arr[2]=new Array();
+   arr[3]=new Array();
   //3. 값 할당
-  	배열명[바깥배열 인덱스][안쪽배열인덱스] = 값;
-  	arr[0][0]=10;
-  	arr[0][1]=20;
-  	arr[0][2]=30;
-  	arr[0][3]=40;
+   배열명[바깥배열 인덱스][안쪽배열인덱스] = 값;
+   arr[0][0]=10;
+   arr[0][1]=20;
+   arr[0][2]=30;
+   arr[0][3]=40;
 
 
   ```
@@ -488,18 +488,18 @@ HTML Form Control: 사용자가 입력한 값을 받기위한 HTML
   );
   ```
 
-  #### window
+#### window
 
-  - javascript객체의 최상위 객체
-  - document
-    - HTML문서에 접근
-  - event
-    - event 발생(키코드값)
-  - location
-    - 페이지 이동
-    - browser 가 제공하는 Storage를 사용( HTML5 )
-  - history
-    - 브라우저에 로딩되었던 페이지들로 이동
+- javascript객체의 최상위 객체
+- document
+  - HTML문서에 접근
+- event
+  - event 발생(키코드값)
+- location
+  - 페이지 이동
+  - browser 가 제공하는 Storage를 사용( HTML5 )
+- history
+  - 브라우저에 로딩되었던 페이지들로 이동
 
 ## 값전달
 
@@ -659,11 +659,11 @@ history.go(이동할 단계)//1,2,3, -1 (back과 같음)
      - 서버는 접속자의 상태를 알 수 없다.(연결유지 기술: session, cookie)
      - 실시간으로 변경된 정보를 모든 접속자에게 반영할 수 없다.( client pull로 해결 )-> 실시간 정보반영이 어렵다
 
-     #### session
+#### session
 
      접속자의 정보를 웹서버의 memory에 저장(해킹안전)
 
-     #### cookie
+#### cookie
 
      접속자의 정보를 접속자의 HDD에 저장 ( 해킹위험 )
 
@@ -756,7 +756,7 @@ delete json객체명.이름;
 
 - JSON Object 안에 JSON Array를 가진 경우
 
-  "{이름:값,이름:[{이름:값,,,},{이름:값,,,},,,,],,,,,}"
+  `"{이름:값,이름:[{이름:값,,,},{이름:값,,,},,,,],,,,,}"`
   정보--- 데이터-----------------------------
 
   ```javascript
@@ -817,7 +817,7 @@ delete json객체명.이름;
 
 
     //() 형식: 처리해야할 일이 적은 경우
-    var 변수명=({이름:값,이름:fucntion(){...}...});
+    var 변수명=`({이름:값,이름:fucntion(){...}...})`;
     //호출
     변수명.이름;
     변수명.이름();

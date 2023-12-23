@@ -2,7 +2,6 @@
 title: '[Spring] 스프링 시큐리티'
 date: 2021-03-03 00:02:22
 category: Java
-thumbnail: { thumbnailSrc }
 draft: false
 ---
 
@@ -131,7 +130,7 @@ draft: false
 ### AuthenticationManager(인증 매니저)
 
 - 다양한 방식의 인증을 처리할 수 있는 구조로 되어 있음
-- AuthenticationManager <- ProviderManager <- DaoAuthenticationProvider,,,,
+- AuthenticationManager `<- ProviderManager <- DaoAuthenticationProvider,,,,`
 - ProviderManager는 인증에 대한 처리를 AuthenticationProvider라는 타입의 객체를 이용해서 처리를 위임합니다.
 
 - AuthenticationProvider(인증 제공자)는 실제 인증 작업을 진행합니다. 이때 인증된 정보에 권한에 대한 정보를 같이 전달하게 되는데 이 처리는 UserDetailsService라는 존재와 관련 있습니다. UserDetailsService 인터페이스의 구현체는 실제로 사용자의 정보와 사용자가 가진 권한의 정보를 처리해서 반환하게 됩니다.

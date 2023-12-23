@@ -1,5 +1,6 @@
 ---
 title: '[javascript]일급 함수'
+date: 2021-07-06
 tags: [javascript]
 ---
 

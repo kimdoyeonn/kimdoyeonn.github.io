@@ -1,5 +1,6 @@
 ---
 title: 'Component와 Props'
+date: 2021-08-02
 tags: [React]
 ---
 

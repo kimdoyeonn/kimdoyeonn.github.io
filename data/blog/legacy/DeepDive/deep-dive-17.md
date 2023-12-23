@@ -2,7 +2,6 @@
 title: ' 17장 생성자 함수에 의한 객체 생성'
 date: 2022-02-09
 category: DeepDive
-thumbnail: { thumbnailSrc }
 draft: false
 ---
 

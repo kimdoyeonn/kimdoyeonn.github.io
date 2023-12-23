@@ -1,5 +1,6 @@
 ---
 title: '[javascript] use strict란?'
+date: 2021-08-12
 tags: [javascript]
 ---
 

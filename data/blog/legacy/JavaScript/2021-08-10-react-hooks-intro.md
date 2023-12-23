@@ -1,5 +1,6 @@
 ---
 title: 'Hook이 만들어진 이유'
+date: 2021-08-10
 tags: [React]
 ---
 

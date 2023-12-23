@@ -1,11 +1,10 @@
 ---  
 title: "markdown 문법 해보기"  
-excerpt: ""  
+  
 
 categories: Blog  
 tags:  
   - Blog  
-last_modified_at: 2020-06-18T08:06:00-05:00  
 ---  
 
 
@@ -25,11 +24,17 @@ markdown 문법
 5. ~~cancelline~~  
 
 글머리 달기  
+
 # H1  
+
 ## H2  
+
 ### H3  
+
 #### H4  
+
 ##### H5  
+
 ###### H6  
 
 인용  

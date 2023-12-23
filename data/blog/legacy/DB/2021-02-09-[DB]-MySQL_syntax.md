@@ -1,5 +1,6 @@
 ---
 title: '[DB]MySQL CRUD 문법'
+date: 2021-02-09
 tags: [DB, MySQL]
 ---
 
@@ -14,7 +15,7 @@ CREATE TABLE topic(
     description TEXT NULL,
     created DATETIME NOT NULL,
     author VARCHAR NULL,
-	profile VARCHAR(100) NULL,
+ profile VARCHAR(100) NULL,
     PRIMARY KEY(id));
 ```
 

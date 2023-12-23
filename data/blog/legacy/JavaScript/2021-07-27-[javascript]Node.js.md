@@ -1,5 +1,6 @@
 ---
 title: '[javascript]Node.js란?'
+date: 2021-07-27
 tags: [javascript]
 ---
 
@@ -17,4 +18,3 @@ tags: [javascript]
 
 출처:
 
-[node.js 면접준비]: https://velog.io/@ehgks0000/Node-js-%EB%A9%B4%EC%A0%91%EC%A4%80%EB%B9%84

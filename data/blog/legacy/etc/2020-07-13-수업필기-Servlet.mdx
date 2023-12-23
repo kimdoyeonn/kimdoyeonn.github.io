@@ -1,0 +1,175 @@
+---
+title: "Servlet"
+categories: Servlet
+tags:
+  - Servlet, 필기
+---
+
+- 정리되어 있지 않음
+
+Java SE: Desktop에서 동작하는 program제작 (Application 제작) -> JDBC(Java DB연동)
+
+Oracle DBMS: 정보를 저장, 사용
+
+--<strong>접속자의 Computer에 Download되어 실행 (접속자 cpu, memory 사용: Front-end)</strong>--
+
+HTML: Web page의 구조설정(모든 접속자에게 동일하게 보여준다: 멱등성)-> 개인화 안됨 -> Servlet, java EE로 해결
+
+JavaScript: Webpage의 간단한 계산, 동적으로 화면 변경
+
+CSS: 통일성있는 디자인
+
+jQuery, Bootstrap: CSS를 간편하게 사용 -> javascript library: javascript를 간편하게 사용
+
+Java EE: 동적으로 HTML, 파일 생성 ( 개인화가 가능 )
+
+# Java EE (Enterprise Edition)
+
+- 기업용 Application을 개발하기 위한 Java의 개발버전
+
+  (현업) => 일 => 구현
+
+  - EJB(Enterprise Java Beans)
+
+    - 업무를 모듈로 구분 ( 약결합 - 업무에 필요한 모듈을 조립 사용)
+
+    - EJB를 실행하기 위한 별도의 Server가 필요하다
+
+    - 안정적 -> 느리다.
+
+    - 배포 x.ear
+
+    - <strong>Entity Bean</strong>(DB연동하는 업무), <strong>Session Bean</strong>(DB를 연동하지 않는 업무), <strong>MessageDrivenBean</strong>(메세지를 전달하여 메세지에 일치하는 업무를 수행)
+
+      -> 모두 Spring framework로 대체
+
+    - 동적인 HTML을 생성하기 위한 Servlet/JSP 제공
+    - Java EE의 모든 spec을 서비스 할 수 있는 program(WAS: Web Application Server)
+
+## Servlet
+
+- java EE에서 동적으로 HTML을 생성할 수 있는 Library
+
+- CGI의 일종 ( Common Gateway Interface)
+
+  - 일반언어로 웹서비스를 하기 위해 정해놓은 공통규약
+
+    C언어: C - CGI( 속도가 느리다. Thread 처리X. 생산성 좋지 않음)
+
+    Java: Servlet( Fast CGI )( 속도가 느리다. 생산성 좋지 않음. Thread 처리O )
+
+    - javax.servlet._, javas.servlet.http._ 에서 관련클래스와 interface를 제공 => servlet-api.jar -> builde path(eclipse) class path(dos)
+
+- <strong>java EE로 Webservice하기위한 folder 구성</strong>
+
+  - web_root\folder\HTML, CSS, Javascript,JSP
+
+  - web_root\WEB-INF\classes\package\\.class
+
+    과 \lib\사용할 외부 library
+
+     \web.xml: DD(Deployment Descriptor)
+
+  - web container에 folder를 설정 -> server.xml(Container 설정, web service 하기 위한 folder 설정)
+
+    - web container: web browser에서 servlet/JSP를 요청하면 servlet/JSP를 HTML로 변환하여 응답하는 program
+
+  - <strong>노트필기</strong>
+
+### Servlet 작성법
+
+1. class가 web의 업무를 처리하기 위해 HttpServlet 클래스를 상속받는다.
+
+   ```java
+   public class Test extends HttpServlet{//추상메소드가 없는 추상 클래스
+   ```
+
+2. 요청방식을 처리할 수 있는 method의 Override
+
+   ```html
+   //get 방식
+   <a href=""></a>
+   <meta />
+   <form method="get"></form>
+   <script>
+     location.href;
+     location.replace;
+   </script>
+
+   //post방식 전용
+   <form method="post"><input type="submit" /></form>
+   <script>
+     document.form이름.submit(); //post방식 전용
+   </script>
+   ```
+
+   - get 방식
+
+     - 서버로 보내는 데이터가 web browser의 주소창( 외부로 노출된다 )을 타고 전달된다.
+     - 서버로 보내는 데이터가 문자열만 가능
+     - 보안이 필요없는 256자 이하의 소용량 데이터를 전송할 때 주로 사용
+     - query string 존재
+
+   - post 방식
+
+     - 서버로 보내는 데이터가 Http Header( 외부로 노출되지 않는다 )를 타고 전달된다
+     - 서버로 보내는 데이터가 다양하다. 파일도 가능
+     - 보안이 필요한 256자 이상의 대용량 데이터를 전달할 때 사용한다.
+     - query string이 존재하지 않는다.
+
+   - get 방식 요청처리( doGet )
+
+     ```java
+     protected void doGet(HttpServletRequest request, HttpServletResponse responce) throws IOException, ServletException{}
+     ```
+
+   - post 방식 요청처리 ( doPost )
+
+     ```java
+     protected void doPost(HttpServletRequest request, HttpServletResponse responce)  throws IOException, ServletException{}
+     ```
+
+   - 요청방식에 상관없이 처리 ( service )
+
+     ```java
+     protected void service(HttpServletRequest request, HttpServletResponse responce)  throws IOException, ServletException{}
+     ```
+
+3. 응답 방식 설정( 접속자에게 보내줄 형태 설정 )
+
+   - MIME Type 설정 => web.xml
+
+     ```java
+     response.setContentType("text/html")
+     ```
+
+4. 접속자에게 응답할 수 있는 출력 스트림 얻기
+
+   ```java
+   PrintWriter out=responce.getWriter();
+   ```
+
+5. 출력 내용을 Stream 작성
+
+   ```java
+   out.print("<html>");
+   ```
+
+   - 작성된 Servlet을 Web browser에서 호출하기 위해 DD에 설정( Deployment Descriptor: web.xml( WEB-INF ) )
+
+     ```HTML
+     <servlet>
+      <servlet-name>객체명</servlet-name>
+         <servlet-class>패키지명.class명</servlet-class>
+     </servlet>
+     <servlet-mapping>
+      <servlet-name>객체명</servlet-name>
+         <url-pattern>/웹브라우저에서 호출할 이름</url-pattern>
+     </servlet-mapping>
+     ```
+
+     web browser 열고 URL 입력하여 Servlet을 요청한다.
+
+     http://localhost:80/servlet_path/url-pattern
+
+      context_root servlet_name

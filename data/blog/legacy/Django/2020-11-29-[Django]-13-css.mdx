@@ -1,0 +1,221 @@
+---
+title: '[django]13. CSS'
+date: 2020-11-29
+tags: [python, django]
+---
+
+- 참고: [장고걸스](https://tutorial.djangogirls.org/ko/css/)
+
+CSS(Cascading Style Sheets): HTML과 같이 마크업언어로 작성된 웹사이트의 외관을 꾸미기 위해 사용되는 언어
+
+### 부트스트랩(bootstrap)
+
+- 설치하기
+
+  `html`파일 내 `<head>`에 아래의 링크를 넣어야한다.
+
+  ```html
+  <link
+    rel="stylesheet"
+    href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"
+  />
+  ```
+
+- 정적파일 (static files)
+
+  - CSS와 이미지파일이 해당됩니다. 이 컨텐츠는 요청 내용에 따라 바뀌는 것이 아니기 때문에 모든 사용자들이 동일한 내용을 볼 수 있습니다.
+
+  서버에서 `collectstatic`을 실행할 때처럼 장고는 admin에서 정적 파일을 어디서 찾아야하는지 이미 알고있습니다. 때문에 `blog`에 정적파일을 추가하면 됩니다.
+
+  ```
+      djangogirls
+      ├── blog
+      │   ├── migrations
+      │   ├── static
+      │   └── templates
+      └── mysite
+  ```
+
+  장고는 app폴더 안에 있는 `static`폴더를 자동을 찾을 수 있고 이 안에 들어있는 컨텐츠를 정적 파일로 사용합니다.
+
+- CSS파일 만들기
+
+  - `django/blog/static/css/blog.css`
+
+  - 제목 색상 바꾸기
+
+    색상은 `#`으로 시작해서 알파벳과 숫자 중 6개를 조합해 헥사코드(hexacode)로 나타냅니다. 인터넷에서 원하는 색상을 검색해 사용하거나 `red`나 `green`같이 [이미 정해진 색](https://www.w3schools.com/colors/colors_names.asp)을 사용할 수도 있다.
+
+    ```css
+    h1 a {
+      color: #fca205;
+    }
+    ```
+
+    - `h1 a`: CSS 셀렉터(selector)라고 한다. `h1`요소 안의 `a`요소에 스타일을 적용한다는 뜻
+
+  - CSS파일에서는 HTML 파일에 있는 각 요소들에 스타일을 정의할 때 요소를 식별하는 방법
+
+    1. 요소의 이름 사용하기(태그 이름): `a`, `h1`, `body`
+
+    2. `class`속성이나 `id`속성(요소에 부여된 이름)
+
+       `class`는 요소 그룹을 정의하고, `id`는 특정 요소를 가리킵니다.
+
+       ```html
+       <a
+         href="https://en.wikipedia.org/wiki/Django"
+         class="external_link"
+         id="link_to_wiki_page"
+       ></a>
+       ```
+
+    [CSS Selctor 참고](https://www.w3schools.com/cssref/css_selectors.asp)
+
+  - HTML에 CSS 추가하기
+
+    - `blog/templates/blog/post_list.html`파일 맨 처음에 아래 코드를 추가한다.
+
+      ```
+      {% load static %}
+      ```
+
+      여기서 정적파일을 로딩
+
+    - `<head>`안에 부트스트랩 CSS파일 링크 다음에 아래에 코드를 추가한다.
+
+      ```html
+      <link rel="stylesheet" href="{% static 'css/blog.css' %}" />
+      ```
+
+      브라우저는 위에서부터 순서대로 파일을 읽으므로 파일이 올바른 위치에 있는지 확인해야합니다. 그렇지 않으면 파일 코드가 부트스트랩 파일의 코드를 무시할 수 있습니다.
+
+    - `static`파일 정보 인식 `collectstatic`
+
+      아래의 명령어를 실행하면 `djangogirls/static`의 하위로 복사된다.
+
+      ```
+      python manage.py collectstatic
+      ```
+
+      흩어져있는 static 파일들을 모아 특정 디렉터리로 옮기는 작업을 한다. `setting.py`파일 안에 정의되어 있는 `STATIC_ROOT`디렉터리로 옮겨진다.
+
+    - 제목 폰트 바꾸기
+
+      ```html
+      <link
+        href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext"
+        rel="stylesheet"
+        type="text/css"
+      />
+      ```
+
+      Google Fonts에서 가져온 [_Lobster_](https://fonts.google.com/specimen/Lobster?query=lob&sidebar.open=true&selection.family=Roboto)
+
+      - `head`에 추가
+
+      ```css
+      h1 a {
+        color: #fca205;
+        font-family: 'Lobster';
+      }
+      ```
+
+CSS는 클래스 개념을 가지고 있습니다. 클래스는 HTML의 코드 일부에 이름을 붙이고 그 부분만 특정 스타일을 사용할 수 있게 해줍니다. 각기 다른 div 구분할 때 유용하게 쓰입니다.
+
+- 태그에 이름 지정
+
+  ```html
+  <div class="page-header"></div>
+  <div class="post"></div>
+  ```
+
+- 태그에 스타일 지정, 클래스셀렉터는 `.`
+
+  ```css
+  .page-header {
+    background-color: #ff9400;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+  }
+
+  .page-header h1,
+  .page-header h1 a,
+  .page-header h1 a:visited,
+  .page-header h1 a:active {
+    color: #ffffff;
+    font-size: 36pt;
+    text-decoration: none;
+  }
+
+  .content {
+    margin-left: 40px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: 'Lobster', cursive;
+  }
+
+  .date {
+    color: #828282;
+  }
+
+  .save {
+    float: right;
+  }
+
+  .post-form textarea,
+  .post-form input {
+    width: 100%;
+  }
+
+  .top-menu,
+  .top-menu:hover,
+  .top-menu:visited {
+    color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+  }
+
+  .post {
+    margin-bottom: 70px;
+  }
+
+  .post h1 a,
+  .post h1 a:visited {
+    color: #000000;
+  }
+  ```
+
+  ```html
+  <body>
+    <div class="page-header">
+      <h1><a href="/">Django Girls Blog</a></h1>
+    </div>
+    <div class="content container">
+      <div class="row">
+        <div class="col-md-8">
+          {% for post in posts %}
+          <div class="post">
+            <div class="date">
+              <p>published: {{post.published_date}}</p>
+            </div>
+            <h1><a href="">{{post.title}}</a></h1>
+            <p>{{post.text|linebreaksbr}}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </body>
+  ```
+
+[CSS 추천 강의](https://www.codecademy.com/catalog/all)

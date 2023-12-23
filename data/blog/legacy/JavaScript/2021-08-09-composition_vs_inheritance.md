@@ -1,5 +1,6 @@
 ---
 title: '합성 (Composition) vs 상속 (Inheritance)'
+date: 2021-08-09
 tags: [React]
 ---
 

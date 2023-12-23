@@ -2,7 +2,6 @@
 title: '18장 함수와 일급객체'
 date: 2022-02-09
 category: DeepDive
-thumbnail: { thumbnailSrc }
 draft: false
 ---
 

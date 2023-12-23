@@ -1,8 +1,7 @@
 ---
-title: '[github] 원격저장소를 로컬저장소로 가져오기'
-date: 2020-11-08 01:02:93
+title: "[github] 원격저장소를 로컬저장소로 가져오기"
+date: 2020-11-08
 category: Git
-thumbnail: { thumbnailSrc }
 draft: false
 ---
 
