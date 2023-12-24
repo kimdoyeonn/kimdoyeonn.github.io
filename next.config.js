@@ -67,6 +67,8 @@ module.exports = () => {
       dirs: ['app', 'components', 'layouts', 'scripts'],
     },
     images: {
+      loader: 'custom',
+      loaderFile: './my-loader.ts',
       remotePatterns: [
         {
           protocol: 'https',
