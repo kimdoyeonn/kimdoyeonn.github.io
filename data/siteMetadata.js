@@ -1,9 +1,9 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Doyeon Kim | Web Developer',
+  title: 'Doyeon Kim | Backend Developer',
   author: 'Doyeon Kim',
   headerTitle: 'Doyeon Kim',
-  description: 'Doyeon Kim | Web Developer',
+  description: 'Doyeon Kim | Backend Developer',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://kimdoyeonn.github.io',
@@ -11,12 +11,12 @@ const siteMetadata = {
   siteLogo: '/static/images/logo.png',
   socialBanner: '/static/images/twitter-card.png',
   mastodon: 'https://mastodon.social/@mastodonuser',
-  email: 'address@yoursite.com',
+  email: 'doyeonkim.yeon@gmail.com',
   github: 'https://github.com/kimdoyeonn',
   twitter: 'https://twitter.com/Twitter',
   facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
+  linkedin: 'https://www.linkedin.com/in/%EB%8F%84%EC%97%B0-%EA%B9%80-bb7503229/',
   locale: 'en-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the
@@ -33,9 +33,9 @@ const siteMetadata = {
     // posthogAnalytics: {
     //   posthogProjectApiKey: '', // e.g. 123e4567-e89b-12d3-a456-426614174000
     // },
-    // googleAnalytics: {
-    //   googleAnalyticsId: '', // e.g. G-XXXXXXX
-    // },
+    googleAnalytics: {
+      googleAnalyticsId: process.env.NEXT_GOOGLE_ANALYTICS_ID, // e.g. G-XXXXXXX
+    },
   },
   newsletter: {
     // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus
