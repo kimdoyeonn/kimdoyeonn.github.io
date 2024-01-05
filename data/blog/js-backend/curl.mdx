@@ -1,0 +1,25 @@
+---
+title: curl 명령어 옵션 정리
+date: '2024-01-05'
+tags: ['backend']
+draft: false
+---
+
+curl은 command lines이나 script에서 데이터를 전송하는데에 사용되는 인터넷 전송 엔진이다.
+
+- `-X`: HTTP 메서드 정보. `-X GET`이 기본이다 ex. `-X POST`
+- `-d`: POST 통신 시 body 데이터 ex. `-d "title=제목&name=오리"`
+- `-H`: 헤더 정보 ex. `-H "Content-Type:application/x-www-form-urlencoded"`
+- `-x`: 프록시 서버 설정 ex. `curl -x http://proxy_server:port-user username:password`
+- `-T`: 파일을 서버에 전송 시 사용 ex. `curl -T file.txt http://server.com`
+- `-A`: 유저 에이전트를 변경 ex. `curl -A "Mozilla/5.0" http://server.com`
+- `-i`: 서버 응답을 결과로 출력 ex. `curl -i https://kimdoyeonn.github.io/`
+- `-I`: 서버 응답을 헤더 값만 출력 ex. `curl -I https://kimdoyeonn.github.io/`
+- `-O`: 서버의 파일을 이름 변경 없이 내려받기 ex. `curl -O http://server.com/text.txt`
+- `-L`: 리다이렉트 URL 따라가기 ex. `curl -L http://server.com/redirectingURL`
+- `-s`: 에러가 발생해도 출력하지 않음(silent) ex. `curl -s localhost:3000`
+- `-S`: 에러가 발생 시 에러 출력(Show) ex. `curl -S localhost:3000`
+
+
+- [curl](https://curl.se/)
+- 책 Node.js 백엔드 개발자 되기
