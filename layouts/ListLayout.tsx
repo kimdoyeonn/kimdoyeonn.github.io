@@ -15,7 +15,7 @@ interface PaginationProps {
 }
 interface ListLayoutProps {
   posts: CoreContent<Blog>[]
-  title: string
+  title?: string
   initialDisplayPosts?: CoreContent<Blog>[]
   pagination?: PaginationProps
 }
@@ -80,10 +80,12 @@ export default function ListLayout({
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            {title}
-          </h1>
-          <div className="relative max-w-lg">
+          {title && (
+            <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+              {title}
+            </h1>
+          )}
+          {/* <div className="relative max-w-lg">
             <label>
               <span className="sr-only">Search articles</span>
               <input
@@ -108,7 +110,7 @@ export default function ListLayout({
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
             </svg>
-          </div>
+          </div> */}
         </div>
         <ul>
           {!filteredBlogPosts.length && 'No posts found.'}
@@ -130,13 +132,15 @@ export default function ListLayout({
                           {title}
                         </Link>
                       </h3>
-                      <div className="flex flex-wrap">
+                      {/* <div className="flex flex-wrap">
                         {tags?.map((tag) => <Tag key={tag} text={tag} />)}
+                      </div> */}
+                    </div>
+                    {summary && (
+                      <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                        {summary}
                       </div>
-                    </div>
-                    <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                      {summary}
-                    </div>
+                    )}
                   </div>
                 </article>
               </li>

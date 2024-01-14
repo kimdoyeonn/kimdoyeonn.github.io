@@ -43,11 +43,11 @@ export default function Home({ posts }) {
                               {title}
                             </Link>
                           </h2>
-                          <div className="flex flex-wrap">
+                          {/* <div className="flex flex-wrap">
                             {tags.map((tag) => (
                               <Tag key={tag} text={tag} />
                             ))}
-                          </div>
+                          </div> */}
                         </div>
                         {summary && (
                           <div className="prose max-w-none text-gray-500 dark:text-gray-400">
