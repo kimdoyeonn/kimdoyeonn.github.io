@@ -1,0 +1,40 @@
+---
+title: '[스택] 주식가격'
+date: '2024-01-15'
+tags: ['algorithm', 'programmers']
+draft: false
+---
+
+### 문제 요약
+
+- 시간 별 주식 가격이 리스트로 주어진다.
+- 주식 가격이 얼마 동안 떨어지지 않고 유지되었는지를 리스트로 반환
+- [1, 2, 3, 2, 3] -> [4, 3, 1, 1, 0]
+
+### 풀이
+
+```python
+def solution(prices):
+    answer = []
+    # pop(0)은 O(n)으로 효율성이 통과되지 않아 리스트를 뒤집어서 풀었음
+    prices.reverse()
+
+    while prices:
+      # 제일 앞 주식 가격을 pop
+      # 이후 얼마동안 떨어지지 않았는지 계산
+        price = prices.pop()
+        sec = 0
+        for i in range(len(prices) - 1, -1, -1):
+          # 떨어졌으면 떨어지기까지의 1초를 더하여 break
+            if price > prices[i]:
+                sec += 1
+                break
+            sec += 1
+        answer.append(sec)
+    
+    return answer
+```
+
+- 내 힘으로 푼 문제가 아니었다. 다음에 잊어버렸을 때쯤 다시 혼자서 풀어봐야지
+
+[주식가격 - 프로그래머스](https://school.programmers.co.kr/learn/courses/30/lessons/42584)
