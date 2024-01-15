@@ -1,0 +1,32 @@
+---
+title: '[해시] 완주하지 못한 선수'
+date: '2024-01-15'
+tags: ['algorithm', 'programmers']
+draft: false
+---
+
+### 문제 요약
+
+- 참가자 목록 participant과 완주자 목록 completion이 주어진다.
+- 참가자 중 완주하지 못한 참가자는 한명이다.
+- 완주하지 못한 한 명을 찾아 반환
+
+### 풀이
+
+```python
+def solution(participant, completion):
+    answer = ''
+    
+    # 참가자 목록과 완주자 목록을 정렬하고 동시에 반복문을 돌면서 완주자 목록에 빠진 참가자를 탐색
+    participant.sort()
+    completion.sort()
+    
+    for part, comp in zip(participant, completion):
+        if part != comp:
+            return part
+
+    # zip은 두 인자 중 길이가 짧은 리스트까지만 돌고 끝나기 때문에 반복문이 다 돌았는데도 반환되지 않았으면 참가자 목록 중 제일 마지막 선수가 완주하지 못한 선수임
+    return participant[-1]
+```
+
+[완주하지 못한 선수 - 프로그래머스](https://school.programmers.co.kr/learn/courses/30/lessons/42576)
