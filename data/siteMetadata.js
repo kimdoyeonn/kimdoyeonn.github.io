@@ -1,9 +1,9 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Doyeon Kim | Backend Developer',
+  title: 'Doyeon Kim | Frontend Developer',
   author: 'Doyeon Kim',
   headerTitle: 'Doyeon Kim',
-  description: 'Doyeon Kim | Backend Developer',
+  description: 'Doyeon Kim | Frontend Developer',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://kimdoyeonn.github.io',
