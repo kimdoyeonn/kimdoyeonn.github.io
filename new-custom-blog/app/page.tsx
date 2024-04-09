@@ -1,13 +1,9 @@
-import Nav from '@/components/Nav'
-import PostList from '@/components/PostList'
-import Profile from '@/components/Profile'
+import Home from './home'
+import { allPosts, Post } from 'contentlayer/generated'
 
-export default function Home() {
-  return (
-    <main className="w-full">
-      <Nav />
-      <Profile />
-      <PostList />
-    </main>
-  )
+const Page = () => {
+  const posts = allPosts
+  return <Home posts={posts} />
 }
+
+export default Page

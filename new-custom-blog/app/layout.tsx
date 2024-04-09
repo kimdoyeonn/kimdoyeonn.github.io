@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import SectionContainer from '@/components/SectionContainer'
 import clsx from 'clsx'
+import ThemeProvider from '@/components/theme-provider'
+import { cn } from '@/lib/utils'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,8 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={clsx(inter.className, 'antialiased', 'text-[8px] lg:text-[12px]')}>
-        <SectionContainer>{children}</SectionContainer>
+      <body className={cn('antialiased', 'text-[8px] lg:text-[12px]', inter.className)}>
+        <ThemeProvider>
+          <SectionContainer>{children}</SectionContainer>
+        </ThemeProvider>
       </body>
     </html>
   )
