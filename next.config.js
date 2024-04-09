@@ -66,6 +66,7 @@ module.exports = () => {
     eslint: {
       dirs: ['app', 'components', 'layouts', 'scripts'],
     },
+    ignorePatterns: ['new-custom-blog'],
     images: {
       loader: 'custom',
       loaderFile: './my-loader.ts',
