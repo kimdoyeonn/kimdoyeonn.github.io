@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Post } from 'contentlayer/generated';
+import { Post } from '@contentlayer/generated';
 
 const PostCard = ({ post }: { post: Post }) => {
   const isDefaultThumbnail = true;
