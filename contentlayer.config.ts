@@ -1,4 +1,8 @@
-import { defineDocumentType, makeSource, ComputedFields } from 'contentlayer/source-files'
+import {
+  defineDocumentType,
+  makeSource,
+  ComputedFields,
+} from 'contentlayer2/source-files';
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -11,12 +15,15 @@ export const Post = defineDocumentType(() => ({
     summary: { type: 'string' },
   },
   computedFields: {
-    url: { type: 'string', resolve: (post) => `/post/${post._raw.flattenedPath}` },
+    url: {
+      type: 'string',
+      resolve: (post) => `/post/${post._raw.flattenedPath}`,
+    },
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.replace(/^.+?(\/)/, ''),
     },
   },
-}))
+}));
 
-export default makeSource({ contentDirPath: 'data', documentTypes: [Post] })
+export default makeSource({ contentDirPath: 'data', documentTypes: [Post] });
