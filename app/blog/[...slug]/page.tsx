@@ -11,6 +11,12 @@ const component: MDXComponents = {
   ),
 };
 
+export const generateStaticParams = async () => {
+  const paths = allPosts.map((p) => ({ slug: p.slug.split('/') }));
+
+  return paths;
+};
+
 const PostPage = ({ params }: { params: { slug: string[] } }) => {
   const slug = decodeURI(params.slug.join('/'));
 
