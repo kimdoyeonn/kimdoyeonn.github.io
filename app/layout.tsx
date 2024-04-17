@@ -20,6 +20,10 @@ export default function RootLayout({
         name='google-site-verification'
         content='wEgVvz1kfH0geF4rEaLrinoMZ_Sq8cNBAW-6o-y0jPg'
       />
+      <meta
+        name='google-adsense-account'
+        content='ca-pub-1953618852448098'
+      ></meta>
       <body className={cn('antialiased')}>
         <ThemeProvider>
           <SectionContainer>{children}</SectionContainer>
