@@ -1,3 +1,4 @@
+import PageComponent from '@/components/PageComponent';
 import { allPosts } from 'contentlayer/generated';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
@@ -29,15 +30,19 @@ const PostPage = ({ params }: { params: { slug: string[] } }) => {
 
   const MDXComponent = useMDXComponent(postContent);
   return (
-    <article className='max-w-full p-4 prose mt-14 prose-gray dark:prose-invert prose-code'>
-      <div>
-        <div className='mb-3 text-4xl font-black text-center'>{post.title}</div>
-        <div className='mb-16 text-right'>{post.date.slice(0, 10)}</div>
-      </div>
-      <div>
-        <MDXComponent component={component} />
-      </div>
-    </article>
+    <PageComponent>
+      <article className='max-w-full p-4 prose prose-gray dark:prose-invert prose-code'>
+        <div>
+          <div className='mb-3 text-4xl font-black text-center'>
+            {post.title}
+          </div>
+          <div className='mb-16 text-right'>{post.date.slice(0, 10)}</div>
+        </div>
+        <div>
+          <MDXComponent component={component} />
+        </div>
+      </article>
+    </PageComponent>
   );
 };
 

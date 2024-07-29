@@ -4,22 +4,27 @@ import Link from 'next/link';
 import { Post } from 'contentlayer/generated';
 
 const PostCard = ({ post }: { post: Post }) => {
-  const isDefaultThumbnail = true;
+  const isThumbnail = !!post.thumbnail;
   return (
     <Link
       href={`/blog/${post.slug}`}
       className='grid flex-col grid-cols-1 gap-1 px-4 py-2 cursor-pointer sm:grid-cols-8 sm:gap-6 group sm:flex-row'
     >
-      <div className='flex items-center justify-center col-span-1 sm:col-span-3 aspect-video'>
-        {isDefaultThumbnail ? (
-          <div className='flex items-center justify-center w-full h-full transition rounded bg-indigo-400/35 group-hover:bg-indigo-400/40'>
+      <div className='relative flex items-center justify-center col-span-1 overflow-hidden rounded sm:col-span-3 aspect-video'>
+        {isThumbnail ? (
+          <div className='flex items-center justify-center w-full h-full transition bg-indigo-400/35 group-hover:bg-indigo-400/40'>
+            <Image
+              src={post.thumbnail}
+              alt='title'
+              fill
+              className='transition duration-500 transform group-hover:scale-150'
+            />
+          </div>
+        ) : (
+          <div className='flex items-center justify-center w-full h-full transition bg-indigo-400/35 group-hover:bg-indigo-400/40'>
             <div className='transition duration-500 transform text-7xl group-hover:scale-150'>
               🌕
             </div>
-          </div>
-        ) : (
-          <div className='w-full h-32 transition rounded bg-indigo-400/35 group-hover:bg-indigo-400/40'>
-            <Image src='' width='100' height='100' alt='title' />
           </div>
         )}
       </div>
