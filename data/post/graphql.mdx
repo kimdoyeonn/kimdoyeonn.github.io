@@ -31,17 +31,63 @@ draft: false
 
 ## code first
 
-데코레이터와 TypeScript 클래스를 사용하여 해당 GraphQL 스키마를 생성할 수 있음, TypeScript으로만 작업하면서 언어 구문 간의 컨텍스트 전환을 피하려는 경우에 유용함
+코드를 통해 GraphQL 스키마를 정의하고, 이를 기반으로 GraphQL 타입과 리졸버를 작성하는 방식
+
+개발자가 코드로 타입과 리졸버를 정의하면, 이를 바탕으로 GraphQL 스키마가 자동 생성됨
+
+```typescript
+@ObjectType()
+class User {
+  @Field(() => ID)
+  id: string;
+
+  @Field()
+  name: string;
+}
+
+@Resolver(() => User)
+class UserResolver {
+  @Query(() => User, { nullable: true })
+  getUser(@Arg('id') id: string): User {
+    // 리졸버 로직
+  }
+}
+```
+
+TypeScript 데코레이터를 통해 타입을 정의하고, 리졸버와 스키마를 동시에 정의하는 것이 일반적임
+
+- 장점
+  - 스키마와 코드가 밀접하게 결합되어 있어 타입 안전성이 높고 코드와 스키마의 동기화가 잘 유지
+  - 코드 내에서 타입 정의와 리졸버를 통합하여 작성하므로, 자동완성, 타입 검증이 용이
+- 단점
+  - GraphQL 지식이 없는 개발자나 비개발자가 이해하기 어려울 수 있으며, 문서화가 부족할 수 있음
+  - GraphQL SDL과 익숙하지 않은 방식이기 때문에, GraphQL 경험이 풍부한 개발자에게는 다소 낯설 수 있음
 
 ## schema first
 
-GraphQL SDL 파일이 the source of truth
+스키마 정의 언어(SDL, Schema Definition Language)를 사용하여 GraphQL 스키마를 먼저 정의한 후, 이를 기반으로 리졸버 및 기타 비지니스 로직을 구현하는 방식
 
-SDL = Schema Definition Language
+서로 다른 플랫폼 간에 스키마 파일을 공유할 수 있는, 언어에 구애받지 않는 방법
 
-서로 다른 플랫폼 간에 스키마 파일을 공유할 수 있는 언어에 구애받지 않는 방법
+Nest는 GraphQL 스키마를 기반으로 클래스 또는 인터페이스를 사용하여 TypeScript 정의를 자동으로 생성하여 중복 보일러플레이트 코드를 작성할 필요성을 줄여준다.
 
-Nest는 GraphQL 스키마를 기반으로 클래스 또는 인터페이스를 사용하여 TypeScript 정의를 자동으로 생성하여 중복 보일러플레이트 코드를 작성할 필요성을 줄여줌
+```graphql
+type Query {
+  getUser(id: ID!): User
+}
+
+type User {
+  id: ID!
+  name: String!
+}
+```
+
+- 장점
+  - 명확한 문서 제공: GraphQL 스키마가 개발 초기부터 명확하게 정의되어 문서처럼 작용함
+  - 표준화된 스키마 정의 언어: SDL은 GraphQL 표준의 일부로, GraphQL에 익숙한 사람들에게는 직관적임
+- 단점
+  - 스키마와 코드가 분리되기 때문에, 스키마와 리졸버가 분리되어 유지보수 시 상호 동기화가 필요할 수 있음
+  - 추가적인 설정 및 코드 생성이 필요할 수 있어 초기 설정이 복잡할 수 있음
 
 출처
 
