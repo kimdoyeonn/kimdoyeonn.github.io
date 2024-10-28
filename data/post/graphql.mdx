@@ -1,0 +1,49 @@
+---
+title: GraphQL과 REST 차이와 GraphQL 정의 방식 정리
+date: '2024-09-28'
+tags: ['graphql']
+draft: false
+---
+
+이번에 과제를 하면서 GraphQL을 처음 써보았는데, 사용하기 전 노션에 궁금한 점을 정리했던 것을 정리해서 블로그로 옮깁니다.
+
+---
+
+- api를 위한 쿼리 언어이자 쿼리를 수행하기 위한 런타임
+- REST API 방식에서 일반적으로 발견되는 많은 문제를 해결
+
+## GraphQL vs REST
+
+- GET 요청 방식에 차이
+
+  HTTP GET 을 통해 가져올 수 있고, JSON 반환할 수 있는 것은 동일하지만 호출하는 방식에 차이가 있음
+
+  - REST - id로 요청 `GET /books/1`
+  - GraphQL - 객체로 요청 `GET /graphql?query={ book(id: "1") { title, author { firstName } } }` - Graphql 스키마
+
+  REST에서 리소스의 모양과 크기는 서버에 의해 결정되지만 GraphQL에서 서버는 사용 가능한 리소서를 선언하기만 하고 클라이언트는 필요한 것을 그 때 그 때 요청한다.
+
+- POST 요청 같은건 Mutation 을 사용함
+- REST에서 각 요청은 하나의 경로 핸들러 함수를 호출하지만 GraphQL에서 하나의 쿼리는 여러 개의 리졸버를 호출하여 여러 리소스가 있는 중첩된 응답을 구성할 수 있음
+- REST 에서는 응답의 모양을 직접 구성하지만 GraphQL에서는 응답의 모양이 GraphQL 실행 라이브러리에 의해 쿼리의 모양과 일치하도록 구축됨
+
+# GraphQL 정의 방식
+
+## code first
+
+데코레이터와 TypeScript 클래스를 사용하여 해당 GraphQL 스키마를 생성할 수 있음, TypeScript으로만 작업하면서 언어 구문 간의 컨텍스트 전환을 피하려는 경우에 유용함
+
+## schema first
+
+GraphQL SDL 파일이 the source of truth
+
+SDL = Schema Definition Language
+
+서로 다른 플랫폼 간에 스키마 파일을 공유할 수 있는 언어에 구애받지 않는 방법
+
+Nest는 GraphQL 스키마를 기반으로 클래스 또는 인터페이스를 사용하여 TypeScript 정의를 자동으로 생성하여 중복 보일러플레이트 코드를 작성할 필요성을 줄여줌
+
+출처
+
+- [Documentation | NestJS - A progressive Node.js framework](https://docs.nestjs.com/graphql/quick-start)
+- [GraphQL vs. REST | Apollo GraphQL Blog](https://www.apollographql.com/blog/graphql-vs-rest)
