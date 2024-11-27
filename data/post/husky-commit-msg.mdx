@@ -1,0 +1,53 @@
+---
+title: 'Husky로 커밋 메시지 검증하기'
+date: '2024-11-27'
+tags: []
+draft: false
+---
+
+저번에 이어 husky를 사용하여 커밋 형식을 강제하는 방법을 정리해보려고 합니다.
+
+[husky](https://typicode.github.io/husky)는 git hooks를 관리하는 라이브러리힙니다.
+git에는 여러 이벤트들에 따라 어떤 동작을 할 수 있도록 하는 git hook이라는 개념이 존재하는데, husky는 git hook을 좀 더 편하게 사용할 수 있도록 해주는 라이브러리입니다.
+git hook을 사용해서 코드 포맷팅, 테스트 실행, 커밋 메시지 검증 등 다양한 작업을 자동화할 수 있습니다. 저번에는 코드 포맷팅을 자동화했었는데, 이번엔 커밋 메시지 검증 스크립트를 추가해보려고 합니다.
+
+일단 husky를 세팅해줍니다.
+
+```bash
+# husky 설치 및 초기화
+npm install --save-dev husky
+npx husky init
+```
+
+이렇게 하면 필요한 package.json에 `script`가 추가되고 `.husky` 폴더에 관련 파일들이 생성됩니다.
+이 중 `.husky/pre-commit`파일에 적혀있는 명령어가 commit 이벤트가 발생하기 전에 실행됩니다.
+이번에 할 것은 커밋 메시지 검증이기 때문에 `.husky/commit-msg` 파일을 생성해줍니다. 그리고 아래의 내용을 붙여넣어줍니다.
+
+저는 `feat: 짱 멋진 기능 구현 (#4)` 형식의 커밋 메시지를 작성하도록 강제하려고 하기 때문에 아래의 정규표현식을 사용했습니다.
+
+```bash
+commit_msg_file=$1 # 첫번째 인자(커밋 메시지 파일 경로)를 변수에 저장합니다.
+commit_msg=$(cat $1) # 커밋 메시지 파일의 내용을 읽어 변수에 저장합니다.
+
+# 커밋 메시지 패턴 정의(정규표현식)
+commit_msg_pattern='^(feat|fix|docs|style|design|refactor|perf|test|build|ci|chore|revert): .+ \(#[0-9]+\)$'
+
+# 커밋 메시지가 정의된 패턴과 일치하는지 확인
+if ! grep -qE "$commit_msg_pattern" "$commit_msg_file"; then
+# 일치하지 않으면 오류 메시지를 출력하고 스크립트를 종료합니다.
+  echo "커밋 메시지 형식이 올바르지 않습니다."
+  echo "올바른 형식: <type>: <description> (#<issue-number>)"
+  echo "예시: feat: 기능 개발 (#4)"
+  exit 1
+fi # if문 종료
+```
+
+이렇게 하면 잘못된 커밋 메시지를 작성했을 때 오류 메시지가 출력되면서 커밋이 진행되지 않습니다. 후후
+
+![](https://github.com/user-attachments/assets/0bdcda1f-cba4-48de-a931-45b4cf7da208)
+
+추가적으로, 이 작업을 하면서 `$1`에 커밋 메시지 파일의 경로가 들어간다는 것을 처음 알았는데 0이나 2, 3에는 어떤 것이 들어가나 궁금해서 찾아봤습니다.
+
+- `$0`: 실행 중인 스크립트의 이름 또는 경로를 나타냅니다.
+- `$1`: git이 훅 스크립트에 전달하는 첫번째 인자. commit-msg 훅의 경우, 커밋 메시지가 저장된 임시 파일의 경로
+- `$2~`: git은 일반적으로 추가 인자를 전달하지 않기 떄문에 대부분의 git 훅에서는 사용되지 않습니다.
